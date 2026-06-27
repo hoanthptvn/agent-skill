@@ -1,0 +1,39 @@
+# Agent OS: Enterprise CSS Architecture — Index for AI Agents
+
+Use this file to discover which skill to load. Each skill lives in a directory under `skills/`.
+
+## Core Architecture & Context Skills (Phase 0)
+
+reverse-interrogation
+  Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách UI/UX và Design System trước khi code CSS.
+  Triggers: /crey, /grillmey, interview me, phỏng vấn UI, thiết kế từ ảnh, design system.
+
+cay-state-machine
+  Skill: State-Machine 5 Tác nhân (Cay System), Bằng chứng thị giác (Visual Proof thay cho Unit Test). Cấm dùng `!important`.
+  Triggers: agent architecture, proof over trust, test css, css bug, visual regression.
+
+context-engineering
+  Skill: Giới hạn bộ nhớ CSS (Dumbzone), tránh đứt gãy Cascade khi nạp quá nhiều class. Sandbox component.
+  Triggers: context bloat, dumbzone, tràn bộ nhớ, vỡ layout toàn cục, blast radius.
+
+systems-thinking
+  Skill: Tránh Nợ nhận thức CSS, "Jagged Frontier" của UI, và Lỗi Câm (Silent Errors) trên trình duyệt.
+  Triggers: cognitive debt, systems thinking, lỗi câm css, silent error, lạm dụng important.
+
+## CSS Modules (Phase 1)
+
+css-architecture
+  Skill: Cấu trúc FLOCSS chuẩn. Định nghĩa các Layer (`foundation`, `layout`, `object/components`, `object/utilities`).
+  Triggers: kiến trúc css, flocss, chia file css, tổ chức css.
+
+design-tokens
+  Skill: Hệ thống Token 3 tầng (Global, Semantic, Component). Hàm màu `oklch`, typography scale clamp().
+  Triggers: design token, oklch, css variables, `--ui-*`, color system, typography scale, dark mode.
+
+naming-conventions
+  Skill: Quy tắc đặt tên CSS (BEM). Tiền tố bắt buộc: `c-` (Component), `l-` (Layout), `u-` (Utility).
+  Triggers: bem, css naming, cách đặt tên class, class css.
+
+pattern-guide
+  Skill: Các mẫu CSS thực chiến (Local vars, CSS nesting, @layer, data-animate, color-mix pattern).
+  Triggers: css pattern, color-mix, data-animate, css nesting, thủ thuật css.

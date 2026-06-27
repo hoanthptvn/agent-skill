@@ -1,0 +1,71 @@
+# Agent OS: High-Performance Vanilla JS — Index for AI Agents
+
+Use this file to discover which skill to load. Each skill lives in a directory of the same name under `skills/` and contains `SKILL.md`.
+
+**CRITICAL RULE:** Do NOT load any GSAP skills (`gsap-*`) unless the user EXPLICITLY asks to use GSAP or explicitly asks for an animation library. If the task is just regular DOM manipulation or business logic, IGNORE the GSAP skills.
+
+## Core Architecture & Context Skills (Phase 0)
+
+reverse-interrogation
+  Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách ngữ cảnh trước khi code.
+  Triggers: /crey, /grillmey, interview me, phỏng vấn, hỏi tôi, bắt đầu dự án mới.
+
+cay-state-machine
+  Skill: State-Machine 5 Tác nhân (Cay System), Proof over Trust (Video Playwright bắt buộc).
+  Triggers: agent architecture, proof over trust, verify, test agent, cỗ máy cay.
+
+context-engineering
+  Skill: Khung R-P-I, giới hạn bộ nhớ (Dumbzone), Context Forking, Sub-agents.
+  Triggers: context bloat, dumbzone, tràn bộ nhớ, reset context, sub-agent.
+
+systems-thinking
+  Skill: Nợ nhận thức, Thuyết Ẩn dụ Usain Bolt, Khung 3 trụ cột (State, Feedback, Blast Radius).
+  Triggers: cognitive debt, usain bolt, systems thinking, blast radius, nợ kỹ thuật.
+
+## Vanilla JS Skills (Phase 1)
+
+dom-testing
+  Skill: Hợp đồng DOM với `data-*` attributes, tự động hóa bằng Playwright, chống ngụy biện kiểm thử.
+  Triggers: /test, dom contract, playwright, end-to-end test, data-cy, kiểm thử.
+
+performance-loops
+  Skill: Tối ưu hóa vòng lặp (60fps), `requestAnimationFrame`, Zero-allocation, Garbage Collection.
+  Triggers: loop, vòng lặp, forEach, map, filter, rAF, 60fps, performance loop, memory leak.
+
+data-structures
+  Skill: Xử lý dữ liệu (String, Array, Object) đúng chuẩn O(1) hoặc O(log N).
+  Triggers: string manipulation, regex, array performance, object reference, kiểu dữ liệu.
+
+## Algorithms (Phase 2)
+
+gsap-algorithm-guide
+  Skill: Cẩm nang hướng dẫn ánh xạ các bài tập GSAP sang lý thuyết thuật toán. (Chỉ dùng khi làm việc với GSAP).
+  Triggers: gsap algorithms, gsap course.
+
+## GSAP Skills (Phase 3 - LAZY LOAD)
+
+> **WARNING:** ONLY load these if the user explicitly requests GSAP animations.
+
+gsap-core
+  Core API: gsap.to(), from(), fromTo(), easing, duration, stagger, autoAlpha, gsap.matchMedia().
+  Triggers: gsap, gsap animation, gsap core, tweens, autoAlpha, matchMedia.
+
+gsap-timeline
+  Timelines: gsap.timeline(), position parameter, labels, nesting.
+  Triggers: gsap timeline, sequencing, choreograph, animation order.
+
+gsap-scrolltrigger
+  ScrollTrigger: scroll-linked animations, pinning, scrub, triggers, refresh.
+  Triggers: scrolltrigger, scroll animation, parallax, pin section.
+
+gsap-plugins
+  Plugins: Flip, Draggable, SplitText, Observer, CustomEase, v.v.
+  Triggers: gsap plugin, flip, draggable, splittext, morphsvg, drawsvg.
+
+gsap-utils
+  gsap.utils: clamp, mapRange, normalize, interpolate, random, toArray, wrap.
+  Triggers: gsap.utils, clamp, mapRange, gsap math.
+
+gsap-performance
+  Performance: transforms, will-change, batching, ScrollTrigger tips.
+  Triggers: gsap performance, animation jank, 60fps gsap.

@@ -1,0 +1,484 @@
+﻿/* ==========================================================================
+   DESIGN TOKENS — FLOCSS Foundation Layer
+   CSS Custom Properties — mọi dự án đều cần
+   @import "foundation/tokens.css" layer(tokens)
+   ========================================================================== */
+
+:root {
+
+  /* ==========================================================================
+     1. BRAND — Sửa 4 chỗ này theo từng project
+     ========================================================================== */
+
+  /* oklch: Lightness Chroma Hue — https://oklch.com
+     Hue: 0=đỏ  25=cam  75=vàng  120=xanh lá  240=xanh dương  280=tím  320=hồng */
+  --_accent-l: 65%;
+  --_accent-c: .26;
+  --_accent-h: 280;
+
+  --clr-accent:       oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h));
+  --clr-accent-light: oklch(80% var(--_accent-c) var(--_accent-h));
+  --clr-accent-dark:  oklch(45% var(--_accent-c) var(--_accent-h));
+
+  --font-display: 'Editorial New', 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', 'DM Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+
+  /* ==========================================================================
+     2. COLOR SYSTEM — Primitive → Semantic
+     ========================================================================== */
+
+  /* Primitive neutral scale */
+  --clr-neutral-0:    #ffffff;
+  --clr-neutral-50:   oklch(98%  0 0);
+  --clr-neutral-100:  oklch(95%  0 0);
+  --clr-neutral-200:  oklch(88%  0 0);
+  --clr-neutral-300:  oklch(78%  0 0);
+  --clr-neutral-400:  oklch(64%  0 0);
+  --clr-neutral-500:  oklch(50%  0 0);
+  --clr-neutral-600:  oklch(38%  0 0);
+  --clr-neutral-700:  oklch(28%  0 0);
+  --clr-neutral-800:  oklch(18%  0 0);
+  --clr-neutral-900:  oklch(10%  0 0);
+  --clr-neutral-950:  oklch(5%   0 0);
+  --clr-neutral-1000: #000000;
+
+  /* Semantic — light mode */
+  --clr-bg:           var(--clr-neutral-0);
+  --clr-bg-subtle:    var(--clr-neutral-50);
+  --clr-surface:      var(--clr-neutral-100);
+  --clr-surface-alt:  var(--clr-neutral-200);
+
+  --clr-text:            var(--clr-neutral-900);
+  --clr-text-toned:      var(--clr-neutral-600);    /* Secondary label */
+  --clr-text-muted:      var(--clr-neutral-500);    /* Placeholder, helper */
+  --clr-text-faint:      var(--clr-neutral-400);    /* Disabled */
+  --clr-text-highlighted: var(--clr-neutral-950);   /* Strong emphasis */
+  --clr-text-invert:     var(--clr-neutral-0);
+
+  --clr-border:       var(--clr-neutral-200);
+  --clr-border-alt:   var(--clr-neutral-300);
+
+  /* Status */
+  --clr-success: oklch(62% .2  145);
+  --clr-warning: oklch(78% .18  75);
+  --clr-error:   oklch(55% .22  25);
+  --clr-info:    oklch(62% .18 230);
+
+  /* ==========================================================================
+     2b. UI SEMANTIC TOKENS — Tầng 3: trạng thái tương tác
+     Dùng trong button, badge, alert: background: var(--ui-error)
+     Lợi thế: có thể remap toàn bộ màu trạng thái mà không sửa component
+     ========================================================================== */
+
+  --ui-primary:   var(--clr-accent);
+  --ui-secondary: var(--clr-neutral-600);
+  --ui-success:   var(--clr-success);
+  --ui-warning:   var(--clr-warning);
+  --ui-error:     var(--clr-error);
+  --ui-info:      var(--clr-info);
+
+
+  /* ==========================================================================
+     3. TYPOGRAPHY — Fluid scale clamp
+     ========================================================================== */
+
+  --text-2xs:  clamp(.625rem,  .8vw,   .75rem);
+  --text-xs:   clamp(.75rem,   1vw,    .875rem);
+  --text-sm:   clamp(.875rem,  1.2vw,  1rem);
+  --text-base: clamp(1rem,     1.4vw,  1.125rem);
+  --text-lg:   clamp(1.125rem, 2vw,    1.375rem);
+  --text-xl:   clamp(1.375rem, 2.5vw,  1.75rem);
+  --text-2xl:  clamp(1.75rem,  3.5vw,  2.5rem);
+  --text-3xl:  clamp(2.5rem,   5vw,    4rem);
+  --text-4xl:  clamp(4rem,     7vw,    6rem);
+  --text-hero: clamp(5rem,     11vw,   10rem);
+
+  /* Companion line-height tokens
+     Mỗi text size có line-height tương ứng
+     Dùng: line-height: var(--ui-leading, var(--text-sm--line-height))
+     --ui-leading override per-element: style="--ui-leading: 1.2" */
+  --text-2xs--line-height:  1.4;
+  --text-xs--line-height:   1.43;
+  --text-sm--line-height:   1.5;
+  --text-base--line-height: 1.5;
+  --text-lg--line-height:   1.55;
+  --text-xl--line-height:   1.4;
+  --text-2xl--line-height:  1.33;
+  --text-3xl--line-height:  1.2;
+  --text-4xl--line-height:  1.11;
+  --text-hero--line-height: 1;
+
+  --leading-tight:    .9;
+  --leading-snug:     1.1;
+  --leading-heading:  1.25;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.7;
+
+  --tracking-tighter: -.05em;
+  --tracking-tight:   -.025em;
+  --tracking-normal:   0em;
+  --tracking-wide:     .025em;
+  --tracking-wider:    .05em;
+  --tracking-widest:   .1em;
+  --tracking-caps:     .12em;
+
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+
+  /* ==========================================================================
+     4. SPACING — 8pt grid
+
+     HAI CÁCH dùng spacing (đều hợp lệ):
+
+     CÁCH 1 — Named tokens (agent-os-css style):
+       padding: var(--space-4);     → 2rem
+       gap:     var(--space-2);     → 1rem
+       ✅ Autocomplete tốt  ✅ Rõ ràng  ❌ Chỉ có số được khai báo sẵn
+
+     CÁCH 2 — calc(var(--spacing) * N):
+       padding: calc(var(--spacing) * 4);    → 1rem  (0.25rem × 4)
+       height:  calc(var(--spacing) * 11);   → 2.75rem
+       gap:     calc(var(--spacing) * 2.5);  → 0.625rem (số lẻ được!)
+       ✅ Bất kỳ số nào  ✅ Nhất quán  ✅ Dùng inline style được
+
+     Tương quan: 1 đơn vị nhỏ (0.25rem) = 4px
+                 1 đơn vị agent-os-css (0.5rem)  = 8px
+                 → calc(var(--spacing) * 8) ≡ var(--space-4) = 2rem
+
+     DÙNG INLINE STYLE:
+       <div style="padding: calc(var(--spacing) * 6)">   → 1.5rem
+       <div style="height: calc(var(--spacing) * 11)">   → 2.75rem
+     ========================================================================== */
+
+  /* Base unit — 0.25rem per step */
+  --spacing: .25rem;   /* = 4px — nhân số để ra kích thước */
+
+  /* Named tokens — agent-os-css style (= --space-unit * 2 vì 0.5rem = 2×0.25rem) */
+  --space-unit: .5rem;
+
+  --space-1:  calc(var(--space-unit) * 1);    /* 0.5rem  = 2px×4  */
+  --space-2:  calc(var(--space-unit) * 2);    /* 1rem    = 4px×4  */
+  --space-3:  calc(var(--space-unit) * 3);    /* 1.5rem  = 6px×4  */
+  --space-4:  calc(var(--space-unit) * 4);    /* 2rem    = 8px×4  */
+  --space-5:  calc(var(--space-unit) * 5);    /* 2.5rem  */
+  --space-6:  calc(var(--space-unit) * 6);    /* 3rem    */
+  --space-8:  calc(var(--space-unit) * 8);    /* 4rem    */
+  --space-10: calc(var(--space-unit) * 10);   /* 5rem    */
+  --space-12: calc(var(--space-unit) * 12);   /* 6rem    */
+  --space-16: calc(var(--space-unit) * 16);   /* 8rem    */
+  --space-20: calc(var(--space-unit) * 20);   /* 10rem   */
+  --space-24: calc(var(--space-unit) * 24);   /* 12rem   */
+
+  --space-section-sm: clamp(4rem,  8vw,  6rem);
+  --space-section:    clamp(6rem,  12vw, 10rem);
+  --space-section-lg: clamp(8rem,  16vw, 14rem);
+
+
+  /* ==========================================================================
+     5. LAYOUT
+     ========================================================================== */
+
+  --gutter:          clamp(1rem, 4vw, 2.5rem);
+
+  /* Breakpoints — dùng cho @media */
+  --breakpoint-sm:   40rem;   /* 640px */
+  --breakpoint-md:   48rem;   /* 768px */
+  --breakpoint-lg:   64rem;   /* 1024px */
+  --breakpoint-xl:   80rem;   /* 1280px */
+  --breakpoint-2xl:  96rem;   /* 1536px */
+
+  /* Container widths — full scale (3xs → 7xl) */
+  --container-3xs:   16rem;   /* 256px */
+  --container-2xs:   18rem;   /* 288px */
+  --container-xs:    20rem;   /* 320px */
+  --container-sm:    24rem;   /* 384px */
+  --container-md:    28rem;   /* 448px */
+  --container-lg:    32rem;   /* 512px */
+  --container-xl:    36rem;   /* 576px */
+  --container-2xl:   42rem;   /* 672px */
+  --container-3xl:   48rem;   /* 768px */
+  --container-4xl:   56rem;   /* 896px */
+  --container-5xl:   64rem;   /* 1024px */
+  --container-6xl:   72rem;   /* 1152px */
+  --container-7xl:   80rem;   /* 1280px */
+  --container:       min(80rem,  100% - var(--gutter) * 2);
+  --container-wide:  min(90rem,  100% - var(--gutter) * 2);
+  --container-full:  min(100rem, 100% - var(--gutter) * 2);
+
+  --grid-cols: 12;
+  --col-gap:   var(--gutter);
+
+  /* ─── Radius Scale ─────────────────────────────────────────────────────
+     Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
+     User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
+     Mặc định: --radius: .625rem (10px)
+     --ui-radius là alias backward-compatible
+     agent-os-css giữ cả 2 để backward compatible. */
+  --radius: .625rem;                      /* ← Giá trị gốc, sửa 1 chỗ này */
+
+  --radius-xs:   .125rem;                 /* cố định — rất nhỏ */
+  --radius-sm:   calc(var(--radius) * .6);   /* ~6px */
+  --radius-md:   calc(var(--radius) * .8);   /* ~8px */
+  --radius-lg:   var(--radius);              /* 10px — mặc định .rounded-lg */
+  --radius-xl:   calc(var(--radius) * 1.4);  /* ~14px */
+  --radius-2xl:  calc(var(--radius) * 1.8);  /* ~18px */
+  --radius-3xl:  calc(var(--radius) * 2.2);  /* ~22px */
+  --radius-4xl:  calc(var(--radius) * 2.6);  /* ~26px */
+  --radius-full: 9999px;                     /* pill / circle */
+
+  /* Backward compat alias cho code cũ dùng --ui-radius */
+  --ui-radius: var(--radius);
+  --ui-header-height: 4rem;
+  --ui-container: 80rem;
+
+  --z-below:    -1;
+  --z-base:      1;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+  --z-cursor:   999;
+
+
+  /* ==========================================================================
+     6. ANIMATION
+     ========================================================================== */
+
+  --dur-instant: 80ms;
+  --dur-fast:    150ms;
+  --dur-base:    300ms;
+  --dur-slow:    500ms;
+  --dur-slower:  800ms;
+  --dur-page:    1200ms;
+
+  --ease-out:        cubic-bezier(.22, 1, .36, 1);
+  --ease-out-expo:   cubic-bezier(.16, 1, .3, 1);
+  --ease-out-quart:  cubic-bezier(.25, 1, .5, 1);
+  --ease-in:         cubic-bezier(.64, 0, .78, 0);
+  --ease-in-out:     cubic-bezier(.87, 0, .13, 1);
+  --ease-spring:     cubic-bezier(.34, 1.56, .64, 1);
+
+  --transition-fast:   var(--dur-fast)   var(--ease-out);
+  --transition-base:   var(--dur-base)   var(--ease-out);
+  --transition-slow:   var(--dur-slow)   var(--ease-out-expo);
+  --transition-spring: var(--dur-slow)   var(--ease-spring);
+
+  /* Default transition
+     Dùng làm fallback trong utility .transition:
+     transition-duration: var(--ui-duration, var(--default-transition-duration))
+     Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)" */
+  --default-transition-duration: .15s;
+  --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+
+  /* Animate shorthand tokens
+     Dùng: animation: var(--animate-spin) */
+  --animate-spin:   spin 1s linear infinite;
+  --animate-ping:   ping 1s cubic-bezier(0, 0, .2, 1) infinite;
+  --animate-pulse:  pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
+  --animate-bounce: bounce 1s infinite;
+
+
+  /* ==========================================================================
+     7. EFFECTS
+     ========================================================================== */
+
+  --shadow-xs:   0 1px 2px 0 oklch(0% 0 0 / .05);
+  --shadow-sm:   0 1px 3px 0 oklch(0% 0 0 / .10), 0 1px 2px -1px oklch(0% 0 0 / .10);
+  --shadow-md:   0 4px 6px -1px oklch(0% 0 0 / .10), 0 2px 4px -2px oklch(0% 0 0 / .10);
+  --shadow-lg:   0 10px 15px -3px oklch(0% 0 0 / .10), 0 4px 6px -4px oklch(0% 0 0 / .10);
+  --shadow-xl:   0 20px 25px -5px oklch(0% 0 0 / .10), 0 8px 10px -6px oklch(0% 0 0 / .10);
+  --shadow-2xl:  0 25px 50px -12px oklch(0% 0 0 / .25);
+  --shadow-glow: 0 0 40px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / .3);
+
+  /* Inset shadow*/
+  --inset-shadow-xs: inset 0 1px oklch(0% 0 0 / .05);
+  --inset-shadow-sm: inset 0 1px 1px oklch(0% 0 0 / .05);
+  --inset-shadow-md: inset 0 2px 4px oklch(0% 0 0 / .05);
+
+  --blur-xs:    4px;
+  --blur-sm:    8px;
+  --blur-md:    12px;
+  --blur-lg:    16px;
+  --blur-xl:    24px;
+  --blur-2xl:   40px;
+  --blur-glass: 16px;
+
+  --glass-bg:     oklch(100% 0 0 / .05);
+  --glass-border: oklch(100% 0 0 / .12);
+  --glass-blur:   blur(var(--blur-glass));
+
+  --perspective-xs:   100px;
+  --perspective-sm:   300px;
+  --perspective-md:   500px;
+  --perspective-lg:   800px;
+  --perspective-xl:  1200px;
+  --perspective-none: none;
+
+  --text-shadow-xs:   0px 1px 1px oklch(0% 0 0 / .15);
+  --text-shadow-sm:   0px 1px 0px oklch(0% 0 0 / .08), 0px 2px 2px oklch(0% 0 0 / .08);
+  --text-shadow-md:   0px 1px 1px oklch(0% 0 0 / .10), 0px 2px 4px oklch(0% 0 0 / .10);
+  --text-shadow-lg:   0px 2px 4px oklch(0% 0 0 / .12), 0px 4px 8px oklch(0% 0 0 / .12);
+  --text-shadow-glow: 0 0 20px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / .5),
+                      0 0 60px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / .2);
+
+  --drop-shadow-xs: 0 1px 1px oklch(0% 0 0 / .08);
+  --drop-shadow-sm: 0 1px 2px oklch(0% 0 0 / .15);
+  --drop-shadow-md: 0 3px 3px oklch(0% 0 0 / .12);
+  --drop-shadow-lg: 0 4px 6px oklch(0% 0 0 / .15);
+  --drop-shadow-xl: 0 9px 7px oklch(0% 0 0 / .10);
+
+  /* ==========================================================================
+     8.  SEMANTIC TOKENS — Tầng 4: ecosystem compatibility
+
+     TẠI SAO CẦN 2 HỆ THỐNG?
+     ─────────────────────────
+     --clr-*     = agent-os-css native (oklch, precise, granular)
+     --background/--foreground/... = CSS token ecosystem
+
+     Cho phép tích hợp component library bên ngoài mà không cần refactor.
+     Component dùng var(--background) sẽ tự adapt theo theme.
+     ========================================================================== */
+
+  /* Nền & chữ chính */
+  --background:         var(--clr-bg);
+  --foreground:         var(--clr-text);
+
+  /* Card / Popover — thường cùng màu background */
+  --card:               var(--clr-surface);
+  --card-foreground:    var(--clr-text);
+  --popover:            var(--clr-bg);
+  --popover-foreground: var(--clr-text);
+
+  /* Primary action color */
+  --primary:            var(--ui-primary);
+  --primary-foreground: var(--clr-neutral-0);
+
+  /* Secondary / Neutral */
+  --secondary:            var(--clr-neutral-100);
+  --secondary-foreground: var(--clr-neutral-900);
+
+  /* Muted — background nhẹ, text phụ */
+  --muted:            var(--clr-bg-subtle);
+  --muted-foreground: var(--clr-text-muted);
+
+  /* Accent — hover state, subtle highlight */
+  --accent:            var(--clr-surface);
+  --accent-foreground: var(--clr-text);
+
+  /* Destructive — danger/error */
+  --destructive:            var(--ui-error);
+  --destructive-foreground: var(--clr-neutral-0);
+
+  /* Border & Input */
+  --border: var(--clr-border);
+  --input:  var(--clr-border);
+
+  /* Ring — focus outline color */
+  --ring: var(--clr-neutral-400);
+
+  /* Surface — elevated layer */
+  --surface:            var(--clr-surface);
+  --surface-foreground: var(--clr-text-toned);
+
+  /* Sidebar — component-specific */
+  --sidebar:                    var(--clr-bg-subtle);
+  --sidebar-foreground:         var(--clr-text);
+  --sidebar-primary:            var(--ui-primary);
+  --sidebar-primary-foreground: var(--clr-neutral-0);
+  --sidebar-accent:             var(--clr-surface);
+  --sidebar-accent-foreground:  var(--clr-text);
+  --sidebar-border:             var(--clr-border);
+  --sidebar-ring:               var(--clr-neutral-400);
+
+  /* Chart / Data viz — 5 màu cho biểu đồ */
+  --chart-1: oklch(65% .18 230);
+  --chart-2: oklch(65% .2  145);
+  --chart-3: oklch(78% .18  75);
+  --chart-4: oklch(65% .22  25);
+  --chart-5: oklch(62% .2  300);
+
+  /* Code block */
+  --code:             var(--clr-surface);
+  --code-foreground:  var(--clr-text-toned);
+  --code-highlight:   var(--clr-surface-alt);
+
+  /* Selection */
+  --selection:            var(--clr-accent-light);
+  --selection-foreground: var(--clr-neutral-900);
+}
+
+
+/* ==========================================================================
+   DARK MODE
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* agent-os-css native */
+    --clr-bg:               var(--clr-neutral-950);
+    --clr-bg-subtle:        var(--clr-neutral-900);
+    --clr-surface:          var(--clr-neutral-800);
+    --clr-surface-alt:      var(--clr-neutral-700);
+    --clr-text:             var(--clr-neutral-200);
+    --clr-text-toned:       var(--clr-neutral-300);
+    --clr-text-muted:       var(--clr-neutral-400);
+    --clr-text-faint:       var(--clr-neutral-500);
+    --clr-text-highlighted: #fff;
+    --clr-text-invert:      var(--clr-neutral-950);
+    --clr-border:           var(--clr-neutral-700);
+    --clr-border-alt:       var(--clr-neutral-600);
+    --shadow-sm:  0 1px 3px 0 oklch(0% 0 0 / .3), 0 1px 2px -1px oklch(0% 0 0 / .3);
+    --shadow-md:  0 4px 6px -1px oklch(0% 0 0 / .4), 0 2px 4px -2px oklch(0% 0 0 / .4);
+    --shadow-lg:  0 10px 15px -3px oklch(0% 0 0 / .5), 0 4px 6px -4px oklch(0% 0 0 / .5);
+    --shadow-xl:  0 20px 25px -5px oklch(0% 0 0 / .6), 0 8px 10px -6px oklch(0% 0 0 / .6);
+    --glass-bg:     oklch(0% 0 0 / .15);
+    --glass-border: oklch(100% 0 0 / .08);
+    /*  compat — các giá trị cascade tự cập nhật qua var */
+    --border: oklch(100% 0 0 / .1);   /* border trắng nhạt trên nền tối */
+    --input:  oklch(100% 0 0 / .15);
+    --ring:   var(--clr-neutral-500);
+  }
+}
+
+/* .dark class — khớp với  /  pattern */
+.dark {
+  /* agent-os-css native */
+  --clr-bg:               var(--clr-neutral-950);
+  --clr-bg-subtle:        var(--clr-neutral-900);
+  --clr-surface:          var(--clr-neutral-800);
+  --clr-surface-alt:      var(--clr-neutral-700);
+  --clr-text:             var(--clr-neutral-200);
+  --clr-text-toned:       var(--clr-neutral-300);
+  --clr-text-muted:       var(--clr-neutral-400);
+  --clr-text-faint:       var(--clr-neutral-500);
+  --clr-text-highlighted: #fff;
+  --clr-text-invert:      var(--clr-neutral-950);
+  --clr-border:           var(--clr-neutral-700);
+  --clr-border-alt:       var(--clr-neutral-600);
+  --shadow-sm:  0 1px 3px 0 oklch(0% 0 0 / .3), 0 1px 2px -1px oklch(0% 0 0 / .3);
+  --shadow-md:  0 4px 6px -1px oklch(0% 0 0 / .4), 0 2px 4px -2px oklch(0% 0 0 / .4);
+  --shadow-lg:  0 10px 15px -3px oklch(0% 0 0 / .5), 0 4px 6px -4px oklch(0% 0 0 / .5);
+  --shadow-xl:  0 20px 25px -5px oklch(0% 0 0 / .6), 0 8px 10px -6px oklch(0% 0 0 / .6);
+  --glass-bg:     oklch(0% 0 0 / .15);
+  --glass-border: oklch(100% 0 0 / .08);
+  /*  compat overrides */
+  --border: oklch(100% 0 0 / .1);
+  --input:  oklch(100% 0 0 / .15);
+  --ring:   var(--clr-neutral-500);
+  /* Chart — bật sáng hơn trên nền tối */
+  --chart-1: oklch(72% .18 230);
+  --chart-2: oklch(72% .2  145);
+  --chart-3: oklch(82% .15  75);
+  --chart-4: oklch(72% .22  25);
+  --chart-5: oklch(70% .2  300);
+}
