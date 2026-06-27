@@ -1,0 +1,136 @@
+---
+name: css-foundation
+description: CSS foundation chuẩn — FLOCSS architecture, design tokens, reset, @layer, component patterns, animation system. Use when bắt đầu project mới, cần CSS reset, thiết lập design system, dark mode, hoặc tìm CSS pattern cho animation/component.
+---
+
+# CSS Foundation — Design System (FLOCSS + BEM)
+
+## Overview
+
+Bộ CSS nền production-ready theo kiến trúc FLOCSS:
+
+```
+foundation/   — Reset, Tokens, Properties, Typography, Animations
+layout/       — Page-level containers (l-*)
+object/
+  components/ — Reusable UI components (c-* + BEM)
+  utilities/  — Single-purpose helpers (u-*)
+```
+
+Chi tiết tham chiếu → `references/`
+
+---
+
+## Dispatch Table — Bài toán → File
+
+```
+"Bắt đầu project mới"            → foundation/reset.css + foundation/tokens.css
+"Cần design token system"        → foundation/tokens.css → references/token-guide.md
+"Cần CSS reset"                  → foundation/reset.css
+"Cần heading/text classes"       → foundation/typography.css
+"Cần container/grid/layout"      → layout/layout.css
+"Cần button/card components"     → object/components.css
+"Cần scroll animation"           → foundation/animations.css
+"Cần helper utilities"           → object/utilities.css
+"Cần dark mode"                  → foundation/tokens.css (section DARK MODE)
+"Cần color opacity trên var"     → object/utilities.css (color-mix pattern)
+"Hiểu naming convention"         → references/naming-conventions.md
+"Hiểu CSS pattern hay"           → references/pattern-guide.md
+"Hiểu cấu trúc file"            → references/architecture.md
+```
+
+---
+
+## Quick Start
+
+### Import tất cả (khuyến nghị)
+```html
+<link rel="stylesheet" href="main.css">
+```
+
+### Import tối thiểu (chỉ foundation)
+```css
+@layer reset, tokens;
+@import "foundation/reset.css"  layer(reset);
+@import "foundation/tokens.css" layer(tokens);
+```
+
+---
+
+## Tùy chỉnh project — sửa 4 dòng trong foundation/tokens.css
+
+```css
+--_accent-h: 280;                                    /* Hue: 0-360 */
+--font-display: 'Tên Font', serif;                   /* Hero heading */
+--font-body: 'Tên Font', sans-serif;                 /* Body text */
+--clr-neutral-900: oklch(10% .005 280);              /* Warm/cool gray */
+```
+
+---
+
+## Naming Convention (FLOCSS + BEM)
+
+| Layer | Prefix | Pattern | Ví dụ |
+|-------|--------|---------|-------|
+| Foundation | *(không prefix)* | — | `.h1`, `.label`, `.caption` |
+| Layout | `l-` | `l-block--modifier` | `.l-container`, `.l-grid--auto` |
+| Component | `c-` | `c-block__element--modifier` | `.c-btn--outline`, `.c-card--glass` |
+| Utility | `u-` | `u-property-value` | `.u-flex`, `.u-bg-primary` |
+| State | `is-` / `has-` | — | `.is-visible`, `.has-error` |
+
+### CSS Variable Prefixes
+
+```
+--clr-*       Design tokens — màu sắc primitive
+--text-*      Design tokens — typography scale
+--space-*     Design tokens — spacing named tokens
+--spacing     Design token  — base unit (0.25rem)
+--shadow-*    Design tokens — box shadow
+--radius-*    Design tokens — border radius
+--ease-*      Design tokens — easing curves
+--animate-*   Design tokens — animation shorthand
+
+--ui-*        Semantic tokens — interaction / action colors
+--ui-primary  --ui-error  --ui-text-muted  --ui-bg-elevated
+
+--ui-*        Internal vars — composite properties (private)
+--ui-shadow   --ui-ring-shadow  --ui-translate-x  --ui-blur
+
+--_*          Private primitives — không dùng bên ngoài tokens.css
+--_accent-l   --_accent-c  --_accent-h
+```
+
+---
+
+## Rules bắt buộc
+
+1. **Dùng semantic token** — không hardcode primitive: `var(--clr-surface)` ✅ không `var(--clr-neutral-100)` ❌
+2. **Component dùng local vars** — `.c-btn { --btn-bg: ...; background: var(--btn-bg); }`
+3. **@layer ordering** — utilities luôn thắng, không cần `!important`
+4. **data-animate** — JS chỉ toggle class, CSS xử lý visual
+5. **Negative utilities** — `.u--top-px` (double dash sau `u-`)
+
+---
+
+## File Map
+
+```
+skill-css/
+├── main.css                      ← Entry point (@layer order + @import)
+├── foundation/
+│   ├── properties.css            ← 🟢 Safe defaults --ui-* composite vars
+│   ├── reset.css                 ← 🟢 Browser reset chuẩn quốc tế
+│   ├── tokens.css                ← 🟢 Design tokens + Semantic tokens
+│   ├── typography.css            ← 🔵 Heading/body text classes
+│   └── animations.css            ← 🟡 @keyframes + data-animate pattern
+├── layout/
+│   └── layout.css                ← 🔵 l-container, l-grid, l-stack, l-cluster
+├── object/
+│   ├── components.css            ← 🟡 c-btn, c-card, c-tag, c-divider
+│   └── utilities.css             ← 🟡 ~614 u-* utility classes
+└── references/
+    ├── naming-conventions.md     ← Naming conventions + variable guide
+    ├── pattern-guide.md          ← CSS patterns hay
+    ├── architecture.md           ← Cấu trúc & phân loại
+    └── token-guide.md            ← Token system guide
+```
