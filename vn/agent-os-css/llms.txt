@@ -8,17 +8,7 @@ reverse-interrogation
   Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách UI/UX và Design System trước khi code CSS.
   Triggers: /crey, /grillmey, interview me, phỏng vấn UI, thiết kế từ ảnh, design system.
 
-cay-state-machine
-  Skill: State-Machine 5 Tác nhân (Cay System), Bằng chứng thị giác (Visual Proof thay cho Unit Test). Cấm dùng `!important`.
-  Triggers: agent architecture, proof over trust, test css, css bug, visual regression.
 
-context-engineering
-  Skill: Giới hạn bộ nhớ CSS (Dumbzone), tránh đứt gãy Cascade khi nạp quá nhiều class. Sandbox component.
-  Triggers: context bloat, dumbzone, tràn bộ nhớ, vỡ layout toàn cục, blast radius.
-
-systems-thinking
-  Skill: Tránh Nợ nhận thức CSS, "Jagged Frontier" của UI, và Lỗi Câm (Silent Errors) trên trình duyệt.
-  Triggers: cognitive debt, systems thinking, lỗi câm css, silent error, lạm dụng important.
 
 ## CSS Modules (Phase 1)
 

@@ -24,7 +24,6 @@ agent-os-css/
 │
 ├── skills/                       ← 📚 [MỚI] Giàn giáo Kỹ năng (Agent Modular Skills)
 │   ├── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
-│   ├── architecture/             ← Cỗ Máy Cay, Nợ Nhận thức CSS
 │   ├── css-architecture/         ← Cấu trúc & phân loại chi tiết (FLOCSS layers)
 │   ├── design-tokens/            ← Hệ thống token (oklch, clamp)
 │   ├── naming-conventions/       ← Cách đặt tên, 3 tầng biến, pattern
@@ -76,5 +75,3 @@ Hệ thống sử dụng các Lệnh vĩ mô để tải động Kỹ năng CSS 
 - [Pattern Guide](skills/pattern-guide/SKILL.md) — Component vars, data-animate, @layer, color-mix
 - [Architecture](skills/css-architecture/SKILL.md) — FLOCSS layers, chuẩn quốc tế vs phong cách riêng
 - [Token Guide](skills/design-tokens/SKILL.md) — Token system, oklch, clamp()
-- [Systems Thinking](skills/architecture/systems-thinking.md) — Tránh Nợ nhận thức CSS
-- [Cay State-Machine](skills/architecture/cay-state-machine.md) — Cỗ máy điều phối Tác tử CSS

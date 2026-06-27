@@ -47,9 +47,7 @@ Chi tiết tham chiếu → `skills/`
 | Kỹ năng | Nội dung |
 |---|---|
 | `skills/reverse-interrogation/SKILL.md` | Lệnh `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn UI/UX và Design System. |
-| `skills/architecture/systems-thinking.md` | Tránh Nợ nhận thức CSS, "Jagged Frontier" của UI, và Lỗi Câm (Silent Errors). |
-| `skills/architecture/cay-state-machine.md` | State-Machine 5 Tác nhân (Cay System), Bằng chứng thị giác (Visual Proof). |
-| `skills/architecture/context-engineering.md` | Giới hạn bộ nhớ CSS (Dumbzone), tránh đứt gãy Cascade khi AI quá tải. |
+
 ### Phase 1 — Kỹ năng CSS (CSS Modules)
 
 | Kỹ năng | Nội dung |
@@ -153,6 +151,5 @@ agent-os-css/
     ├── design-tokens/            ← Hệ thống token (SKILL.md)
     ├── naming-conventions/       ← Naming conventions + variable guide (SKILL.md)
     ├── pattern-guide/            ← CSS patterns hay (SKILL.md)
-    ├── architecture/             ← Cỗ Máy Cay, Nợ nhận thức CSS
     └── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
 ```

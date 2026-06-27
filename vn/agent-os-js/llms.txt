@@ -10,17 +10,9 @@ reverse-interrogation
   Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách ngữ cảnh trước khi code.
   Triggers: /crey, /grillmey, interview me, phỏng vấn, hỏi tôi, bắt đầu dự án mới.
 
-cay-state-machine
-  Skill: State-Machine 5 Tác nhân (Cay System), Proof over Trust (Video Playwright bắt buộc).
-  Triggers: agent architecture, proof over trust, verify, test agent, cỗ máy cay.
-
-context-engineering
-  Skill: Khung R-P-I, giới hạn bộ nhớ (Dumbzone), Context Forking, Sub-agents.
-  Triggers: context bloat, dumbzone, tràn bộ nhớ, reset context, sub-agent.
-
-systems-thinking
-  Skill: Nợ nhận thức, Thuyết Ẩn dụ Usain Bolt, Khung 3 trụ cột (State, Feedback, Blast Radius).
-  Triggers: cognitive debt, usain bolt, systems thinking, blast radius, nợ kỹ thuật.
+ai-security
+  Skill: Bảo vệ ứng dụng Front-End khỏi Prompt Injection và DOM XSS. Kỹ thuật Sandbox.
+  Triggers: security, bảo mật, prompt injection, xss, đánh cắp token, iframe sandbox.
 
 ## Vanilla JS Skills (Phase 1)
 

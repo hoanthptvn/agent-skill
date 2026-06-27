@@ -74,9 +74,7 @@ Bộ quy tắc tối ưu JavaScript cho frontend production. Trong kỷ nguyên 
 | Kỹ năng | Nội dung |
 |---|---|
 | `skills/reverse-interrogation/SKILL.md` | Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách ngữ cảnh. |
-| `skills/architecture/systems-thinking.md` | Nợ nhận thức, Thuyết Ẩn dụ Usain Bolt, Khung 3 trụ cột (State, Feedback, Blast Radius). Phân công LĐ. |
-| `skills/architecture/cay-state-machine.md` | State-Machine 5 Tác nhân (Cay System), Proof over Trust, Proactive Routines |
-| `skills/architecture/context-engineering.md` | Giới hạn bộ nhớ (Dumbzone), Context Forking, Sub-agents. |
+| `skills/architecture/ai-security.md` | Bảo vệ AI Front-End khỏi Prompt Injection, DOM XSS, Zero Trust, Iframe Sandbox. |
 | `skills/dom-testing/SKILL.md` | Hợp đồng DOM với `data-*`, Self-healing qua Playwright, Chống ngụy biện Test. |
 
 ### Phase 1 — Cấu trúc dữ liệu Vanilla JS (`skills/data-structures/`)
