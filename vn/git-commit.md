@@ -1,42 +1,49 @@
 ---
 name: git-commit
-description: Kỹ năng tạo commit message tự động bằng cách phân tích git diff đã staged.
+description: Kỹ năng tạo commit message tự động bằng cách phân tích git diff đã staged, tuân thủ chuẩn Conventional Commits và 7 nguyên tắc của Tim Pope.
 ---
 
-# Kỹ năng: Tự động Tạo Commit Message
+# Kỹ năng: Tự động Tạo Commit Message (Pro Standard)
 
-Khi người dùng yêu cầu tạo commit message (VD: `/commit`, "tạo commit cho tôi"), Tác tử AI phải tuân thủ nghiêm ngặt quy trình 6 bước sau:
+Khi người dùng yêu cầu tạo commit message (VD: `/commit`), Tác tử AI phải tuân thủ nghiêm ngặt chuẩn mực của các kỹ sư hàng đầu (dựa trên **Conventional Commits** và **7 nguyên tắc của Chris Beams/Tim Pope**).
 
 ## 1. Tự động thu thập ngữ cảnh:
 - Chạy `git status` — xem trạng thái repository để biết file nào đã staged.
 - Chạy `git diff --staged` — xem toàn bộ chi tiết mã nguồn đã thay đổi.
 
-## 2. Phân tích & Suy luận:
-Phân tích các thay đổi và tạo commit message. 
-**BẮT BUỘC:** Dùng thì hiện tại và giải thích rõ **"TẠI SAO"** (Why) có thay đổi này, không chỉ mô tả bề mặt **"CÁI GÌ"** (What) đã thay đổi.
+## 2. Tiêu chuẩn 7 Quy tắc vàng (The 7 Rules of a Great Commit):
+1. Tách biệt Tiêu đề (Subject) và Thân bài (Body) bằng **một dòng trắng**.
+2. Giới hạn Tiêu đề dưới **50 ký tự** (giúp hiển thị tốt trên GitHub/GitLab).
+3. Viết hoa chữ cái đầu tiên của Tiêu đề (sau phần prefix).
+4. **Không** dùng dấu chấm (`.`) ở cuối Tiêu đề.
+5. **Bắt buộc dùng Thể mệnh lệnh (Imperative mood)** cho Tiêu đề (VD: `Add feature` thay vì `Added feature` hay `Adds feature`. Tiếng Việt: `Thêm...` thay vì `Đã thêm...`).
+6. Cắt dòng ở Thân bài tại cột thứ **72** (Wrap body at 72 characters).
+7. Trong Thân bài, giải thích **TẠI SAO (Why)** và **CÁI GÌ (What)**, tuyệt đối không diễn giải LÀM THẾ NÀO (How - vì code đã tự nói lên điều đó).
 
-## 3. Quy chuẩn Emoji & Tiền tố:
-Dùng một trong các loại commit với emoji chuẩn sau đây:
-- ✨ `feat:` — Tính năng mới
-- 🐛 `fix:` — Sửa lỗi
-- 🔨 `refactor:` — Tái cấu trúc code
-- 📝 `docs:` — Tài liệu
-- 🎨 `style:` — Giao diện/định dạng
-- ✅ `test:` — Kiểm thử
-- ⚡ `perf:` — Hiệu suất
+## 3. Quy chuẩn Tiền tố & Emoji (Conventional Commits + Gitmoji):
+Sử dụng cấu trúc: `<emoji> <type>[(optional scope)]: <Subject>`
+
+- ✨ `feat:` — Tính năng mới (Mới hoàn toàn)
+- 🐛 `fix:` — Sửa lỗi (Fix bug)
+- ♻️ `refactor:` — Tái cấu trúc (Không đổi logic, không thêm tính năng)
+- 📝 `docs:` — Cập nhật tài liệu (README, comments)
+- 🎨 `style:` — Định dạng code (Khoảng trắng, missing semi-colons, ko đổi logic)
+- ✅ `test:` — Thêm hoặc sửa test cases
+- ⚡ `perf:` — Tối ưu hiệu năng (Performance)
+- 🏗️ `chore:` — Cập nhật build tasks, cấu hình (package.json, v.v.)
 
 ## 4. Định dạng Commit Message:
 ```text
-<emoji> <loại>: <mô_tả_ngắn_gọn_bằng_chữ_thường>
-
-<nội_dung_giải_thích_tại_sao_(tùy_chọn_nhưng_rất_khuyến_khích)>
+<emoji> <type>(<scope_tùy_chọn>): <Tiêu đề sử dụng thể mệnh lệnh, dưới 50 ký tự>
+<DÒNG TRẮNG BẮT BUỘC>
+<Thân bài giải thích chi tiết TẠI SAO lại có thay đổi này.
+Dòng này tự động ngắt xuống dòng nếu vượt quá 72 ký tự.>
 ```
 
-## 5. Trình bày Kết quả:
-- Hiện tóm tắt ngắn gọn các thay đổi đã staged.
-- Trình bày đề xuất commit message trong một khối mã (code block).
-- **Hỏi xác nhận từ người dùng** trước khi thực sự commit.
+## 5. Trình bày Kết quả & Hard Exit:
+- Tóm tắt phân tích bằng gạch đầu dòng (Bullets).
+- Cung cấp đề xuất commit message trong một khối mã (code block).
+- Cung cấp lệnh git copy nhanh: `git commit -m "..." -m "..."`
 
-## 6. Tiêu chí Thoát (Hard Exit):
 > [!CAUTION]
-> **KHÔNG tự động chạy lệnh commit** khi chưa có sự đồng ý rõ ràng (VD: "ok", "commit đi"). Chỉ gọi lệnh `git commit` sau khi người dùng đã phê duyệt đề xuất.
+> **TIÊU CHÍ THOÁT:** Không tự động chạy lệnh commit khi chưa có sự đồng ý rõ ràng. Chỉ chạy `git commit` khi người dùng nói "ok" hoặc "commit đi".
