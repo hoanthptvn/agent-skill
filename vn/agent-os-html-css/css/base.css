@@ -4,11 +4,11 @@
 [START TABLE OF CONTENT]
 
 1. FOUNDATION.
-   1.1. SETUP.
+   1.1. FOUNDATION.
 2. LAYOUT.
-   2.1. BREADCRUMB.
+   2.1. LAYOUT.
 3. COMPONENT.
-   3.1. TEXT.
+   3.1. COMPONENT.
 4. PROJECT.
 ====================================================================================*/
 
@@ -24,8 +24,7 @@
 
 @layer base {
   /* ==========================================================================
-   RESET — FLOCSS Foundation Layer
-   Browser default reset — áp dụng trước mọi style khác
+   RESET - Áp dụng trước mọi style khác
    ========================================================================== */
 
   /* ==========================================================================
@@ -36,8 +35,8 @@
   *::before,
   *::after {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    margin: 0;
   }
 
   /* ==========================================================================
@@ -58,10 +57,10 @@
     *,
     *::before,
     *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
     }
   }
 
@@ -70,16 +69,16 @@
    ========================================================================== */
 
   body {
+    min-height: 100dvh;
     font-family: var(--font-body, system-ui, sans-serif);
     font-size: var(--text-base, 1rem);
     line-height: var(--leading-normal, 1.5);
     color: var(--clr-text, #111);
-    background-color: var(--clr-bg, #fff);
+    overflow-wrap: break-word;
     color-scheme: light;
+    background-color: var(--clr-bg, #fff);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100dvh;
-    overflow-wrap: break-word;
   }
 
   .dark body,
@@ -150,8 +149,8 @@
   }
 
   svg {
-    fill: currentColor;
     flex-shrink: 0;
+    fill: currentColor;
   }
 
   /* ==========================================================================
@@ -164,18 +163,18 @@
   select {
     font: inherit;
     color: inherit;
+    outline: none;
     background: none;
     border: none;
-    outline: none;
   }
 
   button {
-    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     -webkit-appearance: none;
     appearance: none;
+    cursor: pointer;
   }
 
   input[type="number"]::-webkit-outer-spin-button,
@@ -218,8 +217,8 @@
   }
 
   table {
-    border-collapse: collapse;
     border-spacing: 0;
+    border-collapse: collapse;
   }
 
   /* ==========================================================================
@@ -227,9 +226,9 @@
    ========================================================================== */
 
   hr {
+    height: 0;
     border: none;
     border-top: 1px solid var(--clr-border, currentColor);
-    height: 0;
   }
 
   b,
@@ -275,9 +274,9 @@
 
   sub,
   sup {
+    position: relative;
     font-size: 75%;
     line-height: 0;
-    position: relative;
     vertical-align: baseline;
   }
 
@@ -290,8 +289,8 @@
   }
 
   ::selection {
-    background: oklch(var(--_accent-l, 65%) var(--_accent-c, 0.26) var(--_accent-h, 280) / 0.25);
     color: var(--clr-text);
+    background: oklch(var(--_accent-l, 65%) var(--_accent-c, 0.26) var(--_accent-h, 280) / 0.25);
   }
 }
 
@@ -1528,9 +1527,9 @@
   .label {
     font-size: var(--text-xs);
     font-weight: var(--weight-medium);
-    letter-spacing: var(--tracking-caps);
-    text-transform: uppercase;
     color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
   }
 }
 
@@ -1547,36 +1546,36 @@
   .l-container {
     width: 100%;
     max-width: var(--container);
-    margin-inline: auto;
     padding-inline: var(--gutter);
+    margin-inline: auto;
   }
 
   .l-container--sm {
     width: 100%;
     max-width: var(--container-sm);
-    margin-inline: auto;
     padding-inline: var(--gutter);
+    margin-inline: auto;
   }
 
   .l-container--md {
     width: 100%;
     max-width: var(--container-md);
-    margin-inline: auto;
     padding-inline: var(--gutter);
+    margin-inline: auto;
   }
 
   .l-container--wide {
     width: 100%;
     max-width: var(--container-wide);
-    margin-inline: auto;
     padding-inline: var(--gutter);
+    margin-inline: auto;
   }
 
   .l-container--full {
     width: 100%;
     max-width: var(--container-full);
-    margin-inline: auto;
     padding-inline: var(--gutter);
+    margin-inline: auto;
   }
 
   /* --- Section spacing --- */
@@ -1666,20 +1665,20 @@
 
     /* Styles đọc từ local vars */
     display: inline-flex;
+    gap: var(--space-1);
     align-items: center;
     justify-content: center;
-    gap: var(--space-1);
     padding: var(--btn-py) var(--btn-px);
     font-size: var(--btn-size);
     font-weight: var(--weight-medium);
-    letter-spacing: var(--tracking-wide);
     color: var(--btn-color);
+    letter-spacing: var(--tracking-wide);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
     background: var(--btn-bg);
     border: 1px solid var(--btn-border);
     border-radius: var(--btn-radius);
-    cursor: pointer;
-    white-space: nowrap;
-    user-select: none;
     transition:
       transform var(--transition-fast),
       background var(--transition-fast),
@@ -1687,13 +1686,13 @@
   }
 
   .c-btn:hover {
-    transform: translateY(-1px);
     box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
   }
 
   .c-btn:active {
-    transform: translateY(0);
     box-shadow: none;
+    transform: translateY(0);
   }
 
   /* Variants (BEM Modifier) — chỉ đổi local vars */
@@ -1748,11 +1747,11 @@
     --card-radius: var(--radius-xl);
     --card-padding: var(--space-5);
     --card-shadow: var(--shadow-md);
+    padding: var(--card-padding);
 
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: var(--card-radius);
-    padding: var(--card-padding);
     box-shadow: var(--card-shadow);
     transition:
       transform var(--transition-base),
@@ -1760,16 +1759,16 @@
   }
 
   .c-card:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
   }
 
   /* Glassmorphism variant */
   .c-card--glass {
     --card-bg: var(--glass-bg);
     --card-border: var(--glass-border);
-    backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
   }
 
   /* Flat variant — không có shadow hover */
@@ -1779,8 +1778,8 @@
   }
 
   .c-card--flat:hover {
-    transform: none;
     box-shadow: none;
+    transform: none;
   }
 
   /* Tight padding */
@@ -1802,8 +1801,8 @@
     --tag-radius: var(--radius-full);
 
     display: inline-flex;
-    align-items: center;
     gap: var(--space-1);
+    align-items: center;
     padding: calc(var(--space-1) * 0.5) var(--space-2);
     font-size: var(--text-xs);
     font-weight: var(--weight-medium);
@@ -1843,10 +1842,10 @@
   .c-divider {
     --divider-color: var(--clr-border);
     --divider-gap: var(--space-4);
+    margin-block: var(--divider-gap);
 
     border: none;
     border-top: 1px solid var(--divider-color);
-    margin-block: var(--divider-gap);
   }
 }
 
@@ -1938,8 +1937,8 @@
 
     75%,
     100% {
-      transform: scale(2);
       opacity: 0;
+      transform: scale(2);
     }
   }
 
@@ -2019,8 +2018,8 @@
   /* Clip-path reveal (text reveal, image wipe) */
   [data-animate="clip"] {
     opacity: 1;
-    transform: none;
     clip-path: inset(0 100% 0 0);
+    transform: none;
     transition: clip-path var(--dur-slower) var(--ease-out-expo);
     transition-delay: var(--delay, 0ms);
   }

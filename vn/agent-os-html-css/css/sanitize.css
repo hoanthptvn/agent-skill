@@ -26,9 +26,9 @@
 
 ::before,
 ::after {
-  text-decoration: inherit;
   /* 1 */
   vertical-align: inherit;
+  text-decoration: inherit;
   /* 2 */
 }
 
@@ -75,8 +75,8 @@
  */
 
 :where(h1) {
-  font-size: 2em;
   margin: 0.67em 0;
+  font-size: 2em;
 }
 
 /* Grouping content
@@ -96,9 +96,9 @@
  */
 
 :where(hr) {
-  color: inherit;
   /* 1 */
   height: 0;
+  color: inherit;
   /* 2 */
 }
 
@@ -107,8 +107,8 @@
  */
 
 :where(nav) :where(ol, ul) {
-  list-style-type: none;
   padding: 0;
+  list-style-type: none;
 }
 
 /**
@@ -116,8 +116,8 @@
  */
 
 :where(nav li)::before {
-  content: "\200B";
   float: left;
+  content: "\200B";
 }
 
 /**
@@ -127,11 +127,11 @@
  */
 
 :where(pre) {
+  /* 2 */
+  overflow: auto;
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
-  /* 2 */
-  overflow: auto;
   /* 3 */
 }
 
@@ -212,11 +212,11 @@
  */
 
 :where(table) {
-  border-collapse: collapse;
   /* 1 */
   /* border-color: inherit; */
   /* 2 */
   text-indent: 0;
+  border-collapse: collapse;
   /* 3 */
 }
 
@@ -311,9 +311,9 @@
  */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
   /* 1 */
   font: inherit;
+  -webkit-appearance: button;
   /* 2 */
 }
 
@@ -325,18 +325,18 @@
  */
 
 :where(dialog) {
-  background-color: white;
-  border: solid;
-  color: black;
-  height: -moz-fit-content;
-  height: fit-content;
-  left: 0;
-  margin: auto;
-  padding: 1em;
   position: absolute;
   right: 0;
+  left: 0;
   width: -moz-fit-content;
   width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1em;
+  margin: auto;
+  color: black;
+  background-color: white;
+  border: solid;
 }
 
 :where(dialog:not([open])) {
@@ -389,8 +389,8 @@
 }
 
 :where([aria-hidden="false" i][hidden]:not(:focus)) {
-  clip: rect(0, 0, 0, 0);
   position: absolute;
+  clip: rect(0, 0, 0, 0);
 }
 
 /* https://unpkg.com/sanitize.css@13.0.0/forms.css
@@ -401,17 +401,17 @@
  */
 
 :where(button, input, select, textarea) {
+  /* 2 */
+  padding: 0.25em 0.375em;
+  /* 1 */
+  font: inherit;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  letter-spacing: inherit;
   background-color: transparent;
   /* 1 */
   border: 1px solid WindowFrame;
-  /* 1 */
-  color: inherit;
-  /* 1 */
-  font: inherit;
-  /* 2 */
-  letter-spacing: inherit;
-  /* 2 */
-  padding: 0.25em 0.375em;
   /* 1 */
 }
 
@@ -420,11 +420,11 @@
  */
 
 :where(select) {
+  padding-right: 1em;
   appearance: none;
   background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='4'%3E%3Cpath d='M4 0h6L7 4'/%3E%3C/svg%3E")
     no-repeat right center / 1em;
   border-radius: 0;
-  padding-right: 1em;
 }
 
 /**
@@ -440,8 +440,8 @@
  */
 
 :where([type="color" i], [type="range" i]) {
-  border-width: 0;
   padding: 0;
+  border-width: 0;
 }
 
 /* https://unpkg.com/sanitize.css@13.0.0/assets.css
@@ -451,8 +451,8 @@
  */
 
 :where(img, input, video, select, textarea) {
-  height: auto;
   max-width: 100%;
+  height: auto;
 }
 
 :where(iframe) {
@@ -615,8 +615,8 @@ pre {
   th:not(.sg-cms *),
   td:not(.sg-cms *)
 ) {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 :where(ul:not(.sg-cms *), ol:not(.sg-cms *), li:not(.sg-cms *)) {

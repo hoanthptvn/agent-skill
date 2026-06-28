@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    UTILITIES — FLOCSS Object/Utility Layer
    Prefix: u-*  |  Single-purpose helpers  |  Layer với ưu tiên cao nhất
    ========================================================================== */
@@ -584,8 +584,8 @@
    ========================================================================== */
 
 .u-outline-none { --ui-outline-style: none; outline-style: none; }
-.u-outline      { outline-style: var(--ui-outline-style, solid); outline-width: 1px; }
-.u-outline-2    { outline-style: var(--ui-outline-style, solid); outline-width: 2px; }
+.u-outline      { outline-width: 1px; outline-style: var(--ui-outline-style, solid); }
+.u-outline-2    { outline-width: 2px; outline-style: var(--ui-outline-style, solid); }
 
 
 /* ==========================================================================
@@ -659,9 +659,9 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+  clip: rect(0, 0, 0, 0);
 }
 
 
@@ -735,31 +735,31 @@
 
 /* Tất cả properties phổ biến */
 .u-transition {
-  transition-property: color, background-color, border-color, opacity, box-shadow,
-                       transform, translate, scale, rotate, filter, backdrop-filter;
   transition-timing-function: var(--ui-ease, var(--default-transition-timing-function));
   transition-duration: var(--ui-duration, var(--default-transition-duration));
+  transition-property: color, background-color, border-color, opacity, box-shadow,
+                       transform, translate, scale, rotate, filter, backdrop-filter;
 }
 
 /* Chỉ màu sắc */
 .u-transition-colors {
-  transition-property: color, background-color, border-color, outline-color, fill, stroke;
   transition-timing-function: var(--ui-ease, var(--default-transition-timing-function));
   transition-duration: var(--ui-duration, var(--default-transition-duration));
+  transition-property: color, background-color, border-color, outline-color, fill, stroke;
 }
 
 /* Chỉ opacity */
 .u-transition-opacity {
-  transition-property: opacity;
   transition-timing-function: var(--ui-ease, var(--default-transition-timing-function));
   transition-duration: var(--ui-duration, var(--default-transition-duration));
+  transition-property: opacity;
 }
 
 /* Chỉ transform */
 .u-transition-transform {
-  transition-property: transform, translate, scale, rotate;
   transition-timing-function: var(--ui-ease, var(--default-transition-timing-function));
   transition-duration: var(--ui-duration, var(--default-transition-duration));
+  transition-property: transform, translate, scale, rotate;
 }
 
 /* Tắt transition (dùng sau khi init) */
@@ -1021,11 +1021,11 @@
 .u-rounded-t-2xl { border-top-left-radius: var(--radius-2xl); border-top-right-radius: var(--radius-2xl); }
 .u-rounded-t-none { border-top-left-radius: 0; border-top-right-radius: 0; }
 
-.u-rounded-b-lg  { border-bottom-left-radius: var(--radius); border-bottom-right-radius: var(--radius); }
-.u-rounded-b-md  { border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); }
-.u-rounded-b-xl  { border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl); }
-.u-rounded-b-2xl { border-bottom-left-radius: var(--radius-2xl); border-bottom-right-radius: var(--radius-2xl); }
-.u-rounded-b-none { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.u-rounded-b-lg  { border-bottom-right-radius: var(--radius); border-bottom-left-radius: var(--radius); }
+.u-rounded-b-md  { border-bottom-right-radius: var(--radius-md); border-bottom-left-radius: var(--radius-md); }
+.u-rounded-b-xl  { border-bottom-right-radius: var(--radius-xl); border-bottom-left-radius: var(--radius-xl); }
+.u-rounded-b-2xl { border-bottom-right-radius: var(--radius-2xl); border-bottom-left-radius: var(--radius-2xl); }
+.u-rounded-b-none { border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 
 .u-rounded-l-lg  { border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
 .u-rounded-l-md  { border-top-left-radius: var(--radius-md); border-bottom-left-radius: var(--radius-md); }
@@ -1056,21 +1056,21 @@
 
 .u-line-clamp-1 {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .u-line-clamp-2 {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
   overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .u-line-clamp-3 {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
   overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 
@@ -1210,9 +1210,9 @@
 
 :where(.u-divide-y > :not(:last-child)) {
   --ui-divide-y-reverse: 0;
-  border-bottom-style: var(--ui-border-style);
   border-top-style: var(--ui-border-style);
   border-top-width: calc(1px * var(--ui-divide-y-reverse));
+  border-bottom-style: var(--ui-border-style);
   border-bottom-width: calc(1px * (1 - var(--ui-divide-y-reverse)));
 }
 
