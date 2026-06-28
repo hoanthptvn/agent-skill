@@ -136,12 +136,9 @@ Dùng cho các thành phần con bên trong Level 1 (ví dụ `1.1. SETUP`, `3.1
 ```
 
 ### Cấp 3 (Level 3) - Khối chi tiết (Detail blocks)
-Dùng cho các nhóm nhỏ bên trong một component. Khung viền sử dụng định dạng **DocBlock (JSDoc)** chuẩn thế giới. Đây là định dạng được mọi IDE (VSCode) và các công cụ document tự động nhận diện và gập (fold) code cực kỳ thông minh.
+Dùng cho các nhóm nhỏ bên trong một component. Khung viền tối giản hóa thành comment 1 dòng tiêu chuẩn để tránh nhiễu loạn thị giác, sử dụng 10 dấu bằng `=` ở mỗi bên để tạo sự đậm nét và nhấn mạnh.
 ```css
-/**
- * 1.1.1 NAME
- * Description goes here (if any)
- */
+  /* ========== 1.1.1 NAME ========== */
 ```
 
 ### Cấp 4 (Level 4) - Khối con siêu nhỏ (Sub-detail blocks)

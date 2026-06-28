@@ -23,10 +23,7 @@
 ------------------------------------------------------------------------------------*/
 
 @layer base {
-  /**
-   * 1.1.1 RESET
-   * Áp dụng trước mọi style khác
-   */
+  /* ========== 1.1.1 RESET - Áp dụng trước mọi style khác ========== */
 
   /* ---------- 1.1.1.1. BOX MODEL ---------- */
 
@@ -278,9 +275,7 @@
 }
 
 @layer tokens {
-  /**
-   * 1.1.2 DESIGN TOKENS — FLOCSS Foundation Layer
-   */
+  /* ========== 1.1.2 DESIGN TOKENS — FLOCSS Foundation Layer ========== */
   /*
    CSS Custom Properties — mọi dự án đều cần
 */
@@ -513,9 +508,7 @@
     --grid-cols: 12;
     --col-gap: var(--gutter);
 
-    /**
-     * 1.1.3 Radius Scale
-     */
+    /* ========== 1.1.3 Radius Scale ========== */
     /*
    Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
    User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
@@ -696,9 +689,7 @@
     --selection-foreground: var(--clr-neutral-900);
   }
 
-  /**
-   * 1.1.4 DARK MODE
-   */
+  /* ========== 1.1.4 DARK MODE ========== */
   @media (prefers-color-scheme: dark) {
     :root {
       /* agent-os-css native */
@@ -770,9 +761,7 @@
     --chart-5: oklch(70% 0.2 300);
   }
 
-  /**
-   * 1.1.5 PROPERTIES — FLOCSS Foundation Layer
-   */
+  /* ========== 1.1.5 PROPERTIES — FLOCSS Foundation Layer ========== */
   /*
    Safe defaults cho composite CSS variables (--ui-*)
    */
@@ -822,9 +811,7 @@
       --ui-skew-x: initial;
       --ui-skew-y: initial;
 
-      /**
-       * 1.1.6 SHADOW COMPOSITE
-       */
+      /* ========== 1.1.6 SHADOW COMPOSITE ========== */
       /*
    Composite pattern:
    box-shadow: var(--ui-inset-shadow),
@@ -862,9 +849,7 @@
       --ui-inset-ring-color: initial;
       --ui-inset-ring-shadow: 0 0 #0000;
 
-      /**
-       * 1.1.7 BORDER
-       */
+      /* ========== 1.1.7 BORDER ========== */
       /*
    */
       --ui-border-style: solid;
@@ -873,9 +858,7 @@
 */
       --ui-outline-style: solid;
 
-      /**
-       * 1.1.8 FILTER COMPOSITE
-       */
+      /* ========== 1.1.8 FILTER COMPOSITE ========== */
       /*
    Composite pattern:
    filter: var(--ui-blur, ) var(--ui-brightness, )
@@ -904,9 +887,7 @@
       --ui-drop-shadow-alpha: 100%;
       --ui-drop-shadow-size: initial;
 
-      /**
-       * 1.1.9 BACKDROP FILTER COMPOSITE
-       */
+      /* ========== 1.1.9 BACKDROP FILTER COMPOSITE ========== */
       /*
    Tương tự filter, nhưng dùng cho backdrop-filter:
    backdrop-filter: var(--ui-backdrop-blur, )
@@ -922,9 +903,7 @@
       --ui-backdrop-saturate: initial;
       --ui-backdrop-sepia: initial;
 
-      /**
-       * 1.1.10 TYPOGRAPHY OVERRIDE
-       */
+      /* ========== 1.1.10 TYPOGRAPHY OVERRIDE ========== */
       /*
    Cho phép override per-element:
    style="--ui-font-weight: 700"
@@ -934,9 +913,7 @@
       --ui-leading: initial;
       --ui-content: "";
 
-      /**
-       * 1.1.11 TRANSITION OVERRIDE
-       */
+      /* ========== 1.1.11 TRANSITION OVERRIDE ========== */
       /*
    Override transition per-element:
    <button style="--ui-duration: .3s; --ui-ease: ease-in">
@@ -947,9 +924,7 @@
       --ui-duration: initial;
       --ui-ease: initial;
 
-      /**
-       * 1.1.12 LAYOUT INTERNAL
-       */
+      /* ========== 1.1.12 LAYOUT INTERNAL ========== */
       /*
    Dùng cho border-spacing: var(--ui-border-spacing-x) ...
 */
@@ -958,9 +933,7 @@
     }
   }
 
-  /**
-   * 1.1.13 COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults
-   */
+  /* ========== 1.1.13 COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults ========== */
 
   /*
    PATTERN 1: Composite Box-Shadow
@@ -1006,9 +979,7 @@
      ← Set cả internal var lẫn property để pseudo-element kế thừa
 */
 
-  /**
-   * 1.1.14 @property DECLARATIONS — Modern browser native registration
-   */
+  /* ========== 1.1.14 @property DECLARATIONS — Modern browser native registration ========== */
   /*
    TẠI SAO CẦN:
    ─────────────
@@ -1408,9 +1379,7 @@
 }
 
 @layer components {
-  /**
-   * 1.1.15 TYPOGRAPHY — FLOCSS Foundation Layer
-   */
+  /* ========== 1.1.15 TYPOGRAPHY — FLOCSS Foundation Layer ========== */
   /*
    Class hệ thống cho heading, body text, label (không prefix — Foundation)
 */
@@ -1485,9 +1454,7 @@
 2. LAYOUT.
 ====================================================================================*/
 @layer layout {
-  /**
-   * 2.1.1 LAYOUT — FLOCSS Layout Layer
-   */
+  /* ========== 2.1.1 LAYOUT — FLOCSS Layout Layer ========== */
   /*
    Prefix: l-*  |  BEM: l-block--modifier
 */
@@ -1590,16 +1557,12 @@
 3. COMPONENT.
 ====================================================================================*/
 @layer components {
-  /**
-   * 3.1.1 COMPONENTS — FLOCSS Object/Component Layer
-   */
+  /* ========== 3.1.1 COMPONENTS — FLOCSS Object/Component Layer ========== */
   /*
    Prefix: c-*  |  BEM: c-block__element--modifier  |  local CSS vars per component
 */
 
-  /**
-   * 3.1.2 c-btn — Button
-   */
+  /* ========== 3.1.2 c-btn — Button ========== */
   /*
    Local vars: --btn-bg  --btn-color  --btn-border  --btn-radius
    --btn-px  --btn-py     --btn-size
@@ -1689,9 +1652,7 @@
    Hoặc đổi brand action color toàn cục:
    :root { --ui-primary: var(--clr-blue-600); } */
 
-  /**
-   * 3.1.3 c-card — Card
-   */
+  /* ========== 3.1.3 c-card — Card ========== */
   /*
    Local vars: --card-bg  --card-border  --card-radius
    --card-padding  --card-shadow
@@ -1744,9 +1705,7 @@
     --card-radius: var(--radius-lg);
   }
 
-  /**
-   * 3.1.4 c-tag — Tag / Badge
-   */
+  /* ========== 3.1.4 c-tag — Tag / Badge ========== */
   /*
    Local vars: --tag-bg  --tag-color  --tag-border  --tag-radius
 */
@@ -1792,9 +1751,7 @@
     }
   }
 
-  /**
-   * 3.1.5 c-divider — Horizontal Rule
-   */
+  /* ========== 3.1.5 c-divider — Horizontal Rule ========== */
   /*
    Local vars: --divider-color  --divider-gap
 */
@@ -1810,16 +1767,12 @@
 }
 
 @layer animations {
-  /**
-   * 3.1.6 ANIMATIONS — FLOCSS Foundation Layer
-   */
+  /* ========== 3.1.6 ANIMATIONS — FLOCSS Foundation Layer ========== */
   /*
    @keyframes + data-animate scroll pattern
 */
 
-  /**
-   * 3.1.7 KEYFRAMES
-   */
+  /* ========== 3.1.7 KEYFRAMES ========== */
 
   @keyframes fade-in {
     from {
@@ -1918,9 +1871,7 @@
     }
   }
 
-  /**
-   * 3.1.8 DATA-ANIMATE PATTERN
-   */
+  /* ========== 3.1.8 DATA-ANIMATE PATTERN ========== */
   /*
    Cách dùng trong HTML:
    <h1 data-animate="fade-up" style="--delay: 0ms">Headline</h1>
@@ -1989,9 +1940,7 @@
     clip-path: inset(0 0% 0 0);
   }
 
-  /**
-   * 3.1.9 UTILITY ANIMATION CLASSES
-   */
+  /* ========== 3.1.9 UTILITY ANIMATION CLASSES ========== */
 
   /* Loading spinner */
   .animate-spin {
