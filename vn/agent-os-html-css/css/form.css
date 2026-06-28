@@ -7,9 +7,9 @@
 ------------------------------------------------------------------------------------*/
 
 /* ========== 5.1.1 FORM.CSS — Page Specific ========== */
-/*
-   Component dùng riêng cho form liên hệ, đăng ký
-*/
+/**
+ * Component dùng riêng cho form liên hệ, đăng ký
+ */
 
 @layer page {
   /* .p-contact { ... } */
