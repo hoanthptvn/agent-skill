@@ -115,6 +115,40 @@ Trong môi trường dev (như `main.css`), có thể import tất cả:
 
 ---
 
+## Hệ thống Comment CSS (CSS Comment Hierarchy)
+
+Để duy trì sự đồng nhất và dễ dàng tracking file outline, toàn bộ các file CSS phải tuân thủ nghiêm ngặt 3 cấp độ (Level) comment sau đây:
+
+### Cấp 1 (Level 1) - Phân vùng lớn (Major Sections)
+Dùng cho các nhóm cực lớn như `FOUNDATION`, `LAYOUT`, `COMPONENT`. Khung viền sử dụng dấu bằng `=`.
+```css
+/*====================================================================================
+1. NAME.
+====================================================================================*/
+```
+
+### Cấp 2 (Level 2) - Phân vùng con (Sub-sections)
+Dùng cho các thành phần con bên trong Level 1 (ví dụ `1.1. SETUP`, `3.1. TEXT`). Khung viền sử dụng dấu gạch ngang `-`.
+```css
+/*------------------------------------------------------------------------------------
+1.1. NAME.
+------------------------------------------------------------------------------------*/
+```
+
+### Cấp 3 (Level 3) - Khối chi tiết (Detail blocks)
+Dùng cho các nhóm nhỏ bên trong một component. Khung viền sử dụng dấu bằng `===` để tạo cảm giác đậm nét (khối cha).
+```css
+/* === 1.1.1 NAME === */
+```
+
+### Cấp 4 (Level 4) - Khối con siêu nhỏ (Sub-detail blocks)
+Dùng cho các phần tử con nằm sâu bên trong Level 3 (ví dụ: các trạng thái của nút, hoặc các mục nhỏ trong reset). Khung viền sử dụng dấu gạch ngang `---` để tạo cảm giác mỏng nhẹ (khối con). Tiền tố đánh số có thêm dấu chấm ở cuối (ví dụ `1.1.1.1.`).
+```css
+  /* --- 1.1.1.1. NAME --- */
+```
+
+---
+
 ## Thiết kế Responsive & Hệ thống Breakpoints
 
 ### Nguyên tắc Mobile-First
