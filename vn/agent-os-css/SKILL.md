@@ -146,10 +146,10 @@ agent-os-css/
 ├── object/
 │   ├── components.css            ← 🟡 c-btn, c-card, c-tag, c-divider
 │   └── utilities.css             ← 🟡 ~614 u-* utility classes
-└── skills/
-    ├── css-architecture/         ← Cấu trúc & phân loại chi tiết (SKILL.md)
-    ├── design-tokens/            ← Hệ thống token (SKILL.md)
-    ├── naming-conventions/       ← Naming conventions + variable guide (SKILL.md)
-    ├── pattern-guide/            ← CSS patterns hay (SKILL.md)
-    └── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
+└── skills/                       ← 📚 Giàn giáo Kỹ năng (Agent Modular Skills)
+    ├── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
+    ├── css-architecture/         ← Cấu trúc & phân loại chi tiết (FLOCSS layers)
+    ├── design-tokens/            ← Hệ thống token (oklch, clamp)
+    ├── naming-conventions/       ← Cách đặt tên, 3 tầng biến, pattern
+    └── pattern-guide/            ← CSS patterns hay (Component vars, data-animate)
 ```

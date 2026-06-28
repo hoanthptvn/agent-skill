@@ -21,7 +21,7 @@
 agent-os-js/
 ├── skills/          ← [MỚI] Giàn giáo Kỹ năng (Modular Skills)
 │   ├── reverse-interrogation/ ← Kỹ năng Crey (Brainstorming)
-│   ├── architecture/        ← Kiến trúc AI, Thuyết Ẩn dụ Usain Bolt
+│   ├── architecture/        ← Code Style, Quy tắc Naming và AI Security
 │   ├── dom-testing/         ← Kỹ năng Agent-Native Verification (DOM Contract)
 │   ├── data-structures/     ← Tối ưu hóa Kiểu dữ liệu JS
 │   ├── performance-loops/   ← Tối ưu hóa Vòng lặp (60fps)
@@ -40,7 +40,7 @@ agent-os-js/
 | `/plan` | Bẻ nhỏ tác vụ thành vi mô |
 | `/build` | Viết code Vanilla JS (Áp dụng TDD) |
 | `/test` | Xác thực Hợp đồng DOM (Sử dụng data-* attributes) |
-| `/review`| Soi lỗi Nợ Nhận thức (Cognitive Debt) |
+| `/review`| Đánh giá Code Style và Tối ưu rác bộ nhớ (Garbage Collection) |
 
 ## Vấn đề nào mở file nào?
 

@@ -42,5 +42,4 @@ Tác vụ Kỹ năng này chỉ được đánh dấu là HOÀN THÀNH khi và c
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 > 1. **Vanilla JS là Tôn giáo:** Cấm ảo giác (hallucinate) ra các khái niệm của React/Vue. Mọi giải pháp kiến trúc phải dựa trên Vanilla JS nguyên bản và DOM API.
-> 2. **Chứng minh thay vì Tin tưởng:** Tránh lạm dụng thư viện bên thứ 3 quá mức. Ưu tiên giải quyết vấn đề bằng công cụ lõi hoặc các công cụ kiểm thử được hệ thống cấu hình sẵn (như Playwright).
-> 3. **Tuân thủ Cỗ Máy Trạng Thái:** Mọi PR (Pull Request) hay mã nguồn sinh ra đều phải tuân theo luồng quy trình nghiêm ngặt. Không lách luật Cỗ Máy Trạng Thái (Cay State-Machine).
+> 2. **Kiểm thử độc lập (DOM Contract):** Tuyệt đối không kiểm tra trạng thái bằng class CSS (`.active`). Bắt buộc dùng `data-*` để các trình duyệt headless hoặc Tác tử khác có thể đọc được trạng thái.

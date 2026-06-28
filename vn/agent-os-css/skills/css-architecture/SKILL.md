@@ -27,10 +27,12 @@ agent-os-css/
 │   ├── animations.css          ← Keyframes, data-animate
 │   └── utilities.css           ← Helper classes, color-mix
 │
-└── references/                 ← 📖 Tài liệu
-    ├── token-guide.md          ← Giải thích hệ thống token
-    ├── pattern-guide.md        ← CSS patterns hay
-    └── architecture.md         ← File này
+└── skills/                       ← 📚 Giàn giáo Kỹ năng (Agent Modular Skills)
+    ├── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
+    ├── css-architecture/         ← Cấu trúc & phân loại chi tiết (FLOCSS layers)
+    ├── design-tokens/            ← Hệ thống token (oklch, clamp)
+    ├── naming-conventions/       ← Cách đặt tên, 3 tầng biến, pattern
+    └── pattern-guide/            ← CSS patterns hay (Component vars, data-animate)
 ```
 
 ---

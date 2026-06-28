@@ -30,9 +30,9 @@ data-structures
 
 ## Algorithms (Phase 2)
 
-gsap-algorithm-guide
-  Skill: Cẩm nang hướng dẫn ánh xạ các bài tập GSAP sang lý thuyết thuật toán. (Chỉ dùng khi làm việc với GSAP).
-  Triggers: gsap algorithms, gsap course.
+algorithms
+  Skill: Kho thuật toán Front-End (Binary Search, BFS/DFS, FLIP, Sliding Window) và cẩm nang ánh xạ GSAP.
+  Triggers: thuật toán, algorithm, binary search, bfs, dfs, flip animation, gsap algorithms, tối ưu hiệu năng.
 
 ## GSAP Skills (Phase 3 - LAZY LOAD)
 
