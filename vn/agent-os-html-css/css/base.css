@@ -9,24 +9,6 @@
    2.1. BREADCRUMB.
 3. COMPONENT.
    3.1. TEXT.
-   3.2. TITLE.
-   3.3. HEADING.
-   3.4. IMAGE.
-   3.5. BUTTON.
-   3.6. BOX.
-   3.7. ITEM.
-   3.8. CARD.
-   3.9. CALLOUT.
-   3.10. MAP.
-   3.11. GALLERY.
-   3.12. TABLE.
-   3.13. POST.
-   3.14. BANNER.
-   3.15. BLOCK.
-   3.16. GROUP.
-   3.17. PANEL.
-   3.18. PAGINATION.
-   3.19. WORDPRESS.
 4. PROJECT.
 ====================================================================================*/
 
@@ -35,14 +17,15 @@
 /*====================================================================================
 1. FOUNDATION.
 ====================================================================================*/
+
 /*------------------------------------------------------------------------------------
 1.1. SETUP.
 ------------------------------------------------------------------------------------*/
+
 @layer base {
   /* ==========================================================================
    RESET — FLOCSS Foundation Layer
    Browser default reset — áp dụng trước mọi style khác
-   @import "foundation/reset.css" layer(reset)
    ========================================================================== */
 
   /* ==========================================================================
@@ -71,6 +54,7 @@
 
   /* Accessibility: tắt animation nếu user yêu cầu */
   @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -198,6 +182,7 @@
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
+
   input[type="number"] {
     -moz-appearance: textfield;
   }
@@ -212,6 +197,7 @@
   }
 
   @media (max-width: 768px) {
+
     input[type="text"],
     input[type="email"],
     input[type="tel"],
@@ -271,6 +257,7 @@
   [hidden] {
     display: none !important;
   }
+
   [disabled],
   [aria-disabled="true"] {
     cursor: not-allowed;
@@ -281,6 +268,7 @@
     cursor: pointer;
     list-style: none;
   }
+
   summary::-webkit-details-marker {
     display: none;
   }
@@ -292,17 +280,17 @@
     position: relative;
     vertical-align: baseline;
   }
+
   sup {
     top: -0.5em;
   }
+
   sub {
     bottom: -0.25em;
   }
 
   ::selection {
-    background: oklch(
-      var(--_accent-l, 65%) var(--_accent-c, 0.26) var(--_accent-h, 280) / 0.25
-    );
+    background: oklch(var(--_accent-l, 65%) var(--_accent-c, 0.26) var(--_accent-h, 280) / 0.25);
     color: var(--clr-text);
   }
 }
@@ -311,7 +299,6 @@
   /* ==========================================================================
    DESIGN TOKENS — FLOCSS Foundation Layer
    CSS Custom Properties — mọi dự án đều cần
-   @import "foundation/tokens.css" layer(tokens)
    ========================================================================== */
 
   :root {
@@ -359,10 +346,14 @@
     --clr-surface-alt: var(--clr-neutral-200);
 
     --clr-text: var(--clr-neutral-900);
-    --clr-text-toned: var(--clr-neutral-600); /* Secondary label */
-    --clr-text-muted: var(--clr-neutral-500); /* Placeholder, helper */
-    --clr-text-faint: var(--clr-neutral-400); /* Disabled */
-    --clr-text-highlighted: var(--clr-neutral-950); /* Strong emphasis */
+    --clr-text-toned: var(--clr-neutral-600);
+    /* Secondary label */
+    --clr-text-muted: var(--clr-neutral-500);
+    /* Placeholder, helper */
+    --clr-text-faint: var(--clr-neutral-400);
+    /* Disabled */
+    --clr-text-highlighted: var(--clr-neutral-950);
+    /* Strong emphasis */
     --clr-text-invert: var(--clr-neutral-0);
 
     --clr-border: var(--clr-neutral-200);
@@ -464,23 +455,36 @@
      ========================================================================== */
 
     /* Base unit — 0.25rem per step */
-    --spacing: 0.25rem; /* = 4px — nhân số để ra kích thước */
+    --spacing: 0.25rem;
+    /* = 4px — nhân số để ra kích thước */
 
     /* Named tokens — agent-os-css style (= --space-unit * 2 vì 0.5rem = 2×0.25rem) */
     --space-unit: 0.5rem;
 
-    --space-1: calc(var(--space-unit) * 1); /* 0.5rem  = 2px×4  */
-    --space-2: calc(var(--space-unit) * 2); /* 1rem    = 4px×4  */
-    --space-3: calc(var(--space-unit) * 3); /* 1.5rem  = 6px×4  */
-    --space-4: calc(var(--space-unit) * 4); /* 2rem    = 8px×4  */
-    --space-5: calc(var(--space-unit) * 5); /* 2.5rem  */
-    --space-6: calc(var(--space-unit) * 6); /* 3rem    */
-    --space-8: calc(var(--space-unit) * 8); /* 4rem    */
-    --space-10: calc(var(--space-unit) * 10); /* 5rem    */
-    --space-12: calc(var(--space-unit) * 12); /* 6rem    */
-    --space-16: calc(var(--space-unit) * 16); /* 8rem    */
-    --space-20: calc(var(--space-unit) * 20); /* 10rem   */
-    --space-24: calc(var(--space-unit) * 24); /* 12rem   */
+    --space-1: calc(var(--space-unit) * 1);
+    /* 0.5rem  = 2px×4  */
+    --space-2: calc(var(--space-unit) * 2);
+    /* 1rem    = 4px×4  */
+    --space-3: calc(var(--space-unit) * 3);
+    /* 1.5rem  = 6px×4  */
+    --space-4: calc(var(--space-unit) * 4);
+    /* 2rem    = 8px×4  */
+    --space-5: calc(var(--space-unit) * 5);
+    /* 2.5rem  */
+    --space-6: calc(var(--space-unit) * 6);
+    /* 3rem    */
+    --space-8: calc(var(--space-unit) * 8);
+    /* 4rem    */
+    --space-10: calc(var(--space-unit) * 10);
+    /* 5rem    */
+    --space-12: calc(var(--space-unit) * 12);
+    /* 6rem    */
+    --space-16: calc(var(--space-unit) * 16);
+    /* 8rem    */
+    --space-20: calc(var(--space-unit) * 20);
+    /* 10rem   */
+    --space-24: calc(var(--space-unit) * 24);
+    /* 12rem   */
 
     --space-section-sm: clamp(4rem, 8vw, 6rem);
     --space-section: clamp(6rem, 12vw, 10rem);
@@ -493,26 +497,44 @@
     --gutter: clamp(1rem, 4vw, 2.5rem);
 
     /* Breakpoints — dùng cho @media */
-    --breakpoint-sm: 40rem; /* 640px */
-    --breakpoint-md: 48rem; /* 768px */
-    --breakpoint-lg: 64rem; /* 1024px */
-    --breakpoint-xl: 80rem; /* 1280px */
-    --breakpoint-2xl: 96rem; /* 1536px */
+    --breakpoint-sm: 40rem;
+    /* 640px */
+    --breakpoint-md: 48rem;
+    /* 768px */
+    --breakpoint-lg: 64rem;
+    /* 1024px */
+    --breakpoint-xl: 80rem;
+    /* 1280px */
+    --breakpoint-2xl: 96rem;
+    /* 1536px */
 
     /* Container widths — full scale (3xs → 7xl) */
-    --container-3xs: 16rem; /* 256px */
-    --container-2xs: 18rem; /* 288px */
-    --container-xs: 20rem; /* 320px */
-    --container-sm: 24rem; /* 384px */
-    --container-md: 28rem; /* 448px */
-    --container-lg: 32rem; /* 512px */
-    --container-xl: 36rem; /* 576px */
-    --container-2xl: 42rem; /* 672px */
-    --container-3xl: 48rem; /* 768px */
-    --container-4xl: 56rem; /* 896px */
-    --container-5xl: 64rem; /* 1024px */
-    --container-6xl: 72rem; /* 1152px */
-    --container-7xl: 80rem; /* 1280px */
+    --container-3xs: 16rem;
+    /* 256px */
+    --container-2xs: 18rem;
+    /* 288px */
+    --container-xs: 20rem;
+    /* 320px */
+    --container-sm: 24rem;
+    /* 384px */
+    --container-md: 28rem;
+    /* 448px */
+    --container-lg: 32rem;
+    /* 512px */
+    --container-xl: 36rem;
+    /* 576px */
+    --container-2xl: 42rem;
+    /* 672px */
+    --container-3xl: 48rem;
+    /* 768px */
+    --container-4xl: 56rem;
+    /* 896px */
+    --container-5xl: 64rem;
+    /* 1024px */
+    --container-6xl: 72rem;
+    /* 1152px */
+    --container-7xl: 80rem;
+    /* 1280px */
     --container: min(80rem, 100% - var(--gutter) * 2);
     --container-wide: min(90rem, 100% - var(--gutter) * 2);
     --container-full: min(100rem, 100% - var(--gutter) * 2);
@@ -526,17 +548,27 @@
      Mặc định: --radius: .625rem (10px)
      --ui-radius là alias backward-compatible
      agent-os-css giữ cả 2 để backward compatible. */
-    --radius: 0.625rem; /* ← Giá trị gốc, sửa 1 chỗ này */
+    --radius: 0.625rem;
+    /* ← Giá trị gốc, sửa 1 chỗ này */
 
-    --radius-xs: 0.125rem; /* cố định — rất nhỏ */
-    --radius-sm: calc(var(--radius) * 0.6); /* ~6px */
-    --radius-md: calc(var(--radius) * 0.8); /* ~8px */
-    --radius-lg: var(--radius); /* 10px — mặc định .rounded-lg */
-    --radius-xl: calc(var(--radius) * 1.4); /* ~14px */
-    --radius-2xl: calc(var(--radius) * 1.8); /* ~18px */
-    --radius-3xl: calc(var(--radius) * 2.2); /* ~22px */
-    --radius-4xl: calc(var(--radius) * 2.6); /* ~26px */
-    --radius-full: 9999px; /* pill / circle */
+    --radius-xs: 0.125rem;
+    /* cố định — rất nhỏ */
+    --radius-sm: calc(var(--radius) * 0.6);
+    /* ~6px */
+    --radius-md: calc(var(--radius) * 0.8);
+    /* ~8px */
+    --radius-lg: var(--radius);
+    /* 10px — mặc định .rounded-lg */
+    --radius-xl: calc(var(--radius) * 1.4);
+    /* ~14px */
+    --radius-2xl: calc(var(--radius) * 1.8);
+    /* ~18px */
+    --radius-3xl: calc(var(--radius) * 2.2);
+    /* ~22px */
+    --radius-4xl: calc(var(--radius) * 2.6);
+    /* ~26px */
+    --radius-full: 9999px;
+    /* pill / circle */
 
     /* Backward compat alias cho code cũ dùng --ui-radius */
     --ui-radius: var(--radius);
@@ -605,8 +637,7 @@
     --shadow-xl:
       0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
     --shadow-2xl: 0 25px 50px -12px oklch(0% 0 0 / 0.25);
-    --shadow-glow: 0 0 40px
-      oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.3);
+    --shadow-glow: 0 0 40px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.3);
 
     /* Inset shadow*/
     --inset-shadow-xs: inset 0 1px oklch(0% 0 0 / 0.05);
@@ -760,7 +791,8 @@
       --glass-bg: oklch(0% 0 0 / 0.15);
       --glass-border: oklch(100% 0 0 / 0.08);
       /*  compat — các giá trị cascade tự cập nhật qua var */
-      --border: oklch(100% 0 0 / 0.1); /* border trắng nhạt trên nền tối */
+      --border: oklch(100% 0 0 / 0.1);
+      /* border trắng nhạt trên nền tối */
       --input: oklch(100% 0 0 / 0.15);
       --ring: var(--clr-neutral-500);
     }
@@ -806,7 +838,6 @@
   /* ==========================================================================
    PROPERTIES — FLOCSS Foundation Layer
    Safe defaults cho composite CSS variables (--ui-*)
-   @import "foundation/properties.css" layer(properties)
    ========================================================================== */
 
   /*
@@ -838,8 +869,8 @@
    Browser hiện đại có @property → tự xử lý, bỏ qua @supports này.
 */
 
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
-    ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+
     *,
     ::backdrop,
     ::before,
@@ -1064,10 +1095,12 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-leading {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-tracking {
     syntax: "*";
     inherits: false;
@@ -1079,11 +1112,13 @@
     inherits: false;
     initial-value: 0;
   }
+
   @property --ui-translate-y {
     syntax: "*";
     inherits: false;
     initial-value: 0;
   }
+
   @property --ui-translate-z {
     syntax: "*";
     inherits: false;
@@ -1096,11 +1131,13 @@
     inherits: false;
     initial-value: 1;
   }
+
   @property --ui-scale-y {
     syntax: "*";
     inherits: false;
     initial-value: 1;
   }
+
   @property --ui-scale-z {
     syntax: "*";
     inherits: false;
@@ -1112,18 +1149,22 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-rotate-y {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-rotate-z {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-skew-x {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-skew-y {
     syntax: "*";
     inherits: false;
@@ -1135,16 +1176,19 @@
     inherits: false;
     initial-value: 0;
   }
+
   @property --ui-divide-x-reverse {
     syntax: "<number>";
     inherits: false;
     initial-value: 0;
   }
+
   @property --ui-space-y-reverse {
     syntax: "<number>";
     inherits: false;
     initial-value: 0;
   }
+
   @property --ui-space-x-reverse {
     syntax: "<number>";
     inherits: false;
@@ -1157,10 +1201,12 @@
     inherits: false;
     initial-value: 0 0 #0000;
   }
+
   @property --ui-shadow-color {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-shadow-alpha {
     syntax: "<percentage>";
     inherits: false;
@@ -1172,10 +1218,12 @@
     inherits: false;
     initial-value: 0 0 #0000;
   }
+
   @property --ui-inset-shadow-color {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-inset-shadow-alpha {
     syntax: "<percentage>";
     inherits: false;
@@ -1187,25 +1235,30 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-ring-shadow {
     syntax: "*";
     inherits: false;
     initial-value: 0 0 #0000;
   }
+
   @property --ui-ring-inset {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-ring-offset-width {
     syntax: "<length>";
     inherits: false;
     initial-value: 0px;
   }
+
   @property --ui-ring-offset-color {
     syntax: "*";
     inherits: false;
     initial-value: #fff;
   }
+
   @property --ui-ring-offset-shadow {
     syntax: "*";
     inherits: false;
@@ -1216,6 +1269,7 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-inset-ring-shadow {
     syntax: "*";
     inherits: false;
@@ -1234,46 +1288,57 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-brightness {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-contrast {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-grayscale {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-hue-rotate {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-invert {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-opacity {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-saturate {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-sepia {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-drop-shadow {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-drop-shadow-color {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-drop-shadow-alpha {
     syntax: "<percentage>";
     inherits: false;
@@ -1285,34 +1350,42 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-brightness {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-contrast {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-grayscale {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-hue-rotate {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-invert {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-opacity {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-saturate {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-backdrop-sepia {
     syntax: "*";
     inherits: false;
@@ -1323,6 +1396,7 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-ease {
     syntax: "*";
     inherits: false;
@@ -1333,39 +1407,47 @@
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-gradient-from {
     syntax: "*";
     inherits: false;
     initial-value: #0000;
   }
+
   @property --ui-gradient-via {
     syntax: "*";
     inherits: false;
     initial-value: #0000;
   }
+
   @property --ui-gradient-to {
     syntax: "*";
     inherits: false;
     initial-value: #0000;
   }
+
   @property --ui-gradient-stops {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-gradient-via-stops {
     syntax: "*";
     inherits: false;
   }
+
   @property --ui-gradient-from-position {
     syntax: "*";
     inherits: false;
     initial-value: 0%;
   }
+
   @property --ui-gradient-via-position {
     syntax: "*";
     inherits: false;
     initial-value: 50%;
   }
+
   @property --ui-gradient-to-position {
     syntax: "*";
     inherits: false;
@@ -1384,7 +1466,6 @@
   /* ==========================================================================
    TYPOGRAPHY — FLOCSS Foundation Layer
    Class hệ thống cho heading, body text, label (không prefix — Foundation)
-   @import "foundation/typography.css" layer(foundation)
    ========================================================================== */
 
   /* --- Headings ---
@@ -1418,10 +1499,12 @@
     font-size: var(--text-2xl);
     font-weight: var(--weight-semibold);
   }
+
   .h5 {
     font-size: var(--text-xl);
     font-weight: var(--weight-medium);
   }
+
   .h6 {
     font-size: var(--text-lg);
     font-weight: var(--weight-medium);
@@ -1431,9 +1514,11 @@
   .body-lg {
     font-size: var(--text-lg);
   }
+
   .body-sm {
     font-size: var(--text-sm);
   }
+
   .caption {
     font-size: var(--text-xs);
     color: var(--clr-text-muted);
@@ -1456,7 +1541,6 @@
   /* ==========================================================================
    LAYOUT — FLOCSS Layout Layer
    Prefix: l-*  |  BEM: l-block--modifier
-   @import "layout/layout.css" layer(layout)
    ========================================================================== */
 
   /* --- Container --- */
@@ -1466,24 +1550,28 @@
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
+
   .l-container--sm {
     width: 100%;
     max-width: var(--container-sm);
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
+
   .l-container--md {
     width: 100%;
     max-width: var(--container-md);
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
+
   .l-container--wide {
     width: 100%;
     max-width: var(--container-wide);
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
+
   .l-container--full {
     width: 100%;
     max-width: var(--container-full);
@@ -1495,9 +1583,11 @@
   .l-section {
     padding-block: var(--space-section);
   }
+
   .l-section--sm {
     padding-block: var(--space-section-sm);
   }
+
   .l-section--lg {
     padding-block: var(--space-section-lg);
   }
@@ -1539,6 +1629,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .l-flex-between {
     display: flex;
     align-items: center;
@@ -1553,7 +1644,6 @@
   /* ==========================================================================
    COMPONENTS — FLOCSS Object/Component Layer
    Prefix: c-*  |  BEM: c-block__element--modifier  |  local CSS vars per component
-   @import "object/components.css" layer(components)
    ========================================================================== */
 
   /* ==========================================================================
@@ -1600,6 +1690,7 @@
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }
+
   .c-btn:active {
     transform: translateY(0);
     box-shadow: none;
@@ -1617,6 +1708,7 @@
     --btn-color: var(--clr-text);
     --btn-border: transparent;
   }
+
   .c-btn--ghost:hover {
     --btn-bg: var(--clr-surface);
     box-shadow: none;
@@ -1628,6 +1720,7 @@
     --btn-py: var(--space-1);
     --btn-size: var(--text-xs);
   }
+
   .c-btn--lg {
     --btn-px: var(--space-6);
     --btn-py: var(--space-3);
@@ -1684,6 +1777,7 @@
     --card-shadow: none;
     --card-border: var(--clr-border);
   }
+
   .c-card--flat:hover {
     transform: none;
     box-shadow: none;
@@ -1737,9 +1831,7 @@
   @supports not (color: color-mix(in oklab, red, red)) {
     .c-tag--accent {
       --tag-bg: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.1);
-      --tag-border: oklch(
-        var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.25
-      );
+      --tag-border: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.25);
     }
   }
 
@@ -1762,7 +1854,6 @@
   /* ==========================================================================
    ANIMATIONS — FLOCSS Foundation Layer
    @keyframes + data-animate scroll pattern
-   @import "foundation/animations.css" layer(animations)
    ========================================================================== */
 
   /* ==========================================================================
@@ -1773,6 +1864,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -1783,6 +1875,7 @@
       opacity: 0;
       transform: translateY(var(--fade-y, 24px));
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -1794,6 +1887,7 @@
       opacity: 0;
       transform: translateY(calc(var(--fade-y, 24px) * -1));
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -1805,6 +1899,7 @@
       opacity: 0;
       transform: scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -1815,6 +1910,7 @@
     from {
       clip-path: inset(0 100% 0 0);
     }
+
     to {
       clip-path: inset(0 0% 0 0);
     }
@@ -1827,16 +1923,19 @@
   }
 
   @keyframes pulse {
+
     0%,
     100% {
       opacity: 1;
     }
+
     50% {
       opacity: 0.4;
     }
   }
 
   @keyframes ping {
+
     75%,
     100% {
       transform: scale(2);
@@ -1845,11 +1944,13 @@
   }
 
   @keyframes bounce {
+
     0%,
     100% {
       transform: translateY(-25%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
+
     50% {
       transform: translateY(0);
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -1910,6 +2011,7 @@
   [data-animate="scale"] {
     transform: scale(0.96);
   }
+
   [data-animate="scale"].is-visible {
     transform: scale(1);
   }
@@ -1922,6 +2024,7 @@
     transition: clip-path var(--dur-slower) var(--ease-out-expo);
     transition-delay: var(--delay, 0ms);
   }
+
   [data-animate="clip"].is-visible {
     clip-path: inset(0 0% 0 0);
   }
