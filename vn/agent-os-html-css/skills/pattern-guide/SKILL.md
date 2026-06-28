@@ -75,28 +75,7 @@ document.querySelectorAll("[data-animate]").forEach((el) => {
 }
 ```
 
----
-
-## 3. Fluid container — min()
-
-```css
---container: min(80rem, 100% - var(--gutter) * 2);
-```
-
-**Tương đương:**
-
-```css
-/* Cách cũ — 2 dòng */
-max-width: 80rem;
-padding-inline: var(--gutter);
-
-/* Cách mới — 1 biến */
-max-width: var(--container);
-```
-
----
-
-## 4. Gradients và Không gian nội suy (Interpolation Color Space)
+## 3. Gradients và Không gian nội suy (Interpolation Color Space)
 
 Dùng `in oklch` hoặc `in oklab` cụ thể cho gradients. KHÔNG dùng `in srgb`.
 
@@ -115,7 +94,7 @@ Dùng `in oklch` hoặc `in oklab` cụ thể cho gradients. KHÔNG dùng `in sr
 
 ---
 
-## 5. Selectors và Phân vùng (Selectors & Scoping)
+## 4. Selectors và Phân vùng (Selectors & Scoping)
 
 Ưu tiên CSS selectors hơn JS để nhắm mục tiêu element phức tạp.
 
@@ -125,17 +104,7 @@ Dùng `in oklch` hoặc `in oklab` cụ thể cho gradients. KHÔNG dùng `in sr
 - **NÊN** dùng `:not()` thay vì overrides để loại trừ các states/targets không liên quan.
 - **KHÔNG NÊN** sử dụng global resets (style trên `*`) vì chúng không thể bị ghi đè bởi cascade layers (trừ khi dùng `!important`).
 
----
-
-## 6. Quản lý Focus (Focus Management)
-
-- **NÊN** dùng `:focus-visible` để định nghĩa custom focus rings, không dùng `:focus` thông thường (tránh outline khi click bằng chuột).
-- **NÊN** ưu tiên `outline` hơn `box-shadow` cho focus rings, và ghép nối với `outline-offset` để tách biệt trực quan vòng ring ra khỏi element.
-- **KHÔNG NÊN** loại bỏ focus rings mặc định (`outline: none`) mà không cung cấp style thay thế hiển thị rõ ràng.
-
----
-
-## 7. Tiêu chuẩn Chất lượng & Hiệu suất
+## 5. Tiêu chuẩn Chất lượng & Hiệu suất
 
 ### Animation Performance (60fps)
 

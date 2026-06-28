@@ -235,6 +235,20 @@ inset: 0;
 - Sử dụng logical properties (`inline-size`, `block-size`, `margin-inline`, `padding-block`, `inset-inline-start`) cho kích thước layout và khoảng cách (spacing).
 - Áp dụng mô hình tư duy **content-first vs layout-first**: dùng flexbox khi items quyết định flow, dùng grid khi bạn tự định nghĩa khung xương trước.
 
+### Fluid container — min() (Container linh hoạt)
+
+Quy chuẩn dựng container giới hạn chiều rộng chuẩn quốc tế:
+
+```css
+/* Cách cũ — 2 dòng */
+max-width: 80rem;
+padding-inline: var(--gutter);
+
+/* Cách mới (NÊN DÙNG) — 1 dòng với biến */
+--container: min(80rem, 100% - var(--gutter) * 2);
+max-width: var(--container);
+```
+
 ---
 
 ## Flexbox (Layout 1 Chiều)

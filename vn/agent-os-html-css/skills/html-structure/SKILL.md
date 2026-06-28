@@ -48,11 +48,13 @@ Một website premium phải thân thiện với cả công cụ tìm kiếm và
 - **Trạng thái động:** Cập nhật `aria-expanded="true/false"` cho các menu dropdown, `aria-hidden="true/false"` cho các modal ẩn/hiện.
 - **Quy tắc Vàng:** Chỉ dùng thuộc tính ARIA khi HTML gốc không đủ đáp ứng.
 
-### Tiêu chuẩn Hiển thị A11y
+### Tiêu chuẩn Hiển thị A11y & Quản lý Focus
 
 - Độ tương phản màu ≥ 4.5:1 (đối với chữ thường), ≥ 3:1 (đối với chữ lớn).
-- Trạng thái Focus (`:focus-visible`) phải nhìn thấy rõ ràng trên mọi phần tử tương tác.
 - Không dùng màu sắc làm cách duy nhất để truyền đạt thông tin (ví dụ: lỗi thì phải có text báo lỗi hoặc icon cảnh báo, không chỉ đổi viền đỏ).
+- **Trạng thái Focus:** Bắt buộc dùng `:focus-visible` để định nghĩa custom focus rings, không dùng `:focus` thông thường (tránh bị kẹt outline khi click bằng chuột).
+- **Thiết kế Focus:** Ưu tiên dùng `outline` kết hợp `outline-offset` để tách biệt trực quan vòng ring ra khỏi element, thay vì dùng `box-shadow`.
+- **Tuyệt đối không** loại bỏ focus rings mặc định (`outline: none`) mà không cung cấp style thay thế rõ ràng.
 
 ---
 
