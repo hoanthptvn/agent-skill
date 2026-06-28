@@ -1,9 +1,9 @@
 ---
 name: design-tokens
-description: Kỹ năng Agent chuyên biệt về design-tokens cho hệ thống CSS.
+description: Kỹ năng Agent chuyên biệt về hệ thống biến CSS (CSS Variables), Design Tokens và Fluid Typography.
 ---
 
-# Token Guide — Hệ thống biến CSS
+# Token Guide — Hệ thống biến CSS & Spacing
 
 ## Tại sao dùng CSS Custom Properties (tokens)?
 
@@ -15,9 +15,9 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
 
 ---
 
-## 2 tầng token
+## 3 Tầng Biến CSS (The 3-Layer System)
 
-### Tầng 1 — Primitive (giá trị thô)
+### Tầng 1 — Primitive (Design Tokens)
 
 ```css
 --clr-neutral-100: oklch(95% 0 0);
@@ -26,7 +26,7 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
 
 Đây là **palette gốc** — không bao giờ thay đổi giữa light/dark mode.
 
-### Tầng 2 — Semantic (ý nghĩa)
+### Tầng 2 — Semantic (Ý nghĩa UI)
 
 ```css
 --clr-bg: var(--clr-neutral-0); /* Light mode: trắng */
@@ -48,8 +48,7 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
 }
 ```
 
-### Dark mode chỉ đổi tầng 2
-
+**Dark mode chỉ đổi tầng 2:**
 ```css
 .dark {
   --clr-bg: var(--clr-neutral-950);
@@ -57,6 +56,16 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
   --clr-text: var(--clr-neutral-50);
 }
 /* Component KHÔNG cần thay đổi gì */
+```
+
+### Tầng 3 — Internal Vars (`--ui-*`)
+
+Dành riêng cho Utility classes hoặc Component cục bộ để tạo ra các Composite Pattern phức tạp. Không dùng trực tiếp biến này để style cứng.
+
+```css
+--ui-shadow-color: initial;
+--ui-duration: 0.15s;
+--ui-ease: ease-out;
 ```
 
 ---
@@ -79,12 +88,45 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
 | `--blur-`        | Blur               | `--blur-glass`                           |
 | `--glass-`       | Glassmorphism      | `--glass-bg`, `--glass-blur`             |
 | `--perspective-` | 3D                 | `--perspective-sm`                       |
-| `--text-shadow-` | Text shadow        | `--text-shadow-glow`                     |
-| `--drop-shadow-` | Filter shadow      | `--drop-shadow-md`                       |
 | `--_`            | Private (internal) | `--_accent-l`, `--_accent-h`             |
+| `--ui-`          | Utility State      | `--ui-duration`, `--ui-shadow`           |
 
 **`--_` prefix**: biến nội bộ, không dùng trực tiếp trong component.
 Chỉ dùng để tính toán biến khác (VD: `--clr-accent` dùng `--_accent-l`).
+
+---
+
+## Patterns nâng cao với Tokens
+
+### 1. Composite Pattern (Gắn kết nhiều biến)
+
+```css
+/* Bước 1: Khai báo safe defaults (trong @layer properties) */
+* {
+  --ui-ring-shadow: 0 0 #0000; /* transparent, invisible nhưng hợp lệ */
+  --ui-shadow: 0 0 #0000;
+}
+
+/* Bước 2: Utility class hoặc Component sử dụng tổ hợp */
+.c-card {
+  --ui-shadow: 0 4px 6px -1px var(--clr-shadow, #0000001a);
+  
+  box-shadow:
+    var(--ui-ring-shadow),
+    var(--ui-shadow); /* Kết hợp cả ring và shadow */
+}
+```
+
+### 2. Override Pattern (Fallback Chain)
+
+```css
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: var(--ui-ease, ease-out);
+  transition-duration: var(--ui-duration, 0.15s);
+  /*                   ↑ Override per-element       ↑ Default */
+}
+```
 
 ---
 
@@ -98,16 +140,13 @@ oklch(Lightness%  Chroma  Hue)
 ```
 
 **Lợi thế:**
-
 - **Perceptually uniform**: `50%` lightness TRÔNG giống 50% sáng thật (hsl thì không)
 - **Interpolation đẹp**: gradient oklch không bị "muddy" ở giữa
-- **W3C khuyến nghị** cho color systems mới
-
-**Công cụ pick**: https://oklch.com
+- **Công cụ pick**: https://oklch.com
 
 ---
 
-## color-mix() — Học từ Nuxt UI
+## color-mix() — Xử lý Opacity cho Variable
 
 Khi cần opacity trên CSS variable:
 
@@ -120,7 +159,6 @@ background: color-mix(in oklab, var(--clr-accent) 10%, transparent);
 ```
 
 **Tại sao oklab thay vì srgb?**
-
 - oklab interpolation trông tự nhiên hơn
 - Tránh hiện tượng màu bị xám ở giữa khi mix
 
@@ -135,12 +173,11 @@ background: color-mix(in oklab, var(--clr-accent) 10%, transparent);
                min      theo viewport */
 ```
 
-**Lợi thế**: 1 dòng thay cho 3-4 media queries.
-**Không cần** `@media` breakpoint cho font size nữa.
+**Lợi thế**: 1 dòng thay cho 3-4 media queries. Không cần `@media` breakpoint cho font size nữa.
 
 ---
 
-## 8pt grid — Spacing
+## 8pt grid & Spacing System (PC → SP)
 
 Mọi spacing = bội số 8px (`0.5rem`):
 
@@ -149,18 +186,7 @@ Mọi spacing = bội số 8px (`0.5rem`):
 --space-2:  16px
 --space-3:  24px
 --space-4:  32px
-...
 ```
-
-**Tại sao 8pt?**
-
-- Chia hết cho 2, 4 → subpixel alignment tốt
-- Chuẩn Material Design, Apple HIG đều dùng
-- Mắt người nhận ra rhythm tốt hơn
-
----
-
-## Spacing System (PC → SP)
 
 Rút từ patterns thực tế của project, quy chuẩn khoảng cách giữa PC và Mobile:
 
@@ -183,7 +209,7 @@ Rút từ patterns thực tế của project, quy chuẩn khoảng cách giữa 
 | Form field gap (label→input)  | `4–8px`                                   |
 | List item vertical gap        | `8–16px`                                  |
 | Inline icon gap (icon + text) | `8px`                                     |
-| **Spacing bội 4px**           | 4, 8, 12, 16, 24, 32, 48...               | Dùng design tokens `var(--space-*)` |
+| **Spacing bội 4px**           | 4, 8, 12, 16, 24, 32, 48...               |
 
 ---
 
