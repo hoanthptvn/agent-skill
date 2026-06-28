@@ -283,8 +283,10 @@
   :root {
     /* ---------- 1.1.2.1. BRAND — Sửa 4 chỗ này theo từng project ---------- */
 
-    /* oklch: Lightness Chroma Hue — https://oklch.com
-     Hue: 0=đỏ  25=cam  75=vàng  120=xanh lá  240=xanh dương  280=tím  320=hồng */
+    /**
+     * oklch: Lightness Chroma Hue — https://oklch.com
+     * Hue: 0=đỏ  25=cam  75=vàng  120=xanh lá  240=xanh dương  280=tím  320=hồng
+     */
     --_accent-l: 65%;
     --_accent-c: 0.26;
     --_accent-h: 280;
@@ -362,10 +364,12 @@
     --text-4xl: clamp(4rem, 7vw, 6rem);
     --text-hero: clamp(5rem, 11vw, 10rem);
 
-    /* Companion line-height tokens
-     Mỗi text size có line-height tương ứng
-     Dùng: line-height: var(--ui-leading, var(--text-sm--line-height))
-     --ui-leading override per-element: style="--ui-leading: 1.2" */
+    /**
+     * Companion line-height tokens
+     * Mỗi text size có line-height tương ứng
+     * Dùng: line-height: var(--ui-leading, var(--text-sm--line-height))
+     * --ui-leading override per-element: style="--ui-leading: 1.2"
+     */
     --text-2xs--line-height: 1.4;
     --text-xs--line-height: 1.43;
     --text-sm--line-height: 1.5;
@@ -474,12 +478,13 @@
     --col-gap: var(--gutter);
 
     /* ========== 1.1.3 Radius Scale ========== */
-    /*
-   Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
-   User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
-   Mặc định: --radius: .625rem (10px)
-   --ui-radius là alias backward-compatible
-   agent-os-css giữ cả 2 để backward compatible. */
+    /**
+     * Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
+     * User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
+     * Mặc định: --radius: .625rem (10px)
+     * --ui-radius là alias backward-compatible
+     * agent-os-css giữ cả 2 để backward compatible.
+     */
     --radius: 0.625rem; /* ← Giá trị gốc, sửa 1 chỗ này */
     --radius-xs: 0.125rem; /* cố định — rất nhỏ */
     --radius-sm: calc(var(--radius) * 0.6); /* ~6px */
@@ -520,14 +525,18 @@
     --transition-base: var(--dur-base) var(--ease-out);
     --transition-slow: var(--dur-slow) var(--ease-out-expo);
     --transition-spring: var(--dur-slow) var(--ease-spring);
-    /* Default transition
-   Dùng làm fallback trong utility .transition:
-   transition-duration: var(--ui-duration, var(--default-transition-duration))
-   Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)" */
+    /**
+     * Default transition
+     * Dùng làm fallback trong utility .transition:
+     * transition-duration: var(--ui-duration, var(--default-transition-duration))
+     * Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)"
+     */
     --default-transition-duration: 0.15s;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    /* Animate shorthand tokens
-   Dùng: animation: var(--animate-spin) */
+    /**
+     * Animate shorthand tokens
+     * Dùng: animation: var(--animate-spin)
+     */
     --animate-spin: spin 1s linear infinite;
     --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -577,14 +586,14 @@
     --drop-shadow-md: 0 3px 3px oklch(0% 0 0 / 0.12);
     --drop-shadow-lg: 0 4px 6px oklch(0% 0 0 / 0.15);
     --drop-shadow-xl: 0 9px 7px oklch(0% 0 0 / 0.1); /* ---------- 1.1.3.8. SEMANTIC TOKENS — Tầng 4: ecosystem compatibility ---------- */
-    /*
-   TẠI SAO CẦN 2 HỆ THỐNG?
-   ─────────────────────────
-   --clr-*     = agent-os-css native (oklch, precise, granular)
-   --background/--foreground/... = CSS token ecosystem
-   Cho phép tích hợp component library bên ngoài mà không cần refactor.
-   Component dùng var(--background) sẽ tự adapt theo theme.
-   */
+    /**
+     * TẠI SAO CẦN 2 HỆ THỐNG?
+     * ─────────────────────────
+     * --clr-*     = agent-os-css native (oklch, precise, granular)
+     * --background/--foreground/... = CSS token ecosystem
+     * Cho phép tích hợp component library bên ngoài mà không cần refactor.
+     * Component dùng var(--background) sẽ tự adapt theo theme.
+     */
     /* Nền & chữ chính */
     --background: var(--clr-bg);
     --foreground: var(--clr-text); /* Card / Popover — thường cùng màu background */
@@ -712,15 +721,15 @@
    @property      → browser hiện đại tự handle (Chrome 85+, Safari 16.4+)
    @supports      → fallback cho browser cũ
    ========================================================================== */
-  /*
-   @supports — Tại sao dùng query này?
-   Các condition detect browser cũ:
-   - (-webkit-hyphens:none)             → Webkit engine cũ
-   - (not (margin-trim:inline))         → chưa hỗ trợ margin-trim
-   - (-moz-orient:inline)               → Firefox engine cũ
-   - (not (color:rgb(from red r g b)))  → chưa hỗ trợ relative color syntax
-   Kết hợp = browser CŨ, engine cũ → cần set safe defaults thủ công.
-   Browser hiện đại có @property → tự xử lý, bỏ qua @supports này.
+  /**
+   * @supports — Tại sao dùng query này?
+   * Các condition detect browser cũ:
+   * - (-webkit-hyphens:none)             → Webkit engine cũ
+   * - (not (margin-trim:inline))         → chưa hỗ trợ margin-trim
+   * - (-moz-orient:inline)               → Firefox engine cũ
+   * - (not (color:rgb(from red r g b)))  → chưa hỗ trợ relative color syntax
+   * Kết hợp = browser CŨ, engine cũ → cần set safe defaults thủ công.
+   * Browser hiện đại có @property → tự xử lý, bỏ qua @supports này.
    */
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
 
@@ -728,13 +737,14 @@
     ::backdrop,
     ::before,
     ::after {
-      /* ── TRANSFORM ─────────────────────────────────────────
-   Composite pattern:
-   translate: var(--ui-translate-x) var(--ui-translate-y);
-   Utility class set 1 var, composite ghép tất cả:
-   .translate-x-4 { --ui-translate-x: 1rem; }
-   → translate: 1rem 0;  (vì --ui-translate-y = 0)
-*/
+      /**
+       * ── TRANSFORM ─────────────────────────────────────────
+       * Composite pattern:
+       * translate: var(--ui-translate-x) var(--ui-translate-y);
+       * Utility class set 1 var, composite ghép tất cả:
+       * .translate-x-4 { --ui-translate-x: 1rem; }
+       * → translate: 1rem 0;  (vì --ui-translate-y = 0)
+       */
       --ui-translate-x: 0;
       --ui-translate-y: 0;
       --ui-translate-z: 0;
@@ -1318,9 +1328,11 @@
    * Class hệ thống cho heading, body text, label (không prefix — Foundation)
    */
 
-  /* --- Headings ---
-   Dùng class .h1–.h6 thay vì style trực tiếp trên tag
-   Lý do: tách semantic HTML (tag) khỏi visual (class) */
+  /**
+   * --- Headings ---
+   * Dùng class .h1–.h6 thay vì style trực tiếp trên tag
+   * Lý do: tách semantic HTML (tag) khỏi visual (class)
+   */
 
   .h1 {
     font-family: var(--font-display);
@@ -1456,16 +1468,20 @@
     gap: var(--space-4);
   }
 
-  /* --- Stack (vertical flex với gap) ---
-   Override gap bằng CSS variable: style="--stack-gap: var(--space-2)" */
+  /**
+   * --- Stack (vertical flex với gap) ---
+   * Override gap bằng CSS variable: style="--stack-gap: var(--space-2)"
+   */
   .l-stack {
     display: flex;
     flex-direction: column;
     gap: var(--stack-gap, var(--space-4));
   }
 
-  /* --- Cluster (horizontal wrap) ---
-   Override gap: style="--cluster-gap: var(--space-3)" */
+  /**
+   * --- Cluster (horizontal wrap) ---
+   * Override gap: style="--cluster-gap: var(--space-3)"
+   */
   .l-cluster {
     display: flex;
     flex-wrap: wrap;
@@ -1503,9 +1519,11 @@
    */
 
   .c-btn {
-    /* Local variables — override tại nơi dùng
-     Luồng token: --ui-primary (Tầng 2 action) ← không dùng --clr-accent trực tiếp
-     Lợi thế: đổi --ui-primary 1 chỗ → tất cả button cập nhật */
+    /**
+     * Local variables — override tại nơi dùng
+     * Luồng token: --ui-primary (Tầng 2 action) ← không dùng --clr-accent trực tiếp
+     * Lợi thế: đổi --ui-primary 1 chỗ → tất cả button cập nhật
+     */
     --btn-bg: var(--ui-primary);
     --btn-color: var(--clr-text-invert);
     --btn-border: transparent;
@@ -1577,14 +1595,16 @@
     --btn-size: var(--text-lg);
   }
 
-  /* Override tại nơi dùng — KHÔNG sửa file này:
-   .hero .c-btn {
-     --btn-bg:     var(--clr-neutral-0);   ← white button on dark bg
-     --btn-color:  var(--clr-neutral-900);
-     --btn-radius: var(--radius-md);
-   }
-   Hoặc đổi brand action color toàn cục:
-   :root { --ui-primary: var(--clr-blue-600); } */
+  /**
+   * Override tại nơi dùng — KHÔNG sửa file này:
+   * .hero .c-btn {
+   * --btn-bg:     var(--clr-neutral-0);   ← white button on dark bg
+   * --btn-color:  var(--clr-neutral-900);
+   * --btn-radius: var(--radius-md);
+   * }
+   * Hoặc đổi brand action color toàn cục:
+   * :root { --ui-primary: var(--clr-blue-600); }
+   */
 
   /* ========== 3.1.3 c-card — Card ========== */
   /**

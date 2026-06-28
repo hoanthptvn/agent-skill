@@ -209,9 +209,11 @@
 .u-min-h-screen { min-height: 100vh; }
 .u-min-h-dvh    { min-height: 100dvh; }
 
-/* Dùng CSS var override:
-   <header style="height: var(--ui-header-height)">   → lấy từ --ui-header-height
-   <div style="height: calc(var(--spacing) * 11)">    → 2.75rem = 44px */
+/**
+ * Dùng CSS var override:
+ * <header style="height: var(--ui-header-height)">   → lấy từ --ui-header-height
+ * <div style="height: calc(var(--spacing) * 11)">    → 2.75rem = 44px
+ */
 
 
 /* ========== 4.1.6 POSITION — absolute, fixed, sticky, relative ========== */
@@ -611,12 +613,14 @@
   .u-bg-accent-20 { background: color-mix(in oklab, var(--clr-accent) 20%, transparent); }
 }
 
-/* Dùng inline trực tiếp trong component (không cần class):
-   .u-hero-badge {
-     background: color-mix(in oklab, var(--clr-accent) 12%, transparent);
-     border:     1px solid color-mix(in oklab, var(--clr-accent) 30%, transparent);
-     color:      var(--clr-accent);
-   } */
+/**
+ * Dùng inline trực tiếp trong component (không cần class):
+ * .u-hero-badge {
+ * background: color-mix(in oklab, var(--clr-accent) 12%, transparent);
+ * border:     1px solid color-mix(in oklab, var(--clr-accent) 30%, transparent);
+ * color:      var(--clr-accent);
+ * }
+ */
 
 
 /* ========== 4.1.22 ACCESSIBILITY ========== */
@@ -730,11 +734,13 @@
   transition-property: none;
 }
 
-/* Ví dụ override per-element:
-   <button class="btn transition-colors"
-           style="--ui-duration: .3s; --ui-ease: var(--ease-out-expo)">
-     Click me
-   </button> */
+/**
+ * Ví dụ override per-element:
+ * <button class="btn transition-colors"
+ * style="--ui-duration: .3s; --ui-ease: var(--ease-out-expo)">
+ * Click me
+ * </button>
+ */
 
 
 /* ========== 4.1.28 OPACITY ========== */
@@ -848,10 +854,12 @@
 
 .u-ring-inset { --ui-ring-inset: inset; }
 
-/* Ví dụ dùng composite shadow + ring:
-   <input class="shadow-sm ring-2 ring-primary">
-   → box-shadow = shadow-sm (shadow layer) + ring 2px primary (ring layer)
-   → Cả 2 hiển thị đồng thời nhờ composite! */
+/**
+ * Ví dụ dùng composite shadow + ring:
+ * <input class="shadow-sm ring-2 ring-primary">
+ * → box-shadow = shadow-sm (shadow layer) + ring 2px primary (ring layer)
+ * → Cả 2 hiển thị đồng thời nhờ composite!
+ */
 
 
 /* ========== 4.1.33 FILTER COMPOSITE ========== */
