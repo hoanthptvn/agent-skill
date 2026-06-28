@@ -37,23 +37,29 @@ Object.freeze(obj)         → O(N)  ← Đặt flag toàn bộ properties
 // ❌ delete obj.key → phá vỡ V8 Hidden Classes → Dictionary Mode (chậm)
 // V8 tối ưu Object bằng Hidden Classes (ngầm tạo C++ struct-like)
 // delete phá cấu trúc → V8 giáng cấp → mọi truy xuất sau đó chậm hơn đáng kể
-const user = { name: 'A', age: 25 };
+const user = { name: "A", age: 25 };
 delete user.age; // ❌ V8 de-opt
 // ✓ Fix: gán null/undefined (giữ Hidden Class)
 user.age = null;
 // ✓ Fix: dùng Map.delete() nếu cần CRUD liên tục
 
 // ❌ Object.keys(obj).length → O(N) chỉ để check empty
-if (Object.keys(obj).length === 0) { /* empty */ }
+if (Object.keys(obj).length === 0) {
+  /* empty */
+}
 // ✓ Fix: O(1) — thoát ngay khi thấy key đầu tiên
-function isEmpty(obj) { for (const _ in obj) return false; return true; }
+function isEmpty(obj) {
+  for (const _ in obj) return false;
+  return true;
+}
 
 // ❌ Object.values(obj).includes('x') → O(N) tìm theo VALUE
 // ✓ Fix: Nếu cần tìm theo value nhiều lần → đảo ngược key-value thành Map
 
 // ❌ Thêm property sau constructor → phá Hidden Class
 const p = {};
-p.x = 0; p.y = 0; // V8 phải tạo Hidden Class mới mỗi lần thêm property
+p.x = 0;
+p.y = 0; // V8 phải tạo Hidden Class mới mỗi lần thêm property
 // ✓ Fix: Khai báo đầy đủ từ đầu
 const p = { x: 0, y: 0, vx: 0, vy: 0, life: 0, active: false };
 // V8 tạo 1 Hidden Class duy nhất → tái sử dụng cho mọi object cùng shape
@@ -86,12 +92,12 @@ Nguyên tắc:
 
 ```javascript
 // Destructuring — trích xuất properties
-const { name, age, role = 'user' } = user; // Default value nếu undefined
+const { name, age, role = "user" } = user; // Default value nếu undefined
 const { node: neighborNode, weight } = neighbor; // Rename
 
 // Computed Property Names
-const field = 'email';
-const obj = { [field]: 'a@b.com' }; // { email: 'a@b.com' }
+const field = "email";
+const obj = { [field]: "a@b.com" }; // { email: 'a@b.com' }
 
 // Spread — shallow copy O(N)
 const copy = { ...original }; // Chỉ copy level 1
@@ -104,8 +110,8 @@ copy.nested.a = 999; // original.nested.a CŨNG bị đổi thành 999!
 // ✓ Deep clone: structuredClone(deep) (ES2022)
 
 // Object.freeze() — immutable level 1
-const config = Object.freeze({ theme: 'dark', lang: 'vi' });
-config.theme = 'light'; // Silent fail (strict mode: TypeError)
+const config = Object.freeze({ theme: "dark", lang: "vi" });
+config.theme = "light"; // Silent fail (strict mode: TypeError)
 // ⚠️ Freeze KHÔNG deep — nested objects vẫn mutable
 ```
 
@@ -117,14 +123,14 @@ config.theme = 'light'; // Silent fail (strict mode: TypeError)
 // Dispatch Table — thay switch/if-else
 // ✗ O(N) comparisons
 function getHandler(type) {
-  if (type === 'click') return handleClick;
-  if (type === 'scroll') return handleScroll;
-  if (type === 'resize') return handleResize;
+  if (type === "click") return handleClick;
+  if (type === "scroll") return handleScroll;
+  if (type === "resize") return handleResize;
 }
 
 // ✓ O(1) lookup
 const handlers = {
-  click:  handleClick,
+  click: handleClick,
   scroll: handleScroll,
   resize: handleResize,
 };
@@ -143,8 +149,8 @@ function groupBy(items, key) {
 // groupBy(users, 'role') → { admin: [...], user: [...] }
 
 // Config merge — defaults + user overrides
-const defaults = { theme: 'dark', lang: 'vi', fps: 60 };
-const userConfig = { theme: 'light' };
+const defaults = { theme: "dark", lang: "vi", fps: 60 };
+const userConfig = { theme: "light" };
 const config = { ...defaults, ...userConfig };
 // { theme: 'light', lang: 'vi', fps: 60 }
 ```
@@ -174,13 +180,13 @@ Không dùng Object khi:
   Cần tự động GC khi DOM unmount → dùng WeakMap
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
 > 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
 > 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.

@@ -35,10 +35,10 @@ Third argument (or position property in vars) controls placement:
 Examples:
 
 ```javascript
-tl.to(".a", { x: 100 }, 0);           // at 0
-tl.to(".b", { y: 50 }, "+=0.5");      // 0.5s after last end
-tl.to(".c", { opacity: 0 }, "<");     // same start as previous
-tl.to(".d", { scale: 2 }, "<0.2");    // 0.2s after previous start
+tl.to(".a", { x: 100 }, 0); // at 0
+tl.to(".b", { y: 50 }, "+=0.5"); // 0.5s after last end
+tl.to(".c", { opacity: 0 }, "<"); // same start as previous
+tl.to(".d", { scale: 2 }, "<0.2"); // 0.2s after previous start
 ```
 
 ## Timeline Defaults
@@ -66,7 +66,7 @@ tl.addLabel("intro", 0);
 tl.to(".a", { x: 100 }, "intro");
 tl.addLabel("outro", "+=0.5");
 tl.to(".b", { opacity: 0 }, "outro");
-tl.play("outro");  // start from "outro"
+tl.play("outro"); // start from "outro"
 tl.tweenFromTo("intro", "outro"); // pauses the timeline and returns a new Tween that animates the timeline's playhead from intro to outro with no ease.
 ```
 
@@ -112,6 +112,7 @@ master.to(".c", { opacity: 0 }, "+=0.2");
 
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
+>
 > 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
 > 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
 > 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.

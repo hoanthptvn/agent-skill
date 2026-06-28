@@ -43,7 +43,7 @@ u8[0] = 300; // Không error! Lưu 44 (300 % 256) — Silent Bug!
 // ✓ Clamp trước: Math.min(Math.max(val, 0), 255)
 
 // ❌ .filter() / .map() trả về TypedArray mới — KHÔNG hoạt động như Array
-const result = new Float32Array([1, 2, 3]).filter(x => x > 1);
+const result = new Float32Array([1, 2, 3]).filter((x) => x > 1);
 // result là Float32Array([2, 3]) nhưng cú pháp khác Array
 // ✓ Dùng pointer partition (xem mẫu bên dưới)
 ```
@@ -62,10 +62,18 @@ const STRIDE = 4; // x, y, vx, vy
 const particles = new Float32Array(NUM_PARTICLES * STRIDE);
 
 // Đọc/ghi theo stride
-function getX(i)  { return particles[i * STRIDE + 0]; }
-function getY(i)  { return particles[i * STRIDE + 1]; }
-function setVx(i, v) { particles[i * STRIDE + 2] = v; }
-function setVy(i, v) { particles[i * STRIDE + 3] = v; }
+function getX(i) {
+  return particles[i * STRIDE + 0];
+}
+function getY(i) {
+  return particles[i * STRIDE + 1];
+}
+function setVx(i, v) {
+  particles[i * STRIDE + 2] = v;
+}
+function setVy(i, v) {
+  particles[i * STRIDE + 3] = v;
+}
 
 // rAF loop — O(N), zero allocation
 function update() {
@@ -113,10 +121,8 @@ function initDistances(n) {
 // Tạo mesh quad (2 triangles)
 const vertices = new Float32Array([
   // x,    y,    z,    u,    v  (position + UV)
-  -1.0, -1.0, 0.0, 0.0, 0.0,
-   1.0, -1.0, 0.0, 1.0, 0.0,
-   1.0,  1.0, 0.0, 1.0, 1.0,
-  -1.0,  1.0, 0.0, 0.0, 1.0,
+  -1.0, -1.0, 0.0, 0.0, 0.0, 1.0, -1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0,
+  -1.0, 1.0, 0.0, 0.0, 1.0,
 ]);
 
 const indices = new Uint16Array([0, 1, 2, 0, 2, 3]);
@@ -158,21 +164,21 @@ function tick() {
 const buffer = new ArrayBuffer(12);
 const view = new DataView(buffer);
 
-view.setFloat32(0, 3.14, true);   // Offset 0, little-endian
-view.setInt32(4, 100, true);       // Offset 4
-view.setUint32(8, 0xDEADBEEF, true); // Offset 8
+view.setFloat32(0, 3.14, true); // Offset 0, little-endian
+view.setInt32(4, 100, true); // Offset 4
+view.setUint32(8, 0xdeadbeef, true); // Offset 8
 
 // Đọc lại
 console.log(view.getFloat32(0, true)); // 3.14
-console.log(view.getInt32(4, true));   // 100
+console.log(view.getInt32(4, true)); // 100
 
 // WebSocket binary protocol
-socket.binaryType = 'arraybuffer';
+socket.binaryType = "arraybuffer";
 socket.onmessage = (e) => {
   const view = new DataView(e.data);
   const type = view.getUint8(0);
-  const x    = view.getFloat32(1, true);
-  const y    = view.getFloat32(5, true);
+  const x = view.getFloat32(1, true);
+  const y = view.getFloat32(5, true);
 };
 ```
 
@@ -187,13 +193,13 @@ const audioCtx = new AudioContext();
 const buffer = audioCtx.createBuffer(2, 44100, 44100);
 
 // Channel data = Float32Array, giá trị trong [-1.0, 1.0]
-const leftChannel  = buffer.getChannelData(0); // Float32Array(44100)
+const leftChannel = buffer.getChannelData(0); // Float32Array(44100)
 const rightChannel = buffer.getChannelData(1);
 
 // Generate sine wave
 for (let i = 0; i < 44100; i++) {
   const t = i / 44100;
-  leftChannel[i]  = Math.sin(2 * Math.PI * 440 * t); // 440Hz = A4
+  leftChannel[i] = Math.sin(2 * Math.PI * 440 * t); // 440Hz = A4
   rightChannel[i] = leftChannel[i];
 }
 // Không tạo object mới trong vòng lặp → zero GC
@@ -229,7 +235,7 @@ function compactAlive(positions, alive, count) {
   let writeIdx = 0;
   for (let i = 0; i < count; i++) {
     if (alive[i]) {
-      positions[writeIdx * 2]     = positions[i * 2];     // x
+      positions[writeIdx * 2] = positions[i * 2]; // x
       positions[writeIdx * 2 + 1] = positions[i * 2 + 1]; // y
       writeIdx++;
     }
@@ -267,13 +273,13 @@ DON'T:
   gl.bufferData() mỗi frame thay gl.bufferSubData() → re-allocate GPU
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
 > 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
 > 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.

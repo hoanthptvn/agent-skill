@@ -22,13 +22,14 @@ Deterministic: cùng input → luôn cùng output (bất biến)
 
 ```javascript
 class HashTable {
-  constructor(size = 53) { // Kích thước NÊN là số nguyên tố
+  constructor(size = 53) {
+    // Kích thước NÊN là số nguyên tố
     this.keyMap = new Array(size);
   }
 
   _hash(key) {
     let total = 0;
-    const PRIME = 31;                    // Số nguyên tố: phân bổ đều nhất
+    const PRIME = 31; // Số nguyên tố: phân bổ đều nhất
     const limit = Math.min(key.length, 100); // Giới hạn 100 ký tự → O(1) thay O(N)
 
     for (let i = 0; i < limit; i++) {
@@ -166,10 +167,10 @@ WeakMap — Hash Table tự dọn rác:
 ```javascript
 // 1. Data Normalization (State Management)
 // ❌ Array: update user → array.map() O(N) mỗi lần
-const users_array = [{ id: 'u1', name: 'A' }];
+const users_array = [{ id: "u1", name: "A" }];
 
 // ✓ Hash Map: update user → users['u1'].name O(1)
-const users_map = { 'u1': { name: 'A' } };
+const users_map = { u1: { name: "A" } };
 // Render list: Object.values(users_map).map(u => <UserCard />)
 
 // 2. Caching / Memoization
@@ -183,9 +184,9 @@ async function fetchUser(id) {
 
 // 3. Khử switch/case
 const statusConfig = {
-  success: { icon: 'check.svg',   color: '#00ff00' },
-  error:   { icon: 'alert.svg',   color: '#ff0000' },
-  pending: { icon: 'spinner.svg', color: '#ffff00' },
+  success: { icon: "check.svg", color: "#00ff00" },
+  error: { icon: "alert.svg", color: "#ff0000" },
+  pending: { icon: "spinner.svg", color: "#ffff00" },
 };
 const config = statusConfig[status]; // O(1) thay vì switch O(N)
 
@@ -193,7 +194,7 @@ const config = statusConfig[status]; // O(1) thay vì switch O(N)
 function nameToColor(name) {
   let hash = 0;
   for (let i = 0; i < name.length; i++)
-    hash = ((hash << 5) - hash) + name.charCodeAt(i);
+    hash = (hash << 5) - hash + name.charCodeAt(i);
   return `hsl(${Math.abs(hash) % 360}, 70%, 60%)`;
 }
 // "John" → luôn ra cùng màu (Deterministic) mà không cần lưu DB
@@ -244,6 +245,7 @@ WebGL:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

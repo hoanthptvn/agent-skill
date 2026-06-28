@@ -71,10 +71,13 @@ function maxSubarraySum(arr, k) {
 ```javascript
 // Tìm độ dài ngắn nhất của mảng con có tổng >= target
 function minSubArrayLen(arr, target) {
-  let total = 0, start = 0, minLen = Infinity;
+  let total = 0,
+    start = 0,
+    minLen = Infinity;
   for (let end = 0; end < arr.length; end++) {
     total += arr[end]; // Mở rộng cửa sổ
-    while (total >= target) { // Co cửa sổ từ trái khi thỏa
+    while (total >= target) {
+      // Co cửa sổ từ trái khi thỏa
       minLen = Math.min(minLen, end - start + 1); // +1 inclusive!
       total -= arr[start++]; // Co lại
     }
@@ -88,7 +91,8 @@ function minSubArrayLen(arr, target) {
 ```javascript
 // Tìm chuỗi con dài nhất KHÔNG có ký tự trùng
 function findLongestSubstring(str) {
-  let maxLength = 0, windowStart = 0;
+  let maxLength = 0,
+    windowStart = 0;
   const charIndexMap = new Map(); // Map → không bị Prototype chain bug
 
   for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
@@ -118,9 +122,10 @@ function findLongestSubstring(str) {
 
 const WINDOW = 5;
 const velocityBuf = new Float32Array(WINDOW); // TypedArray: zero GC
-let bufIdx = 0, windowSum = 0;
+let bufIdx = 0,
+  windowSum = 0;
 
-lenis.on('scroll', ({ velocity }) => {
+lenis.on("scroll", ({ velocity }) => {
   // Sliding Window: trừ cũ, cộng mới → O(1) thay O(N)
   windowSum -= velocityBuf[bufIdx];
   windowSum += velocity;
@@ -128,7 +133,11 @@ lenis.on('scroll', ({ velocity }) => {
   bufIdx = (bufIdx + 1) % WINDOW;
 
   const avgVelocity = windowSum / WINDOW; // Trung bình mượt, không giật
-  gsap.to('.content', { skewY: avgVelocity * 0.02, duration: 0.1, overwrite: true });
+  gsap.to(".content", {
+    skewY: avgVelocity * 0.02,
+    duration: 0.1,
+    overwrite: true,
+  });
 });
 ```
 
@@ -137,10 +146,14 @@ lenis.on('scroll', ({ velocity }) => {
 ```javascript
 const FPS_WINDOW = 60;
 const frameTimes = new Float32Array(FPS_WINDOW).fill(16.67);
-let fpsSum = 16.67 * FPS_WINDOW, fpsIdx = 0, lastT = performance.now();
+let fpsSum = 16.67 * FPS_WINDOW,
+  fpsIdx = 0,
+  lastT = performance.now();
 
 function tick() {
-  const now = performance.now(), dt = now - lastT; lastT = now;
+  const now = performance.now(),
+    dt = now - lastT;
+  lastT = now;
   fpsSum -= frameTimes[fpsIdx];
   fpsSum += dt;
   frameTimes[fpsIdx] = dt;
@@ -150,7 +163,6 @@ function tick() {
   if (fps < 30) reduceQuality(); // Tự giảm particle count
   requestAnimationFrame(tick);
 }
-
 ```
 
 ```
@@ -186,6 +198,7 @@ Off-by-one:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

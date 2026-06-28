@@ -9,12 +9,14 @@ description: Kỹ năng điều hướng trung tâm cho các thuật toán JS. K
 
 ## 🧭 Bảng Định tuyến (Routing Table)
 
-| Vấn đề cần giải quyết | Tệp cần đọc |
-|---|---|
+| Vấn đề cần giải quyết                                         | Tệp cần đọc                                                         |
+| ------------------------------------------------------------- | ------------------------------------------------------------------- |
 | **Tôi đang dùng GSAP và không biết có cần thuật toán không?** | `skills/algorithms/gsap-algorithm-guide.md` (BẮT BUỘC ĐỌC ĐẦU TIÊN) |
 
 ### Nhóm Thực chiến (Ngày nào cũng dùng)
+
 Nằm trong thư mục `essential/`:
+
 - `skills/algorithms/essential/animation-loop.md`: Xử lý `requestAnimationFrame`, tối ưu vòng lặp render.
 - `skills/algorithms/essential/flip-sort.md`: Hiệu ứng kéo thả (Drag & Drop), Lọc danh sách mượt mà (FLIP).
 - `skills/algorithms/essential/binary-search.md`: Áp dụng cho Virtual Scroll, Timeline Scrubbing.
@@ -26,11 +28,14 @@ Nằm trong thư mục `essential/`:
 - `skills/algorithms/essential/pathfinding.md`: Tìm đường đi ngắn nhất (Dijkstra) cho web game/tương tác.
 
 ### Nhóm Chuyên sâu (Chỉ dùng cho WebGL / Framework)
+
 Nằm trong thư mục `advanced/`:
+
 - `skills/algorithms/advanced/radix-sort.md`: Sắp xếp Z-depth hàng ngàn particles ở 60fps.
 - `skills/algorithms/advanced/binary-heap.md`: Hàng đợi ưu tiên (Priority Queue), Task Scheduler.
 - `skills/algorithms/advanced/graph.md`: Quản lý Scene Graph (Three.js), State Machine cực độ phức tạp.
 - `skills/algorithms/advanced/recursion.md`: Deep Clone, cấu trúc Tree View vô hạn.
 
 ## 🚫 Tiêu chí Thoát (Hard Exit)
+
 Nếu bạn được yêu cầu áp dụng một thuật toán, bạn BẮT BUỘC phải đọc file tương ứng trong danh sách trên trước khi viết bất kỳ dòng code nào.

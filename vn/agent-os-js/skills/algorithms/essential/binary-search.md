@@ -39,14 +39,17 @@ const binarySearch = (arr, target) => {
   // Early Bailout
   if (!arr.length || target < arr[0] || target > arr[arr.length - 1]) return -1;
 
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
 
-  while (left <= right) {                               // ← PHẢI có =
+  while (left <= right) {
+    // ← PHẢI có =
     const mid = left + Math.floor((right - left) / 2); // ← Tránh Integer Overflow
 
-    if (arr[mid] === target) return mid;                // Found → Early Exit
-    arr[mid] < target ? left = mid + 1                 // ← PHẢI +1
-                      : right = mid - 1;               // ← PHẢI -1
+    if (arr[mid] === target) return mid; // Found → Early Exit
+    arr[mid] < target
+      ? (left = mid + 1) // ← PHẢI +1
+      : (right = mid - 1); // ← PHẢI -1
   }
   return -1;
 };
@@ -56,16 +59,18 @@ const binarySearch = (arr, target) => {
 
 ```javascript
 // ❌ Thiếu = → bỏ sót phần tử cuối (start === end → skip)
-while (left < right)   // Sai
-while (left <= right)  // Đúng
+while (left < right)
+  // Sai
+  while (left <= right)
+    // Đúng
 
-// ❌ left = mid → INFINITE LOOP → Tab crash
-left = mid;            // Sai (khi left=mid=right → stuck)
-left = mid + 1;        // Đúng
+    // ❌ left = mid → INFINITE LOOP → Tab crash
+    left = mid; // Sai (khi left=mid=right → stuck)
+left = mid + 1; // Đúng
 
 // ❌ Tràn số (Java/C++ mindset)
-Math.floor((left + right) / 2)         // Có thể overflow 32-bit
-left + Math.floor((right - left) / 2)  // An toàn
+Math.floor((left + right) / 2); // Có thể overflow 32-bit
+left + Math.floor((right - left) / 2); // An toàn
 
 // Bitwise >> 1 — nhanh hơn nhưng 32-bit limit
 const mid = (left + right) >>> 1; // unsigned shift, OK cho mảng < 2.1 tỷ
@@ -78,7 +83,9 @@ const mid = (left + right) >>> 1; // unsigned shift, OK cho mảng < 2.1 tỷ
 ```javascript
 // countZeroes — [1,1,1,0,0,0]: Tìm first zero index
 function countZeroes(arr) {
-  let left = 0, right = arr.length - 1, firstZeroIdx = -1;
+  let left = 0,
+    right = arr.length - 1,
+    firstZeroIdx = -1;
   while (left <= right) {
     const mid = left + Math.floor((right - left) / 2);
     if (arr[mid] === 0) {
@@ -94,7 +101,9 @@ function countZeroes(arr) {
 // sortedFrequency — đếm tần suất 1 số trong sorted array
 function sortedFrequency(arr, num) {
   const findBound = (arr, num, findFirst) => {
-    let lo = 0, hi = arr.length - 1, res = -1;
+    let lo = 0,
+      hi = arr.length - 1,
+      res = -1;
     while (lo <= hi) {
       const mid = lo + ((hi - lo) >> 1);
       if (arr[mid] === num) {
@@ -113,14 +122,21 @@ function sortedFrequency(arr, num) {
 
 ```javascript
 function findRotatedIndex(arr, target) {
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
   while (left <= right) {
     const mid = left + Math.floor((right - left) / 2);
     if (arr[mid] === target) return mid;
-    if (arr[left] <= arr[mid]) { // Nửa TRÁI sorted
-      target >= arr[left] && target < arr[mid] ? (right = mid - 1) : (left = mid + 1);
-    } else { // Nửa PHẢI sorted
-      target > arr[mid] && target <= arr[right] ? (left = mid + 1) : (right = mid - 1);
+    if (arr[left] <= arr[mid]) {
+      // Nửa TRÁI sorted
+      target >= arr[left] && target < arr[mid]
+        ? (right = mid - 1)
+        : (left = mid + 1);
+    } else {
+      // Nửa PHẢI sorted
+      target > arr[mid] && target <= arr[right]
+        ? (left = mid + 1)
+        : (right = mid - 1);
     }
   }
   return -1;
@@ -202,6 +218,7 @@ Frontend:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

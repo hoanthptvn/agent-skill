@@ -43,16 +43,16 @@ arr.sort()              → O(N log N) ← Timsort (V8), MUTATE mảng gốc!
 
 ```javascript
 arr.toSorted((a, b) => a - b); // Trả về mảng MỚI đã sort, gốc không đổi
-arr.toReversed();               // Trả về mảng MỚI đảo ngược
-arr.toSpliced(1, 1, 'new');     // Trả về mảng MỚI đã splice
-arr.with(2, 'new');             // Trả về mảng MỚI, thay phần tử tại index 2
+arr.toReversed(); // Trả về mảng MỚI đảo ngược
+arr.toSpliced(1, 1, "new"); // Trả về mảng MỚI đã splice
+arr.with(2, "new"); // Trả về mảng MỚI, thay phần tử tại index 2
 
 // ⚠️ .sort() KHÔNG truyền comparator → sort theo Unicode string
-[6, 4, 15, 10].sort();          // [10, 15, 4, 6] ← SAI!
-[6, 4, 15, 10].sort((a,b) => a-b); // [4, 6, 10, 15] ← ĐÚNG
+[6, 4, 15, 10].sort(); // [10, 15, 4, 6] ← SAI!
+[6, 4, 15, 10].sort((a, b) => a - b); // [4, 6, 10, 15] ← ĐÚNG
 
 // Multi-criteria sort
-items.toSorted((a, b) => (a.age - b.age) || a.name.localeCompare(b.name, 'vi'));
+items.toSorted((a, b) => a.age - b.age || a.name.localeCompare(b.name, "vi"));
 ```
 
 ---
@@ -61,21 +61,24 @@ items.toSorted((a, b) => (a.age - b.age) || a.name.localeCompare(b.name, 'vi'));
 
 ```javascript
 // ❌ delete arr[i] → Holey Array → V8 hủy mọi tối ưu hóa
-const arr = ['A', 'B', 'C', 'D'];
+const arr = ["A", "B", "C", "D"];
 delete arr[0]; // [empty, 'B', 'C', 'D'] ← V8 giáng cấp → Dictionary Mode → chậm 10-100×
 // ✓ Fix: shift(), splice(), hoặc Swap-and-Pop
 
 // ❌ .filter().map() chain → O(3N) + 2 mảng rác → GC spike
-const result = data.filter(x => x.active).map(x => x.value * 2);
+const result = data.filter((x) => x.active).map((x) => x.value * 2);
 // ✓ Fix: Single pass
 const result = [];
-for (const x of data) { if (x.active) result.push(x.value * 2); }
+for (const x of data) {
+  if (x.active) result.push(x.value * 2);
+}
 
 // ❌ [...result, item] trong vòng lặp → O(N²) — Spread là O(N), lồng trong loop
 let result = [];
 for (let i = 0; i < n; i++) result = [...result, arr[i]]; // Copy toàn bộ mỗi vòng
 // ✓ Fix: push() là O(1) amortized
-const result = []; for (let i = 0; i < n; i++) result.push(arr[i]);
+const result = [];
+for (let i = 0; i < n; i++) result.push(arr[i]);
 
 // ❌ unshift() cho danh sách tin nhắn
 messages.unshift(newMessage); // O(N) — 100K tin nhắn = 100K re-index
@@ -96,7 +99,7 @@ items.splice(targetIndex, 1);
 
 // ✓ Swap-and-Pop → O(1)
 items[targetIndex] = items[items.length - 1]; // Đè bằng phần tử cuối
-items.pop();                                   // Pop cuối O(1)
+items.pop(); // Pop cuối O(1)
 
 // Particle System 60fps:
 // ✗ particles.splice(idx, 1)  → O(N) × 60/giây = sụp FPS
@@ -109,7 +112,7 @@ items.pop();                                   // Pop cuối O(1)
 
 ```javascript
 // ✗ Tư duy Junior — O(N) mỗi lần tìm kiếm
-const found = products.find(p => p.id === 8888); // Duyệt đến khi gặp
+const found = products.find((p) => p.id === 8888); // Duyệt đến khi gặp
 
 // ✓ Tư duy Senior — Normalize 1 lần O(N), lookup mãi mãi O(1)
 const productsMap = {};
@@ -131,14 +134,15 @@ const found = productsMap[8888]; // O(1) — tức thì
 //   HOLEY_ELEMENTS  — có lỗ hổng, Dictionary mode → chậm 10-100×
 
 // Tạo Holey Array:
-delete arr[0];                    // ❌ → empty slot
-new Array(100);                   // ❌ → 100 empty slots
-const a = []; a[99] = 1;         // ❌ → 99 empty slots
+delete arr[0]; // ❌ → empty slot
+new Array(100); // ❌ → 100 empty slots
+const a = [];
+a[99] = 1; // ❌ → 99 empty slots
 
 // Tạo Packed Array:
-Array.from({length: 100}, () => 0); // ✓
-new Array(100).fill(0);             // ✓
-[...Array(100)].map((_, i) => i);   // ✓ (nhưng tạo 2 mảng tạm)
+Array.from({ length: 100 }, () => 0); // ✓
+new Array(100).fill(0); // ✓
+[...Array(100)].map((_, i) => i); // ✓ (nhưng tạo 2 mảng tạm)
 ```
 
 ---
@@ -176,13 +180,13 @@ TUYỆT ĐỐI TRÁNH:
   .sort() thiếu comparator → sort theo string → SAI
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
 > 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
 > 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.

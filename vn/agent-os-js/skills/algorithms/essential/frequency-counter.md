@@ -64,7 +64,7 @@ function validAnagram(str1, str2) {
   for (const char of str1) lookup[char] = (lookup[char] || 0) + 1; // Nhập kho
   for (const char of str2) {
     if (!lookup[char]) return false; // !undefined hoặc !0 → false → mismatch
-    lookup[char] -= 1;               // Xuất kho
+    lookup[char] -= 1; // Xuất kho
   }
   return true;
 }
@@ -83,7 +83,9 @@ function findAllDuplicates(arr) {
   const freq = new Map();
   const result = [];
   for (const val of arr) freq.set(val, (freq.get(val) || 0) + 1);
-  for (const [key, count] of freq) { if (count === 2) result.push(key); }
+  for (const [key, count] of freq) {
+    if (count === 2) result.push(key);
+  }
   return result;
 }
 ```
@@ -94,7 +96,7 @@ function findAllDuplicates(arr) {
 function buildFacets(products) {
   const facets = { size: {}, color: {}, brand: {} };
   for (const p of products) {
-    facets.size[p.size]   = (facets.size[p.size] || 0) + 1;
+    facets.size[p.size] = (facets.size[p.size] || 0) + 1;
     facets.color[p.color] = (facets.color[p.color] || 0) + 1;
     facets.brand[p.brand] = (facets.brand[p.brand] || 0) + 1;
   }
@@ -135,6 +137,7 @@ Nhận diện:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

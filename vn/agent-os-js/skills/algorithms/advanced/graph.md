@@ -24,7 +24,9 @@ Weighted   (Có trọng số): Cạnh có giá trị (khoảng cách đường, 
 
 ```javascript
 class Graph {
-  constructor() { this.adjacencyList = {}; }
+  constructor() {
+    this.adjacencyList = {};
+  }
 
   // O(1) — Guard: không ghi đè nếu đã tồn tại (xóa sạch bạn bè cũ!)
   addVertex(v) {
@@ -41,8 +43,8 @@ class Graph {
 
   // O(E) — filter() duyệt toàn bộ danh sách cạnh
   removeEdge(v1, v2) {
-    this.adjacencyList[v1] = this.adjacencyList[v1].filter(v => v !== v2);
-    this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1);
+    this.adjacencyList[v1] = this.adjacencyList[v1].filter((v) => v !== v2);
+    this.adjacencyList[v2] = this.adjacencyList[v2].filter((v) => v !== v1);
   }
 
   // O(V+E) — Phải cắt đứt TẤT CẢ cạnh trước khi delete vertex
@@ -85,14 +87,14 @@ Luôn khởi tạo visited Set TRƯỚC TIÊN, đánh dấu NGAY KHI PUSH vào Q
 class Graph {
   // 1. DFS Recursive — thanh lịch, rủi ro Stack Overflow với graph sâu
   depthFirstSearchRecursive(start) {
-    const result  = [];
+    const result = [];
     const visited = new Set();
 
     const dfs = (vertex) => {
       if (!vertex) return;
       visited.add(vertex);
       result.push(vertex);
-      this.adjacencyList[vertex].forEach(neighbor => {
+      this.adjacencyList[vertex].forEach((neighbor) => {
         if (!visited.has(neighbor)) dfs(neighbor);
       });
     };
@@ -106,14 +108,14 @@ class Graph {
   // Recursive: ưu tiên hàng xóm ĐẦU (push stack sau → pop trước = hàng xóm CUỐI)
   // → Để kết quả giống recursive: reverse() mảng hàng xóm trước khi push
   depthFirstSearchIterative(start) {
-    const stack   = [start];
-    const result  = [];
+    const stack = [start];
+    const result = [];
     const visited = new Set([start]); // Đánh dấu ngay khi push!
 
     while (stack.length > 0) {
       const curr = stack.pop(); // LIFO
       result.push(curr);
-      this.adjacencyList[curr].forEach(neighbor => {
+      this.adjacencyList[curr].forEach((neighbor) => {
         if (!visited.has(neighbor)) {
           visited.add(neighbor);
           stack.push(neighbor);
@@ -127,15 +129,15 @@ class Graph {
   // ✗ queue.shift() = O(N) reindex → BFS thực tế O(N²) với mảng lớn
   // ✓ Head pointer = O(1) dequeue
   breadthFirstSearch(start) {
-    const queue   = [start];
-    const result  = [];
+    const queue = [start];
+    const result = [];
     const visited = new Set([start]);
-    let head      = 0; // Con trỏ thay thế shift()
+    let head = 0; // Con trỏ thay thế shift()
 
     while (head < queue.length) {
       const curr = queue[head++]; // O(1) — không dịch chuyển mảng
       result.push(curr);
-      this.adjacencyList[curr].forEach(neighbor => {
+      this.adjacencyList[curr].forEach((neighbor) => {
         if (!visited.has(neighbor)) {
           visited.add(neighbor);
           queue.push(neighbor);
@@ -245,8 +247,8 @@ dfsIterative(start) {
 // Iterative CÓ THỂ tạm dừng và tiếp tục frame sau
 
 class ChunkedTraverser {
-  #stack    = [];
-  #visited  = new Set();
+  #stack = [];
+  #visited = new Set();
   #isRunning = false;
 
   start(root) {
@@ -261,14 +263,15 @@ class ChunkedTraverser {
     const frameStart = performance.now();
     let processed = 0;
 
-    while (this.#stack.length && processed < 500) { // Tối đa 500 nodes/frame
+    while (this.#stack.length && processed < 500) {
+      // Tối đa 500 nodes/frame
       const node = this.#stack.pop();
       if (this.#visited.has(node)) continue;
       this.#visited.add(node);
 
       this.#processNode(node); // update material, calculate matrix, v.v.
 
-      node.children?.forEach(c => this.#stack.push(c));
+      node.children?.forEach((c) => this.#stack.push(c));
       processed++;
 
       // Time budget: nhường browser nếu đã dùng quá 14ms
@@ -342,20 +345,20 @@ bfs(start) {
 // User click ô → gợn sóng màu lan tỏa ra
 
 function rippleFromClick(clickedCell, grid, gsap) {
-  const visited  = new Set([clickedCell]);
-  const queue    = [{ cell: clickedCell, dist: 0 }];
-  let head       = 0;
+  const visited = new Set([clickedCell]);
+  const queue = [{ cell: clickedCell, dist: 0 }];
+  let head = 0;
 
   while (head < queue.length) {
     const { cell, dist } = queue[head++];
 
     gsap.to(cell.element, {
-      backgroundColor: '#00ffcc',
-      delay: dist * 0.05,   // Hàng xóm xa hơn → delay lớn hơn → sóng loang dần
-      duration: 0.3
+      backgroundColor: "#00ffcc",
+      delay: dist * 0.05, // Hàng xóm xa hơn → delay lớn hơn → sóng loang dần
+      duration: 0.3,
     });
 
-    getNeighbors(cell, grid).forEach(neighbor => {
+    getNeighbors(cell, grid).forEach((neighbor) => {
       if (!visited.has(neighbor)) {
         visited.add(neighbor);
         queue.push({ cell: neighbor, dist: dist + 1 });
@@ -472,7 +475,7 @@ delete obj.key → phá vỡ Hidden Class
 
 ```javascript
 // ❌ Bug khi vừa lặp vừa xóa phần tử của cùng mảng:
-this.adjacencyList[v].forEach(neighbor => {
+this.adjacencyList[v].forEach((neighbor) => {
   this.removeEdge(v, neighbor); // removeEdge chứa filter() → thu ngắn mảng
   // forEach tiếp tục với index cũ → "nhảy cóc" bỏ sót phần tử!
 });
@@ -540,6 +543,7 @@ Immutability với UI State:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

@@ -52,7 +52,7 @@ ScrollTrigger.create({ trigger: '.section', ... });
 
 ### 1. Binary Search — `essential/binary-search.md`
 
-**Vấn đề cần giải**: *Tìm vị trí/item trong mảng có thứ tự theo giá trị thực (scroll offset, timestamp).*
+**Vấn đề cần giải**: _Tìm vị trí/item trong mảng có thứ tự theo giá trị thực (scroll offset, timestamp)._
 
 #### ✅ CẦN DÙNG — GSAP Timeline Scrubbing
 
@@ -61,22 +61,26 @@ ScrollTrigger.create({ trigger: '.section', ... });
 // gsap.to() animate đến đúng keyframe → cần biết keyframe nào đang active
 
 const keyframes = [
-  { time: 0,   state: { opacity: 0, y: 100 } },
-  { time: 250, state: { opacity: 1, y: 0   } },
+  { time: 0, state: { opacity: 0, y: 100 } },
+  { time: 250, state: { opacity: 1, y: 0 } },
   { time: 500, state: { opacity: 1, y: -50 } },
   // ... 500 keyframes
 ];
 
 // ❌ arr.find() → O(N) mỗi pixel scroll = lag
-const active = keyframes.find(k => k.time <= scrollY);
+const active = keyframes.find((k) => k.time <= scrollY);
 
 // ✅ Binary Search → O(log N) = 9 bước cho 500 keyframes
 function findKeyframe(keyframes, scrollY) {
-  let lo = 0, hi = keyframes.length - 1, result = 0;
+  let lo = 0,
+    hi = keyframes.length - 1,
+    result = 0;
   while (lo <= hi) {
     const mid = lo + ((hi - lo) >> 1);
-    if (keyframes[mid].time <= scrollY) { result = mid; lo = mid + 1; }
-    else hi = mid - 1;
+    if (keyframes[mid].time <= scrollY) {
+      result = mid;
+      lo = mid + 1;
+    } else hi = mid - 1;
   }
   return keyframes[result];
 }
@@ -87,7 +91,7 @@ ScrollTrigger.create({
     const ms = self.progress * totalDuration;
     const kf = findKeyframe(keyframes, ms); // O(log N)
     gsap.to(el, { ...kf.state, duration: 0.1 });
-  }
+  },
 });
 ```
 
@@ -117,16 +121,17 @@ lenis.on('scroll', ({ scroll }) => {
 ```
 
 #### ❌ KHÔNG CẦN — Animate đơn giản
+
 ```javascript
 // Không cần Binary Search khi chỉ animate vài elements cố định
-gsap.to('.hero', { opacity: 1, y: 0 }); // Dùng GSAP thẳng
+gsap.to(".hero", { opacity: 1, y: 0 }); // Dùng GSAP thẳng
 ```
 
 ---
 
 ### 2. Graph BFS/DFS — `essential/graph-traversal.md`
 
-**Vấn đề cần giải**: *Animation lan tỏa theo mối quan hệ — không phải stagger đơn giản.*
+**Vấn đề cần giải**: _Animation lan tỏa theo mối quan hệ — không phải stagger đơn giản._
 
 #### ✅ CẦN DÙNG — Ripple / Wave Effect từ điểm click
 
@@ -140,10 +145,10 @@ function buildGrid(rows, cols) {
     for (let c = 0; c < cols; c++) {
       const id = r * cols + c;
       const neighbors = [];
-      if (r > 0) neighbors.push((r-1) * cols + c); // trên
-      if (r < rows-1) neighbors.push((r+1) * cols + c); // dưới
+      if (r > 0) neighbors.push((r - 1) * cols + c); // trên
+      if (r < rows - 1) neighbors.push((r + 1) * cols + c); // dưới
       if (c > 0) neighbors.push(r * cols + c - 1); // trái
-      if (c < cols-1) neighbors.push(r * cols + c + 1); // phải
+      if (c < cols - 1) neighbors.push(r * cols + c + 1); // phải
       adj.set(id, neighbors);
     }
   }
@@ -161,7 +166,12 @@ function rippleFrom(startCell, graph, cells) {
     const el = cells[node]; // DOM element
 
     // GSAP animate từng "tầng" BFS với delay tăng dần
-    gsap.to(el, { scale: 1.3, backgroundColor: '#6366f1', duration: 0.3, delay });
+    gsap.to(el, {
+      scale: 1.3,
+      backgroundColor: "#6366f1",
+      duration: 0.3,
+      delay,
+    });
 
     for (const neighbor of graph.get(node) || []) {
       if (!visited.has(neighbor)) {
@@ -173,7 +183,7 @@ function rippleFrom(startCell, graph, cells) {
   }
 }
 
-gridEl.addEventListener('click', (e) => {
+gridEl.addEventListener("click", (e) => {
   const cellIdx = +e.target.dataset.idx;
   rippleFrom(cellIdx, grid, allCells);
 });
@@ -206,16 +216,17 @@ animateSceneTree(scene);
 ```
 
 #### ❌ KHÔNG CẦN — Stagger tuyến tính đơn giản
+
 ```javascript
 // Không cần Graph khi chỉ muốn stagger theo thứ tự array
-gsap.to('.card', { opacity: 1, stagger: 0.1 }); // GSAP tự xử lý
+gsap.to(".card", { opacity: 1, stagger: 0.1 }); // GSAP tự xử lý
 ```
 
 ---
 
 ### 3. Sorting + FLIP — `essential/sorting-basic.md`
 
-**Vấn đề cần giải**: *Sort danh sách và animate các card bay về đúng vị trí mới.*
+**Vấn đề cần giải**: _Sort danh sách và animate các card bay về đúng vị trí mới._
 
 #### ✅ CẦN DÙNG — FLIP Animation (Filter/Sort UI)
 
@@ -224,27 +235,28 @@ gsap.to('.card', { opacity: 1, stagger: 0.1 }); // GSAP tự xử lý
 
 function flipSort(cards, data, comparator) {
   // FIRST: Lưu vị trí cũ trước khi sort
-  const first = cards.map(el => el.getBoundingClientRect());
+  const first = cards.map((el) => el.getBoundingClientRect());
 
   // Sort DATA (không đụng DOM)
   data.sort(comparator); // ← .sort() cần comparator!
 
   // LAST: Re-render DOM theo thứ tự mới
   renderCards(data);
-  const last = cards.map(el => el.getBoundingClientRect());
+  const last = cards.map((el) => el.getBoundingClientRect());
 
   // INVERT + PLAY: GSAP animate từ vị trí cũ về mới
   cards.forEach((el, i) => {
     const dx = first[i].left - last[i].left;
-    const dy = first[i].top  - last[i].top;
-    gsap.fromTo(el,
+    const dy = first[i].top - last[i].top;
+    gsap.fromTo(
+      el,
       { x: dx, y: dy },
-      { x: 0, y: 0, duration: 0.5, ease: 'power2.out' }
+      { x: 0, y: 0, duration: 0.5, ease: "power2.out" },
     );
   });
 }
 
-document.querySelector('#sort-price').addEventListener('click', () => {
+document.querySelector("#sort-price").addEventListener("click", () => {
   flipSort(cardEls, productData, (a, b) => a.price - b.price);
 });
 ```
@@ -274,6 +286,7 @@ ws.onmessage = ({ data }) => {
 ```
 
 #### ❌ KHÔNG CẦN — Sort tĩnh 1 lần
+
 ```javascript
 // Chỉ sort 1 lần lúc init, không animate → dùng .toSorted() luôn
 const sorted = data.toSorted((a, b) => a.price - b.price);
@@ -284,7 +297,7 @@ renderCards(sorted); // Không cần thuật toán riêng
 
 ### 4. Sliding Window — `essential/patterns-sliding-window.md`
 
-**Vấn đề cần giải**: *Tính giá trị trung bình của N frame gần nhất để tạo hiệu ứng mượt.*
+**Vấn đề cần giải**: _Tính giá trị trung bình của N frame gần nhất để tạo hiệu ứng mượt._
 
 #### ✅ CẦN DÙNG — Scroll Velocity → Skew Effect
 
@@ -297,7 +310,7 @@ const scrollHistory = new Array(WINDOW).fill(0); // Circular buffer
 let windowSum = 0;
 let historyIdx = 0;
 
-lenis.on('scroll', ({ velocity }) => {
+lenis.on("scroll", ({ velocity }) => {
   // Sliding Window: trừ giá trị cũ, cộng giá trị mới
   windowSum -= scrollHistory[historyIdx];
   windowSum += velocity;
@@ -307,7 +320,7 @@ lenis.on('scroll', ({ velocity }) => {
   const avgVelocity = windowSum / WINDOW; // Không tính lại từ đầu
 
   // GSAP apply skew dựa trên velocity trung bình
-  gsap.to('.content', { skewY: avgVelocity * 0.02, duration: 0.1 });
+  gsap.to(".content", { skewY: avgVelocity * 0.02, duration: 0.1 });
 });
 ```
 
@@ -339,16 +352,17 @@ function tick() {
 ```
 
 #### ❌ KHÔNG CẦN — Ease/Lerp đơn giản
+
 ```javascript
 // GSAP ease đã là "window" rồi, không cần tự tính
-gsap.to(el, { x: 100, ease: 'power2.out' }); // Không cần Sliding Window
+gsap.to(el, { x: 100, ease: "power2.out" }); // Không cần Sliding Window
 ```
 
 ---
 
 ### 5. Frequency Counter — `essential/patterns-frequency-counter.md`
 
-**Vấn đề cần giải**: *Phân loại, lọc, đếm tần suất để quyết định animate nhóm nào.*
+**Vấn đề cần giải**: _Phân loại, lọc, đếm tần suất để quyết định animate nhóm nào._
 
 #### ✅ CẦN DÙNG — Group Animation theo Category
 
@@ -356,8 +370,8 @@ gsap.to(el, { x: 100, ease: 'power2.out' }); // Không cần Sliding Window
 // Bài toán: 500 sản phẩm, click filter "Electronics" → chỉ animate nhóm đó
 
 // ❌ O(N²): filter + includes mỗi lần click
-btn.addEventListener('click', () => {
-  const visible = products.filter(p => p.category === selected);
+btn.addEventListener("click", () => {
+  const visible = products.filter((p) => p.category === selected);
 });
 
 // ✅ Build Map 1 lần O(N) → lookup O(1) mãi mãi
@@ -367,12 +381,12 @@ for (const p of products) {
   grouped.get(p.category).push(p);
 }
 
-btn.addEventListener('click', () => {
+btn.addEventListener("click", () => {
   const visible = grouped.get(selected) || []; // O(1)
-  const hidden  = products.filter(p => !visible.includes(p)); // dùng Set để O(N)
+  const hidden = products.filter((p) => !visible.includes(p)); // dùng Set để O(N)
 
   gsap.to(hiddenEls, { opacity: 0, scale: 0.8, duration: 0.3 });
-  gsap.to(visibleEls, { opacity: 1, scale: 1,   duration: 0.3 });
+  gsap.to(visibleEls, { opacity: 1, scale: 1, duration: 0.3 });
 });
 ```
 
@@ -384,7 +398,7 @@ const freq = new Map();
 for (const tag of allTags) freq.set(tag, (freq.get(tag) || 0) + 1);
 const max = Math.max(...freq.values());
 
-tagEls.forEach(el => {
+tagEls.forEach((el) => {
   const count = freq.get(el.dataset.tag) || 0;
   const scale = 0.8 + (count / max) * 0.8; // scale từ 0.8 đến 1.6
   gsap.to(el, { scale, duration: 0.5 });
@@ -392,15 +406,16 @@ tagEls.forEach(el => {
 ```
 
 #### ❌ KHÔNG CẦN — Stagger tất cả không phân loại
+
 ```javascript
-gsap.to('.tag', { opacity: 1, stagger: 0.05 }); // GSAP đủ
+gsap.to(".tag", { opacity: 1, stagger: 0.05 }); // GSAP đủ
 ```
 
 ---
 
 ### 6. Multiple Pointers — `essential/patterns-pointers.md`
 
-**Vấn đề cần giải**: *Xử lý 2 điểm đồng thời (multi-touch, pinch, compare 2 timelines).*
+**Vấn đề cần giải**: _Xử lý 2 điểm đồng thời (multi-touch, pinch, compare 2 timelines)._
 
 #### ✅ CẦN DÙNG — Pinch-to-Zoom với 2 fingers
 
@@ -408,7 +423,7 @@ gsap.to('.tag', { opacity: 1, stagger: 0.05 }); // GSAP đủ
 // touches[0] và touches[1] = 2 pointers, tính khoảng cách
 let prevDistance = 0;
 
-canvas.addEventListener('touchmove', (e) => {
+canvas.addEventListener("touchmove", (e) => {
   if (e.touches.length < 2) return;
 
   // Multiple Pointers: 2 touch points
@@ -436,16 +451,17 @@ particles.length = writeIdx; // Trim
 ```
 
 #### ❌ KHÔNG CẦN — Pinch trên library có sẵn
+
 ```javascript
 // Nếu đã dùng Draggable của GSAP hoặc Hammer.js → không cần tự viết
-Draggable.create('.box', { type: 'x,y', inertia: true });
+Draggable.create(".box", { type: "x,y", inertia: true });
 ```
 
 ---
 
 ### 7. Hash Table / Map — `essential/hash-table.md`
 
-**Vấn đề cần giải**: *Cache kết quả tốn kém (getBoundingClientRect, DOM query) để không tính lại.*
+**Vấn đề cần giải**: _Cache kết quả tốn kém (getBoundingClientRect, DOM query) để không tính lại._
 
 #### ✅ CẦN DÙNG — Cache DOM measurements
 
@@ -465,7 +481,7 @@ ScrollTrigger.create({
   onUpdate: (self) => {
     const rect = getCachedRect(heroEl); // O(1) từ lần 2 trở đi
     gsap.to(el, { y: rect.top * self.progress });
-  }
+  },
 });
 ```
 
@@ -479,7 +495,9 @@ ScrollTrigger.create({
 const CELL = 50; // 50px per cell
 const grid = new Map();
 
-function getKey(x, y) { return `${Math.floor(x/CELL)},${Math.floor(y/CELL)}`; }
+function getKey(x, y) {
+  return `${Math.floor(x / CELL)},${Math.floor(y / CELL)}`;
+}
 
 function buildSpatialHash(particles) {
   grid.clear();
@@ -490,7 +508,7 @@ function buildSpatialHash(particles) {
   }
 }
 
-canvas.addEventListener('mousemove', ({ offsetX, offsetY }) => {
+canvas.addEventListener("mousemove", ({ offsetX, offsetY }) => {
   const nearby = grid.get(getKey(offsetX, offsetY)) || [];
   for (const p of nearby) {
     // GSAP animate particles gần chuột
@@ -500,10 +518,11 @@ canvas.addEventListener('mousemove', ({ offsetX, offsetY }) => {
 ```
 
 #### ❌ KHÔNG CẦN — Số lượng element nhỏ
+
 ```javascript
 // < 100 elements → hover detector đơn giản đủ rồi
-document.querySelectorAll('.dot').forEach(el => {
-  el.addEventListener('mouseenter', () => gsap.to(el, { scale: 1.5 }));
+document.querySelectorAll(".dot").forEach((el) => {
+  el.addEventListener("mouseenter", () => gsap.to(el, { scale: 1.5 }));
 });
 ```
 
@@ -521,20 +540,21 @@ function animatePath(path, marbleEl) {
   const tl = gsap.timeline();
   for (let i = 0; i < path.length; i++) {
     const { x, y } = cellToPixel(path[i]);
-    tl.to(marbleEl, { x, y, duration: 0.15, ease: 'none' });
+    tl.to(marbleEl, { x, y, duration: 0.15, ease: "none" });
   }
 }
 
 const path = dijkstra(maze, startNode, endNode);
-animatePath(path, document.querySelector('.marble'));
+animatePath(path, document.querySelector(".marble"));
 ```
 
 #### ❌ KHÔNG CẦN — Path cố định, không tính toán
+
 ```javascript
 // Path biết trước → GSAP MotionPath trực tiếp
-gsap.to('.dot', {
-  motionPath: { path: '#svgPath', align: '#svgPath' },
-  duration: 2
+gsap.to(".dot", {
+  motionPath: { path: "#svgPath", align: "#svgPath" },
+  duration: 2,
 });
 ```
 
@@ -542,16 +562,16 @@ gsap.to('.dot', {
 
 ## Tóm tắt — Bảng cuối
 
-| Algorithm | GSAP cần khi | GSAP không cần khi |
-|---|---|---|
-| **Binary Search** | Keyframe lookup, Virtual Scroll >10K items | Vài items cố định |
-| **Graph BFS/DFS** | Ripple effect, Scene tree traverse, Maze | Stagger đơn giản theo array |
-| **Sorting + FLIP** | Cards bay về vị trí mới, Live feed sort | Sort tĩnh không animate |
-| **Sliding Window** | Scroll velocity avg, FPS monitor | Ease GSAP đã đủ |
-| **Frequency Counter** | Filter group animation, Tag scale by freq | Stagger đều toàn bộ |
-| **Multiple Pointers** | Pinch-to-zoom, Particle compact in-place | Draggable của GSAP |
-| **Hash Table** | Cache DOM rects, Spatial hover detection | < 100 elements |
-| **Dijkstra / DP** | Pathfinding animation, Maze solver | Path cố định → MotionPath |
+| Algorithm             | GSAP cần khi                               | GSAP không cần khi          |
+| --------------------- | ------------------------------------------ | --------------------------- |
+| **Binary Search**     | Keyframe lookup, Virtual Scroll >10K items | Vài items cố định           |
+| **Graph BFS/DFS**     | Ripple effect, Scene tree traverse, Maze   | Stagger đơn giản theo array |
+| **Sorting + FLIP**    | Cards bay về vị trí mới, Live feed sort    | Sort tĩnh không animate     |
+| **Sliding Window**    | Scroll velocity avg, FPS monitor           | Ease GSAP đã đủ             |
+| **Frequency Counter** | Filter group animation, Tag scale by freq  | Stagger đều toàn bộ         |
+| **Multiple Pointers** | Pinch-to-zoom, Particle compact in-place   | Draggable của GSAP          |
+| **Hash Table**        | Cache DOM rects, Spatial hover detection   | < 100 elements              |
+| **Dijkstra / DP**     | Pathfinding animation, Maze solver         | Path cố định → MotionPath   |
 
 ---
 
@@ -570,16 +590,16 @@ gsap.to('.dot', {
 
 ## Bảng Chống Ngụy Biện (Anti-rationalization Table)
 
-| Cớ của AI (AI's Excuse) | Phản biện bắt buộc của Hệ thống (System's Rebuttal) |
-|---|---|
-| `"GSAP có hàm stagger rồi, tôi không cần dùng BFS để tạo hiệu ứng sóng (ripple) cho grid."` | **SAI LẦM.** Hàm stagger của GSAP chỉ delay theo index mảng tĩnh (1D). Để tạo hiệu ứng lan tỏa không gian (2D/3D) dựa trên điểm click, BẮT BUỘC phải dùng thuật toán Graph BFS để tính toán delay dựa trên khoảng cách. |
-| `"Tôi sẽ dùng vòng lặp for() duyệt 10,000 phần tử DOM để tìm phần tử hiển thị trên màn hình rồi dùng GSAP animate nó."` | **DỪNG LẠI.** Vòng lặp `O(N)` trong sự kiện Scroll sẽ làm giật lag trình duyệt trầm trọng. Nếu danh sách đã được sắp xếp (chiều cao cộng dồn), BẮT BUỘC phải dùng Binary Search `O(log N)` để tìm phần tử. |
-| `"Tôi muốn filter sản phẩm có animation mượt, tôi sẽ ẩn/hiện DOM bằng display: none kết hợp GSAP fade."` | **KHÔNG ĐƯỢC PHÉP.** Việc đổi cấu trúc DOM đột ngột không thể tạo ra animation di chuyển mượt mà. Phải sử dụng mô hình FLIP Animation kết hợp hàm `.sort()` hoặc Frequency Counter. |
+| Cớ của AI (AI's Excuse)                                                                                                 | Phản biện bắt buộc của Hệ thống (System's Rebuttal)                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"GSAP có hàm stagger rồi, tôi không cần dùng BFS để tạo hiệu ứng sóng (ripple) cho grid."`                             | **SAI LẦM.** Hàm stagger của GSAP chỉ delay theo index mảng tĩnh (1D). Để tạo hiệu ứng lan tỏa không gian (2D/3D) dựa trên điểm click, BẮT BUỘC phải dùng thuật toán Graph BFS để tính toán delay dựa trên khoảng cách. |
+| `"Tôi sẽ dùng vòng lặp for() duyệt 10,000 phần tử DOM để tìm phần tử hiển thị trên màn hình rồi dùng GSAP animate nó."` | **DỪNG LẠI.** Vòng lặp `O(N)` trong sự kiện Scroll sẽ làm giật lag trình duyệt trầm trọng. Nếu danh sách đã được sắp xếp (chiều cao cộng dồn), BẮT BUỘC phải dùng Binary Search `O(log N)` để tìm phần tử.              |
+| `"Tôi muốn filter sản phẩm có animation mượt, tôi sẽ ẩn/hiện DOM bằng display: none kết hợp GSAP fade."`                | **KHÔNG ĐƯỢC PHÉP.** Việc đổi cấu trúc DOM đột ngột không thể tạo ra animation di chuyển mượt mà. Phải sử dụng mô hình FLIP Animation kết hợp hàm `.sort()` hoặc Frequency Counter.                                     |
 
 ## Tiêu chí Thoát (Hard Exit Criteria)
+
 - Nếu tác vụ chỉ là animate cơ bản (từ A -> B, stagger mảng đơn giản), AI phải tải `skills/gsap-core/SKILL.md` và bỏ qua thuật toán.
 - Nếu tác vụ xử lý trên 1000+ items hoặc cấu trúc logic phức tạp (Maze, Ripple, Hash), AI BẮT BUỘC phải tự động tải và áp dụng một thuật toán trong danh sách trên trước khi viết `gsap.to()`.
-
 
 ---
 
@@ -587,6 +607,7 @@ gsap.to('.dot', {
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng CSS:** Không dùng CSS Transitions (`transition: all 0.3s`) để code Animation. BẮT BUỘC dùng GSAP.
 > 2. **Vanilla JS Thuần Túy:** Hệ thống này KHÔNG dùng React/Vue. Cấm đề xuất các hook như `useGSAP()` hay `useEffect`. Phải tự quản lý bộ nhớ thủ công bằng `ScrollTrigger.kill()` và `timeline.kill()` khi hủy element hoặc chuyển trang (ví dụ Barba.js/Pjax).
 > 3. **Bảo vệ Main Thread:** Không animate `width`, `height`, `top`, `left`. BẮT BUỘC animate `x`, `y`, `scale`, `opacity`, `rotation` để kích hoạt GPU Hardware Acceleration.

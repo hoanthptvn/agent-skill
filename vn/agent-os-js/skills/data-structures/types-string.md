@@ -34,29 +34,31 @@ str.replaceAll(a, b)    → O(N)  ← Thay thế toàn bộ (ES2021)
 
 ```javascript
 // ❌ str += trong vòng lặp → O(N²) Space — string immutable nên mỗi += tạo bản sao MỚI
-let result = '';
+let result = "";
 for (let i = 0; i < 10000; i++) {
-  result += 'a'; // Cấp phát chuỗi mới mỗi vòng: 1, 2, 3... N ký tự
+  result += "a"; // Cấp phát chuỗi mới mỗi vòng: 1, 2, 3... N ký tự
 }
 // ✓ Fix: push vào array, join 1 lần cuối
 const parts = [];
-for (let i = 0; i < 10000; i++) parts.push('a'); // O(1) amortized mỗi push
-const result = parts.join(''); // 1 lần cấp phát duy nhất
+for (let i = 0; i < 10000; i++) parts.push("a"); // O(1) amortized mỗi push
+const result = parts.join(""); // 1 lần cấp phát duy nhất
 
 // ❌ Regex trong rAF → V8 tạo State Machine nặng nề, chậm 55-80%
 /[a-z0-9]/i.test(char); // KHÔNG trong requestAnimationFrame
 // ✓ Fix: charCodeAt — so sánh số nguyên, thao tác nhanh nhất CPU có thể làm
 function isAlphaNumeric(char) {
   const code = char.charCodeAt(0);
-  return (code > 47 && code < 58)   // '0'=48 ... '9'=57
-      || (code > 64 && code < 91)   // 'A'=65 ... 'Z'=90
-      || (code > 96 && code < 123); // 'a'=97 ... 'z'=122
+  return (
+    (code > 47 && code < 58) || // '0'=48 ... '9'=57
+    (code > 64 && code < 91) || // 'A'=65 ... 'Z'=90
+    (code > 96 && code < 123)
+  ); // 'a'=97 ... 'z'=122
 }
 
 // ❌ split('') với Emoji → Surrogate Pairs bị chẻ đôi
-'Hi 🚀'.split(''); // ['H','i',' ','�','�'] ← ký tự rác
+"Hi 🚀".split(""); // ['H','i',' ','�','�'] ← ký tự rác
 // ✓ Fix: Array.from() hoặc for...of
-Array.from('Hi 🚀'); // ['H','i',' ','🚀'] ← an toàn
+Array.from("Hi 🚀"); // ['H','i',' ','🚀'] ← an toàn
 
 // ❌ .slice() trong vòng lặp tìm kiếm → tạo string mới mỗi vòng → GC Thrashing
 for (let i = 0; i < str.length; i++) {
@@ -64,7 +66,9 @@ for (let i = 0; i < str.length; i++) {
 }
 // ✓ Fix: i + j pointer — zero allocation
 for (let j = 0; j < pattern.length; j++) {
-  if (str[i + j] !== pattern[j]) { break; }
+  if (str[i + j] !== pattern[j]) {
+    break;
+  }
 }
 ```
 
@@ -74,7 +78,7 @@ for (let j = 0; j < pattern.length; j++) {
 
 ```javascript
 // ❌ for(let i) CÓ THỂ cắt đôi Emoji (Surrogate Pairs)
-const str = 'Hello 🚀';
+const str = "Hello 🚀";
 for (let i = 0; i < str.length; i++) {
   console.log(str[i]); // 🚀 bị tách thành 2 ký tự rác
 }
@@ -112,7 +116,8 @@ const naiveStringSearch = (longStr, shortStr) => {
   for (let i = 0; i <= limit; i++) {
     let isMatch = true;
     for (let j = 0; j < shortStr.length; j++) {
-      if (longStr[i + j] !== shortStr[j]) { // i+j look-ahead, zero allocation
+      if (longStr[i + j] !== shortStr[j]) {
+        // i+j look-ahead, zero allocation
         isMatch = false;
         break; // Fail-fast: thoát ngay khi sai
       }
@@ -131,10 +136,10 @@ const naiveStringSearch = (longStr, shortStr) => {
 
 ```javascript
 // Native luôn nhanh hơn JS thuần 10-100× (C++ + SIMD instructions)
-str.indexOf(pattern);                      // Vị trí đầu tiên
-str.indexOf(pattern, fromIdx);             // Tìm từ vị trí cụ thể
-str.split(pattern).length - 1;             // Đếm nhanh (tạo mảng tạm)
-str.match(new RegExp(pattern, 'g'))?.length ?? 0; // RegExp mạnh nhất
+str.indexOf(pattern); // Vị trí đầu tiên
+str.indexOf(pattern, fromIdx); // Tìm từ vị trí cụ thể
+str.split(pattern).length - 1; // Đếm nhanh (tạo mảng tạm)
+str.match(new RegExp(pattern, "g"))?.length ?? 0; // RegExp mạnh nhất
 
 // Tự viết Naive Search khi:
 //   Cần trả về tọa độ [start, end] mỗi match (cho <mark> highlight)
@@ -185,13 +190,13 @@ rAF hot path:
   ✗ .slice() trong loop — tạo string mới mỗi vòng
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
 > 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
 > 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.

@@ -22,10 +22,15 @@ function lerp(current, target, factor) {
 }
 
 // Mouse follower với LERP
-let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
+let mouseX = 0,
+  mouseY = 0;
+let currentX = 0,
+  currentY = 0;
 
-document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
 
 function tick() {
   currentX = lerp(currentX, mouseX, 0.1);
@@ -48,16 +53,21 @@ function lerpWithSnap(current, target, factor, threshold = 0.01) {
 
 ```javascript
 const easing = {
-  easeInQuad:  t => t * t,
-  easeOutQuad: t => t * (2 - t),
-  easeInOutQuad: t => t < 0.5 ? 2*t*t : -1 + (4-2*t)*t,
-  easeOutElastic: t => {
+  easeInQuad: (t) => t * t,
+  easeOutQuad: (t) => t * (2 - t),
+  easeInOutQuad: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
+  easeOutElastic: (t) => {
     const c4 = (2 * Math.PI) / 3;
-    return t === 0 ? 0 : t === 1 ? 1 : Math.pow(2, -10*t) * Math.sin((t*10-0.75)*c4) + 1;
+    return t === 0
+      ? 0
+      : t === 1
+        ? 1
+        : Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
   },
-  easeOutBack: t => {
-    const c1 = 1.70158, c3 = c1 + 1;
-    return 1 + c3 * Math.pow(t-1, 3) + c1 * Math.pow(t-1, 2);
+  easeOutBack: (t) => {
+    const c1 = 1.70158,
+      c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
   },
 };
 
@@ -83,11 +93,11 @@ function animate(el, from, to, duration, easeFn = easing.easeOutQuad) {
 // Chỉ render số items trong viewport — không render 10,000 items
 class VirtualScroller {
   constructor(container, items, itemHeight) {
-    this.container  = container;
-    this.items      = items;
+    this.container = container;
+    this.items = items;
     this.itemHeight = itemHeight;
     this.visibleCount = Math.ceil(window.innerHeight / itemHeight) + 2; // Buffer
-    this.pool       = [];
+    this.pool = [];
     this._init();
   }
 
@@ -97,27 +107,32 @@ class VirtualScroller {
 
     // Create DOM pool (chỉ visibleCount elements)
     for (let i = 0; i < this.visibleCount; i++) {
-      const el = document.createElement('div');
-      el.className = 'virtual-item';
-      el.style.position = 'absolute';
+      const el = document.createElement("div");
+      el.className = "virtual-item";
+      el.style.position = "absolute";
       el.style.height = `${this.itemHeight}px`;
-      el.style.width = '100%';
+      el.style.width = "100%";
       this.container.appendChild(el);
       this.pool.push(el);
     }
 
-    this.container.parentElement.addEventListener('scroll', () => this._update());
+    this.container.parentElement.addEventListener("scroll", () =>
+      this._update(),
+    );
     this._update();
   }
 
   _update() {
     const scrollTop = this.container.parentElement.scrollTop;
-    const startIdx  = Math.floor(scrollTop / this.itemHeight);
+    const startIdx = Math.floor(scrollTop / this.itemHeight);
 
     this.pool.forEach((el, poolIdx) => {
       const dataIdx = startIdx + poolIdx;
-      if (dataIdx >= this.items.length) { el.style.display = 'none'; return; }
-      el.style.display = '';
+      if (dataIdx >= this.items.length) {
+        el.style.display = "none";
+        return;
+      }
+      el.style.display = "";
       el.style.transform = `translateY(${dataIdx * this.itemHeight}px)`;
       el.textContent = this.items[dataIdx]; // Render data
     });
@@ -153,8 +168,8 @@ function processLargeDataset(items, processOne, onComplete) {
 // Ví dụ: Parse 10,000 rows CSV không block UI
 processLargeDataset(
   csvRows,
-  row => dataStore.push(parseRow(row)),
-  () => renderTable(dataStore)
+  (row) => dataStore.push(parseRow(row)),
+  () => renderTable(dataStore),
 );
 ```
 
@@ -169,7 +184,7 @@ function tick(timestamp) {
   lastTime = timestamp;
 
   // dt = 0.016 @ 60fps, 0.033 @ 30fps — velocity nhất quán
-  particles.forEach(p => {
+  particles.forEach((p) => {
     p.x += p.vx * dt * 60; // Normalize to 60fps
     p.y += p.vy * dt * 60;
   });
@@ -185,9 +200,9 @@ requestAnimationFrame(tick);
 ```javascript
 class AnimationSystem {
   constructor() {
-    this._rafId    = null;
+    this._rafId = null;
     this._handlers = new Map();
-    this._active   = false;
+    this._active = false;
   }
 
   start() {
@@ -195,7 +210,7 @@ class AnimationSystem {
     this._active = true;
     const loop = (t) => {
       if (!this._active) return;
-      this._handlers.forEach(fn => fn(t));
+      this._handlers.forEach((fn) => fn(t));
       this._rafId = requestAnimationFrame(loop);
     };
     this._rafId = requestAnimationFrame(loop);
@@ -206,18 +221,22 @@ class AnimationSystem {
     cancelAnimationFrame(this._rafId);
   }
 
-  add(key, fn) { this._handlers.set(key, fn); }
-  remove(key)  { this._handlers.delete(key); }
+  add(key, fn) {
+    this._handlers.set(key, fn);
+  }
+  remove(key) {
+    this._handlers.delete(key);
+  }
 }
 
 // Usage
 const anim = new AnimationSystem();
-anim.add('particles', (t) => updateParticles(t));
-anim.add('cursor',    (t) => updateCursor(t));
+anim.add("particles", (t) => updateParticles(t));
+anim.add("cursor", (t) => updateCursor(t));
 anim.start();
 
 // Cleanup khi unmount
-window.addEventListener('beforeunload', () => anim.stop());
+window.addEventListener("beforeunload", () => anim.stop());
 ```
 
 ---
@@ -228,8 +247,10 @@ window.addEventListener('beforeunload', () => anim.stop());
 let dirty = true;
 let cachedLayout = null;
 
-function onResize() { dirty = true; } // Chỉ đánh dấu
-window.addEventListener('resize', onResize);
+function onResize() {
+  dirty = true;
+} // Chỉ đánh dấu
+window.addEventListener("resize", onResize);
 
 function tick() {
   if (dirty) {
@@ -247,7 +268,12 @@ function tick() {
 
 ```javascript
 // ✗ Object array: Cache miss, GC pressure
-const particles = Array.from({ length: 1000 }, () => ({ x: 0, y: 0, vx: 0, vy: 0 }));
+const particles = Array.from({ length: 1000 }, () => ({
+  x: 0,
+  y: 0,
+  vx: 0,
+  vy: 0,
+}));
 
 // ✓ TypedArray: Contiguous memory, SIMD-friendly, zero GC
 const STRIDE = 4; // x, y, vx, vy
@@ -256,8 +282,8 @@ const buf = new Float32Array(1000 * STRIDE);
 
 // Update loop — for-i, no allocation
 for (let i = 0; i < 1000; i++) {
-  buf[i*STRIDE+0] += buf[i*STRIDE+2]; // x += vx
-  buf[i*STRIDE+1] += buf[i*STRIDE+3]; // y += vy
+  buf[i * STRIDE + 0] += buf[i * STRIDE + 2]; // x += vx
+  buf[i * STRIDE + 1] += buf[i * STRIDE + 3]; // y += vy
 }
 ```
 
@@ -272,10 +298,10 @@ for (let i = 0; i < 1000; i++) {
 ```javascript
 class ObjectPool {
   constructor(factory, resetFn, initialSize = 50) {
-    this._factory  = factory;
-    this._resetFn  = resetFn;
-    this._pool     = Array.from({ length: initialSize }, factory);
-    this._active   = [];
+    this._factory = factory;
+    this._resetFn = resetFn;
+    this._pool = Array.from({ length: initialSize }, factory);
+    this._active = [];
   }
 
   acquire() {
@@ -301,12 +327,20 @@ class ObjectPool {
 // Usage — particle system
 const particlePool = new ObjectPool(
   () => ({ x: 0, y: 0, vx: 0, vy: 0, life: 0, active: false }),
-  (p) => { p.x = p.y = p.vx = p.vy = p.life = 0; p.active = false; }
+  (p) => {
+    p.x = p.y = p.vx = p.vy = p.life = 0;
+    p.active = false;
+  },
 );
 
 function spawnParticle(x, y) {
   const p = particlePool.acquire();
-  p.x = x; p.y = y; p.vx = Math.random() * 2 - 1; p.vy = -3; p.life = 1; p.active = true;
+  p.x = x;
+  p.y = y;
+  p.vx = Math.random() * 2 - 1;
+  p.vy = -3;
+  p.life = 1;
+  p.active = true;
 }
 // 0 new objects → 0 GC → 60fps ổn định
 ```
@@ -317,6 +351,7 @@ function spawnParticle(x, y) {
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

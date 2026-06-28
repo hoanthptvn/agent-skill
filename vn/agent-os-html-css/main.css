@@ -1,0 +1,16 @@
+/* ==========================================================================
+   MAIN.CSS — Entry Point (Demo)
+
+   Dự án sử dụng Cấu trúc Đa file (Multi-File CSS):
+   - css/sanitize.css (Reset mặc định)
+   - css/base.css (Project Reset, Tokens, Layout, Components)
+   - css/utility.css (Utilities)
+   - css/top.css (Page-specific)
+   ========================================================================== */
+
+@layer reset, tokens, base, layout, components, animations, utilities, page;
+
+@import "css/sanitize.css" layer(reset);
+@import "css/base.css"; /* Base tự quản lý layer bên trong */
+@import "css/utility.css" layer(utilities);
+@import "css/top.css" layer(page);

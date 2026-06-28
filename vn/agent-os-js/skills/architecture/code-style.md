@@ -27,11 +27,14 @@ Quy tắc bắt buộc khi AI viết code từ bộ agent-os-js này. Mục tiê
 
 ```javascript
 // ❌ AI hay viết: "ngắn gọn" nhưng khó đọc
-const result = arr.filter(x => x > 0).map(x => x * 2).reduce((a, b) => a + b, 0);
+const result = arr
+  .filter((x) => x > 0)
+  .map((x) => x * 2)
+  .reduce((a, b) => a + b, 0);
 
 // ✅ Con người đọc được: tách bước, đặt tên rõ ý đồ
-const positiveItems = arr.filter(item => item > 0);
-const doubled = positiveItems.map(item => item * 2);
+const positiveItems = arr.filter((item) => item > 0);
+const doubled = positiveItems.map((item) => item * 2);
 const totalValue = doubled.reduce((sum, value) => sum + value, 0);
 
 // ✅ Hoặc tốt hơn — single loop (nếu trong hot path):
@@ -47,21 +50,21 @@ for (const item of arr) {
 
 ```javascript
 // ❌ AI hay viết: ternary chain
-const label = score > 90 ? 'A' : score > 70 ? 'B' : score > 50 ? 'C' : 'F';
+const label = score > 90 ? "A" : score > 70 ? "B" : score > 50 ? "C" : "F";
 
 // ✅ Con người đọc được: if/else hoặc lookup table
 let label;
-if (score > 90) label = 'A';
-else if (score > 70) label = 'B';
-else if (score > 50) label = 'C';
-else label = 'F';
+if (score > 90) label = "A";
+else if (score > 70) label = "B";
+else if (score > 50) label = "C";
+else label = "F";
 
 // ✅ Hoặc function riêng:
 function getGrade(score) {
-  if (score > 90) return 'A';
-  if (score > 70) return 'B';
-  if (score > 50) return 'C';
-  return 'F';
+  if (score > 90) return "A";
+  if (score > 70) return "B";
+  if (score > 50) return "C";
+  return "F";
 }
 ```
 
@@ -69,17 +72,27 @@ function getGrade(score) {
 
 ```javascript
 // ✅ Ternary đơn giản — OK
-const direction = velocity > 0 ? 'forward' : 'backward';
+const direction = velocity > 0 ? "forward" : "backward";
 
 // ❌ Ternary phức tạp — KHÔNG
-const result = isActive ? (hasPermission ? doAction() : showError()) : redirectToLogin();
+const result = isActive
+  ? hasPermission
+    ? doAction()
+    : showError()
+  : redirectToLogin();
 ```
 
 ### 3. Destructuring quá sâu
 
 ```javascript
 // ❌ AI hay viết: destructure 1 lần lấy hết
-const { data: { user: { profile: { name, avatar } } } } = response;
+const {
+  data: {
+    user: {
+      profile: { name, avatar },
+    },
+  },
+} = response;
 
 // ✅ Con người đọc được: tách từng bước, rõ nguồn gốc
 const responseData = response.data;
@@ -94,23 +107,23 @@ const userAvatar = userProfile.avatar;
 // ❌ Biến 1 chữ (ngoại trừ loop counter i, j)
 const d = new Date();
 const t = performance.now();
-const p = document.querySelector('.card');
+const p = document.querySelector(".card");
 const r = el.getBoundingClientRect();
 
 // ✅ Tên tự giải thích
 const currentDate = new Date();
 const startTime = performance.now();
-const cardElement = document.querySelector('.card');
+const cardElement = document.querySelector(".card");
 const cardRect = el.getBoundingClientRect();
 
 // ❌ Tên quá chung
 const data = fetchProducts();
-const items = document.querySelectorAll('.card');
+const items = document.querySelectorAll(".card");
 const result = calculateTotal();
 
 // ✅ Tên rõ ngữ cảnh
 const productList = fetchProducts();
-const cardElements = document.querySelectorAll('.card');
+const cardElements = document.querySelectorAll(".card");
 const orderTotal = calculateTotal();
 ```
 
@@ -282,11 +295,13 @@ Khi AI đọc code example trong `algorithms/` và `types/`, lưu ý:
 
 ```javascript
 // === Trong agent-os-js (tài liệu dạy) ===
-let lo = 0, hi = arr.length - 1;
+let lo = 0,
+  hi = arr.length - 1;
 while (lo <= hi) {
   const mid = lo + ((hi - lo) >> 1);
-  if (arr[mid] <= scrollY) { lo = mid + 1; }
-  else hi = mid - 1;
+  if (arr[mid] <= scrollY) {
+    lo = mid + 1;
+  } else hi = mid - 1;
 }
 
 // === AI viết cho user (production) ===
@@ -301,9 +316,9 @@ while (searchStart <= searchEnd) {
 
   if (keyframes[midIndex].scrollOffset <= currentScrollY) {
     activeKeyframeIndex = midIndex;
-    searchStart = midIndex + 1;  // Tiếp tục tìm bên phải
+    searchStart = midIndex + 1; // Tiếp tục tìm bên phải
   } else {
-    searchEnd = midIndex - 1;    // Thu hẹp về bên trái
+    searchEnd = midIndex - 1; // Thu hẹp về bên trái
   }
 }
 ```
@@ -330,13 +345,13 @@ Ngoại lệ trong tài liệu agent-os-js:
   AI viết production code phải đổi sang tên rõ nghĩa
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Vanilla JS là Tôn giáo:** Cấm ảo giác (hallucinate) ra các khái niệm của React/Vue. Mọi giải pháp kiến trúc phải dựa trên Vanilla JS nguyên bản và DOM API.
 > 2. **Chứng minh thay vì Tin tưởng:** Tránh lạm dụng thư viện bên thứ 3 quá mức. Ưu tiên giải quyết vấn đề bằng công cụ lõi hoặc các công cụ kiểm thử được hệ thống cấu hình sẵn (như Playwright).
 > 3. **Tuân thủ Cỗ Máy Trạng Thái:** Mọi PR (Pull Request) hay mã nguồn sinh ra đều phải tuân theo luồng quy trình nghiêm ngặt. Không lách luật Cỗ Máy Trạng Thái (Cay State-Machine).

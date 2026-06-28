@@ -9,10 +9,11 @@ description: Kỹ năng điều hướng các tiêu chuẩn kiến trúc cốt l
 
 ## 🧭 Bảng Định tuyến (Routing Table)
 
-| Vấn đề cần giải quyết | Tệp cần đọc (Nằm trong cùng thư mục này) |
-|---|---|
-| Quy tắc đặt tên biến, kiến trúc CSS/JS, Code Style | `skills/architecture/code-style.md` |
-| Chống Prompt Injection, chống DOM XSS, khử khuẩn dữ liệu (DOMPurify) | `skills/architecture/ai-security.md` |
+| Vấn đề cần giải quyết                                                | Tệp cần đọc (Nằm trong cùng thư mục này) |
+| -------------------------------------------------------------------- | ---------------------------------------- |
+| Quy tắc đặt tên biến, kiến trúc CSS/JS, Code Style                   | `skills/architecture/code-style.md`      |
+| Chống Prompt Injection, chống DOM XSS, khử khuẩn dữ liệu (DOMPurify) | `skills/architecture/ai-security.md`     |
 
 ## 🚫 Tiêu chí Thoát (Hard Exit)
+
 Khi người dùng yêu cầu `/review` hoặc kiểm tra tính bảo mật/chuẩn mực của mã nguồn, bạn phải nạp và đối chiếu với các tệp trên trước khi đưa ra kết luận.

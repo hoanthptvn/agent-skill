@@ -82,7 +82,7 @@ function dfsIterative(graph, start) {
   while (stack.length) {
     const node = stack.pop();
     if (visited.has(node)) continue; // Skip nếu đã xử lý
-    visited.add(node);               // Đánh dấu SAU pop
+    visited.add(node); // Đánh dấu SAU pop
     result.push(node);
 
     // Lấy copy adjacency list — KHÔNG mutate gốc
@@ -101,7 +101,10 @@ function dfsIterative(graph, start) {
 
 ```javascript
 class ChunkedTraverser {
-  #stack; #visited; #graph; #result;
+  #stack;
+  #visited;
+  #graph;
+  #result;
   constructor(graph, start) {
     this.#graph = graph;
     this.#stack = [start];
@@ -152,15 +155,15 @@ PostOrder: Trái → Phải → Cha  → Cleanup, Destroy, WebGL dispose
 
 ```javascript
 // Recursive (gọn nhưng Stack Overflow nếu >10K nodes)
-function dfsTree(root, type = 'preOrder') {
+function dfsTree(root, type = "preOrder") {
   const data = [];
   const traverse = (node) => {
     if (!node) return;
-    if (type === 'preOrder')  data.push(node.value);
+    if (type === "preOrder") data.push(node.value);
     traverse(node.left);
-    if (type === 'inOrder')   data.push(node.value);
+    if (type === "inOrder") data.push(node.value);
     traverse(node.right);
-    if (type === 'postOrder') data.push(node.value);
+    if (type === "postOrder") data.push(node.value);
   };
   traverse(root);
   return data;
@@ -169,13 +172,14 @@ function dfsTree(root, type = 'preOrder') {
 // Iterative PreOrder — Stack + pop() O(1)
 function dfsPreOrderIterative(root) {
   if (!root) return [];
-  const data = [], stack = [root];
+  const data = [],
+    stack = [root];
   while (stack.length) {
     const node = stack.pop();
     data.push(node.value);
     // LIFO: nhét PHẢI trước, TRÁI sau → Trái được pop trước
     if (node.right) stack.push(node.right);
-    if (node.left)  stack.push(node.left);
+    if (node.left) stack.push(node.left);
   }
   return data;
 }
@@ -207,10 +211,14 @@ PostOrder (Cha SAU):
 
 ```javascript
 // ❌ .reverse() mutate adjacency list gốc → sai logic cho lần traverse sau
-for (const n of graph.get(node).reverse()) { /* ... */ }
+for (const n of graph.get(node).reverse()) {
+  /* ... */
+}
 
 // ✓ slice().reverse() hoặc spread
-for (const n of [...graph.get(node)].reverse()) { /* ... */ }
+for (const n of [...graph.get(node)].reverse()) {
+  /* ... */
+}
 
 // ❌ while (queue.length) { queue.shift() } → O(N²)
 // ✓ head pointer: while (head < queue.length) { queue[head++] }
@@ -253,6 +261,7 @@ Animation:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

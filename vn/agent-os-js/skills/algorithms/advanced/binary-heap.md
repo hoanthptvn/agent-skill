@@ -38,7 +38,9 @@ Dữ liệu liên tiếp → CPU Cache L1/L2 Hit → nhanh hơn Node/Pointer
 
 ```javascript
 class MaxBinaryHeap {
-  constructor() { this.values = []; }
+  constructor() {
+    this.values = [];
+  }
 
   insert(element) {
     this.values.push(element); // Thêm cuối → giữ hình dạng cây
@@ -46,18 +48,18 @@ class MaxBinaryHeap {
   }
 
   bubbleUp() {
-    let idx     = this.values.length - 1;
-    const el    = this.values[idx];
+    let idx = this.values.length - 1;
+    const el = this.values[idx];
 
     while (idx > 0) {
-      const parentIdx = (idx - 1) >> 1;      // Bitwise >> 1 = Math.floor / 2
-      const parent    = this.values[parentIdx];
+      const parentIdx = (idx - 1) >> 1; // Bitwise >> 1 = Math.floor / 2
+      const parent = this.values[parentIdx];
 
-      if (el <= parent) break;               // Đúng vị trí → dừng
+      if (el <= parent) break; // Đúng vị trí → dừng
 
       // ES6 Destructuring swap — không cần biến temp
       [this.values[parentIdx], this.values[idx]] = [el, parent];
-      idx = parentIdx;                       // Leo lên 1 tầng
+      idx = parentIdx; // Leo lên 1 tầng
     }
   }
 }
@@ -217,11 +219,16 @@ Heap vs BST:
 // Min Heap: enqueue O(log N), dequeue O(log N) — mức ưu tiên nhỏ = quan trọng hơn
 
 class PQNode {
-  constructor(val, priority) { this.val = val; this.priority = priority; }
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
 }
 
 class PriorityQueue {
-  constructor() { this.values = []; }
+  constructor() {
+    this.values = [];
+  }
 
   enqueue(val, priority) {
     this.values.push(new PQNode(val, priority));
@@ -244,7 +251,8 @@ class PriorityQueue {
     if (!this.values.length) return undefined;
     const min = this.values[0];
     const end = this.values.pop();
-    if (this.values.length > 0) { // Edge case: tránh zombie data
+    if (this.values.length > 0) {
+      // Edge case: tránh zombie data
       this.values[0] = end;
       this.#sinkDown();
     }
@@ -254,15 +262,19 @@ class PriorityQueue {
   #sinkDown() {
     let idx = 0;
     const el = this.values[0];
-    const n  = this.values.length;
+    const n = this.values.length;
     while (true) {
-      const lIdx = 2 * idx + 1, rIdx = 2 * idx + 2;
+      const lIdx = 2 * idx + 1,
+        rIdx = 2 * idx + 2;
       let swap = null;
       if (lIdx < n && this.values[lIdx].priority < el.priority) swap = lIdx;
       if (rIdx < n) {
         const r = this.values[rIdx];
-        if ((swap === null && r.priority < el.priority) ||
-            (swap !== null && r.priority < this.values[lIdx].priority)) swap = rIdx;
+        if (
+          (swap === null && r.priority < el.priority) ||
+          (swap !== null && r.priority < this.values[lIdx].priority)
+        )
+          swap = rIdx;
       }
       if (swap === null) break;
       [this.values[idx], this.values[swap]] = [this.values[swap], el];
@@ -273,7 +285,7 @@ class PriorityQueue {
 
 // Ứng dụng:
 const tasks = new PriorityQueue();
-tasks.enqueue("Xử lý click user", 1);        // Cấp bách nhất
+tasks.enqueue("Xử lý click user", 1); // Cấp bách nhất
 tasks.enqueue("Tải CSS background", 5);
 tasks.enqueue("Render Hero image", 2);
 console.log(tasks.dequeue().val); // "Xử lý click user"
@@ -290,7 +302,7 @@ console.log(tasks.dequeue().val); // "Xử lý click user"
 
 class StablePriorityQueue {
   #counter = 0;
-  #values  = [];
+  #values = [];
 
   enqueue(val, priority) {
     this.#values.push({ val, priority, order: this.#counter++ });
@@ -302,7 +314,7 @@ class StablePriorityQueue {
     const el = this.#values[idx];
     while (idx > 0) {
       const pIdx = (idx - 1) >> 1;
-      const p    = this.#values[pIdx];
+      const p = this.#values[pIdx];
       // TIE-BREAKER: cùng priority → dừng nếu order lớn hơn (vào sau)
       if (el.priority > p.priority) break;
       if (el.priority === p.priority && el.order > p.order) break;
@@ -352,8 +364,8 @@ class LazyPriorityQueue {
 // ✓ Parallel Arrays: không tạo Object → không sinh rác bộ nhớ
 
 class FastPriorityQueue {
-  #vals  = [];
-  #pris  = [];
+  #vals = [];
+  #pris = [];
 
   enqueue(val, priority) {
     this.#vals.push(val);
@@ -425,6 +437,7 @@ log₂(1,000,000) ≈ 20 — khắc cốt ghi tâm
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

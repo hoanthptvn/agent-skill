@@ -45,17 +45,17 @@ const total = Math.round((0.1 + 0.2) * 100) / 100; // 0.3
 Math.abs(a - b) < Number.EPSILON; // Đủ gần = bằng nhau
 
 // ❌ parseInt() không có radix → hành vi bất ngờ
-parseInt('08');     // 8 (OK hiện tại, nhưng ES3 parse octal → 0)
-parseInt('0xFF');   // 255 (parse hex tự động)
+parseInt("08"); // 8 (OK hiện tại, nhưng ES3 parse octal → 0)
+parseInt("0xFF"); // 255 (parse hex tự động)
 // ✓ Luôn truyền radix
-parseInt('08', 10); // 8 — tường minh, an toàn
+parseInt("08", 10); // 8 — tường minh, an toàn
 
 // ❌ NaN === NaN → LUÔN false
 NaN === NaN; // false ← JavaScript quirk
 // ✓ Dùng Number.isNaN() (KHÔNG dùng global isNaN)
-Number.isNaN(NaN);        // true
-Number.isNaN('hello');    // false (đúng)
-isNaN('hello');           // true (SAI — ép kiểu trước)
+Number.isNaN(NaN); // true
+Number.isNaN("hello"); // false (đúng)
+isNaN("hello"); // true (SAI — ép kiểu trước)
 
 // ❌ Number.MAX_SAFE_INTEGER overflow
 10000000000 * 10000000000; // 100000000000000000000 → mất precision
@@ -79,9 +79,9 @@ Number(1n) + 1; // 2 (mất precision nếu BigInt lớn)
 // | 0  = Math.trunc(x) — cắt phần thập phân
 
 // Binary Heap parent/child index:
-const parentIdx     = (idx - 1) >> 1;   // ≡ Math.floor((idx-1) / 2)
-const leftChildIdx  = (idx << 1) + 1;   // ≡ 2*idx + 1
-const rightChildIdx = (idx << 1) + 2;   // ≡ 2*idx + 2
+const parentIdx = (idx - 1) >> 1; // ≡ Math.floor((idx-1) / 2)
+const leftChildIdx = (idx << 1) + 1; // ≡ 2*idx + 1
+const rightChildIdx = (idx << 1) + 2; // ≡ 2*idx + 2
 
 // Binary Search midpoint:
 const mid = (lo + hi) >>> 1; // unsigned right shift, an toàn cho số dương
@@ -92,9 +92,9 @@ const mid = (lo + hi) >>> 1; // unsigned right shift, an toàn cho số dương
 // Backend/Interview: dùng Math.floor() cho an toàn tuyệt đối
 
 // RGB Color manipulation:
-const r = (color >> 16) & 0xFF; // Extract red channel
-const g = (color >> 8) & 0xFF;  // Extract green channel
-const b = color & 0xFF;         // Extract blue channel
+const r = (color >> 16) & 0xff; // Extract red channel
+const g = (color >> 8) & 0xff; // Extract green channel
+const b = color & 0xff; // Extract blue channel
 ```
 
 ---
@@ -103,22 +103,22 @@ const b = color & 0xFF;         // Extract blue channel
 
 ```javascript
 // Infinity — dùng cho khởi tạo min/max (Dijkstra, DP)
-let minVal = Infinity;   // Bất kỳ số nào cũng < Infinity
-let maxVal = -Infinity;  // Bất kỳ số nào cũng > -Infinity
+let minVal = Infinity; // Bất kỳ số nào cũng < Infinity
+let maxVal = -Infinity; // Bất kỳ số nào cũng > -Infinity
 
-Infinity + 10;       // Infinity — không bao giờ sai logic
-10 / 0;              // Infinity
--10 / 0;             // -Infinity
-Number.isFinite(x);  // Kiểm tra trước khi dùng
+Infinity + 10; // Infinity — không bao giờ sai logic
+10 / 0; // Infinity
+-10 / 0; // -Infinity
+Number.isFinite(x); // Kiểm tra trước khi dùng
 
 // NaN — "Not a Number" nhưng typeof NaN === 'number' 🤯
-0 / 0;               // NaN
-parseInt('abc');      // NaN
-Math.sqrt(-1);        // NaN
+0 / 0; // NaN
+parseInt("abc"); // NaN
+Math.sqrt(-1); // NaN
 
 // NaN lây nhiễm: NaN + bất kỳ = NaN → Silent Bug
 // ✓ Kiểm tra đầu vào trước khi tính toán
-if (Number.isNaN(input)) throw new Error('Invalid number');
+if (Number.isNaN(input)) throw new Error("Invalid number");
 ```
 
 ---
@@ -152,9 +152,12 @@ function randomRange(min, max) {
 }
 
 // Gauss formula — O(1) thay O(N) loop
-const sumTo = (n) => n * (n + 1) / 2;
+const sumTo = (n) => (n * (n + 1)) / 2;
 // ⚠️ N > √(MAX_SAFE_INTEGER) ≈ 94,906,265 → dùng BigInt
-const sumToBig = (n) => { const b = BigInt(n); return (b * (b + 1n)) / 2n; };
+const sumToBig = (n) => {
+  const b = BigInt(n);
+  return (b * (b + 1n)) / 2n;
+};
 ```
 
 ---
@@ -190,13 +193,13 @@ Animation:
   mapRange() = scroll position → animation value
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
 > 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
 > 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.

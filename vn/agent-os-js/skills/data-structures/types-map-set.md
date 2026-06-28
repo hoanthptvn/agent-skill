@@ -15,18 +15,22 @@ Khi key không phải string, hoặc cần CRUD liên tục → KHÔNG dùng Obj
 const cache = new Map();
 
 // CRUD — tất cả O(1)
-cache.set(domElement, { tl: null });  // Key là DOM node, Object, Function — bất kỳ
-cache.get(domElement);                 // O(1) lookup
-cache.has(domElement);                 // O(1) check
-cache.delete(domElement);              // O(1) xóa — KHÔNG phá V8 Hidden Classes
-cache.size;                            // O(1) ← Object phải Object.keys().length O(N)
+cache.set(domElement, { tl: null }); // Key là DOM node, Object, Function — bất kỳ
+cache.get(domElement); // O(1) lookup
+cache.has(domElement); // O(1) check
+cache.delete(domElement); // O(1) xóa — KHÔNG phá V8 Hidden Classes
+cache.size; // O(1) ← Object phải Object.keys().length O(N)
 
 // Duyệt — giữ thứ tự insertion
-for (const [key, value] of cache) { /* ... */ }
-cache.forEach((value, key) => { /* ... */ });
+for (const [key, value] of cache) {
+  /* ... */
+}
+cache.forEach((value, key) => {
+  /* ... */
+});
 
 // Khởi tạo từ array of pairs
-const userMap = new Map(users.map(u => [u.id, u])); // O(N)
+const userMap = new Map(users.map((u) => [u.id, u])); // O(N)
 userMap.get(targetId); // O(1) lookup mãi mãi
 ```
 
@@ -38,10 +42,10 @@ userMap.get(targetId); // O(1) lookup mãi mãi
 const visited = new Set();
 
 // CRUD — tất cả O(1)
-visited.add('A');        // Thêm
-visited.has('A');        // Kiểm tra → true
-visited.delete('A');     // Xóa
-visited.size;            // Kích thước O(1)
+visited.add("A"); // Thêm
+visited.has("A"); // Kiểm tra → true
+visited.delete("A"); // Xóa
+visited.size; // Kích thước O(1)
 
 // Dedup mảng
 const unique = [...new Set(arr)]; // O(N) time, O(N) space
@@ -51,9 +55,9 @@ const unique = [...new Set(arr)]; // O(N) time, O(N) space
 // Set operations (ES2025 — proposal, polyfill available)
 const a = new Set([1, 2, 3]);
 const b = new Set([2, 3, 4]);
-a.union(b);        // Set {1, 2, 3, 4}
+a.union(b); // Set {1, 2, 3, 4}
 a.intersection(b); // Set {2, 3}
-a.difference(b);   // Set {1}
+a.difference(b); // Set {1}
 
 // BFS/DFS visited tracking
 const visited = new Set([startNode]); // Đánh dấu start NGAY
@@ -119,10 +123,10 @@ WeakMap:
 ```javascript
 // Frequency Counter — O(N²) → O(N)
 // ✗ .includes() là vòng lặp ẩn trong .filter() → O(N²)
-const valid = users.filter(u => !bannedIDs.includes(u.id));
+const valid = users.filter((u) => !bannedIDs.includes(u.id));
 // ✓ Set.has() O(1) → tổng O(N)
 const bannedSet = new Set(bannedIDs);
-const valid = users.filter(u => !bannedSet.has(u.id));
+const valid = users.filter((u) => !bannedSet.has(u.id));
 
 // Cache DOM measurements
 const rectCache = new WeakMap();
@@ -167,13 +171,13 @@ KHÔNG làm:
   Map/Set.add() trực tiếp vào biến lưu State → Lỗi Proxy Re-render
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
 > 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
 > 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.

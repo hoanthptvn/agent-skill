@@ -48,7 +48,8 @@ function sumZeroNaive(arr) {
 
 // ✓ O(N) — Two Pointers kẹp 2 đầu (mảng SORTED)
 function sumZero(arr) {
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
   // ⚠️ TỬ HUYỆT: left < right (KHÔNG phải <=)
   // Nếu <=: [-1, 0, 1] → 2 pointers trỏ cùng 0 → 0+0=0 → SAI
   while (left < right) {
@@ -64,7 +65,8 @@ function sumZero(arr) {
 ```javascript
 function averagePair(arr, target) {
   if (!arr.length) return false;
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
   while (left < right) {
     const avg = (arr[left] + arr[right]) / 2;
     if (avg === target) return true;
@@ -74,10 +76,12 @@ function averagePair(arr, target) {
 }
 
 function isPalindrome(str) {
-  let left = 0, right = str.length - 1;
+  let left = 0,
+    right = str.length - 1;
   while (left < right) {
     if (str[left] !== str[right]) return false;
-    left++; right--;
+    left++;
+    right--;
   }
   return true;
 }
@@ -91,14 +95,16 @@ function threeSum(arr) {
   const result = [];
   for (let i = 0; i < arr.length - 2; i++) {
     if (i > 0 && arr[i] === arr[i - 1]) continue; // Skip duplicate
-    let left = i + 1, right = arr.length - 1;
+    let left = i + 1,
+      right = arr.length - 1;
     while (left < right) {
       const sum = arr[i] + arr[left] + arr[right];
       if (sum === 0) {
         result.push([arr[i], arr[left], arr[right]]);
         while (left < right && arr[left] === arr[left + 1]) left++;
         while (left < right && arr[right] === arr[right - 1]) right--;
-        left++; right--;
+        left++;
+        right--;
       } else if (sum < 0) left++;
       else right--;
     }
@@ -164,9 +170,10 @@ function removeDuplicates(arr) {
 
 ```javascript
 // touches[0] và touches[1] = 2 pointers → tính khoảng cách → scale
-let prevDist = 0, currentScale = 1;
+let prevDist = 0,
+  currentScale = 1;
 
-canvas.addEventListener('touchstart', e => {
+canvas.addEventListener("touchstart", (e) => {
   if (e.touches.length === 2) {
     const dx = e.touches[0].clientX - e.touches[1].clientX;
     const dy = e.touches[0].clientY - e.touches[1].clientY;
@@ -174,7 +181,7 @@ canvas.addEventListener('touchstart', e => {
   }
 });
 
-canvas.addEventListener('touchmove', e => {
+canvas.addEventListener("touchmove", (e) => {
   if (e.touches.length < 2) return;
   const dx = e.touches[0].clientX - e.touches[1].clientX;
   const dy = e.touches[0].clientY - e.touches[1].clientY;
@@ -198,7 +205,7 @@ function compactParticles(buf, alive, count) {
   for (let fast = 0; fast < count; fast++) {
     if (alive[fast]) {
       // Copy stride sang vị trí slow
-      buf[slow * STRIDE]     = buf[fast * STRIDE];
+      buf[slow * STRIDE] = buf[fast * STRIDE];
       buf[slow * STRIDE + 1] = buf[fast * STRIDE + 1];
       buf[slow * STRIDE + 2] = buf[fast * STRIDE + 2];
       buf[slow * STRIDE + 3] = buf[fast * STRIDE + 3];
@@ -215,7 +222,6 @@ Space: O(1) ← Không tạo array mới, không GC, 60fps ổn định
 Yêu cầu: Opposite Ends cần mảng SORTED
          Fast/Slow KHÔNG cần sorted
 ```
-
 
 ---
 
@@ -241,6 +247,7 @@ Bẫy:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

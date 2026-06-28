@@ -13,13 +13,16 @@ Trong Production, luôn dùng `.sort()` / `.toSorted()` (V8 Timsort). Chỉ cầ
 
 ```javascript
 // ❌ KHÔNG truyền comparator → sort theo Unicode string
-[6, 4, 15, 10].sort()         // [10, 15, 4, 6] ← SAI!
-['banana', 'apple'].sort()    // ['apple', 'banana'] ← Đúng
-['b', 'A', 'a'].sort()        // ['A', 'a', 'b'] ← Uppercase trước
+[6, 4, 15, 10]
+  .sort() // [10, 15, 4, 6] ← SAI!
+  [("banana", "apple")].sort() // ['apple', 'banana'] ← Đúng
+  [("b", "A", "a")].sort() // ['A', 'a', 'b'] ← Uppercase trước
 
-// ✓ Luôn truyền comparator cho số
-[6, 4, 15, 10].sort((a, b) => a - b)  // [4, 6, 10, 15] ← Tăng dần
-[6, 4, 15, 10].sort((a, b) => b - a)  // [15, 10, 6, 4] ← Giảm dần
+  [
+    // ✓ Luôn truyền comparator cho số
+    (6, 4, 15, 10)
+  ].sort((a, b) => a - b) // [4, 6, 10, 15] ← Tăng dần
+  [(6, 4, 15, 10)].sort((a, b) => b - a); // [15, 10, 6, 4] ← Giảm dần
 ```
 
 ### Comparator — Inversion of Control
@@ -113,14 +116,14 @@ const insertionSort = (arr, comparator = (a, b) => a - b) => {
 
 ```javascript
 // Bước 1: FIRST — lưu vị trí cũ
-const firstPositions = items.map(el => el.getBoundingClientRect());
+const firstPositions = items.map((el) => el.getBoundingClientRect());
 
 // Bước 2: Sort data (không đụng DOM)
 data.sort((a, b) => a.price - b.price);
 
 // Bước 3: LAST — render + lưu vị trí mới
 renderItems(data);
-const lastPositions = items.map(el => el.getBoundingClientRect());
+const lastPositions = items.map((el) => el.getBoundingClientRect());
 
 // Bước 4: INVERT + PLAY — GSAP animate
 items.forEach((el, i) => {
@@ -146,32 +149,33 @@ for (const p of products) {
 }
 
 function filterFlip(selectedCategory) {
-  const allEls = document.querySelectorAll('.card');
+  const allEls = document.querySelectorAll(".card");
 
   // FIRST: lưu vị trí cũ của tất cả
   const firstRects = new Map();
-  allEls.forEach(el => firstRects.set(el, el.getBoundingClientRect()));
+  allEls.forEach((el) => firstRects.set(el, el.getBoundingClientRect()));
 
   // Quyết định show/hide (không đụng DOM layout ngay)
   const visible = grouped.get(selectedCategory) || []; // O(1) lookup
-  const visibleIds = new Set(visible.map(p => p.id));
+  const visibleIds = new Set(visible.map((p) => p.id));
 
   // LAST: thay đổi visibility → DOM reflow xảy ra
-  allEls.forEach(el => {
-    el.style.display = visibleIds.has(+el.dataset.id) ? '' : 'none';
+  allEls.forEach((el) => {
+    el.style.display = visibleIds.has(+el.dataset.id) ? "" : "none";
   });
 
   // INVERT + PLAY: chỉ animate items vẫn visible
-  allEls.forEach(el => {
-    if (el.style.display === 'none') return;
+  allEls.forEach((el) => {
+    if (el.style.display === "none") return;
     const first = firstRects.get(el);
-    const last  = el.getBoundingClientRect();
+    const last = el.getBoundingClientRect();
     const dx = first.left - last.left;
-    const dy = first.top  - last.top;
+    const dy = first.top - last.top;
     if (dx === 0 && dy === 0) return; // Không di chuyển → skip
-    gsap.fromTo(el,
+    gsap.fromTo(
+      el,
       { x: dx, y: dy, opacity: 0 },
-      { x: 0,  y: 0,  opacity: 1, duration: 0.4, ease: 'power2.out' }
+      { x: 0, y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
     );
   });
 }
@@ -183,10 +187,10 @@ function filterFlip(selectedCategory) {
 
 ```javascript
 // ❌ Sort DOM trực tiếp → N lần reflow
-items.forEach(item => parent.appendChild(item));
+items.forEach((item) => parent.appendChild(item));
 // ✓ Sort data trong memory → render 1 lần
 const sorted = [...data].toSorted((a, b) => a.order - b.order);
-parent.innerHTML = sorted.map(d => `<li>${d.name}</li>`).join('');
+parent.innerHTML = sorted.map((d) => `<li>${d.name}</li>`).join("");
 
 // ❌ Selection Sort → Unstable → đảo thứ tự phần tử bằng nhau → UX bug
 // ✓ Production dùng .sort() (Timsort — Stable)
@@ -218,6 +222,7 @@ Bẫy:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

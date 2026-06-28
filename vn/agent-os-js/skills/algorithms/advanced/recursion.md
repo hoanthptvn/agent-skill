@@ -31,7 +31,7 @@ function eatBreakfast() {
   drinkCoffee(); // eatBreakfast bị "đóng băng"
 }
 function drinkCoffee() {
-  return 'done'; // Pop → eatBreakfast tiếp → Pop → wakeUp tiếp → Pop
+  return "done"; // Pop → eatBreakfast tiếp → Pop → wakeUp tiếp → Pop
 }
 ```
 
@@ -56,15 +56,18 @@ function recursion(input) {
 ```javascript
 // 1. Action (Hành động) — chỉ thực thi, không cần gom kết quả
 function countDown(num) {
-  if (num <= 0) { console.log('Done!'); return; }
+  if (num <= 0) {
+    console.log("Done!");
+    return;
+  }
   console.log(num);
   countDown(num - 1); // ← KHÔNG phải countDown(num--) → Infinite Loop!
 }
 
 // 2. Accumulation (Tích lũy) — phải return, chuỗi kết quả nảy ngược lên Stack
 function sumRange(num) {
-  if (num <= 1) return 1;             // Base Case: kích hoạt Unwinding
-  return num + sumRange(num - 1);     // ← PHẢI có return, thiếu → undefined
+  if (num <= 1) return 1; // Base Case: kích hoạt Unwinding
+  return num + sumRange(num - 1); // ← PHẢI có return, thiếu → undefined
 }
 // sumRange(4): 4 + sumRange(3) → frozen
 //              3 + sumRange(2) → frozen
@@ -92,7 +95,7 @@ function findNodeById(treeNodes, targetId) {
 
 // Tính tổng dung lượng file tree
 function calculateTotalSize(node) {
-  if (node.type === 'file') return node.size || 0; // Base Case
+  if (node.type === "file") return node.size || 0; // Base Case
 
   let total = 0;
   for (const child of node.children ?? []) {
@@ -136,7 +139,7 @@ function findNode(nodes, id) {
 // Luôn đặt Guard Clauses TRƯỚC Base Case
 function factorialSafe(num) {
   // 1. Guard Clauses — chặn input nguy hiểm trước khi đẩy bất kỳ frame nào
-  if (typeof num !== 'number' || !Number.isInteger(num)) return null;
+  if (typeof num !== "number" || !Number.isInteger(num)) return null;
   if (num < 0) return 0; // Không để âm lọt vào → free-fall vô cực
 
   // 2. Base Case
@@ -258,7 +261,7 @@ function iterativeDFS(root) {
 ```javascript
 // ✗ Node A → Node B → Node A → Infinite Loop → Stack Overflow
 function deepCloneBad(obj) {
-  if (typeof obj !== 'object' || obj === null) return obj;
+  if (typeof obj !== "object" || obj === null) return obj;
   const clone = {};
   for (const key in obj) clone[key] = deepCloneBad(obj[key]); // Không detect vòng!
   return clone;
@@ -266,7 +269,7 @@ function deepCloneBad(obj) {
 
 // ✓ WeakMap phát hiện circular reference
 function deepClone(obj, seen = new WeakMap()) {
-  if (typeof obj !== 'object' || obj === null) return obj;
+  if (typeof obj !== "object" || obj === null) return obj;
   if (seen.has(obj)) return seen.get(obj); // Đã thấy → trả về ref cũ
   const clone = Array.isArray(obj) ? [] : {};
   seen.set(obj, clone); // Đăng ký trước khi đệ quy vào con
@@ -322,7 +325,8 @@ function fib(n, memo = {}) {
 // ✓ Bottom-up DP (Iterative) — O(N) Time, O(1) Space — An toàn nhất
 function fibIterative(n) {
   if (n <= 2) return 1;
-  let prev2 = 1, prev1 = 1;
+  let prev2 = 1,
+    prev1 = 1;
   for (let i = 3; i <= n; i++) {
     [prev2, prev1] = [prev1, prev2 + prev1];
   }
@@ -354,7 +358,7 @@ function productOfArray(arr, index = 0) {
 
 // Tương tự: isPalindrome với Pointer thay vì .slice()
 function isPalindrome(str, left = 0, right = str.length - 1) {
-  if (left >= right) return true;           // Chạm nhau ở giữa → đối xứng
+  if (left >= right) return true; // Chạm nhau ở giữa → đối xứng
   if (str[left] !== str[right]) return false;
   return isPalindrome(str, left + 1, right - 1); // Không cắt chuỗi!
 }
@@ -370,25 +374,31 @@ function isPalindrome(str, left = 0, right = str.length - 1) {
 // ✗ Tất cả AI và Junior thường quên check null
 function traverseBad(obj) {
   for (const key in obj) {
-    if (typeof obj[key] === 'object') { // typeof null === 'object' → CRASH!
+    if (typeof obj[key] === "object") {
+      // typeof null === 'object' → CRASH!
       traverseBad(obj[key]); // Nếu obj[key] là null → Cannot read properties of null
     }
   }
 }
 
 // ✓ Guard Clause chuẩn — Plain Object check
-const isPlainObject = val =>
-  val !== null && typeof val === 'object' && !Array.isArray(val);
-  // Hoặc: Object.prototype.toString.call(val) === '[object Object]'
+const isPlainObject = (val) =>
+  val !== null && typeof val === "object" && !Array.isArray(val);
+// Hoặc: Object.prototype.toString.call(val) === '[object Object]'
 
 function traverseGood(obj) {
   for (const key in obj) {
     if (!Object.prototype.hasOwnProperty.call(obj, key)) continue; // Né Prototype
     const val = obj[key];
-    if (isPlainObject(val)) traverseGood(val);     // Lặn xuống Object con
-    else if (Array.isArray(val)) { /* xử lý array */ }
-    else if (val === null) { /* xử lý null */ }
-    else { /* Primitive: string, number, boolean */ }
+    if (isPlainObject(val))
+      traverseGood(val); // Lặn xuống Object con
+    else if (Array.isArray(val)) {
+      /* xử lý array */
+    } else if (val === null) {
+      /* xử lý null */
+    } else {
+      /* Primitive: string, number, boolean */
+    }
   }
 }
 ```
@@ -399,7 +409,7 @@ function traverseGood(obj) {
 // BUG: return bên trong for...in → vòng lặp dừng ngay, bỏ sót keys còn lại
 function collectStringsBug(obj, res = []) {
   for (const key in obj) {
-    if (typeof obj[key] === 'string') res.push(obj[key]);
+    if (typeof obj[key] === "string") res.push(obj[key]);
     else if (isPlainObject(obj[key])) {
       return collectStringsBug(obj[key], res); // ← return sớm → bỏ sót key sau!
     }
@@ -413,7 +423,7 @@ function collectStrings(obj, res = []) {
   for (const key in obj) {
     if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
     const val = obj[key];
-    if (typeof val === 'string') res.push(val);
+    if (typeof val === "string") res.push(val);
     else if (isPlainObject(val)) collectStrings(val, res); // Không return!
   }
   return res; // Chỉ return sau khi for...in chạy xong toàn bộ
@@ -430,7 +440,8 @@ function collectStrings(obj, res = []) {
 function flattenBad(arr) {
   let newArr = [];
   for (let item of arr) {
-    if (Array.isArray(item)) newArr = newArr.concat(flattenBad(item)); // Clone!
+    if (Array.isArray(item))
+      newArr = newArr.concat(flattenBad(item)); // Clone!
     else newArr.push(item);
   }
   return newArr;
@@ -442,8 +453,9 @@ function flattenBad(arr) {
 // ✓ Accumulator Reference — 1 mảng duy nhất, không clone
 function flatten(arr, result = []) {
   for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i])) flatten(arr[i], result); // Xách giỏ đi sâu
-    else result.push(arr[i]);                           // Nhét vào giỏ O(1)
+    if (Array.isArray(arr[i]))
+      flatten(arr[i], result); // Xách giỏ đi sâu
+    else result.push(arr[i]); // Nhét vào giỏ O(1)
   }
   return result;
 }
@@ -461,9 +473,11 @@ function stringifyNumbers(obj) {
   for (const key in obj) {
     if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
     const val = obj[key];
-    if (isPlainObject(val)) newObj[key] = stringifyNumbers(val); // Lặn xuống
-    else if (typeof val === 'number') newObj[key] = String(val); // Convert
-    else newObj[key] = val;                                       // Giữ nguyên
+    if (isPlainObject(val))
+      newObj[key] = stringifyNumbers(val); // Lặn xuống
+    else if (typeof val === "number")
+      newObj[key] = String(val); // Convert
+    else newObj[key] = val; // Giữ nguyên
   }
   return newObj; // Immutable — không mutate obj gốc
 }
@@ -507,13 +521,13 @@ function moveZeroes(arr) {
 // O(N) Time, O(1) Space, không tạo mảng mới
 ```
 
-
 ---
 
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).

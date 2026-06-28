@@ -41,11 +41,11 @@ GSAP batches updates internally. When mixing GSAP with direct DOM reads/writes o
 
 ## Frequently updated properties (e.g. mouse followers)
 
-Prefer **gsap.quickTo()** for properties that are updated often (e.g. mouse-follower x/y). It reuses a single tween instead of creating new tweens on each update. 
+Prefer **gsap.quickTo()** for properties that are updated often (e.g. mouse-follower x/y). It reuses a single tween instead of creating new tweens on each update.
 
 ```javascript
 let xTo = gsap.quickTo("#id", "x", { duration: 0.4, ease: "power3" }),
-    yTo = gsap.quickTo("#id", "y", { duration: 0.4, ease: "power3" });
+  yTo = gsap.quickTo("#id", "y", { duration: 0.4, ease: "power3" });
 
 document.querySelector("#container").addEventListener("mousemove", (e) => {
   xTo(e.pageX);
@@ -84,6 +84,7 @@ document.querySelector("#container").addEventListener("mousemove", (e) => {
 
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
+>
 > 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
 > 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
 > 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.

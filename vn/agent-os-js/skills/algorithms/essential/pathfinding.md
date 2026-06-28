@@ -41,12 +41,12 @@ Nhận diện DP:
 // Silent Bug: chạy được trong JS nhưng sai → C++ đã crash ngay
 
 function minCoinGreedy(coins, amount) {
-  const result  = [];
+  const result = [];
   let remaining = amount;
 
   // ✓ Fix Off-by-one: bắt đầu từ coins.length - 1
   for (let i = coins.length - 1; i >= 0; i--) {
-    const coin  = coins[i];
+    const coin = coins[i];
     const count = Math.floor(remaining / coin); // Toán học thay vòng lặp while
 
     for (let j = 0; j < count; j++) result.push(coin);
@@ -179,19 +179,23 @@ Câu thần chú:
 // ✓ A: [{ node: 'B', weight: 9 }, { node: 'C', weight: 5 }]
 
 class WeightedGraph {
-  constructor() { this.adjacencyList = new Map(); }
+  constructor() {
+    this.adjacencyList = new Map();
+  }
 
-  addVertex(v)              { if (!this.adjacencyList.has(v)) this.adjacencyList.set(v, []); }
-  addEdge(v1, v2, weight)  {
+  addVertex(v) {
+    if (!this.adjacencyList.has(v)) this.adjacencyList.set(v, []);
+  }
+  addEdge(v1, v2, weight) {
     this.adjacencyList.get(v1).push({ node: v2, weight });
     this.adjacencyList.get(v2).push({ node: v1, weight }); // Undirected
   }
 
   dijkstra(start, finish) {
-    const pq       = new MinBinaryHeapPQ();
+    const pq = new MinBinaryHeapPQ();
     const distances = new Map(); // khoảng cách ngắn nhất từ start đến mỗi đỉnh
-    const previous  = new Map(); // "dấu chân" — đỉnh liền trước trên đường tối ưu
-    const path      = [];
+    const previous = new Map(); // "dấu chân" — đỉnh liền trước trên đường tối ưu
+    const path = [];
 
     // 1. Khởi tạo: start=0, còn lại=Infinity
     for (const v of this.adjacencyList.keys()) {
@@ -208,7 +212,10 @@ class WeightedGraph {
       // EARLY EXIT: chạm đích → backtrack dấu chân
       if (smallest === finish) {
         let curr = smallest;
-        while (previous.get(curr)) { path.push(curr); curr = previous.get(curr); }
+        while (previous.get(curr)) {
+          path.push(curr);
+          curr = previous.get(curr);
+        }
         break;
       }
 
@@ -216,10 +223,11 @@ class WeightedGraph {
 
       for (const { node: next, weight } of this.adjacencyList.get(smallest)) {
         const candidate = distances.get(smallest) + weight;
-        if (candidate < distances.get(next)) {   // Phá kỷ lục!
+        if (candidate < distances.get(next)) {
+          // Phá kỷ lục!
           distances.set(next, candidate);
-          previous.set(next, smallest);           // Ghi dấu chân
-          pq.enqueue(next, candidate);            // Ném lại vào PQ với priority mới
+          previous.set(next, smallest); // Ghi dấu chân
+          pq.enqueue(next, candidate); // Ném lại vào PQ với priority mới
         }
       }
     }
@@ -241,7 +249,9 @@ class WeightedGraph {
 // → Dijkstra tổng: O((V+E) log V) → 1-2ms thay vì 50-100ms
 
 class MinBinaryHeapPQ {
-  constructor() { this.values = []; }
+  constructor() {
+    this.values = [];
+  }
 
   enqueue(val, priority) {
     this.values.push({ val, priority });
@@ -252,7 +262,10 @@ class MinBinaryHeapPQ {
     if (!this.values.length) return undefined;
     const min = this.values[0];
     const end = this.values.pop();
-    if (this.values.length) { this.values[0] = end; this.#sinkDown(); }
+    if (this.values.length) {
+      this.values[0] = end;
+      this.#sinkDown();
+    }
     return min;
   }
 
@@ -261,7 +274,7 @@ class MinBinaryHeapPQ {
     const el = this.values[idx];
     while (idx > 0) {
       const pIdx = (idx - 1) >> 1; // Bitwise >> 1 = Math.floor((idx-1)/2), nhanh hơn ở CPU
-      const p    = this.values[pIdx];
+      const p = this.values[pIdx];
       if (el.priority >= p.priority) break; // Min Heap: dừng nếu con >= cha
       [this.values[pIdx], this.values[idx]] = [el, p]; // Destructuring swap, không cần temp
       idx = pIdx;
@@ -269,19 +282,22 @@ class MinBinaryHeapPQ {
   }
 
   #sinkDown() {
-    let idx  = 0;
+    let idx = 0;
     const el = this.values[0];
-    const n  = this.values.length;
+    const n = this.values.length;
     while (true) {
       const lIdx = (idx << 1) + 1; // << 1 = ×2, nhanh hơn 2*idx ở cấp phần cứng
       const rIdx = (idx << 1) + 2;
-      let swap   = null;
+      let swap = null;
 
       if (lIdx < n && this.values[lIdx].priority < el.priority) swap = lIdx;
       if (rIdx < n) {
         const r = this.values[rIdx];
-        if ((swap === null && r.priority < el.priority) ||
-            (swap !== null && r.priority < this.values[lIdx].priority)) swap = rIdx;
+        if (
+          (swap === null && r.priority < el.priority) ||
+          (swap !== null && r.priority < this.values[lIdx].priority)
+        )
+          swap = rIdx;
       }
       if (swap === null) break;
       [this.values[idx], this.values[swap]] = [this.values[swap], el];
@@ -317,14 +333,14 @@ class MinBinaryHeapPQ {
 // ❌ AI sai: let memo = {} ở Global Scope → Memory Leak + State Pollution giữa các components
 
 // ✓ Memoization + Closure: cache ẩn trong closure, không bẩn scope ngoài
-const memoFib = (function() {
+const memoFib = (function () {
   const memo = new Map(); // Map nhanh hơn {} cho numeric keys liên tục
 
   return function fib(n) {
-    if (n <= 2) return 1n;           // BigInt: fib(79) vượt Number.MAX_SAFE_INTEGER
+    if (n <= 2) return 1n; // BigInt: fib(79) vượt Number.MAX_SAFE_INTEGER
     if (memo.has(n)) return memo.get(n); // Cache hit O(1)
     const result = fib(n - 1) + fib(n - 2);
-    memo.set(n, result);             // Ghi sổ tay
+    memo.set(n, result); // Ghi sổ tay
     return result;
   };
 })(); // IIFE: tạo closure ngay lập tức, memo không bao giờ bị reset
@@ -347,7 +363,7 @@ const memoFib = (function() {
 function fibTabulation(n) {
   if (n <= 2) return 1n;
   const table = [0n, 1n, 1n]; // index 0 bỏ qua
-  for (let i = 3; i <= n; i++) table[i] = table[i-1] + table[i-2];
+  for (let i = 3; i <= n; i++) table[i] = table[i - 1] + table[i - 2];
   return table[n];
   // BigInt: console.log(fibTabulation(10000)) → in số dài hàng ngàn ký tự, không Infinity
 }
@@ -356,11 +372,13 @@ function fibTabulation(n) {
 // fib(N) chỉ phụ thuộc fib(N-1) và fib(N-2) → không cần mảng dài N
 function fibUltimate(n) {
   if (n <= 2) return 1n;
-  let prev2 = 1n, prev1 = 1n, current;
+  let prev2 = 1n,
+    prev1 = 1n,
+    current;
   for (let i = 3; i <= n; i++) {
     current = prev1 + prev2; // Cộng 2 biến trước
-    prev2   = prev1;         // Tịnh tiến cuốn chiếu
-    prev1   = current;
+    prev2 = prev1; // Tịnh tiến cuốn chiếu
+    prev1 = current;
   }
   return current;
 }
@@ -426,6 +444,7 @@ Fibonacci comparison:
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
 > 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
 > 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
 > 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
