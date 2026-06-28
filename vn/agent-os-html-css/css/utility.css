@@ -3,61 +3,61 @@
 
 1. UTILITY.
    1.1. UTILITY.
-      • 1.1.1 UTILITIES — FLOCSS Object/Utility Layer
-      • 1.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern
-      • 1.1.3 PADDING
-      • 1.1.4 GAP
-      • 1.1.5 WIDTH
-      • 1.1.6 POSITION — absolute, fixed, sticky, relative
-      • 1.1.7 INSET (shorthand cho top+right+bottom+left)
-      • 1.1.8 Z-INDEX — dùng --z-* tokens từ tokens.css
-      • 1.1.9 DISPLAY
-      • 1.1.10 VISIBILITY
-      • 1.1.11 OVERFLOW
-      • 1.1.12 FLEXBOX
-      • 1.1.13 GRID
-      • 1.1.14 TRANSFORM — dùng composite --ui-* vars (từ properties.css)
-      • 1.1.15 ASPECT RATIO
-      • 1.1.16 OBJECT FIT — cho img, video
-      • 1.1.17 TEXT — align, decoration, transform, whitespace
-      • 1.1.18 BORDER — width, style, radius
-      • 1.1.19 OUTLINE
-      • 1.1.20 APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE
-      • 1.1.21 COLOR-MIX — Opacity trên CSS variable (
-      • 1.1.22 ACCESSIBILITY
-      • 1.1.23 POSITION
-      • 1.1.24 ASPECT RATIO
-      • 1.1.25 INTERACTION
-      • 1.1.26 WILL-CHANGE — Performance hints cho GSAP / Three.js
-      • 1.1.27 TRANSITION UTILITIES
-      • 1.1.28 OPACITY
-      • 1.1.29 CURSOR + INTERACTION
-      • 1.1.30 ISOLATION — tạo stacking context mới, ngăn z-index leak
-      • 1.1.31 COMPOSITE SHADOW
-      • 1.1.32 FOCUS RING
-      • 1.1.33 FILTER COMPOSITE
-      • 1.1.34 BACKDROP FILTER — Dùng cho glass morphism
-      • 1.1.35 SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens
-      • 1.1.36 ANIMATE SHORTHAND — Dùng --animate-* tokens
-      • 1.1.37 SELECTION STYLING
-      • 1.1.38 DISABLED STATE
-      • 1.1.39 ROUNDED
-      • 1.1.40 TRUNCATE / LINE-CLAMP — Rất hay dùng
-      • 1.1.41 OPACITY
-      • 1.1.42 TEXT SIZE — Với companion --ui-leading (giống hệt  sample)
-      • 1.1.43 FONT WEIGHT — Với --ui-font-weight (giống hệt  sample)
-      • 1.1.44 DIVIDE
-      • 1.1.45 SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted
-      • 1.1.46 SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented
-      • 1.1.47 RING OPACITY VARIANTS — ring-primary/25, ring-error/50...
-      • 1.1.48 OUTLINE COLORS — outline-primary/25, outline-error/25...
-      • 1.1.49 FILL / STROKE — cho SVG icons
-      • 1.1.50 SCROLL PADDING
-      • 1.1.51 PLACEHOLDER
-      • 1.1.52 CURSOR
-      • 1.1.53 TRACKING (Letter-spacing) — Với --ui-tracking companion var
-      • 1.1.54 SPACE-Y / SPACE-X — Margin-based spacing (
-      • 1.1.55 SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc.
+        1.1.1 UTILITIES — FLOCSS Object/Utility Layer
+        1.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern
+        1.1.3 PADDING
+        1.1.4 GAP
+        1.1.5 WIDTH
+        1.1.6 POSITION — absolute, fixed, sticky, relative
+        1.1.7 INSET (shorthand cho top+right+bottom+left)
+        1.1.8 Z-INDEX — dùng --z-* tokens từ tokens.css
+        1.1.9 DISPLAY
+        1.1.10 VISIBILITY
+        1.1.11 OVERFLOW
+        1.1.12 FLEXBOX
+        1.1.13 GRID
+        1.1.14 TRANSFORM — dùng composite --ui-* vars (từ properties.css)
+        1.1.15 ASPECT RATIO
+        1.1.16 OBJECT FIT — cho img, video
+        1.1.17 TEXT — align, decoration, transform, whitespace
+        1.1.18 BORDER — width, style, radius
+        1.1.19 OUTLINE
+        1.1.20 APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE
+        1.1.21 COLOR-MIX — Opacity trên CSS variable (
+        1.1.22 ACCESSIBILITY
+        1.1.23 POSITION
+        1.1.24 ASPECT RATIO
+        1.1.25 INTERACTION
+        1.1.26 WILL-CHANGE — Performance hints cho GSAP / Three.js
+        1.1.27 TRANSITION UTILITIES
+        1.1.28 OPACITY
+        1.1.29 CURSOR + INTERACTION
+        1.1.30 ISOLATION — tạo stacking context mới, ngăn z-index leak
+        1.1.31 COMPOSITE SHADOW
+        1.1.32 FOCUS RING
+        1.1.33 FILTER COMPOSITE
+        1.1.34 BACKDROP FILTER — Dùng cho glass morphism
+        1.1.35 SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens
+        1.1.36 ANIMATE SHORTHAND — Dùng --animate-* tokens
+        1.1.37 SELECTION STYLING
+        1.1.38 DISABLED STATE
+        1.1.39 ROUNDED
+        1.1.40 TRUNCATE / LINE-CLAMP — Rất hay dùng
+        1.1.41 OPACITY
+        1.1.42 TEXT SIZE — Với companion --ui-leading (giống hệt  sample)
+        1.1.43 FONT WEIGHT — Với --ui-font-weight (giống hệt  sample)
+        1.1.44 DIVIDE
+        1.1.45 SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted
+        1.1.46 SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented
+        1.1.47 RING OPACITY VARIANTS — ring-primary/25, ring-error/50...
+        1.1.48 OUTLINE COLORS — outline-primary/25, outline-error/25...
+        1.1.49 FILL / STROKE — cho SVG icons
+        1.1.50 SCROLL PADDING
+        1.1.51 PLACEHOLDER
+        1.1.52 CURSOR
+        1.1.53 TRACKING (Letter-spacing) — Với --ui-tracking companion var
+        1.1.54 SPACE-Y / SPACE-X — Margin-based spacing (
+        1.1.55 SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc.
 ====================================================================================*/
 /*====================================================================================
 1. UTILITY.

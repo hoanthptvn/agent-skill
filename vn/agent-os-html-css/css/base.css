@@ -5,33 +5,33 @@
 
 1. FOUNDATION.
    1.1. SETUP.
-      • 1.1.1 RESET - Áp dụng trước mọi style khác
-      • 1.1.2 DESIGN TOKENS — FLOCSS Foundation Layer
-      • 1.1.3 Radius Scale
-      • 1.1.4 DARK MODE
-      • 1.1.5 PROPERTIES — FLOCSS Foundation Layer
-      • 1.1.6 SHADOW COMPOSITE
-      • 1.1.7 BORDER
-      • 1.1.8 FILTER COMPOSITE
-      • 1.1.9 BACKDROP FILTER COMPOSITE
-      • 1.1.10 TYPOGRAPHY OVERRIDE
-      • 1.1.11 TRANSITION OVERRIDE
-      • 1.1.12 LAYOUT INTERNAL
-      • 1.1.13 COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults
-      • 1.1.14 @property DECLARATIONS — Modern browser native registration
-      • 1.1.15 TYPOGRAPHY — FLOCSS Foundation Layer
+        1.1.1 RESET - Áp dụng trước mọi style khác
+        1.1.2 DESIGN TOKENS — FLOCSS Foundation Layer
+        1.1.3 Radius Scale
+        1.1.4 DARK MODE
+        1.1.5 PROPERTIES — FLOCSS Foundation Layer
+        1.1.6 SHADOW COMPOSITE
+        1.1.7 BORDER
+        1.1.8 FILTER COMPOSITE
+        1.1.9 BACKDROP FILTER COMPOSITE
+        1.1.10 TYPOGRAPHY OVERRIDE
+        1.1.11 TRANSITION OVERRIDE
+        1.1.12 LAYOUT INTERNAL
+        1.1.13 COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults
+        1.1.14 @property DECLARATIONS — Modern browser native registration
+        1.1.15 TYPOGRAPHY — FLOCSS Foundation Layer
 2. LAYOUT.
-      • 2.0.1 LAYOUT — FLOCSS Layout Layer
+        2.0.1 LAYOUT — FLOCSS Layout Layer
 3. COMPONENT.
-      • 3.0.1 COMPONENTS — FLOCSS Object/Component Layer
-      • 3.0.2 c-btn — Button
-      • 3.0.3 c-card — Card
-      • 3.0.4 c-tag — Tag / Badge
-      • 3.0.5 c-divider — Horizontal Rule
-      • 3.0.6 ANIMATIONS — FLOCSS Foundation Layer
-      • 3.0.7 KEYFRAMES
-      • 3.0.8 DATA-ANIMATE PATTERN
-      • 3.0.9 UTILITY ANIMATION CLASSES
+        3.0.1 COMPONENTS — FLOCSS Object/Component Layer
+        3.0.2 c-btn — Button
+        3.0.3 c-card — Card
+        3.0.4 c-tag — Tag / Badge
+        3.0.5 c-divider — Horizontal Rule
+        3.0.6 ANIMATIONS — FLOCSS Foundation Layer
+        3.0.7 KEYFRAMES
+        3.0.8 DATA-ANIMATE PATTERN
+        3.0.9 UTILITY ANIMATION CLASSES
 ====================================================================================*/
 
 @layer reset, tokens, base, layout, components, animations, utilities, page;
