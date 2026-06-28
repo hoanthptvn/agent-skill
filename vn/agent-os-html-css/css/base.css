@@ -723,19 +723,19 @@
    * Safe defaults cho composite CSS variables (--ui-*)
    */
 
-  /*
-   Tại sao cần file này:
-   CSS composite property (box-shadow, filter, transform) ghép nhiều var()
-   thành 1 giá trị. Nếu BẤT KỲ var() nào chưa khai báo → toàn bộ
-   property = invalid → mất hết styling.
-   Giải pháp: khai báo safe default cho mọi element trước khi dùng:
-   - Shadow vars : 0 0 #0000  (transparent nhưng hợp lệ)
-   - Filter vars : initial     (không có effect, không làm hỏng composite)
-   - Transform vars: 0         (translate 0 = không dịch chuyển)
-   Prefix --ui-*  → biến nội bộ, chỉ utility/component đọc-ghi
-   @property      → browser hiện đại tự handle (Chrome 85+, Safari 16.4+)
-   @supports      → fallback cho browser cũ
-   ========================================================================== */
+  /**
+   * Tại sao cần file này:
+   * CSS composite property (box-shadow, filter, transform) ghép nhiều var()
+   * thành 1 giá trị. Nếu BẤT KỲ var() nào chưa khai báo → toàn bộ
+   * property = invalid → mất hết styling.
+   * Giải pháp: khai báo safe default cho mọi element trước khi dùng:
+   * - Shadow vars : 0 0 #0000  (transparent nhưng hợp lệ)
+   * - Filter vars : initial     (không có effect, không làm hỏng composite)
+   * - Transform vars: 0         (translate 0 = không dịch chuyển)
+   * Prefix --ui-*  → biến nội bộ, chỉ utility/component đọc-ghi
+   * @property      → browser hiện đại tự handle (Chrome 85+, Safari 16.4+)
+   * @supports      → fallback cho browser cũ
+   */
 
   /**
    * @supports — Tại sao dùng query này?
@@ -812,12 +812,11 @@
 
       /* ========== 1.1.7 BORDER ========== */
 
-      /**
-       * */
-       * --ui-border-style: solid;
-       * --ui-divide-y-reverse: 0;
-       * /* ── OUTLINE
-       */
+      --ui-border-style: solid;
+      --ui-divide-y-reverse: 0;
+
+      /* ========== 1.1.7.1 OUTLINE ========== */
+
       --ui-outline-style: solid;
 
       /* ========== 1.1.8 FILTER COMPOSITE ========== */
