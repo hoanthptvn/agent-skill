@@ -23,13 +23,9 @@
 ------------------------------------------------------------------------------------*/
 
 @layer base {
-  /* ==========================================================================
-   RESET - Áp dụng trước mọi style khác
-   ========================================================================== */
+  /*---------- RESET - Áp dụng trước mọi style khác ----------*/
 
-  /* ==========================================================================
-   1. BOX MODEL
-   ========================================================================== */
+  /*---------- 1. BOX MODEL ----------*/
 
   *,
   *::before,
@@ -39,9 +35,7 @@
     margin: 0;
   }
 
-  /* ==========================================================================
-   2. ROOT
-   ========================================================================== */
+  /*---------- 2. ROOT ----------*/
 
   html {
     -webkit-text-size-adjust: 100%;
@@ -64,9 +58,7 @@
     }
   }
 
-  /* ==========================================================================
-   3. BODY
-   ========================================================================== */
+  /*---------- 3. BODY ----------*/
 
   body {
     min-height: 100dvh;
@@ -86,9 +78,7 @@
     color-scheme: dark;
   }
 
-  /* ==========================================================================
-   4. TYPOGRAPHY
-   ========================================================================== */
+  /*---------- 4. TYPOGRAPHY ----------*/
 
   h1,
   h2,
@@ -112,9 +102,7 @@
     text-wrap: pretty;
   }
 
-  /* ==========================================================================
-   5. LINKS
-   ========================================================================== */
+  /*---------- 5. LINKS ----------*/
 
   a {
     color: inherit;
@@ -129,9 +117,7 @@
     border-radius: var(--radius-sm, 0.25rem);
   }
 
-  /* ==========================================================================
-   6. MEDIA
-   ========================================================================== */
+  /*---------- 6. MEDIA ----------*/
 
   img,
   picture,
@@ -153,9 +139,7 @@
     fill: currentColor;
   }
 
-  /* ==========================================================================
-   7. FORM ELEMENTS
-   ========================================================================== */
+  /*---------- 7. FORM ELEMENTS ----------*/
 
   input,
   button,
@@ -207,9 +191,7 @@
     }
   }
 
-  /* ==========================================================================
-   8. LISTS & TABLE
-   ========================================================================== */
+  /*---------- 8. LISTS & TABLE ----------*/
 
   ul,
   ol {
@@ -221,9 +203,7 @@
     border-collapse: collapse;
   }
 
-  /* ==========================================================================
-   9. MISC
-   ========================================================================== */
+  /*---------- 9. MISC ----------*/
 
   hr {
     height: 0;
@@ -295,15 +275,13 @@
 }
 
 @layer tokens {
-  /* ==========================================================================
-   DESIGN TOKENS — FLOCSS Foundation Layer
+  /*---------- DESIGN TOKENS — FLOCSS Foundation Layer ----------*/
+/*
    CSS Custom Properties — mọi dự án đều cần
-   ========================================================================== */
+*/
 
   :root {
-    /* ==========================================================================
-     1. BRAND — Sửa 4 chỗ này theo từng project
-     ========================================================================== */
+    /*---------- 1. BRAND — Sửa 4 chỗ này theo từng project ----------*/
 
     /* oklch: Lightness Chroma Hue — https://oklch.com
      Hue: 0=đỏ  25=cam  75=vàng  120=xanh lá  240=xanh dương  280=tím  320=hồng */
@@ -319,9 +297,7 @@
     --font-body: "Inter", "DM Sans", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-    /* ==========================================================================
-     2. COLOR SYSTEM — Primitive → Semantic
-     ========================================================================== */
+    /*---------- 2. COLOR SYSTEM — Primitive → Semantic ----------*/
 
     /* Primitive neutral scale */
     --clr-neutral-0: #ffffff;
@@ -364,11 +340,11 @@
     --clr-error: oklch(55% 0.22 25);
     --clr-info: oklch(62% 0.18 230);
 
-    /* ==========================================================================
-     2b. UI SEMANTIC TOKENS — Tầng 3: trạng thái tương tác
-     Dùng trong button, badge, alert: background: var(--ui-error)
-     Lợi thế: có thể remap toàn bộ màu trạng thái mà không sửa component
-     ========================================================================== */
+    /*---------- 2b. UI SEMANTIC TOKENS — Tầng 3: trạng thái tương tác ----------*/
+/*
+   Dùng trong button, badge, alert: background: var(--ui-error)
+   Lợi thế: có thể remap toàn bộ màu trạng thái mà không sửa component
+*/
 
     --ui-primary: var(--clr-accent);
     --ui-secondary: var(--clr-neutral-600);
@@ -377,9 +353,7 @@
     --ui-error: var(--clr-error);
     --ui-info: var(--clr-info);
 
-    /* ==========================================================================
-     3. TYPOGRAPHY — Fluid scale clamp
-     ========================================================================== */
+    /*---------- 3. TYPOGRAPHY — Fluid scale clamp ----------*/
 
     --text-2xs: clamp(0.625rem, 0.8vw, 0.75rem);
     --text-xs: clamp(0.75rem, 1vw, 0.875rem);
@@ -428,30 +402,25 @@
     --weight-bold: 700;
     --weight-black: 900;
 
-    /* ==========================================================================
-     4. SPACING — 8pt grid
-
-     HAI CÁCH dùng spacing (đều hợp lệ):
-
-     CÁCH 1 — Named tokens (agent-os-css style):
-       padding: var(--space-4);     → 2rem
-       gap:     var(--space-2);     → 1rem
-       ✅ Autocomplete tốt  ✅ Rõ ràng  ❌ Chỉ có số được khai báo sẵn
-
-     CÁCH 2 — calc(var(--spacing) * N):
-       padding: calc(var(--spacing) * 4);    → 1rem  (0.25rem × 4)
-       height:  calc(var(--spacing) * 11);   → 2.75rem
-       gap:     calc(var(--spacing) * 2.5);  → 0.625rem (số lẻ được!)
-       ✅ Bất kỳ số nào  ✅ Nhất quán  ✅ Dùng inline style được
-
-     Tương quan: 1 đơn vị nhỏ (0.25rem) = 4px
-                 1 đơn vị agent-os-css (0.5rem)  = 8px
-                 → calc(var(--spacing) * 8) ≡ var(--space-4) = 2rem
-
-     DÙNG INLINE STYLE:
-       <div style="padding: calc(var(--spacing) * 6)">   → 1.5rem
-       <div style="height: calc(var(--spacing) * 11)">   → 2.75rem
-     ========================================================================== */
+    /*---------- 4. SPACING — 8pt grid ----------*/
+/*
+   HAI CÁCH dùng spacing (đều hợp lệ):
+   CÁCH 1 — Named tokens (agent-os-css style):
+   padding: var(--space-4);     → 2rem
+   gap:     var(--space-2);     → 1rem
+   ✅ Autocomplete tốt  ✅ Rõ ràng  ❌ Chỉ có số được khai báo sẵn
+   CÁCH 2 — calc(var(--spacing) * N):
+   padding: calc(var(--spacing) * 4);    → 1rem  (0.25rem × 4)
+   height:  calc(var(--spacing) * 11);   → 2.75rem
+   gap:     calc(var(--spacing) * 2.5);  → 0.625rem (số lẻ được!)
+   ✅ Bất kỳ số nào  ✅ Nhất quán  ✅ Dùng inline style được
+   Tương quan: 1 đơn vị nhỏ (0.25rem) = 4px
+   1 đơn vị agent-os-css (0.5rem)  = 8px
+   → calc(var(--spacing) * 8) ≡ var(--space-4) = 2rem
+   DÙNG INLINE STYLE:
+   <div style="padding: calc(var(--spacing) * 6)">   → 1.5rem
+   <div style="height: calc(var(--spacing) * 11)">   → 2.75rem
+*/
 
     /* Base unit — 0.25rem per step */
     --spacing: 0.25rem;
@@ -489,9 +458,7 @@
     --space-section: clamp(6rem, 12vw, 10rem);
     --space-section-lg: clamp(8rem, 16vw, 14rem);
 
-    /* ==========================================================================
-     5. LAYOUT
-     ========================================================================== */
+    /*---------- 5. LAYOUT ----------*/
 
     --gutter: clamp(1rem, 4vw, 2.5rem);
 
@@ -541,347 +508,295 @@
     --grid-cols: 12;
     --col-gap: var(--gutter);
 
-    /* ─── Radius Scale ─────────────────────────────────────────────────────
-     Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
-     User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
-     Mặc định: --radius: .625rem (10px)
-     --ui-radius là alias backward-compatible
-     agent-os-css giữ cả 2 để backward compatible. */
-    --radius: 0.625rem;
-    /* ← Giá trị gốc, sửa 1 chỗ này */
-
-    --radius-xs: 0.125rem;
-    /* cố định — rất nhỏ */
-    --radius-sm: calc(var(--radius) * 0.6);
-    /* ~6px */
-    --radius-md: calc(var(--radius) * 0.8);
-    /* ~8px */
-    --radius-lg: var(--radius);
-    /* 10px — mặc định .rounded-lg */
-    --radius-xl: calc(var(--radius) * 1.4);
-    /* ~14px */
-    --radius-2xl: calc(var(--radius) * 1.8);
-    /* ~18px */
-    --radius-3xl: calc(var(--radius) * 2.2);
-    /* ~22px */
-    --radius-4xl: calc(var(--radius) * 2.6);
-    /* ~26px */
-    --radius-full: 9999px;
-    /* pill / circle */
-
-    /* Backward compat alias cho code cũ dùng --ui-radius */
-    --ui-radius: var(--radius);
-    --ui-header-height: 4rem;
-    --ui-container: 80rem;
-
-    --z-below: -1;
-    --z-base: 1;
-    --z-raised: 10;
-    --z-dropdown: 100;
-    --z-sticky: 200;
-    --z-overlay: 300;
-    --z-modal: 400;
-    --z-toast: 500;
-    --z-tooltip: 600;
-    --z-cursor: 999;
-
-    /* ==========================================================================
-     6. ANIMATION
-     ========================================================================== */
-
-    --dur-instant: 80ms;
-    --dur-fast: 150ms;
-    --dur-base: 300ms;
-    --dur-slow: 500ms;
-    --dur-slower: 800ms;
-    --dur-page: 1200ms;
-
-    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-    --ease-in: cubic-bezier(0.64, 0, 0.78, 0);
-    --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    --transition-fast: var(--dur-fast) var(--ease-out);
-    --transition-base: var(--dur-base) var(--ease-out);
-    --transition-slow: var(--dur-slow) var(--ease-out-expo);
-    --transition-spring: var(--dur-slow) var(--ease-spring);
-
-    /* Default transition
-     Dùng làm fallback trong utility .transition:
-     transition-duration: var(--ui-duration, var(--default-transition-duration))
-     Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)" */
-    --default-transition-duration: 0.15s;
-    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* Animate shorthand tokens
-     Dùng: animation: var(--animate-spin) */
-    --animate-spin: spin 1s linear infinite;
-    --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animate-bounce: bounce 1s infinite;
-
-    /* ==========================================================================
-     7. EFFECTS
-     ========================================================================== */
-
-    --shadow-xs: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
-    --shadow-sm:
-      0 1px 3px 0 oklch(0% 0 0 / 0.1), 0 1px 2px -1px oklch(0% 0 0 / 0.1);
-    --shadow-md:
-      0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1);
-    --shadow-lg:
-      0 10px 15px -3px oklch(0% 0 0 / 0.1), 0 4px 6px -4px oklch(0% 0 0 / 0.1);
-    --shadow-xl:
-      0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
-    --shadow-2xl: 0 25px 50px -12px oklch(0% 0 0 / 0.25);
-    --shadow-glow: 0 0 40px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.3);
-
-    /* Inset shadow*/
-    --inset-shadow-xs: inset 0 1px oklch(0% 0 0 / 0.05);
-    --inset-shadow-sm: inset 0 1px 1px oklch(0% 0 0 / 0.05);
-    --inset-shadow-md: inset 0 2px 4px oklch(0% 0 0 / 0.05);
-
-    --blur-xs: 4px;
-    --blur-sm: 8px;
-    --blur-md: 12px;
-    --blur-lg: 16px;
-    --blur-xl: 24px;
-    --blur-2xl: 40px;
-    --blur-glass: 16px;
-
-    --glass-bg: oklch(100% 0 0 / 0.05);
-    --glass-border: oklch(100% 0 0 / 0.12);
-    --glass-blur: blur(var(--blur-glass));
-
-    --perspective-xs: 100px;
-    --perspective-sm: 300px;
-    --perspective-md: 500px;
-    --perspective-lg: 800px;
-    --perspective-xl: 1200px;
-    --perspective-none: none;
-
-    --text-shadow-xs: 0px 1px 1px oklch(0% 0 0 / 0.15);
-    --text-shadow-sm:
-      0px 1px 0px oklch(0% 0 0 / 0.08), 0px 2px 2px oklch(0% 0 0 / 0.08);
-    --text-shadow-md:
-      0px 1px 1px oklch(0% 0 0 / 0.1), 0px 2px 4px oklch(0% 0 0 / 0.1);
-    --text-shadow-lg:
-      0px 2px 4px oklch(0% 0 0 / 0.12), 0px 4px 8px oklch(0% 0 0 / 0.12);
-    --text-shadow-glow:
-      0 0 20px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.5),
-      0 0 60px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.2);
-
-    --drop-shadow-xs: 0 1px 1px oklch(0% 0 0 / 0.08);
-    --drop-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.15);
-    --drop-shadow-md: 0 3px 3px oklch(0% 0 0 / 0.12);
-    --drop-shadow-lg: 0 4px 6px oklch(0% 0 0 / 0.15);
-    --drop-shadow-xl: 0 9px 7px oklch(0% 0 0 / 0.1);
-
-    /* ==========================================================================
-     8.  SEMANTIC TOKENS — Tầng 4: ecosystem compatibility
-
-     TẠI SAO CẦN 2 HỆ THỐNG?
-     ─────────────────────────
-     --clr-*     = agent-os-css native (oklch, precise, granular)
-     --background/--foreground/... = CSS token ecosystem
-
-     Cho phép tích hợp component library bên ngoài mà không cần refactor.
-     Component dùng var(--background) sẽ tự adapt theo theme.
-     ========================================================================== */
-
-    /* Nền & chữ chính */
-    --background: var(--clr-bg);
-    --foreground: var(--clr-text);
-
-    /* Card / Popover — thường cùng màu background */
-    --card: var(--clr-surface);
-    --card-foreground: var(--clr-text);
-    --popover: var(--clr-bg);
-    --popover-foreground: var(--clr-text);
-
-    /* Primary action color */
-    --primary: var(--ui-primary);
-    --primary-foreground: var(--clr-neutral-0);
-
-    /* Secondary / Neutral */
-    --secondary: var(--clr-neutral-100);
-    --secondary-foreground: var(--clr-neutral-900);
-
-    /* Muted — background nhẹ, text phụ */
-    --muted: var(--clr-bg-subtle);
-    --muted-foreground: var(--clr-text-muted);
-
-    /* Accent — hover state, subtle highlight */
-    --accent: var(--clr-surface);
-    --accent-foreground: var(--clr-text);
-
-    /* Destructive — danger/error */
-    --destructive: var(--ui-error);
-    --destructive-foreground: var(--clr-neutral-0);
-
-    /* Border & Input */
-    --border: var(--clr-border);
-    --input: var(--clr-border);
-
-    /* Ring — focus outline color */
-    --ring: var(--clr-neutral-400);
-
-    /* Surface — elevated layer */
-    --surface: var(--clr-surface);
-    --surface-foreground: var(--clr-text-toned);
-
-    /* Sidebar — component-specific */
-    --sidebar: var(--clr-bg-subtle);
-    --sidebar-foreground: var(--clr-text);
-    --sidebar-primary: var(--ui-primary);
-    --sidebar-primary-foreground: var(--clr-neutral-0);
-    --sidebar-accent: var(--clr-surface);
-    --sidebar-accent-foreground: var(--clr-text);
-    --sidebar-border: var(--clr-border);
-    --sidebar-ring: var(--clr-neutral-400);
-
-    /* Chart / Data viz — 5 màu cho biểu đồ */
-    --chart-1: oklch(65% 0.18 230);
-    --chart-2: oklch(65% 0.2 145);
-    --chart-3: oklch(78% 0.18 75);
-    --chart-4: oklch(65% 0.22 25);
-    --chart-5: oklch(62% 0.2 300);
-
-    /* Code block */
-    --code: var(--clr-surface);
-    --code-foreground: var(--clr-text-toned);
-    --code-highlight: var(--clr-surface-alt);
-
-    /* Selection */
-    --selection: var(--clr-accent-light);
-    --selection-foreground: var(--clr-neutral-900);
-  }
-
-  /* ==========================================================================
-   DARK MODE
-   ========================================================================== */
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      /* agent-os-css native */
-      --clr-bg: var(--clr-neutral-950);
-      --clr-bg-subtle: var(--clr-neutral-900);
-      --clr-surface: var(--clr-neutral-800);
-      --clr-surface-alt: var(--clr-neutral-700);
-      --clr-text: var(--clr-neutral-200);
-      --clr-text-toned: var(--clr-neutral-300);
-      --clr-text-muted: var(--clr-neutral-400);
-      --clr-text-faint: var(--clr-neutral-500);
-      --clr-text-highlighted: #fff;
-      --clr-text-invert: var(--clr-neutral-950);
-      --clr-border: var(--clr-neutral-700);
-      --clr-border-alt: var(--clr-neutral-600);
-      --shadow-sm:
-        0 1px 3px 0 oklch(0% 0 0 / 0.3), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
-      --shadow-md:
-        0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -2px oklch(0% 0 0 / 0.4);
-      --shadow-lg:
-        0 10px 15px -3px oklch(0% 0 0 / 0.5), 0 4px 6px -4px oklch(0% 0 0 / 0.5);
-      --shadow-xl:
-        0 20px 25px -5px oklch(0% 0 0 / 0.6),
-        0 8px 10px -6px oklch(0% 0 0 / 0.6);
-      --glass-bg: oklch(0% 0 0 / 0.15);
-      --glass-border: oklch(100% 0 0 / 0.08);
-      /*  compat — các giá trị cascade tự cập nhật qua var */
-      --border: oklch(100% 0 0 / 0.1);
-      /* border trắng nhạt trên nền tối */
-      --input: oklch(100% 0 0 / 0.15);
-      --ring: var(--clr-neutral-500);
-    }
-  }
-
-  /* .dark class — khớp với  /  pattern */
-  .dark {
-    /* agent-os-css native */
-    --clr-bg: var(--clr-neutral-950);
-    --clr-bg-subtle: var(--clr-neutral-900);
-    --clr-surface: var(--clr-neutral-800);
-    --clr-surface-alt: var(--clr-neutral-700);
-    --clr-text: var(--clr-neutral-200);
-    --clr-text-toned: var(--clr-neutral-300);
-    --clr-text-muted: var(--clr-neutral-400);
-    --clr-text-faint: var(--clr-neutral-500);
-    --clr-text-highlighted: #fff;
-    --clr-text-invert: var(--clr-neutral-950);
-    --clr-border: var(--clr-neutral-700);
-    --clr-border-alt: var(--clr-neutral-600);
-    --shadow-sm:
-      0 1px 3px 0 oklch(0% 0 0 / 0.3), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
-    --shadow-md:
-      0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -2px oklch(0% 0 0 / 0.4);
-    --shadow-lg:
-      0 10px 15px -3px oklch(0% 0 0 / 0.5), 0 4px 6px -4px oklch(0% 0 0 / 0.5);
-    --shadow-xl:
-      0 20px 25px -5px oklch(0% 0 0 / 0.6), 0 8px 10px -6px oklch(0% 0 0 / 0.6);
-    --glass-bg: oklch(0% 0 0 / 0.15);
-    --glass-border: oklch(100% 0 0 / 0.08);
-    /*  compat overrides */
-    --border: oklch(100% 0 0 / 0.1);
-    --input: oklch(100% 0 0 / 0.15);
-    --ring: var(--clr-neutral-500);
-    /* Chart — bật sáng hơn trên nền tối */
-    --chart-1: oklch(72% 0.18 230);
-    --chart-2: oklch(72% 0.2 145);
-    --chart-3: oklch(82% 0.15 75);
-    --chart-4: oklch(72% 0.22 25);
-    --chart-5: oklch(70% 0.2 300);
-  }
-
-  /* ==========================================================================
-   PROPERTIES — FLOCSS Foundation Layer
+    /*---------- Radius Scale ----------*/
+/*
+   Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
+   User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
+   Mặc định: --radius: .625rem (10px)
+   --ui-radius là alias backward-compatible
+   agent-os-css giữ cả 2 để backward compatible. */
+   --radius: 0.625rem;
+   /* ← Giá trị gốc, sửa 1 chỗ này */
+   --radius-xs: 0.125rem;
+   /* cố định — rất nhỏ */
+   --radius-sm: calc(var(--radius) * 0.6);
+   /* ~6px */
+   --radius-md: calc(var(--radius) * 0.8);
+   /* ~8px */
+   --radius-lg: var(--radius);
+   /* 10px — mặc định .rounded-lg */
+   --radius-xl: calc(var(--radius) * 1.4);
+   /* ~14px */
+   --radius-2xl: calc(var(--radius) * 1.8);
+   /* ~18px */
+   --radius-3xl: calc(var(--radius) * 2.2);
+   /* ~22px */
+   --radius-4xl: calc(var(--radius) * 2.6);
+   /* ~26px */
+   --radius-full: 9999px;
+   /* pill / circle */
+   /* Backward compat alias cho code cũ dùng --ui-radius */
+   --ui-radius: var(--radius);
+   --ui-header-height: 4rem;
+   --ui-container: 80rem;
+   --z-below: -1;
+   --z-base: 1;
+   --z-raised: 10;
+   --z-dropdown: 100;
+   --z-sticky: 200;
+   --z-overlay: 300;
+   --z-modal: 400;
+   --z-toast: 500;
+   --z-tooltip: 600;
+   --z-cursor: 999;
+   /*---------- 6. ANIMATION ----------*/
+   --dur-instant: 80ms;
+   --dur-fast: 150ms;
+   --dur-base: 300ms;
+   --dur-slow: 500ms;
+   --dur-slower: 800ms;
+   --dur-page: 1200ms;
+   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+   --ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+   --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+   --transition-fast: var(--dur-fast) var(--ease-out);
+   --transition-base: var(--dur-base) var(--ease-out);
+   --transition-slow: var(--dur-slow) var(--ease-out-expo);
+   --transition-spring: var(--dur-slow) var(--ease-spring);
+   /* Default transition
+   Dùng làm fallback trong utility .transition:
+   transition-duration: var(--ui-duration, var(--default-transition-duration))
+   Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)" */
+   --default-transition-duration: 0.15s;
+   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+   /* Animate shorthand tokens
+   Dùng: animation: var(--animate-spin) */
+   --animate-spin: spin 1s linear infinite;
+   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+   --animate-bounce: bounce 1s infinite;
+   /*---------- 7. EFFECTS ----------*/
+   --shadow-xs: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+   --shadow-sm:
+   0 1px 3px 0 oklch(0% 0 0 / 0.1), 0 1px 2px -1px oklch(0% 0 0 / 0.1);
+   --shadow-md:
+   0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1);
+   --shadow-lg:
+   0 10px 15px -3px oklch(0% 0 0 / 0.1), 0 4px 6px -4px oklch(0% 0 0 / 0.1);
+   --shadow-xl:
+   0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
+   --shadow-2xl: 0 25px 50px -12px oklch(0% 0 0 / 0.25);
+   --shadow-glow: 0 0 40px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.3);
+   /* Inset shadow*/
+   --inset-shadow-xs: inset 0 1px oklch(0% 0 0 / 0.05);
+   --inset-shadow-sm: inset 0 1px 1px oklch(0% 0 0 / 0.05);
+   --inset-shadow-md: inset 0 2px 4px oklch(0% 0 0 / 0.05);
+   --blur-xs: 4px;
+   --blur-sm: 8px;
+   --blur-md: 12px;
+   --blur-lg: 16px;
+   --blur-xl: 24px;
+   --blur-2xl: 40px;
+   --blur-glass: 16px;
+   --glass-bg: oklch(100% 0 0 / 0.05);
+   --glass-border: oklch(100% 0 0 / 0.12);
+   --glass-blur: blur(var(--blur-glass));
+   --perspective-xs: 100px;
+   --perspective-sm: 300px;
+   --perspective-md: 500px;
+   --perspective-lg: 800px;
+   --perspective-xl: 1200px;
+   --perspective-none: none;
+   --text-shadow-xs: 0px 1px 1px oklch(0% 0 0 / 0.15);
+   --text-shadow-sm:
+   0px 1px 0px oklch(0% 0 0 / 0.08), 0px 2px 2px oklch(0% 0 0 / 0.08);
+   --text-shadow-md:
+   0px 1px 1px oklch(0% 0 0 / 0.1), 0px 2px 4px oklch(0% 0 0 / 0.1);
+   --text-shadow-lg:
+   0px 2px 4px oklch(0% 0 0 / 0.12), 0px 4px 8px oklch(0% 0 0 / 0.12);
+   --text-shadow-glow:
+   0 0 20px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.5),
+   0 0 60px oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 0.2);
+   --drop-shadow-xs: 0 1px 1px oklch(0% 0 0 / 0.08);
+   --drop-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.15);
+   --drop-shadow-md: 0 3px 3px oklch(0% 0 0 / 0.12);
+   --drop-shadow-lg: 0 4px 6px oklch(0% 0 0 / 0.15);
+   --drop-shadow-xl: 0 9px 7px oklch(0% 0 0 / 0.1);
+   /*---------- 8.  SEMANTIC TOKENS — Tầng 4: ecosystem compatibility ----------*/
+   /*
+   TẠI SAO CẦN 2 HỆ THỐNG?
+   ─────────────────────────
+   --clr-*     = agent-os-css native (oklch, precise, granular)
+   --background/--foreground/... = CSS token ecosystem
+   Cho phép tích hợp component library bên ngoài mà không cần refactor.
+   Component dùng var(--background) sẽ tự adapt theo theme.
+   */
+   /* Nền & chữ chính */
+   --background: var(--clr-bg);
+   --foreground: var(--clr-text);
+   /* Card / Popover — thường cùng màu background */
+   --card: var(--clr-surface);
+   --card-foreground: var(--clr-text);
+   --popover: var(--clr-bg);
+   --popover-foreground: var(--clr-text);
+   /* Primary action color */
+   --primary: var(--ui-primary);
+   --primary-foreground: var(--clr-neutral-0);
+   /* Secondary / Neutral */
+   --secondary: var(--clr-neutral-100);
+   --secondary-foreground: var(--clr-neutral-900);
+   /* Muted — background nhẹ, text phụ */
+   --muted: var(--clr-bg-subtle);
+   --muted-foreground: var(--clr-text-muted);
+   /* Accent — hover state, subtle highlight */
+   --accent: var(--clr-surface);
+   --accent-foreground: var(--clr-text);
+   /* Destructive — danger/error */
+   --destructive: var(--ui-error);
+   --destructive-foreground: var(--clr-neutral-0);
+   /* Border & Input */
+   --border: var(--clr-border);
+   --input: var(--clr-border);
+   /* Ring — focus outline color */
+   --ring: var(--clr-neutral-400);
+   /* Surface — elevated layer */
+   --surface: var(--clr-surface);
+   --surface-foreground: var(--clr-text-toned);
+   /* Sidebar — component-specific */
+   --sidebar: var(--clr-bg-subtle);
+   --sidebar-foreground: var(--clr-text);
+   --sidebar-primary: var(--ui-primary);
+   --sidebar-primary-foreground: var(--clr-neutral-0);
+   --sidebar-accent: var(--clr-surface);
+   --sidebar-accent-foreground: var(--clr-text);
+   --sidebar-border: var(--clr-border);
+   --sidebar-ring: var(--clr-neutral-400);
+   /* Chart / Data viz — 5 màu cho biểu đồ */
+   --chart-1: oklch(65% 0.18 230);
+   --chart-2: oklch(65% 0.2 145);
+   --chart-3: oklch(78% 0.18 75);
+   --chart-4: oklch(65% 0.22 25);
+   --chart-5: oklch(62% 0.2 300);
+   /* Code block */
+   --code: var(--clr-surface);
+   --code-foreground: var(--clr-text-toned);
+   --code-highlight: var(--clr-surface-alt);
+   /* Selection */
+   --selection: var(--clr-accent-light);
+   --selection-foreground: var(--clr-neutral-900);
+   }
+   /*---------- DARK MODE ----------*/
+   @media (prefers-color-scheme: dark) {
+   :root {
+   /* agent-os-css native */
+   --clr-bg: var(--clr-neutral-950);
+   --clr-bg-subtle: var(--clr-neutral-900);
+   --clr-surface: var(--clr-neutral-800);
+   --clr-surface-alt: var(--clr-neutral-700);
+   --clr-text: var(--clr-neutral-200);
+   --clr-text-toned: var(--clr-neutral-300);
+   --clr-text-muted: var(--clr-neutral-400);
+   --clr-text-faint: var(--clr-neutral-500);
+   --clr-text-highlighted: #fff;
+   --clr-text-invert: var(--clr-neutral-950);
+   --clr-border: var(--clr-neutral-700);
+   --clr-border-alt: var(--clr-neutral-600);
+   --shadow-sm:
+   0 1px 3px 0 oklch(0% 0 0 / 0.3), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
+   --shadow-md:
+   0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -2px oklch(0% 0 0 / 0.4);
+   --shadow-lg:
+   0 10px 15px -3px oklch(0% 0 0 / 0.5), 0 4px 6px -4px oklch(0% 0 0 / 0.5);
+   --shadow-xl:
+   0 20px 25px -5px oklch(0% 0 0 / 0.6),
+   0 8px 10px -6px oklch(0% 0 0 / 0.6);
+   --glass-bg: oklch(0% 0 0 / 0.15);
+   --glass-border: oklch(100% 0 0 / 0.08);
+   /*  compat — các giá trị cascade tự cập nhật qua var */
+   --border: oklch(100% 0 0 / 0.1);
+   /* border trắng nhạt trên nền tối */
+   --input: oklch(100% 0 0 / 0.15);
+   --ring: var(--clr-neutral-500);
+   }
+   }
+   /* .dark class — khớp với  /  pattern */
+   .dark {
+   /* agent-os-css native */
+   --clr-bg: var(--clr-neutral-950);
+   --clr-bg-subtle: var(--clr-neutral-900);
+   --clr-surface: var(--clr-neutral-800);
+   --clr-surface-alt: var(--clr-neutral-700);
+   --clr-text: var(--clr-neutral-200);
+   --clr-text-toned: var(--clr-neutral-300);
+   --clr-text-muted: var(--clr-neutral-400);
+   --clr-text-faint: var(--clr-neutral-500);
+   --clr-text-highlighted: #fff;
+   --clr-text-invert: var(--clr-neutral-950);
+   --clr-border: var(--clr-neutral-700);
+   --clr-border-alt: var(--clr-neutral-600);
+   --shadow-sm:
+   0 1px 3px 0 oklch(0% 0 0 / 0.3), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
+   --shadow-md:
+   0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -2px oklch(0% 0 0 / 0.4);
+   --shadow-lg:
+   0 10px 15px -3px oklch(0% 0 0 / 0.5), 0 4px 6px -4px oklch(0% 0 0 / 0.5);
+   --shadow-xl:
+   0 20px 25px -5px oklch(0% 0 0 / 0.6), 0 8px 10px -6px oklch(0% 0 0 / 0.6);
+   --glass-bg: oklch(0% 0 0 / 0.15);
+   --glass-border: oklch(100% 0 0 / 0.08);
+   /*  compat overrides */
+   --border: oklch(100% 0 0 / 0.1);
+   --input: oklch(100% 0 0 / 0.15);
+   --ring: var(--clr-neutral-500);
+   /* Chart — bật sáng hơn trên nền tối */
+   --chart-1: oklch(72% 0.18 230);
+   --chart-2: oklch(72% 0.2 145);
+   --chart-3: oklch(82% 0.15 75);
+   --chart-4: oklch(72% 0.22 25);
+   --chart-5: oklch(70% 0.2 300);
+   }
+   /*---------- PROPERTIES — FLOCSS Foundation Layer ----------*/
+   /*
    Safe defaults cho composite CSS variables (--ui-*)
-   ========================================================================== */
-
-  /*
+   */
+   /*
    Tại sao cần file này:
    CSS composite property (box-shadow, filter, transform) ghép nhiều var()
    thành 1 giá trị. Nếu BẤT KỲ var() nào chưa khai báo → toàn bộ
    property = invalid → mất hết styling.
-
    Giải pháp: khai báo safe default cho mọi element trước khi dùng:
    - Shadow vars : 0 0 #0000  (transparent nhưng hợp lệ)
    - Filter vars : initial     (không có effect, không làm hỏng composite)
    - Transform vars: 0         (translate 0 = không dịch chuyển)
-
    Prefix --ui-*  → biến nội bộ, chỉ utility/component đọc-ghi
    @property      → browser hiện đại tự handle (Chrome 85+, Safari 16.4+)
    @supports      → fallback cho browser cũ
    ========================================================================== */
-
-  /* 
+   /*
    @supports — Tại sao dùng query này?
-
    Các condition detect browser cũ:
    - (-webkit-hyphens:none)             → Webkit engine cũ
    - (not (margin-trim:inline))         → chưa hỗ trợ margin-trim
    - (-moz-orient:inline)               → Firefox engine cũ
    - (not (color:rgb(from red r g b)))  → chưa hỗ trợ relative color syntax
-
    Kết hợp = browser CŨ, engine cũ → cần set safe defaults thủ công.
    Browser hiện đại có @property → tự xử lý, bỏ qua @supports này.
+   */
+   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+   *,
+   ::backdrop,
+   ::before,
+   ::after {
+   /* ── TRANSFORM ─────────────────────────────────────────
+   Composite pattern:
+   translate: var(--ui-translate-x) var(--ui-translate-y);
+   Utility class set 1 var, composite ghép tất cả:
+   .translate-x-4 { --ui-translate-x: 1rem; }
+   → translate: 1rem 0;  (vì --ui-translate-y = 0)
 */
-
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
-
-    *,
-    ::backdrop,
-    ::before,
-    ::after {
-      /* ── TRANSFORM ─────────────────────────────────────────
-       Composite pattern:
-         translate: var(--ui-translate-x) var(--ui-translate-y);
-       
-       Utility class set 1 var, composite ghép tất cả:
-         .translate-x-4 { --ui-translate-x: 1rem; }
-         → translate: 1rem 0;  (vì --ui-translate-y = 0)
-       ───────────────────────────────────────────────────── */
       --ui-translate-x: 0;
       --ui-translate-y: 0;
       --ui-translate-z: 0;
@@ -892,27 +807,26 @@
       --ui-skew-x: initial;
       --ui-skew-y: initial;
 
-      /* ── SHADOW COMPOSITE ──────────────────────────────────
-       Composite pattern:
-         box-shadow: var(--ui-inset-shadow),
-                     var(--ui-inset-ring-shadow),
-                     var(--ui-ring-offset-shadow),
-                     var(--ui-ring-shadow),
-                     var(--ui-shadow);
-
-       Mỗi utility class chỉ set 1 biến:
-         .shadow-md  → --ui-shadow: 0 4px 6px...
-         .ring-2     → --ui-ring-shadow: 0 0 0 2px...
-       
-       Tại sao 5 layers?
-       ┌────────────────────┬──────────────────────────────┐
-       │ --ui-inset-shadow  │ inset shadow (pressed state) │
-       │ --ui-inset-ring    │ inset ring (focus-within)     │
-       │ --ui-ring-offset   │ ring offset (ring gap)        │
-       │ --ui-ring-shadow   │ focus ring                    │
-       │ --ui-shadow        │ normal box-shadow             │
-       └────────────────────┴──────────────────────────────┘
-       ───────────────────────────────────────────────────── */
+      /*---------- SHADOW COMPOSITE ----------*/
+/*
+   Composite pattern:
+   box-shadow: var(--ui-inset-shadow),
+   var(--ui-inset-ring-shadow),
+   var(--ui-ring-offset-shadow),
+   var(--ui-ring-shadow),
+   var(--ui-shadow);
+   Mỗi utility class chỉ set 1 biến:
+   .shadow-md  → --ui-shadow: 0 4px 6px...
+   .ring-2     → --ui-ring-shadow: 0 0 0 2px...
+   Tại sao 5 layers?
+   ┌────────────────────┬──────────────────────────────┐
+   │ --ui-inset-shadow  │ inset shadow (pressed state) │
+   │ --ui-inset-ring    │ inset ring (focus-within)     │
+   │ --ui-ring-offset   │ ring offset (ring gap)        │
+   │ --ui-ring-shadow   │ focus ring                    │
+   │ --ui-shadow        │ normal box-shadow             │
+   └────────────────────┴──────────────────────────────┘
+*/
       --ui-shadow: 0 0 #0000;
       --ui-shadow-color: initial;
       --ui-shadow-alpha: 100%;
@@ -931,28 +845,29 @@
       --ui-inset-ring-color: initial;
       --ui-inset-ring-shadow: 0 0 #0000;
 
-      /* ── BORDER ─────────────────────────────────────────── */
-      --ui-border-style: solid;
-      --ui-divide-y-reverse: 0;
-
-      /* ── OUTLINE ────────────────────────────────────────── */
+      /*---------- BORDER ----------*/
+/*
+   */
+   --ui-border-style: solid;
+   --ui-divide-y-reverse: 0;
+   /* ── OUTLINE
+*/
       --ui-outline-style: solid;
 
-      /* ── FILTER COMPOSITE ──────────────────────────────────
-       Composite pattern:
-         filter: var(--ui-blur, ) var(--ui-brightness, )
-                 var(--ui-contrast, ) var(--ui-grayscale, )
-                 var(--ui-hue-rotate, ) var(--ui-invert, )
-                 var(--ui-saturate, ) var(--ui-sepia, )
-                 var(--ui-drop-shadow, );
-
-       Mỗi utility class chỉ set 1 biến:
-         .blur-sm → --ui-blur: blur(4px);
-         .grayscale → --ui-grayscale: grayscale(100%);
-
-       Giá trị `initial` = CSS initial value = không có effect
-       → không làm hỏng composite nhưng cũng không thêm gì
-       ───────────────────────────────────────────────────── */
+      /*---------- FILTER COMPOSITE ----------*/
+/*
+   Composite pattern:
+   filter: var(--ui-blur, ) var(--ui-brightness, )
+   var(--ui-contrast, ) var(--ui-grayscale, )
+   var(--ui-hue-rotate, ) var(--ui-invert, )
+   var(--ui-saturate, ) var(--ui-sepia, )
+   var(--ui-drop-shadow, );
+   Mỗi utility class chỉ set 1 biến:
+   .blur-sm → --ui-blur: blur(4px);
+   .grayscale → --ui-grayscale: grayscale(100%);
+   Giá trị `initial` = CSS initial value = không có effect
+   → không làm hỏng composite nhưng cũng không thêm gì
+*/
       --ui-blur: initial;
       --ui-brightness: initial;
       --ui-contrast: initial;
@@ -968,11 +883,12 @@
       --ui-drop-shadow-alpha: 100%;
       --ui-drop-shadow-size: initial;
 
-      /* ── BACKDROP FILTER COMPOSITE ─────────────────────────
-       Tương tự filter, nhưng dùng cho backdrop-filter:
-         backdrop-filter: var(--ui-backdrop-blur, )
-                          var(--ui-backdrop-brightness, ) ...
-       ───────────────────────────────────────────────────── */
+      /*---------- BACKDROP FILTER COMPOSITE ----------*/
+/*
+   Tương tự filter, nhưng dùng cho backdrop-filter:
+   backdrop-filter: var(--ui-backdrop-blur, )
+   var(--ui-backdrop-brightness, ) ...
+*/
       --ui-backdrop-blur: initial;
       --ui-backdrop-brightness: initial;
       --ui-backdrop-contrast: initial;
@@ -983,37 +899,37 @@
       --ui-backdrop-saturate: initial;
       --ui-backdrop-sepia: initial;
 
-      /* ── TYPOGRAPHY OVERRIDE ───────────────────────────────
-       Cho phép override per-element:
-         style="--ui-font-weight: 700"
-         style="--ui-leading: 1.2"
-       ───────────────────────────────────────────────────── */
+      /*---------- TYPOGRAPHY OVERRIDE ----------*/
+/*
+   Cho phép override per-element:
+   style="--ui-font-weight: 700"
+   style="--ui-leading: 1.2"
+*/
       --ui-font-weight: initial;
       --ui-leading: initial;
       --ui-content: "";
 
-      /* ── TRANSITION OVERRIDE ───────────────────────────────
-       Override transition per-element:
-         <button style="--ui-duration: .3s; --ui-ease: ease-in">
-       
-       Utility dùng: var(--ui-duration, var(--default-transition-duration))
-         → Nếu --ui-duration set → dùng nó
-         → Nếu chưa set → fallback về default (0.15s)
-       ───────────────────────────────────────────────────── */
+      /*---------- TRANSITION OVERRIDE ----------*/
+/*
+   Override transition per-element:
+   <button style="--ui-duration: .3s; --ui-ease: ease-in">
+   Utility dùng: var(--ui-duration, var(--default-transition-duration))
+   → Nếu --ui-duration set → dùng nó
+   → Nếu chưa set → fallback về default (0.15s)
+*/
       --ui-duration: initial;
       --ui-ease: initial;
 
-      /* ── LAYOUT INTERNAL ───────────────────────────────────
-       Dùng cho border-spacing: var(--ui-border-spacing-x) ...
-       ───────────────────────────────────────────────────── */
+      /*---------- LAYOUT INTERNAL ----------*/
+/*
+   Dùng cho border-spacing: var(--ui-border-spacing-x) ...
+*/
       --ui-border-spacing-x: 0;
       --ui-border-spacing-y: 0;
     }
   }
 
-  /* ==========================================================================
-   COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults
-   ========================================================================== */
+  /*---------- COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults ----------*/
 
   /*
    PATTERN 1: Composite Box-Shadow
@@ -1059,21 +975,18 @@
      ← Set cả internal var lẫn property để pseudo-element kế thừa
 */
 
-  /* ==========================================================================
-   @property DECLARATIONS — Modern browser native registration
-
+  /*---------- @property DECLARATIONS — Modern browser native registration ----------*/
+/*
    TẠI SAO CẦN:
    ─────────────
    @property giúp browser HIỂU type của custom property:
    → Có thể TRANSITION/ANIMATE custom properties
    → Có thể set INITIAL VALUE an toàn (không cần @supports fallback)
    → Browser biết syntax → validate đúng
-
    @supports fallback ở trên: cho browser cũ (Chrome <85, Safari <16.4)
    @property ở đây: cho browser mới — không conflict, browser tự chọn
-
    Browser support: Chrome 85+, Safari 16.4+, Firefox 128+
-   ========================================================================== */
+*/
 
   /* --- Nội dung / Pseudo-element --- */
   @property --ui-content {
@@ -1462,10 +1375,10 @@
 }
 
 @layer components {
-  /* ==========================================================================
-   TYPOGRAPHY — FLOCSS Foundation Layer
+  /*---------- TYPOGRAPHY — FLOCSS Foundation Layer ----------*/
+/*
    Class hệ thống cho heading, body text, label (không prefix — Foundation)
-   ========================================================================== */
+*/
 
   /* --- Headings ---
    Dùng class .h1–.h6 thay vì style trực tiếp trên tag
@@ -1537,10 +1450,10 @@
 2. LAYOUT.
 ====================================================================================*/
 @layer layout {
-  /* ==========================================================================
-   LAYOUT — FLOCSS Layout Layer
+  /*---------- LAYOUT — FLOCSS Layout Layer ----------*/
+/*
    Prefix: l-*  |  BEM: l-block--modifier
-   ========================================================================== */
+*/
 
   /* --- Container --- */
   .l-container {
@@ -1640,16 +1553,16 @@
 3. COMPONENT.
 ====================================================================================*/
 @layer components {
-  /* ==========================================================================
-   COMPONENTS — FLOCSS Object/Component Layer
+  /*---------- COMPONENTS — FLOCSS Object/Component Layer ----------*/
+/*
    Prefix: c-*  |  BEM: c-block__element--modifier  |  local CSS vars per component
-   ========================================================================== */
+*/
 
-  /* ==========================================================================
-   c-btn — Button
+  /*---------- c-btn — Button ----------*/
+/*
    Local vars: --btn-bg  --btn-color  --btn-border  --btn-radius
-               --btn-px  --btn-py     --btn-size
-   ========================================================================== */
+   --btn-px  --btn-py     --btn-size
+*/
 
   .c-btn {
     /* Local variables — override tại nơi dùng
@@ -1735,11 +1648,11 @@
    Hoặc đổi brand action color toàn cục:
    :root { --ui-primary: var(--clr-blue-600); } */
 
-  /* ==========================================================================
-   c-card — Card
+  /*---------- c-card — Card ----------*/
+/*
    Local vars: --card-bg  --card-border  --card-radius
-               --card-padding  --card-shadow
-   ========================================================================== */
+   --card-padding  --card-shadow
+*/
 
   .c-card {
     --card-bg: var(--clr-surface);
@@ -1788,10 +1701,10 @@
     --card-radius: var(--radius-lg);
   }
 
-  /* ==========================================================================
-   c-tag — Tag / Badge
+  /*---------- c-tag — Tag / Badge ----------*/
+/*
    Local vars: --tag-bg  --tag-color  --tag-border  --tag-radius
-   ========================================================================== */
+*/
 
   .c-tag {
     /* Local variables — override tại nơi dùng */
@@ -1834,10 +1747,10 @@
     }
   }
 
-  /* ==========================================================================
-   c-divider — Horizontal Rule
+  /*---------- c-divider — Horizontal Rule ----------*/
+/*
    Local vars: --divider-color  --divider-gap
-   ========================================================================== */
+*/
 
   .c-divider {
     --divider-color: var(--clr-border);
@@ -1850,14 +1763,12 @@
 }
 
 @layer animations {
-  /* ==========================================================================
-   ANIMATIONS — FLOCSS Foundation Layer
+  /*---------- ANIMATIONS — FLOCSS Foundation Layer ----------*/
+/*
    @keyframes + data-animate scroll pattern
-   ========================================================================== */
+*/
 
-  /* ==========================================================================
-   KEYFRAMES
-   ========================================================================== */
+  /*---------- KEYFRAMES ----------*/
 
   @keyframes fade-in {
     from {
@@ -1956,22 +1867,19 @@
     }
   }
 
-  /* ==========================================================================
-   DATA-ANIMATE PATTERN
-
+  /*---------- DATA-ANIMATE PATTERN ----------*/
+/*
    Cách dùng trong HTML:
-     <h1 data-animate="fade-up" style="--delay: 0ms">Headline</h1>
-     <p  data-animate="fade-up" style="--delay: 150ms">Paragraph</p>
-     <div data-animate="clip"   style="--delay: 300ms">Image</div>
-
+   <h1 data-animate="fade-up" style="--delay: 0ms">Headline</h1>
+   <p  data-animate="fade-up" style="--delay: 150ms">Paragraph</p>
+   <div data-animate="clip"   style="--delay: 300ms">Image</div>
    Cách dùng JS (5 dòng, tái sử dụng mãi):
-     const observer = new IntersectionObserver(entries => {
-       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-     }, { threshold: 0.1 });
-     document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-
+   const observer = new IntersectionObserver(entries => {
+   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+   }, { threshold: 0.1 });
+   document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
    Nguyên tắc: JS chỉ toggle class — CSS tự xử lý toàn bộ animation
-   ========================================================================== */
+*/
 
   /* Base state — ẩn trước khi trigger */
   [data-animate] {
@@ -2028,9 +1936,7 @@
     clip-path: inset(0 0% 0 0);
   }
 
-  /* ==========================================================================
-   UTILITY ANIMATION CLASSES
-   ========================================================================== */
+  /*---------- UTILITY ANIMATION CLASSES ----------*/
 
   /* Loading spinner */
   .animate-spin {

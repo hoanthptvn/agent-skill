@@ -1,19 +1,17 @@
-/* ==========================================================================
-   UTILITIES — FLOCSS Object/Utility Layer
+/*---------- UTILITIES — FLOCSS Object/Utility Layer ----------*/
+/*
    Prefix: u-*  |  Single-purpose helpers  |  Layer với ưu tiên cao nhất
-   ========================================================================== */
+*/
 
 
-/* ==========================================================================
-   SPACING UTILITIES — calc(var(--spacing) * N) pattern
-
+/*---------- SPACING UTILITIES — calc(var(--spacing) * N) pattern ----------*/
+/*
    Tại sao dùng calc(var(--spacing) * N)?
    ────────────────────────────────────────
    ✅ Nhất quán: 1 đơn vị duy nhất --spacing = .25rem (4px)
    ✅ Linh hoạt: có thể dùng số lẻ: calc(var(--spacing) * 1.5) = 6px
    ✅ Override: dự án đổi --spacing → tất cả spacing scale theo
    ✅ Inline style: <div style="padding: calc(var(--spacing) * 6)">
-
    Bảng quy đổi --spacing (0.25rem base):
    ┌──────┬──────────────────────────┬────────┐
    │  N   │ calc(var(--spacing) * N) │  px    │
@@ -44,52 +42,50 @@
    │  80  │ 20rem                    │  320px │
    │  96  │ 24rem                    │  384px │
    └──────┴──────────────────────────┴────────┘
-
    Tương quan với agent-os-css named tokens:
-     calc(var(--spacing) * 2)  ≡ var(--space-1) = 0.5rem  [space-unit × 1]
-     calc(var(--spacing) * 4)  ≡ var(--space-2) = 1rem    [space-unit × 2]
-     calc(var(--spacing) * 8)  ≡ var(--space-4) = 2rem    [space-unit × 4]
-     calc(var(--spacing) * 16) ≡ var(--space-8) = 4rem    [space-unit × 8]
-   ========================================================================== */
+   calc(var(--spacing) * 2)  ≡ var(--space-1) = 0.5rem  [space-unit × 1]
+   calc(var(--spacing) * 4)  ≡ var(--space-2) = 1rem    [space-unit × 2]
+   calc(var(--spacing) * 8)  ≡ var(--space-4) = 2rem    [space-unit × 4]
+   calc(var(--spacing) * 16) ≡ var(--space-8) = 4rem    [space-unit × 8]
+*/
 
-/* ── PADDING ─────────────────────────────────────────────────────────────── */
-.u-p-0   { padding: 0; }
-.u-p-px  { padding: 1px; }
-.u-p-0\.5 { padding: calc(var(--spacing) * .5); }
-.u-p-1   { padding: calc(var(--spacing) * 1); }
-.u-p-1\.5 { padding: calc(var(--spacing) * 1.5); }
-.u-p-2   { padding: calc(var(--spacing) * 2); }
-.u-p-2\.5 { padding: calc(var(--spacing) * 2.5); }
-.u-p-3   { padding: calc(var(--spacing) * 3); }
-.u-p-4   { padding: calc(var(--spacing) * 4); }
-.u-p-5   { padding: calc(var(--spacing) * 5); }
-.u-p-6   { padding: calc(var(--spacing) * 6); }
-.u-p-8   { padding: calc(var(--spacing) * 8); }
-.u-p-10  { padding: calc(var(--spacing) * 10); }
-.u-p-12  { padding: calc(var(--spacing) * 12); }
-
-/* Padding inline (x-axis) */
-.u-px-0  { padding-inline: 0; }
-.u-px-1  { padding-inline: calc(var(--spacing) * 1); }
-.u-px-2  { padding-inline: calc(var(--spacing) * 2); }
-.u-px-2\.5 { padding-inline: calc(var(--spacing) * 2.5); }
-.u-px-3  { padding-inline: calc(var(--spacing) * 3); }
-.u-px-4  { padding-inline: calc(var(--spacing) * 4); }
-.u-px-6  { padding-inline: calc(var(--spacing) * 6); }
-.u-px-8  { padding-inline: calc(var(--spacing) * 8); }
-
-/* Padding block (y-axis) */
-.u-py-0  { padding-block: 0; }
-.u-py-1  { padding-block: calc(var(--spacing) * 1); }
-.u-py-1\.5 { padding-block: calc(var(--spacing) * 1.5); }
-.u-py-2  { padding-block: calc(var(--spacing) * 2); }
-.u-py-3  { padding-block: calc(var(--spacing) * 3); }
-.u-py-4  { padding-block: calc(var(--spacing) * 4); }
-.u-py-6  { padding-block: calc(var(--spacing) * 6); }
-.u-py-8  { padding-block: calc(var(--spacing) * 8); }
-
-
-/* ── MARGIN ──────────────────────────────────────────────────────────────── */
+/*---------- PADDING ----------*/
+/*
+   */
+   .u-p-0   { padding: 0; }
+   .u-p-px  { padding: 1px; }
+   .u-p-0\.5 { padding: calc(var(--spacing) * .5); }
+   .u-p-1   { padding: calc(var(--spacing) * 1); }
+   .u-p-1\.5 { padding: calc(var(--spacing) * 1.5); }
+   .u-p-2   { padding: calc(var(--spacing) * 2); }
+   .u-p-2\.5 { padding: calc(var(--spacing) * 2.5); }
+   .u-p-3   { padding: calc(var(--spacing) * 3); }
+   .u-p-4   { padding: calc(var(--spacing) * 4); }
+   .u-p-5   { padding: calc(var(--spacing) * 5); }
+   .u-p-6   { padding: calc(var(--spacing) * 6); }
+   .u-p-8   { padding: calc(var(--spacing) * 8); }
+   .u-p-10  { padding: calc(var(--spacing) * 10); }
+   .u-p-12  { padding: calc(var(--spacing) * 12); }
+   /* Padding inline (x-axis) */
+   .u-px-0  { padding-inline: 0; }
+   .u-px-1  { padding-inline: calc(var(--spacing) * 1); }
+   .u-px-2  { padding-inline: calc(var(--spacing) * 2); }
+   .u-px-2\.5 { padding-inline: calc(var(--spacing) * 2.5); }
+   .u-px-3  { padding-inline: calc(var(--spacing) * 3); }
+   .u-px-4  { padding-inline: calc(var(--spacing) * 4); }
+   .u-px-6  { padding-inline: calc(var(--spacing) * 6); }
+   .u-px-8  { padding-inline: calc(var(--spacing) * 8); }
+   /* Padding block (y-axis) */
+   .u-py-0  { padding-block: 0; }
+   .u-py-1  { padding-block: calc(var(--spacing) * 1); }
+   .u-py-1\.5 { padding-block: calc(var(--spacing) * 1.5); }
+   .u-py-2  { padding-block: calc(var(--spacing) * 2); }
+   .u-py-3  { padding-block: calc(var(--spacing) * 3); }
+   .u-py-4  { padding-block: calc(var(--spacing) * 4); }
+   .u-py-6  { padding-block: calc(var(--spacing) * 6); }
+   .u-py-8  { padding-block: calc(var(--spacing) * 8); }
+   /* ── MARGIN
+*/
 .u-m-0    { margin: 0; }
 .u-m-auto { margin: auto; }
 .u-m-1    { margin: calc(var(--spacing) * 1); }
@@ -119,20 +115,21 @@
 .u-mb-auto { margin-bottom: auto; }
 
 
-/* ── GAP ─────────────────────────────────────────────────────────────────── */
-.u-gap-0   { gap: 0; }
-.u-gap-0\.5 { gap: calc(var(--spacing) * .5); }
-.u-gap-1   { gap: calc(var(--spacing) * 1); }
-.u-gap-1\.5 { gap: calc(var(--spacing) * 1.5); }
-.u-gap-2   { gap: calc(var(--spacing) * 2); }
-.u-gap-2\.5 { gap: calc(var(--spacing) * 2.5); }
-.u-gap-3   { gap: calc(var(--spacing) * 3); }
-.u-gap-4   { gap: calc(var(--spacing) * 4); }
-.u-gap-6   { gap: calc(var(--spacing) * 6); }
-.u-gap-8   { gap: calc(var(--spacing) * 8); }
-
-
-/* ── SIZE (width + height cùng lúc) ─────────────────────────────────────── */
+/*---------- GAP ----------*/
+/*
+   */
+   .u-gap-0   { gap: 0; }
+   .u-gap-0\.5 { gap: calc(var(--spacing) * .5); }
+   .u-gap-1   { gap: calc(var(--spacing) * 1); }
+   .u-gap-1\.5 { gap: calc(var(--spacing) * 1.5); }
+   .u-gap-2   { gap: calc(var(--spacing) * 2); }
+   .u-gap-2\.5 { gap: calc(var(--spacing) * 2.5); }
+   .u-gap-3   { gap: calc(var(--spacing) * 3); }
+   .u-gap-4   { gap: calc(var(--spacing) * 4); }
+   .u-gap-6   { gap: calc(var(--spacing) * 6); }
+   .u-gap-8   { gap: calc(var(--spacing) * 8); }
+   /* ── SIZE (width + height cùng lúc)
+*/
 .u-size-1   { width: calc(var(--spacing) * 1);  height: calc(var(--spacing) * 1); }
 .u-size-2   { width: calc(var(--spacing) * 2);  height: calc(var(--spacing) * 2); }
 .u-size-3   { width: calc(var(--spacing) * 3);  height: calc(var(--spacing) * 3); }
@@ -148,35 +145,36 @@
 .u-size-full { width: 100%; height: 100%; }
 
 
-/* ── WIDTH ───────────────────────────────────────────────────────────────── */
-.u-w-0    { width: 0; }
-.u-w-px   { width: 1px; }
-.u-w-1    { width: calc(var(--spacing) * 1); }
-.u-w-2    { width: calc(var(--spacing) * 2); }
-.u-w-3    { width: calc(var(--spacing) * 3); }
-.u-w-4    { width: calc(var(--spacing) * 4); }
-.u-w-5    { width: calc(var(--spacing) * 5); }
-.u-w-6    { width: calc(var(--spacing) * 6); }
-.u-w-8    { width: calc(var(--spacing) * 8); }
-.u-w-10   { width: calc(var(--spacing) * 10); }
-.u-w-12   { width: calc(var(--spacing) * 12); }
-.u-w-16   { width: calc(var(--spacing) * 16); }
-.u-w-24   { width: calc(var(--spacing) * 24); }
-.u-w-32   { width: calc(var(--spacing) * 32); }
-.u-w-48   { width: calc(var(--spacing) * 48); }
-.u-w-64   { width: calc(var(--spacing) * 64); }
-.u-w-96   { width: calc(var(--spacing) * 96); }
-.u-w-auto { width: auto; }
-.u-w-full { width: 100%; }
-.u-w-screen { width: 100vw; }
-.u-min-w-0   { min-width: 0; }
-.u-min-w-fit { min-width: fit-content; }
-.u-max-w-sm  { max-width: var(--container-sm); }
-.u-max-w-md  { max-width: var(--container-md); }
-.u-max-w-lg  { max-width: var(--container); }
-
-
-/* ── HEIGHT ──────────────────────────────────────────────────────────────── */
+/*---------- WIDTH ----------*/
+/*
+   */
+   .u-w-0    { width: 0; }
+   .u-w-px   { width: 1px; }
+   .u-w-1    { width: calc(var(--spacing) * 1); }
+   .u-w-2    { width: calc(var(--spacing) * 2); }
+   .u-w-3    { width: calc(var(--spacing) * 3); }
+   .u-w-4    { width: calc(var(--spacing) * 4); }
+   .u-w-5    { width: calc(var(--spacing) * 5); }
+   .u-w-6    { width: calc(var(--spacing) * 6); }
+   .u-w-8    { width: calc(var(--spacing) * 8); }
+   .u-w-10   { width: calc(var(--spacing) * 10); }
+   .u-w-12   { width: calc(var(--spacing) * 12); }
+   .u-w-16   { width: calc(var(--spacing) * 16); }
+   .u-w-24   { width: calc(var(--spacing) * 24); }
+   .u-w-32   { width: calc(var(--spacing) * 32); }
+   .u-w-48   { width: calc(var(--spacing) * 48); }
+   .u-w-64   { width: calc(var(--spacing) * 64); }
+   .u-w-96   { width: calc(var(--spacing) * 96); }
+   .u-w-auto { width: auto; }
+   .u-w-full { width: 100%; }
+   .u-w-screen { width: 100vw; }
+   .u-min-w-0   { min-width: 0; }
+   .u-min-w-fit { min-width: fit-content; }
+   .u-max-w-sm  { max-width: var(--container-sm); }
+   .u-max-w-md  { max-width: var(--container-md); }
+   .u-max-w-lg  { max-width: var(--container); }
+   /* ── HEIGHT
+*/
 .u-h-0    { height: 0; }
 .u-h-px   { height: 1px; }
 .u-h-1    { height: calc(var(--spacing) * 1); }
@@ -208,9 +206,7 @@
    <div style="height: calc(var(--spacing) * 11)">    → 2.75rem = 44px */
 
 
-/* ==========================================================================
-   POSITION — absolute, fixed, sticky, relative
-   ========================================================================== */
+/*---------- POSITION — absolute, fixed, sticky, relative ----------*/
 
 .u-static   { position: static; }
 .u-relative { position: relative; }
@@ -219,25 +215,22 @@
 .u-sticky   { position: sticky; top: 0; }
 
 
-/* ── INSET (shorthand cho top+right+bottom+left) ─────────────────────────── */
-
-
-.u-inset-0    { inset: 0; }
-.u-inset-px   { inset: 1px; }
-.u-inset-auto { inset: auto; }
-
-/* Inline axis (left + right) */
-.u-inset-x-0    { inset-inline: 0; }
-.u-inset-x-auto { inset-inline: auto; }
-.u-inset-x-4    { inset-inline: calc(var(--spacing) * 4); }
-
-/* Block axis (top + bottom) */
-.u-inset-y-0    { inset-block: 0; }
-.u-inset-y-auto { inset-block: auto; }
-.u-inset-y-4    { inset-block: calc(var(--spacing) * 4); }
-
-
-/* ── TOP / RIGHT / BOTTOM / LEFT ────────────────────────────────────────── */
+/*---------- INSET (shorthand cho top+right+bottom+left) ----------*/
+/*
+   */
+   .u-inset-0    { inset: 0; }
+   .u-inset-px   { inset: 1px; }
+   .u-inset-auto { inset: auto; }
+   /* Inline axis (left + right) */
+   .u-inset-x-0    { inset-inline: 0; }
+   .u-inset-x-auto { inset-inline: auto; }
+   .u-inset-x-4    { inset-inline: calc(var(--spacing) * 4); }
+   /* Block axis (top + bottom) */
+   .u-inset-y-0    { inset-block: 0; }
+   .u-inset-y-auto { inset-block: auto; }
+   .u-inset-y-4    { inset-block: calc(var(--spacing) * 4); }
+   /* ── TOP / RIGHT / BOTTOM / LEFT
+*/
 
 .u-top-0    { top: 0; }
 .u-top-px   { top: 1px; }
@@ -278,9 +271,7 @@
 .u--top-2   { top: calc(var(--spacing) * -2); }
 
 
-/* ==========================================================================
-   Z-INDEX — dùng --z-* tokens từ tokens.css
-   ========================================================================== */
+/*---------- Z-INDEX — dùng --z-* tokens từ tokens.css ----------*/
 
 .u-z-0        { z-index: 0; }
 .u-z-10       { z-index: var(--z-raised); }
@@ -295,9 +286,7 @@
 /*  dùng CSS var override: style="z-index: var(--index)" */
 
 
-/* ==========================================================================
-   DISPLAY
-   ========================================================================== */
+/*---------- DISPLAY ----------*/
 
 .u-block        { display: block; }
 .u-inline       { display: inline; }
@@ -311,18 +300,14 @@
 .u-hidden       { display: none; }
 
 
-/* ==========================================================================
-   VISIBILITY
-   ========================================================================== */
+/*---------- VISIBILITY ----------*/
 
 .u-visible   { visibility: visible; }
 .u-invisible { visibility: hidden; }
 .u-collapse  { visibility: collapse; }
 
 
-/* ==========================================================================
-   OVERFLOW
-   ========================================================================== */
+/*---------- OVERFLOW ----------*/
 
 .u-overflow-auto    { overflow: auto; }
 .u-overflow-hidden  { overflow: hidden; }
@@ -334,9 +319,7 @@
 .u-overflow-y-hidden { overflow-y: hidden; }
 
 
-/* ==========================================================================
-   FLEXBOX
-   ========================================================================== */
+/*---------- FLEXBOX ----------*/
 
 /* Direction */
 .u-flex-row         { flex-direction: row; }
@@ -391,9 +374,7 @@
 .u-place-content-between { place-content: space-between; }
 
 
-/* ==========================================================================
-   GRID
-   ========================================================================== */
+/*---------- GRID ----------*/
 
 .u-grid-cols-1  { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 .u-grid-cols-2  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -417,9 +398,7 @@
 .u-row-start-1 { grid-row-start: 1; }
 
 
-/* ==========================================================================
-   TRANSFORM — dùng composite --ui-* vars (từ properties.css)
-   ========================================================================== */
+/*---------- TRANSFORM — dùng composite --ui-* vars (từ properties.css) ----------*/
 
 /* Translate — set --ui-translate-x/y → composite ghép lại */
 .u-translate-x-0 {
@@ -488,9 +467,7 @@
 .u-origin-right  { transform-origin: right; }
 
 
-/* ==========================================================================
-   ASPECT RATIO
-   ========================================================================== */
+/*---------- ASPECT RATIO ----------*/
 
 .u-aspect-auto    { aspect-ratio: auto; }
 .u-aspect-square  { aspect-ratio: 1 / 1; }
@@ -500,9 +477,7 @@
 .u-aspect-golden  { aspect-ratio: 1.618 / 1; }
 
 
-/* ==========================================================================
-   OBJECT FIT — cho img, video
-   ========================================================================== */
+/*---------- OBJECT FIT — cho img, video ----------*/
 
 .u-object-contain { object-fit: contain; }
 .u-object-cover   { object-fit: cover; }
@@ -512,9 +487,7 @@
 .u-object-top     { object-position: top; }
 
 
-/* ==========================================================================
-   TEXT — align, decoration, transform, whitespace
-   ========================================================================== */
+/*---------- TEXT — align, decoration, transform, whitespace ----------*/
 
 .u-text-left    { text-align: left; }
 .u-text-center  { text-align: center; }
@@ -555,9 +528,7 @@
 /* ↑ Font weights & letter-spacing: xem section TEXT SIZE + FONT WEIGHT + TRACKING cuối file */
 
 
-/* ==========================================================================
-   BORDER — width, style, radius
-   ========================================================================== */
+/*---------- BORDER — width, style, radius ----------*/
 
 .u-border     { border: 1px solid var(--ui-border-style, solid); }
 .u-border-0   { border-width: 0; }
@@ -579,18 +550,14 @@
 .u-border-transparent { border-color: transparent; }
 
 
-/* ==========================================================================
-   OUTLINE
-   ========================================================================== */
+/*---------- OUTLINE ----------*/
 
 .u-outline-none { --ui-outline-style: none; outline-style: none; }
 .u-outline      { outline-width: 1px; outline-style: var(--ui-outline-style, solid); }
 .u-outline-2    { outline-width: 2px; outline-style: var(--ui-outline-style, solid); }
 
 
-/* ==========================================================================
-   APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE
-   ========================================================================== */
+/*---------- APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE ----------*/
 
 .u-appearance-none { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
 .u-select-none { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
@@ -616,17 +583,14 @@
 
 
 
-/* ==========================================================================
-   COLOR-MIX — Opacity trên CSS variable (
-
+/*---------- COLOR-MIX — Opacity trên CSS variable ( ----------*/
+/*
    Vấn đề: không thể làm được điều này vì var không hoạt động trong alpha:
-     background: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 10%);  ← LỖI
-
+   background: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 10%);  ← LỖI
    Giải pháp: color-mix
-     background: color-mix(in oklab, var(--clr-accent) 10%, transparent);
-
+   background: color-mix(in oklab, var(--clr-accent) 10%, transparent);
    Dùng oklab thay srgb vì oklab interpolation trông tự nhiên hơn
-   ========================================================================== */
+*/
 
 /* Fallback cho browser chưa support color-mix (< Chrome 111, < Safari 16.2) */
 .u-bg-accent-10 { background: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / .10); }
@@ -647,9 +611,7 @@
    } */
 
 
-/* ==========================================================================
-   ACCESSIBILITY
-   ========================================================================== */
+/*---------- ACCESSIBILITY ----------*/
 
 /* Ẩn visually nhưng vẫn đọc được bởi screen reader */
 .u-sr-only {
@@ -668,9 +630,7 @@
 /* .truncate, .u-line-clamp-* → xem section TRUNCATE / LINE-CLAMP (dưới) — đầy đủ hơn */
 
 
-/* ==========================================================================
-   POSITION
-   ========================================================================== */
+/*---------- POSITION ----------*/
 
 /* Fill parent hoàn toàn */
 .u-cover {
@@ -688,9 +648,7 @@
 }
 
 
-/* ==========================================================================
-   ASPECT RATIO
-   ========================================================================== */
+/*---------- ASPECT RATIO ----------*/
 
 .u-ratio-video  { aspect-ratio: 16 / 9; }
 .u-ratio-square { aspect-ratio: 1; }
@@ -702,21 +660,18 @@
 /* .font-display, .u-font-mono → đã khai báo trong section TEXT / FONT đầu file */
 
 
-/* ==========================================================================
-   INTERACTION
-   ========================================================================== */
+/*---------- INTERACTION ----------*/
 
 .u-pointer-none { pointer-events: none; }
 .u-pointer-auto { pointer-events: auto; }
 /* .select-none có prefix đầy đủ ở dòng 599 trên */
 
 
-/* ==========================================================================
-   WILL-CHANGE — Performance hints cho GSAP / Three.js
-
+/*---------- WILL-CHANGE — Performance hints cho GSAP / Three.js ----------*/
+/*
    Dùng: thêm class trước khi animate, xóa sau khi xong
    Cảnh báo: không apply hàng loạt — tốn GPU/RAM
-   ========================================================================== */
+*/
 
 .u-will-transform { will-change: transform; }
 .u-will-opacity   { will-change: opacity; }
@@ -726,12 +681,12 @@
 /* .rounded-* đã được khai báo đầy đủ trong section ROUNDED cuối file (var(--radius) multiplier) */
 
 
-/* ==========================================================================
-   TRANSITION UTILITIES
+/*---------- TRANSITION UTILITIES ----------*/
+/*
    Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)"
    Pattern: var(--ui-duration, var(--default-transition-duration))
-     → nếu không set --ui-duration, dùng default 150ms
-   ========================================================================== */
+   → nếu không set --ui-duration, dùng default 150ms
+*/
 
 /* Tất cả properties phổ biến */
 .u-transition {
@@ -774,37 +729,34 @@
    </button> */
 
 
-/* ==========================================================================
-   OPACITY
+/*---------- OPACITY ----------*/
+/*
    (đầy đủ với opacity-5, opacity-10, opacity-25 ở cuối file)
-   ========================================================================== */
+*/
 
 /* .opacity-* → xem section OPACITY cuối file (có 7 bậc: 0,5,10,25,50,75,100) */
 
 
-/* ==========================================================================
-   CURSOR + INTERACTION
-   ========================================================================== */
+/*---------- CURSOR + INTERACTION ----------*/
 
 /* .cursor-* → xem section CURSOR cuối file */
 
 
-/* ==========================================================================
-   ISOLATION — tạo stacking context mới, ngăn z-index leak
+/*---------- ISOLATION — tạo stacking context mới, ngăn z-index leak ----------*/
+/*
    Dùng khi: card, modal, glass element bị ảnh hưởng bởi z-index bên ngoài
-   ========================================================================== */
+*/
 
 .u-isolate      { isolation: isolate; }
 .u-isolate-auto { isolation: auto; }
 
 
-/* ==========================================================================
-   COMPOSITE SHADOW
+/*---------- COMPOSITE SHADOW ----------*/
+/*
    Pattern: 5 shadow layers ghép thành 1 box-shadow
    Mỗi class chỉ set 1 biến → không ghi đè các layer khác
-
    Safe vì properties.css đã init tất cả = "0 0 #0000"
-   ========================================================================== */
+*/
 
 /*
    box-shadow composite formula (giống ):
@@ -859,10 +811,10 @@
 }
 
 
-/* ==========================================================================
-   FOCUS RING
+/*---------- FOCUS RING ----------*/
+/*
    Dùng box-shadow thay outline → có border-radius, có thể composite
-   ========================================================================== */
+*/
 
 .u-ring {
   --ui-ring-shadow: var(--ui-ring-inset, ) 0 0 0 calc(1px + var(--ui-ring-offset-width))
@@ -894,10 +846,10 @@
    → Cả 2 hiển thị đồng thời nhờ composite! */
 
 
-/* ==========================================================================
-   FILTER COMPOSITE
+/*---------- FILTER COMPOSITE ----------*/
+/*
    Mỗi class chỉ set 1 biến filter → composite ghép tất cả
-   ========================================================================== */
+*/
 
 .u-blur-sm {
   --ui-blur: blur(4px);
@@ -926,9 +878,7 @@
 }
 
 
-/* ==========================================================================
-   BACKDROP FILTER — Dùng cho glass morphism
-   ========================================================================== */
+/*---------- BACKDROP FILTER — Dùng cho glass morphism ----------*/
 
 .u-backdrop-blur {
   --ui-backdrop-blur: blur(8px);
@@ -945,12 +895,12 @@
 }
 
 
-/* ==========================================================================
-   SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens
+/*---------- SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens ----------*/
+/*
    border-*, bg-*, text-* theo  naming
    Note: .bg-primary và .border-primary ở đây dùng --ui-primary
-         Phần  SEMANTIC phía dưới dùng --primary 
-   ========================================================================== */
+   Phần  SEMANTIC phía dưới dùng --primary
+*/
 
 /* Border */
 .u-border-default   { border-color: var(--clr-border); }
@@ -967,9 +917,7 @@
 .u-text-info        { color: var(--ui-info); }
 
 
-/* ==========================================================================
-   ANIMATE SHORTHAND — Dùng --animate-* tokens
-   ========================================================================== */
+/*---------- ANIMATE SHORTHAND — Dùng --animate-* tokens ----------*/
 
 .u-animate-spin   { animation: var(--animate-spin); }
 .u-animate-ping   { animation: var(--animate-ping); }
@@ -977,9 +925,7 @@
 .u-animate-bounce { animation: var(--animate-bounce); }
 
 
-/* ==========================================================================
-   SELECTION STYLING
-   ========================================================================== */
+/*---------- SELECTION STYLING ----------*/
 
 .u-selection-primary ::selection,
 .u-selection-primary::selection {
@@ -987,18 +933,16 @@
 }
 
 
-/* ==========================================================================
-   DISABLED STATE
-   ========================================================================== */
+/*---------- DISABLED STATE ----------*/
 
 .u-disabled\:opacity-75:disabled { opacity: .75; }
 .u-disabled\:cursor-not-allowed:disabled { cursor: not-allowed; }
 
 
-/* ==========================================================================
-   ROUNDED
+/*---------- ROUNDED ----------*/
+/*
    Dùng --ui-radius multiplier → đổi 1 chỗ → tất cả component đổi theo
-   ========================================================================== */
+*/
 
 .u-rounded-none { border-radius: 0; }
 .u-rounded-xs   { border-radius: var(--radius-xs); }
@@ -1044,9 +988,7 @@
 .u-rounded-\[calc\(var\(--radius\)-3px\)\] { border-radius: calc(var(--radius) - 3px); }
 
 
-/* ==========================================================================
-   TRUNCATE / LINE-CLAMP — Rất hay dùng
-   ========================================================================== */
+/*---------- TRUNCATE / LINE-CLAMP — Rất hay dùng ----------*/
 
 .u-truncate {
   overflow: hidden;
@@ -1074,9 +1016,7 @@
 }
 
 
-/* ==========================================================================
-   OPACITY
-   ========================================================================== */
+/*---------- OPACITY ----------*/
 
 .u-opacity-0   { opacity: 0; }
 .u-opacity-5   { opacity: .05; }
@@ -1087,9 +1027,7 @@
 .u-opacity-100 { opacity: 1; }
 
 
-/* ==========================================================================
-   LOGICAL PADDING — RTL-safe (ps = padding-inline-start, pe = end)
-   ========================================================================== */
+/*---------- LOGICAL PADDING — RTL-safe (ps = padding-inline-start, pe = end) ----------*/
 
 .u-ps-1\.5 { padding-inline-start: calc(var(--spacing) * 1.5); }
 .u-ps-2    { padding-inline-start: calc(var(--spacing) * 2); }
@@ -1111,9 +1049,7 @@
 .u-pe-11   { padding-inline-end: calc(var(--spacing) * 11); }
 
 
-/* ==========================================================================
-   LOGICAL MARGIN — RTL-safe (ms = margin-inline-start, me = end)
-   ========================================================================== */
+/*---------- LOGICAL MARGIN — RTL-safe (ms = margin-inline-start, me = end) ----------*/
 
 .u--ms-1\.5 { margin-inline-start: calc(var(--spacing) * -1.5); }
 .u-ms-3     { margin-inline-start: calc(var(--spacing) * 3); }
@@ -1131,10 +1067,10 @@
 .u-me-3     { margin-inline-end: calc(var(--spacing) * 3); }
 
 
-/* ==========================================================================
-   TEXT SIZE — Với companion --ui-leading (giống hệt  sample)
+/*---------- TEXT SIZE — Với companion --ui-leading (giống hệt  sample) ----------*/
+/*
    Pattern: font-size + line-height: var(--ui-leading, var(--text-SIZE--line-height))
-   ========================================================================== */
+*/
 
 .u-text-xs {
   font-size: var(--text-xs);
@@ -1166,11 +1102,11 @@
 }
 
 
-/* ==========================================================================
-   FONT WEIGHT — Với --ui-font-weight (giống hệt  sample)
+/*---------- FONT WEIGHT — Với --ui-font-weight (giống hệt  sample) ----------*/
+/*
    Pattern: set CẢ internal var LẪN property
    → ::before/::after có thể inherit --ui-font-weight
-   ========================================================================== */
+*/
 
 .u-font-light {
   --ui-font-weight: var(--weight-light);
@@ -1204,9 +1140,7 @@
 }
 
 
-/* ==========================================================================
-   DIVIDE
-   ========================================================================== */
+/*---------- DIVIDE ----------*/
 
 :where(.u-divide-y > :not(:last-child)) {
   --ui-divide-y-reverse: 0;
@@ -1221,11 +1155,11 @@
 }
 
 
-/* ==========================================================================
-   SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted
+/*---------- SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted ----------*/
+/*
    Dùng --clr-* tokens (granular, oklch)
    Khác với  .text-foreground (dùng --foreground token) ở bên dưới
-   ========================================================================== */
+*/
 
 .u-text-dimmed      { color: var(--clr-text-faint); }      /* rất mờ — disabled */
 .u-text-muted       { color: var(--clr-text-muted); }      /* placeholder, helper */
@@ -1238,10 +1172,10 @@
 .u-text-accent      { color: var(--clr-accent); }          /* brand accent */
 
 
-/* ==========================================================================
-   SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented
+/*---------- SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented ----------*/
+/*
    Dùng --clr-* tokens. Khác với  .bg-primary (dùng --primary token)
-   ========================================================================== */
+*/
 
 .u-bg-default     { background-color: var(--clr-bg); }
 .u-bg-muted       { background-color: var(--muted); }     /* = var(--clr-bg-subtle) */
@@ -1279,9 +1213,7 @@
 }
 
 
-/* ==========================================================================
-   RING OPACITY VARIANTS — ring-primary/25, ring-error/50...
-   ========================================================================== */
+/*---------- RING OPACITY VARIANTS — ring-primary/25, ring-error/50... ----------*/
 
 .u-ring-accented { --ui-ring-color: var(--clr-border-alt); }
 .u-ring-default  { --ui-ring-color: var(--clr-border); }
@@ -1310,9 +1242,7 @@
 }
 
 
-/* ==========================================================================
-   OUTLINE COLORS — outline-primary/25, outline-error/25...
-   ========================================================================== */
+/*---------- OUTLINE COLORS — outline-primary/25, outline-error/25... ----------*/
 
 @supports (color: color-mix(in lab, red, red)) {
   .u-outline-primary\/25   { outline-color: color-mix(in oklab, var(--ui-primary) 25%, transparent); }
@@ -1325,9 +1255,7 @@
 }
 
 
-/* ==========================================================================
-   FILL / STROKE — cho SVG icons
-   ========================================================================== */
+/*---------- FILL / STROKE — cho SVG icons ----------*/
 
 .u-fill-bg      { fill: var(--clr-bg); }
 .u-fill-current { fill: currentColor; }
@@ -1335,25 +1263,19 @@
 .u-stroke-current { stroke: currentColor; }
 
 
-/* ==========================================================================
-   SCROLL PADDING
-   ========================================================================== */
+/*---------- SCROLL PADDING ----------*/
 
 .u-scroll-py-1 { scroll-padding-block: var(--spacing); }
 .u-scroll-py-2 { scroll-padding-block: calc(var(--spacing) * 2); }
 
 
-/* ==========================================================================
-   PLACEHOLDER
-   ========================================================================== */
+/*---------- PLACEHOLDER ----------*/
 
 .u-placeholder\:text-dimmed::-moz-placeholder { color: var(--clr-text-faint); }
 .u-placeholder\:text-dimmed::placeholder { color: var(--clr-text-faint); }
 
 
-/* ==========================================================================
-   CURSOR
-   ========================================================================== */
+/*---------- CURSOR ----------*/
 
 .u-cursor-default     { cursor: default; }
 .u-cursor-pointer     { cursor: pointer; }
@@ -1364,10 +1286,10 @@
 .u-cursor-move        { cursor: move; }
 
 
-/* ==========================================================================
-   TRACKING (Letter-spacing) — Với --ui-tracking companion var
+/*---------- TRACKING (Letter-spacing) — Với --ui-tracking companion var ----------*/
+/*
    → ::before/::after có thể dùng var(--ui-tracking) để đọc lại
-   ========================================================================== */
+*/
 
 .u-tracking-tighter { --ui-tracking: var(--tracking-tighter); letter-spacing: var(--tracking-tighter); }
 .u-tracking-tight   { --ui-tracking: var(--tracking-tight);   letter-spacing: var(--tracking-tight); }
@@ -1378,14 +1300,13 @@
 .u-tracking-caps    { --ui-tracking: var(--tracking-caps);    letter-spacing: var(--tracking-caps); }
 
 
-/* ==========================================================================
-   SPACE-Y / SPACE-X — Margin-based spacing (
+/*---------- SPACE-Y / SPACE-X — Margin-based spacing ( ----------*/
+/*
    Dùng khi layout KHÔNG phải flex/grid mà vẫn cần space giữa children.
    Dùng gap-* nếu đang dùng flex/grid — hiệu suất tốt hơn.
-
    Pattern: margin-block-start/end dùng --ui-space-y-reverse để hỗ trợ
    flex-direction: column-reverse.
-   ========================================================================== */
+*/
 
 :where(.u-space-y-1 > :not(:last-child)) {
   --ui-space-y-reverse: 0;
@@ -1442,10 +1363,10 @@
 :where(.u-space-x-reverse > :not(:last-child)) { --ui-space-x-reverse: 1; }
 
 
-/* ==========================================================================
-    SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc.
+/*---------- SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc. ----------*/
+/*
    Cho phép component dùng class names quen thuộc từ component library
-   ========================================================================== */
+*/
 
 /* Background semantics */
 .u-bg-background  { background-color: var(--background); }
