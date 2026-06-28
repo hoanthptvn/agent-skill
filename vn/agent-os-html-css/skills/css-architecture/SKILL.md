@@ -145,9 +145,9 @@ Dùng cho các nhóm nhỏ bên trong một component. Khung viền sử dụng 
 ```
 
 ### Cấp 4 (Level 4) - Khối con siêu nhỏ (Sub-detail blocks)
-Dùng cho các phần tử con nằm sâu bên trong Level 3 (ví dụ: các trạng thái của nút, hoặc các mục nhỏ trong reset). Khung viền tối giản hóa thành comment 1 dòng tiêu chuẩn để tránh nhiễu loạn thị giác. Tiền tố đánh số có thêm dấu chấm ở cuối (ví dụ `1.1.1.1.`).
+Dùng cho các phần tử con nằm sâu bên trong Level 3 (ví dụ: các trạng thái của nút, hoặc các mục nhỏ trong reset). Khung viền tối giản hóa thành comment 1 dòng tiêu chuẩn để tránh nhiễu loạn thị giác, sử dụng 10 dấu gạch ngang `-` ở mỗi bên để tăng độ dài và sự nổi bật. Tiền tố đánh số có thêm dấu chấm ở cuối (ví dụ `1.1.1.1.`).
 ```css
-  /* --- 1.1.1.1. NAME --- */
+  /* ---------- 1.1.1.1. NAME ---------- */
 ```
 
 ---
