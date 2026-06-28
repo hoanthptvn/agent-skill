@@ -4,12 +4,34 @@
 [TABLE OF CONTENT]
 
 1. FOUNDATION.
-   1.1. FOUNDATION.
+   1.1. SETUP.
+      • 1.1.1 RESET - Áp dụng trước mọi style khác
+      • 1.1.2 DESIGN TOKENS — FLOCSS Foundation Layer
+      • 1.1.3 Radius Scale
+      • 1.1.4 DARK MODE
+      • 1.1.5 PROPERTIES — FLOCSS Foundation Layer
+      • 1.1.6 SHADOW COMPOSITE
+      • 1.1.7 BORDER
+      • 1.1.8 FILTER COMPOSITE
+      • 1.1.9 BACKDROP FILTER COMPOSITE
+      • 1.1.10 TYPOGRAPHY OVERRIDE
+      • 1.1.11 TRANSITION OVERRIDE
+      • 1.1.12 LAYOUT INTERNAL
+      • 1.1.13 COMPOSITE USAGE PATTERNS — Ví dụ cách dùng sau khi có safe defaults
+      • 1.1.14 @property DECLARATIONS — Modern browser native registration
+      • 1.1.15 TYPOGRAPHY — FLOCSS Foundation Layer
 2. LAYOUT.
-   2.1. LAYOUT.
+      • 2.0.1 LAYOUT — FLOCSS Layout Layer
 3. COMPONENT.
-   3.1. COMPONENT.
-4. PROJECT.
+      • 3.0.1 COMPONENTS — FLOCSS Object/Component Layer
+      • 3.0.2 c-btn — Button
+      • 3.0.3 c-card — Card
+      • 3.0.4 c-tag — Tag / Badge
+      • 3.0.5 c-divider — Horizontal Rule
+      • 3.0.6 ANIMATIONS — FLOCSS Foundation Layer
+      • 3.0.7 KEYFRAMES
+      • 3.0.8 DATA-ANIMATE PATTERN
+      • 3.0.9 UTILITY ANIMATION CLASSES
 ====================================================================================*/
 
 @layer reset, tokens, base, layout, components, animations, utilities, page;
@@ -515,7 +537,7 @@
     --z-tooltip: 600;
     --z-cursor: 999;
 
-    /* ---------- 1.1.3.6. ANIMATION ---------- */
+    /* ---------- 1.1.3.1. ANIMATION ---------- */
     --dur-instant: 80ms;
     --dur-fast: 150ms;
     --dur-base: 300ms;
@@ -549,7 +571,7 @@
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --animate-bounce: bounce 1s infinite;
 
-    /* ---------- 1.1.3.7. EFFECTS ---------- */
+    /* ---------- 1.1.3.2. EFFECTS ---------- */
     --shadow-xs: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
     --shadow-sm:
       0 1px 3px 0 oklch(0% 0 0 / 0.1), 0 1px 2px -1px oklch(0% 0 0 / 0.1);
@@ -596,7 +618,7 @@
     --drop-shadow-lg: 0 4px 6px oklch(0% 0 0 / 0.15);
     --drop-shadow-xl: 0 9px 7px oklch(0% 0 0 / 0.1);
 
-    /* ---------- 1.1.3.8. SEMANTIC TOKENS — Tầng 4: ecosystem compatibility ---------- */
+    /* ---------- 1.1.3.3. SEMANTIC TOKENS — Tầng 4: ecosystem compatibility ---------- */
 
     /**
      * TẠI SAO CẦN 2 HỆ THỐNG?
@@ -1431,7 +1453,7 @@
 2. LAYOUT.
 ====================================================================================*/
 @layer layout {
-  /* ========== 2.1.1 LAYOUT — FLOCSS Layout Layer ========== */
+  /* ========== 2.0.1 LAYOUT — FLOCSS Layout Layer ========== */
 
   /**
    * Prefix: l-*  |  BEM: l-block--modifier
@@ -1539,13 +1561,13 @@
 3. COMPONENT.
 ====================================================================================*/
 @layer components {
-  /* ========== 3.1.1 COMPONENTS — FLOCSS Object/Component Layer ========== */
+  /* ========== 3.0.1 COMPONENTS — FLOCSS Object/Component Layer ========== */
 
   /**
    * Prefix: c-*  |  BEM: c-block__element--modifier  |  local CSS vars per component
    */
 
-  /* ========== 3.1.2 c-btn — Button ========== */
+  /* ========== 3.0.2 c-btn — Button ========== */
 
   /**
    * Local vars: --btn-bg  --btn-color  --btn-border  --btn-radius
@@ -1644,7 +1666,7 @@
    * :root { --ui-primary: var(--clr-blue-600); }
    */
 
-  /* ========== 3.1.3 c-card — Card ========== */
+  /* ========== 3.0.3 c-card — Card ========== */
 
   /**
    * Local vars: --card-bg  --card-border  --card-radius
@@ -1698,7 +1720,7 @@
     --card-radius: var(--radius-lg);
   }
 
-  /* ========== 3.1.4 c-tag — Tag / Badge ========== */
+  /* ========== 3.0.4 c-tag — Tag / Badge ========== */
 
   /**
    * Local vars: --tag-bg  --tag-color  --tag-border  --tag-radius
@@ -1745,7 +1767,7 @@
     }
   }
 
-  /* ========== 3.1.5 c-divider — Horizontal Rule ========== */
+  /* ========== 3.0.5 c-divider — Horizontal Rule ========== */
 
   /**
    * Local vars: --divider-color  --divider-gap
@@ -1762,13 +1784,13 @@
 }
 
 @layer animations {
-  /* ========== 3.1.6 ANIMATIONS — FLOCSS Foundation Layer ========== */
+  /* ========== 3.0.6 ANIMATIONS — FLOCSS Foundation Layer ========== */
 
   /**
    * @keyframes + data-animate scroll pattern
    */
 
-  /* ========== 3.1.7 KEYFRAMES ========== */
+  /* ========== 3.0.7 KEYFRAMES ========== */
 
   @keyframes fade-in {
     from {
@@ -1867,7 +1889,7 @@
     }
   }
 
-  /* ========== 3.1.8 DATA-ANIMATE PATTERN ========== */
+  /* ========== 3.0.8 DATA-ANIMATE PATTERN ========== */
 
   /**
    * CÁCH DÙNG TRONG HTML
@@ -1943,7 +1965,7 @@
     clip-path: inset(0 0% 0 0);
   }
 
-  /* ========== 3.1.9 UTILITY ANIMATION CLASSES ========== */
+  /* ========== 3.0.9 UTILITY ANIMATION CLASSES ========== */
 
   /* Loading spinner */
   .animate-spin {

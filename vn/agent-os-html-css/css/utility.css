@@ -1,19 +1,80 @@
 /*====================================================================================
-4. UTILITY.
+[TABLE OF CONTENT]
+
+1. UTILITY.
+   1.1. UTILITY.
+      • 1.1.1 UTILITIES — FLOCSS Object/Utility Layer
+      • 1.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern
+      • 1.1.3 PADDING
+      • 1.1.4 GAP
+      • 1.1.5 WIDTH
+      • 1.1.6 POSITION — absolute, fixed, sticky, relative
+      • 1.1.7 INSET (shorthand cho top+right+bottom+left)
+      • 1.1.8 Z-INDEX — dùng --z-* tokens từ tokens.css
+      • 1.1.9 DISPLAY
+      • 1.1.10 VISIBILITY
+      • 1.1.11 OVERFLOW
+      • 1.1.12 FLEXBOX
+      • 1.1.13 GRID
+      • 1.1.14 TRANSFORM — dùng composite --ui-* vars (từ properties.css)
+      • 1.1.15 ASPECT RATIO
+      • 1.1.16 OBJECT FIT — cho img, video
+      • 1.1.17 TEXT — align, decoration, transform, whitespace
+      • 1.1.18 BORDER — width, style, radius
+      • 1.1.19 OUTLINE
+      • 1.1.20 APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE
+      • 1.1.21 COLOR-MIX — Opacity trên CSS variable (
+      • 1.1.22 ACCESSIBILITY
+      • 1.1.23 POSITION
+      • 1.1.24 ASPECT RATIO
+      • 1.1.25 INTERACTION
+      • 1.1.26 WILL-CHANGE — Performance hints cho GSAP / Three.js
+      • 1.1.27 TRANSITION UTILITIES
+      • 1.1.28 OPACITY
+      • 1.1.29 CURSOR + INTERACTION
+      • 1.1.30 ISOLATION — tạo stacking context mới, ngăn z-index leak
+      • 1.1.31 COMPOSITE SHADOW
+      • 1.1.32 FOCUS RING
+      • 1.1.33 FILTER COMPOSITE
+      • 1.1.34 BACKDROP FILTER — Dùng cho glass morphism
+      • 1.1.35 SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens
+      • 1.1.36 ANIMATE SHORTHAND — Dùng --animate-* tokens
+      • 1.1.37 SELECTION STYLING
+      • 1.1.38 DISABLED STATE
+      • 1.1.39 ROUNDED
+      • 1.1.40 TRUNCATE / LINE-CLAMP — Rất hay dùng
+      • 1.1.41 OPACITY
+      • 1.1.42 TEXT SIZE — Với companion --ui-leading (giống hệt  sample)
+      • 1.1.43 FONT WEIGHT — Với --ui-font-weight (giống hệt  sample)
+      • 1.1.44 DIVIDE
+      • 1.1.45 SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted
+      • 1.1.46 SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented
+      • 1.1.47 RING OPACITY VARIANTS — ring-primary/25, ring-error/50...
+      • 1.1.48 OUTLINE COLORS — outline-primary/25, outline-error/25...
+      • 1.1.49 FILL / STROKE — cho SVG icons
+      • 1.1.50 SCROLL PADDING
+      • 1.1.51 PLACEHOLDER
+      • 1.1.52 CURSOR
+      • 1.1.53 TRACKING (Letter-spacing) — Với --ui-tracking companion var
+      • 1.1.54 SPACE-Y / SPACE-X — Margin-based spacing (
+      • 1.1.55 SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc.
+====================================================================================*/
+/*====================================================================================
+1. UTILITY.
 ====================================================================================*/
 
 /*------------------------------------------------------------------------------------
-4.1. UTILITY.
+1.1. UTILITY.
 ------------------------------------------------------------------------------------*/
 
-/* ========== 4.1.1 UTILITIES — FLOCSS Object/Utility Layer ========== */
+/* ========== 1.1.1 UTILITIES — FLOCSS Object/Utility Layer ========== */
 
 /**
  * Prefix: u-*  |  Single-purpose helpers  |  Layer với ưu tiên cao nhất
  */
 
 
-/* ========== 4.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern ========== */
+/* ========== 1.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern ========== */
 
 /**
  * TẠI SAO DÙNG calc(var(--spacing) * N)?
@@ -63,7 +124,7 @@
  * calc(var(--spacing) * 16) ≡ var(--space-8) = 4rem    [space-unit × 8]
  */
 
-/* ========== 4.1.3 PADDING ========== */
+/* ========== 1.1.3 PADDING ========== */
 
 .u-p-0   { padding: 0; }
 .u-p-px  { padding: 1px; }
@@ -97,7 +158,7 @@
 .u-py-4  { padding-block: calc(var(--spacing) * 4); }
 .u-py-6  { padding-block: calc(var(--spacing) * 6); }
 .u-py-8  { padding-block: calc(var(--spacing) * 8); }
-/* ---------- 4.1.3.1. MARGIN ---------- */
+/* ---------- 1.1.3.1. MARGIN ---------- */
 .u-m-0    { margin: 0; }
 .u-m-auto { margin: auto; }
 .u-m-1    { margin: calc(var(--spacing) * 1); }
@@ -127,7 +188,7 @@
 .u-mb-auto { margin-bottom: auto; }
 
 
-/* ========== 4.1.4 GAP ========== */
+/* ========== 1.1.4 GAP ========== */
 
 .u-gap-0   { gap: 0; }
 .u-gap-0\.5 { gap: calc(var(--spacing) * .5); }
@@ -139,7 +200,7 @@
 .u-gap-4   { gap: calc(var(--spacing) * 4); }
 .u-gap-6   { gap: calc(var(--spacing) * 6); }
 .u-gap-8   { gap: calc(var(--spacing) * 8); }
-/* ---------- 4.1.3.1. SIZE (width + height cùng lúc) ---------- */
+/* ---------- 1.1.4.1. SIZE (width + height cùng lúc) ---------- */
 .u-size-1   { width: calc(var(--spacing) * 1);  height: calc(var(--spacing) * 1); }
 .u-size-2   { width: calc(var(--spacing) * 2);  height: calc(var(--spacing) * 2); }
 .u-size-3   { width: calc(var(--spacing) * 3);  height: calc(var(--spacing) * 3); }
@@ -155,7 +216,7 @@
 .u-size-full { width: 100%; height: 100%; }
 
 
-/* ========== 4.1.5 WIDTH ========== */
+/* ========== 1.1.5 WIDTH ========== */
 
 .u-w-0    { width: 0; }
 .u-w-px   { width: 1px; }
@@ -182,7 +243,7 @@
 .u-max-w-sm  { max-width: var(--container-sm); }
 .u-max-w-md  { max-width: var(--container-md); }
 .u-max-w-lg  { max-width: var(--container); }
-/* ---------- 4.1.3.1. HEIGHT ---------- */
+/* ---------- 1.1.5.1. HEIGHT ---------- */
 .u-h-0    { height: 0; }
 .u-h-px   { height: 1px; }
 .u-h-1    { height: calc(var(--spacing) * 1); }
@@ -216,7 +277,7 @@
  */
 
 
-/* ========== 4.1.6 POSITION — absolute, fixed, sticky, relative ========== */
+/* ========== 1.1.6 POSITION — absolute, fixed, sticky, relative ========== */
 
 .u-static   { position: static; }
 .u-relative { position: relative; }
@@ -225,7 +286,7 @@
 .u-sticky   { position: sticky; top: 0; }
 
 
-/* ========== 4.1.7 INSET (shorthand cho top+right+bottom+left) ========== */
+/* ========== 1.1.7 INSET (shorthand cho top+right+bottom+left) ========== */
 
 .u-inset-0    { inset: 0; }
 .u-inset-px   { inset: 1px; }
@@ -238,7 +299,7 @@
 .u-inset-y-0    { inset-block: 0; }
 .u-inset-y-auto { inset-block: auto; }
 .u-inset-y-4    { inset-block: calc(var(--spacing) * 4); }
-/* ---------- 4.1.3.1. TOP / RIGHT / BOTTOM / LEFT ---------- */
+/* ---------- 1.1.7.1. TOP / RIGHT / BOTTOM / LEFT ---------- */
 
 .u-top-0    { top: 0; }
 .u-top-px   { top: 1px; }
@@ -279,7 +340,7 @@
 .u--top-2   { top: calc(var(--spacing) * -2); }
 
 
-/* ========== 4.1.8 Z-INDEX — dùng --z-* tokens từ tokens.css ========== */
+/* ========== 1.1.8 Z-INDEX — dùng --z-* tokens từ tokens.css ========== */
 
 .u-z-0        { z-index: 0; }
 .u-z-10       { z-index: var(--z-raised); }
@@ -294,7 +355,7 @@
 /*  dùng CSS var override: style="z-index: var(--index)" */
 
 
-/* ========== 4.1.9 DISPLAY ========== */
+/* ========== 1.1.9 DISPLAY ========== */
 
 .u-block        { display: block; }
 .u-inline       { display: inline; }
@@ -308,14 +369,14 @@
 .u-hidden       { display: none; }
 
 
-/* ========== 4.1.10 VISIBILITY ========== */
+/* ========== 1.1.10 VISIBILITY ========== */
 
 .u-visible   { visibility: visible; }
 .u-invisible { visibility: hidden; }
 .u-collapse  { visibility: collapse; }
 
 
-/* ========== 4.1.11 OVERFLOW ========== */
+/* ========== 1.1.11 OVERFLOW ========== */
 
 .u-overflow-auto    { overflow: auto; }
 .u-overflow-hidden  { overflow: hidden; }
@@ -327,7 +388,7 @@
 .u-overflow-y-hidden { overflow-y: hidden; }
 
 
-/* ========== 4.1.12 FLEXBOX ========== */
+/* ========== 1.1.12 FLEXBOX ========== */
 
 /* Direction */
 .u-flex-row         { flex-direction: row; }
@@ -382,7 +443,7 @@
 .u-place-content-between { place-content: space-between; }
 
 
-/* ========== 4.1.13 GRID ========== */
+/* ========== 1.1.13 GRID ========== */
 
 .u-grid-cols-1  { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 .u-grid-cols-2  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -406,7 +467,7 @@
 .u-row-start-1 { grid-row-start: 1; }
 
 
-/* ========== 4.1.14 TRANSFORM — dùng composite --ui-* vars (từ properties.css) ========== */
+/* ========== 1.1.14 TRANSFORM — dùng composite --ui-* vars (từ properties.css) ========== */
 
 /* Translate — set --ui-translate-x/y → composite ghép lại */
 .u-translate-x-0 {
@@ -475,7 +536,7 @@
 .u-origin-right  { transform-origin: right; }
 
 
-/* ========== 4.1.15 ASPECT RATIO ========== */
+/* ========== 1.1.15 ASPECT RATIO ========== */
 
 .u-aspect-auto    { aspect-ratio: auto; }
 .u-aspect-square  { aspect-ratio: 1 / 1; }
@@ -485,7 +546,7 @@
 .u-aspect-golden  { aspect-ratio: 1.618 / 1; }
 
 
-/* ========== 4.1.16 OBJECT FIT — cho img, video ========== */
+/* ========== 1.1.16 OBJECT FIT — cho img, video ========== */
 
 .u-object-contain { object-fit: contain; }
 .u-object-cover   { object-fit: cover; }
@@ -495,7 +556,7 @@
 .u-object-top     { object-position: top; }
 
 
-/* ========== 4.1.17 TEXT — align, decoration, transform, whitespace ========== */
+/* ========== 1.1.17 TEXT — align, decoration, transform, whitespace ========== */
 
 .u-text-left    { text-align: left; }
 .u-text-center  { text-align: center; }
@@ -536,7 +597,7 @@
 /* ↑ Font weights & letter-spacing: xem section TEXT SIZE + FONT WEIGHT + TRACKING cuối file */
 
 
-/* ========== 4.1.18 BORDER — width, style, radius ========== */
+/* ========== 1.1.18 BORDER — width, style, radius ========== */
 
 .u-border     { border: 1px solid var(--ui-border-style, solid); }
 .u-border-0   { border-width: 0; }
@@ -558,14 +619,14 @@
 .u-border-transparent { border-color: transparent; }
 
 
-/* ========== 4.1.19 OUTLINE ========== */
+/* ========== 1.1.19 OUTLINE ========== */
 
 .u-outline-none { --ui-outline-style: none; outline-style: none; }
 .u-outline      { outline-width: 1px; outline-style: var(--ui-outline-style, solid); }
 .u-outline-2    { outline-width: 2px; outline-style: var(--ui-outline-style, solid); }
 
 
-/* ========== 4.1.20 APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE ========== */
+/* ========== 1.1.20 APPEARANCE / USER SELECT / POINTER EVENTS / RESIZE ========== */
 
 .u-appearance-none { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
 .u-select-none { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
@@ -591,7 +652,7 @@
 
 
 
-/* ========== 4.1.21 COLOR-MIX — Opacity trên CSS variable ( ========== */
+/* ========== 1.1.21 COLOR-MIX — Opacity trên CSS variable ( ========== */
 
 /**
  * ⚠️ VẤN ĐỀ
@@ -630,7 +691,7 @@
  */
 
 
-/* ========== 4.1.22 ACCESSIBILITY ========== */
+/* ========== 1.1.22 ACCESSIBILITY ========== */
 
 /* Ẩn visually nhưng vẫn đọc được bởi screen reader */
 .u-sr-only {
@@ -649,7 +710,7 @@
 /* .truncate, .u-line-clamp-* → xem section TRUNCATE / LINE-CLAMP (dưới) — đầy đủ hơn */
 
 
-/* ========== 4.1.23 POSITION ========== */
+/* ========== 1.1.23 POSITION ========== */
 
 /* Fill parent hoàn toàn */
 .u-cover {
@@ -667,7 +728,7 @@
 }
 
 
-/* ========== 4.1.24 ASPECT RATIO ========== */
+/* ========== 1.1.24 ASPECT RATIO ========== */
 
 .u-ratio-video  { aspect-ratio: 16 / 9; }
 .u-ratio-square { aspect-ratio: 1; }
@@ -680,14 +741,14 @@
 /* .font-display, .u-font-mono → đã khai báo trong section TEXT / FONT đầu file */
 
 
-/* ========== 4.1.25 INTERACTION ========== */
+/* ========== 1.1.25 INTERACTION ========== */
 
 .u-pointer-none { pointer-events: none; }
 .u-pointer-auto { pointer-events: auto; }
 /* .select-none có prefix đầy đủ ở dòng 599 trên */
 
 
-/* ========== 4.1.26 WILL-CHANGE — Performance hints cho GSAP / Three.js ========== */
+/* ========== 1.1.26 WILL-CHANGE — Performance hints cho GSAP / Three.js ========== */
 
 /**
  * Dùng: thêm class trước khi animate, xóa sau khi xong
@@ -702,7 +763,7 @@
 /* .rounded-* đã được khai báo đầy đủ trong section ROUNDED cuối file (var(--radius) multiplier) */
 
 
-/* ========== 4.1.27 TRANSITION UTILITIES ========== */
+/* ========== 1.1.27 TRANSITION UTILITIES ========== */
 
 /**
  * Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)"
@@ -754,7 +815,7 @@
  */
 
 
-/* ========== 4.1.28 OPACITY ========== */
+/* ========== 1.1.28 OPACITY ========== */
 
 /**
  * (đầy đủ với opacity-5, opacity-10, opacity-25 ở cuối file)
@@ -763,12 +824,12 @@
 /* .opacity-* → xem section OPACITY cuối file (có 7 bậc: 0,5,10,25,50,75,100) */
 
 
-/* ========== 4.1.29 CURSOR + INTERACTION ========== */
+/* ========== 1.1.29 CURSOR + INTERACTION ========== */
 
 /* .cursor-* → xem section CURSOR cuối file */
 
 
-/* ========== 4.1.30 ISOLATION — tạo stacking context mới, ngăn z-index leak ========== */
+/* ========== 1.1.30 ISOLATION — tạo stacking context mới, ngăn z-index leak ========== */
 
 /**
  * Dùng khi: card, modal, glass element bị ảnh hưởng bởi z-index bên ngoài
@@ -778,7 +839,7 @@
 .u-isolate-auto { isolation: auto; }
 
 
-/* ========== 4.1.31 COMPOSITE SHADOW ========== */
+/* ========== 1.1.31 COMPOSITE SHADOW ========== */
 
 /**
  * Pattern: 5 shadow layers ghép thành 1 box-shadow
@@ -841,7 +902,7 @@
 }
 
 
-/* ========== 4.1.32 FOCUS RING ========== */
+/* ========== 1.1.32 FOCUS RING ========== */
 
 /**
  * Dùng box-shadow thay outline → có border-radius, có thể composite
@@ -881,7 +942,7 @@
  */
 
 
-/* ========== 4.1.33 FILTER COMPOSITE ========== */
+/* ========== 1.1.33 FILTER COMPOSITE ========== */
 
 /**
  * Mỗi class chỉ set 1 biến filter → composite ghép tất cả
@@ -914,7 +975,7 @@
 }
 
 
-/* ========== 4.1.34 BACKDROP FILTER — Dùng cho glass morphism ========== */
+/* ========== 1.1.34 BACKDROP FILTER — Dùng cho glass morphism ========== */
 
 .u-backdrop-blur {
   --ui-backdrop-blur: blur(8px);
@@ -931,7 +992,7 @@
 }
 
 
-/* ========== 4.1.35 SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens ========== */
+/* ========== 1.1.35 SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens ========== */
 
 /**
  * border-*, bg-*, text-* theo  naming
@@ -954,7 +1015,7 @@
 .u-text-info        { color: var(--ui-info); }
 
 
-/* ========== 4.1.36 ANIMATE SHORTHAND — Dùng --animate-* tokens ========== */
+/* ========== 1.1.36 ANIMATE SHORTHAND — Dùng --animate-* tokens ========== */
 
 .u-animate-spin   { animation: var(--animate-spin); }
 .u-animate-ping   { animation: var(--animate-ping); }
@@ -962,7 +1023,7 @@
 .u-animate-bounce { animation: var(--animate-bounce); }
 
 
-/* ========== 4.1.37 SELECTION STYLING ========== */
+/* ========== 1.1.37 SELECTION STYLING ========== */
 
 .u-selection-primary ::selection,
 .u-selection-primary::selection {
@@ -970,13 +1031,13 @@
 }
 
 
-/* ========== 4.1.38 DISABLED STATE ========== */
+/* ========== 1.1.38 DISABLED STATE ========== */
 
 .u-disabled\:opacity-75:disabled { opacity: .75; }
 .u-disabled\:cursor-not-allowed:disabled { cursor: not-allowed; }
 
 
-/* ========== 4.1.39 ROUNDED ========== */
+/* ========== 1.1.39 ROUNDED ========== */
 
 /**
  * Dùng --ui-radius multiplier → đổi 1 chỗ → tất cả component đổi theo
@@ -1026,7 +1087,7 @@
 .u-rounded-\[calc\(var\(--radius\)-3px\)\] { border-radius: calc(var(--radius) - 3px); }
 
 
-/* ========== 4.1.40 TRUNCATE / LINE-CLAMP — Rất hay dùng ========== */
+/* ========== 1.1.40 TRUNCATE / LINE-CLAMP — Rất hay dùng ========== */
 
 .u-truncate {
   overflow: hidden;
@@ -1054,7 +1115,7 @@
 }
 
 
-/* ========== 4.1.41 OPACITY ========== */
+/* ========== 1.1.41 OPACITY ========== */
 
 .u-opacity-0   { opacity: 0; }
 .u-opacity-5   { opacity: .05; }
@@ -1105,7 +1166,7 @@
 .u-me-3     { margin-inline-end: calc(var(--spacing) * 3); }
 
 
-/* ========== 4.1.44 TEXT SIZE — Với companion --ui-leading (giống hệt  sample) ========== */
+/* ========== 1.1.42 TEXT SIZE — Với companion --ui-leading (giống hệt  sample) ========== */
 
 /**
  * Pattern: font-size + line-height: var(--ui-leading, var(--text-SIZE--line-height))
@@ -1141,7 +1202,7 @@
 }
 
 
-/* ========== 4.1.45 FONT WEIGHT — Với --ui-font-weight (giống hệt  sample) ========== */
+/* ========== 1.1.43 FONT WEIGHT — Với --ui-font-weight (giống hệt  sample) ========== */
 
 /**
  * Pattern: set CẢ internal var LẪN property
@@ -1180,7 +1241,7 @@
 }
 
 
-/* ========== 4.1.46 DIVIDE ========== */
+/* ========== 1.1.44 DIVIDE ========== */
 
 :where(.u-divide-y > :not(:last-child)) {
   --ui-divide-y-reverse: 0;
@@ -1195,7 +1256,7 @@
 }
 
 
-/* ========== 4.1.47 SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted ========== */
+/* ========== 1.1.45 SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted ========== */
 
 /**
  * Dùng --clr-* tokens (granular, oklch)
@@ -1213,7 +1274,7 @@
 .u-text-accent      { color: var(--clr-accent); }          /* brand accent */
 
 
-/* ========== 4.1.48 SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented ========== */
+/* ========== 1.1.46 SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented ========== */
 
 /**
  * Dùng --clr-* tokens. Khác với  .bg-primary (dùng --primary token)
@@ -1255,7 +1316,7 @@
 }
 
 
-/* ========== 4.1.49 RING OPACITY VARIANTS — ring-primary/25, ring-error/50... ========== */
+/* ========== 1.1.47 RING OPACITY VARIANTS — ring-primary/25, ring-error/50... ========== */
 
 .u-ring-accented { --ui-ring-color: var(--clr-border-alt); }
 .u-ring-default  { --ui-ring-color: var(--clr-border); }
@@ -1284,7 +1345,7 @@
 }
 
 
-/* ========== 4.1.50 OUTLINE COLORS — outline-primary/25, outline-error/25... ========== */
+/* ========== 1.1.48 OUTLINE COLORS — outline-primary/25, outline-error/25... ========== */
 
 @supports (color: color-mix(in lab, red, red)) {
   .u-outline-primary\/25   { outline-color: color-mix(in oklab, var(--ui-primary) 25%, transparent); }
@@ -1297,7 +1358,7 @@
 }
 
 
-/* ========== 4.1.51 FILL / STROKE — cho SVG icons ========== */
+/* ========== 1.1.49 FILL / STROKE — cho SVG icons ========== */
 
 .u-fill-bg      { fill: var(--clr-bg); }
 .u-fill-current { fill: currentColor; }
@@ -1305,19 +1366,19 @@
 .u-stroke-current { stroke: currentColor; }
 
 
-/* ========== 4.1.52 SCROLL PADDING ========== */
+/* ========== 1.1.50 SCROLL PADDING ========== */
 
 .u-scroll-py-1 { scroll-padding-block: var(--spacing); }
 .u-scroll-py-2 { scroll-padding-block: calc(var(--spacing) * 2); }
 
 
-/* ========== 4.1.53 PLACEHOLDER ========== */
+/* ========== 1.1.51 PLACEHOLDER ========== */
 
 .u-placeholder\:text-dimmed::-moz-placeholder { color: var(--clr-text-faint); }
 .u-placeholder\:text-dimmed::placeholder { color: var(--clr-text-faint); }
 
 
-/* ========== 4.1.54 CURSOR ========== */
+/* ========== 1.1.52 CURSOR ========== */
 
 .u-cursor-default     { cursor: default; }
 .u-cursor-pointer     { cursor: pointer; }
@@ -1328,7 +1389,7 @@
 .u-cursor-move        { cursor: move; }
 
 
-/* ========== 4.1.55 TRACKING (Letter-spacing) — Với --ui-tracking companion var ========== */
+/* ========== 1.1.53 TRACKING (Letter-spacing) — Với --ui-tracking companion var ========== */
 
 /**
  * → ::before/::after có thể dùng var(--ui-tracking) để đọc lại
@@ -1343,7 +1404,7 @@
 .u-tracking-caps    { --ui-tracking: var(--tracking-caps);    letter-spacing: var(--tracking-caps); }
 
 
-/* ========== 4.1.56 SPACE-Y / SPACE-X — Margin-based spacing ( ========== */
+/* ========== 1.1.54 SPACE-Y / SPACE-X — Margin-based spacing ( ========== */
 
 /**
  * CÁCH SỬ DỤNG
@@ -1410,7 +1471,7 @@
 :where(.u-space-x-reverse > :not(:last-child)) { --ui-space-x-reverse: 1; }
 
 
-/* ========== 4.1.57 SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc. ========== */
+/* ========== 1.1.55 SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc. ========== */
 
 /**
  * Cho phép component dùng class names quen thuộc từ component library
