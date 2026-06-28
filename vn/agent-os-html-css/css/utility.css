@@ -61,42 +61,39 @@
 
 /* ========== 4.1.3 PADDING ========== */
 
-/**
- * */
- * .u-p-0   { padding: 0; }
- * .u-p-px  { padding: 1px; }
- * .u-p-0\.5 { padding: calc(var(--spacing) * .5); }
- * .u-p-1   { padding: calc(var(--spacing) * 1); }
- * .u-p-1\.5 { padding: calc(var(--spacing) * 1.5); }
- * .u-p-2   { padding: calc(var(--spacing) * 2); }
- * .u-p-2\.5 { padding: calc(var(--spacing) * 2.5); }
- * .u-p-3   { padding: calc(var(--spacing) * 3); }
- * .u-p-4   { padding: calc(var(--spacing) * 4); }
- * .u-p-5   { padding: calc(var(--spacing) * 5); }
- * .u-p-6   { padding: calc(var(--spacing) * 6); }
- * .u-p-8   { padding: calc(var(--spacing) * 8); }
- * .u-p-10  { padding: calc(var(--spacing) * 10); }
- * .u-p-12  { padding: calc(var(--spacing) * 12); }
- * /* Padding inline (x-axis) */
- * .u-px-0  { padding-inline: 0; }
- * .u-px-1  { padding-inline: calc(var(--spacing) * 1); }
- * .u-px-2  { padding-inline: calc(var(--spacing) * 2); }
- * .u-px-2\.5 { padding-inline: calc(var(--spacing) * 2.5); }
- * .u-px-3  { padding-inline: calc(var(--spacing) * 3); }
- * .u-px-4  { padding-inline: calc(var(--spacing) * 4); }
- * .u-px-6  { padding-inline: calc(var(--spacing) * 6); }
- * .u-px-8  { padding-inline: calc(var(--spacing) * 8); }
- * /* Padding block (y-axis) */
- * .u-py-0  { padding-block: 0; }
- * .u-py-1  { padding-block: calc(var(--spacing) * 1); }
- * .u-py-1\.5 { padding-block: calc(var(--spacing) * 1.5); }
- * .u-py-2  { padding-block: calc(var(--spacing) * 2); }
- * .u-py-3  { padding-block: calc(var(--spacing) * 3); }
- * .u-py-4  { padding-block: calc(var(--spacing) * 4); }
- * .u-py-6  { padding-block: calc(var(--spacing) * 6); }
- * .u-py-8  { padding-block: calc(var(--spacing) * 8); }
- * /* ── MARGIN
- */
+.u-p-0   { padding: 0; }
+.u-p-px  { padding: 1px; }
+.u-p-0\.5 { padding: calc(var(--spacing) * .5); }
+.u-p-1   { padding: calc(var(--spacing) * 1); }
+.u-p-1\.5 { padding: calc(var(--spacing) * 1.5); }
+.u-p-2   { padding: calc(var(--spacing) * 2); }
+.u-p-2\.5 { padding: calc(var(--spacing) * 2.5); }
+.u-p-3   { padding: calc(var(--spacing) * 3); }
+.u-p-4   { padding: calc(var(--spacing) * 4); }
+.u-p-5   { padding: calc(var(--spacing) * 5); }
+.u-p-6   { padding: calc(var(--spacing) * 6); }
+.u-p-8   { padding: calc(var(--spacing) * 8); }
+.u-p-10  { padding: calc(var(--spacing) * 10); }
+.u-p-12  { padding: calc(var(--spacing) * 12); }
+/* Padding inline (x-axis) */
+.u-px-0  { padding-inline: 0; }
+.u-px-1  { padding-inline: calc(var(--spacing) * 1); }
+.u-px-2  { padding-inline: calc(var(--spacing) * 2); }
+.u-px-2\.5 { padding-inline: calc(var(--spacing) * 2.5); }
+.u-px-3  { padding-inline: calc(var(--spacing) * 3); }
+.u-px-4  { padding-inline: calc(var(--spacing) * 4); }
+.u-px-6  { padding-inline: calc(var(--spacing) * 6); }
+.u-px-8  { padding-inline: calc(var(--spacing) * 8); }
+/* Padding block (y-axis) */
+.u-py-0  { padding-block: 0; }
+.u-py-1  { padding-block: calc(var(--spacing) * 1); }
+.u-py-1\.5 { padding-block: calc(var(--spacing) * 1.5); }
+.u-py-2  { padding-block: calc(var(--spacing) * 2); }
+.u-py-3  { padding-block: calc(var(--spacing) * 3); }
+.u-py-4  { padding-block: calc(var(--spacing) * 4); }
+.u-py-6  { padding-block: calc(var(--spacing) * 6); }
+.u-py-8  { padding-block: calc(var(--spacing) * 8); }
+/* ---------- 4.1.3.1. MARGIN ---------- */
 .u-m-0    { margin: 0; }
 .u-m-auto { margin: auto; }
 .u-m-1    { margin: calc(var(--spacing) * 1); }
@@ -128,20 +125,17 @@
 
 /* ========== 4.1.4 GAP ========== */
 
-/**
- * */
- * .u-gap-0   { gap: 0; }
- * .u-gap-0\.5 { gap: calc(var(--spacing) * .5); }
- * .u-gap-1   { gap: calc(var(--spacing) * 1); }
- * .u-gap-1\.5 { gap: calc(var(--spacing) * 1.5); }
- * .u-gap-2   { gap: calc(var(--spacing) * 2); }
- * .u-gap-2\.5 { gap: calc(var(--spacing) * 2.5); }
- * .u-gap-3   { gap: calc(var(--spacing) * 3); }
- * .u-gap-4   { gap: calc(var(--spacing) * 4); }
- * .u-gap-6   { gap: calc(var(--spacing) * 6); }
- * .u-gap-8   { gap: calc(var(--spacing) * 8); }
- * /* ── SIZE (width + height cùng lúc)
- */
+.u-gap-0   { gap: 0; }
+.u-gap-0\.5 { gap: calc(var(--spacing) * .5); }
+.u-gap-1   { gap: calc(var(--spacing) * 1); }
+.u-gap-1\.5 { gap: calc(var(--spacing) * 1.5); }
+.u-gap-2   { gap: calc(var(--spacing) * 2); }
+.u-gap-2\.5 { gap: calc(var(--spacing) * 2.5); }
+.u-gap-3   { gap: calc(var(--spacing) * 3); }
+.u-gap-4   { gap: calc(var(--spacing) * 4); }
+.u-gap-6   { gap: calc(var(--spacing) * 6); }
+.u-gap-8   { gap: calc(var(--spacing) * 8); }
+/* ---------- 4.1.3.1. SIZE (width + height cùng lúc) ---------- */
 .u-size-1   { width: calc(var(--spacing) * 1);  height: calc(var(--spacing) * 1); }
 .u-size-2   { width: calc(var(--spacing) * 2);  height: calc(var(--spacing) * 2); }
 .u-size-3   { width: calc(var(--spacing) * 3);  height: calc(var(--spacing) * 3); }
@@ -159,35 +153,32 @@
 
 /* ========== 4.1.5 WIDTH ========== */
 
-/**
- * */
- * .u-w-0    { width: 0; }
- * .u-w-px   { width: 1px; }
- * .u-w-1    { width: calc(var(--spacing) * 1); }
- * .u-w-2    { width: calc(var(--spacing) * 2); }
- * .u-w-3    { width: calc(var(--spacing) * 3); }
- * .u-w-4    { width: calc(var(--spacing) * 4); }
- * .u-w-5    { width: calc(var(--spacing) * 5); }
- * .u-w-6    { width: calc(var(--spacing) * 6); }
- * .u-w-8    { width: calc(var(--spacing) * 8); }
- * .u-w-10   { width: calc(var(--spacing) * 10); }
- * .u-w-12   { width: calc(var(--spacing) * 12); }
- * .u-w-16   { width: calc(var(--spacing) * 16); }
- * .u-w-24   { width: calc(var(--spacing) * 24); }
- * .u-w-32   { width: calc(var(--spacing) * 32); }
- * .u-w-48   { width: calc(var(--spacing) * 48); }
- * .u-w-64   { width: calc(var(--spacing) * 64); }
- * .u-w-96   { width: calc(var(--spacing) * 96); }
- * .u-w-auto { width: auto; }
- * .u-w-full { width: 100%; }
- * .u-w-screen { width: 100vw; }
- * .u-min-w-0   { min-width: 0; }
- * .u-min-w-fit { min-width: fit-content; }
- * .u-max-w-sm  { max-width: var(--container-sm); }
- * .u-max-w-md  { max-width: var(--container-md); }
- * .u-max-w-lg  { max-width: var(--container); }
- * /* ── HEIGHT
- */
+.u-w-0    { width: 0; }
+.u-w-px   { width: 1px; }
+.u-w-1    { width: calc(var(--spacing) * 1); }
+.u-w-2    { width: calc(var(--spacing) * 2); }
+.u-w-3    { width: calc(var(--spacing) * 3); }
+.u-w-4    { width: calc(var(--spacing) * 4); }
+.u-w-5    { width: calc(var(--spacing) * 5); }
+.u-w-6    { width: calc(var(--spacing) * 6); }
+.u-w-8    { width: calc(var(--spacing) * 8); }
+.u-w-10   { width: calc(var(--spacing) * 10); }
+.u-w-12   { width: calc(var(--spacing) * 12); }
+.u-w-16   { width: calc(var(--spacing) * 16); }
+.u-w-24   { width: calc(var(--spacing) * 24); }
+.u-w-32   { width: calc(var(--spacing) * 32); }
+.u-w-48   { width: calc(var(--spacing) * 48); }
+.u-w-64   { width: calc(var(--spacing) * 64); }
+.u-w-96   { width: calc(var(--spacing) * 96); }
+.u-w-auto { width: auto; }
+.u-w-full { width: 100%; }
+.u-w-screen { width: 100vw; }
+.u-min-w-0   { min-width: 0; }
+.u-min-w-fit { min-width: fit-content; }
+.u-max-w-sm  { max-width: var(--container-sm); }
+.u-max-w-md  { max-width: var(--container-md); }
+.u-max-w-lg  { max-width: var(--container); }
+/* ---------- 4.1.3.1. HEIGHT ---------- */
 .u-h-0    { height: 0; }
 .u-h-px   { height: 1px; }
 .u-h-1    { height: calc(var(--spacing) * 1); }
@@ -214,11 +205,9 @@
 .u-min-h-screen { min-height: 100vh; }
 .u-min-h-dvh    { min-height: 100dvh; }
 
-/**
- * Dùng CSS var override:
- * <header style="height: var(--ui-header-height)">   → lấy từ --ui-header-height
- * <div style="height: calc(var(--spacing) * 11)">    → 2.75rem = 44px
- */
+Dùng CSS var override:
+<header style="height: var(--ui-header-height)">   → lấy từ --ui-header-height
+<div style="height: calc(var(--spacing) * 11)">    → 2.75rem = 44px
 
 
 /* ========== 4.1.6 POSITION — absolute, fixed, sticky, relative ========== */
@@ -232,21 +221,18 @@
 
 /* ========== 4.1.7 INSET (shorthand cho top+right+bottom+left) ========== */
 
-/**
- * */
- * .u-inset-0    { inset: 0; }
- * .u-inset-px   { inset: 1px; }
- * .u-inset-auto { inset: auto; }
- * /* Inline axis (left + right) */
- * .u-inset-x-0    { inset-inline: 0; }
- * .u-inset-x-auto { inset-inline: auto; }
- * .u-inset-x-4    { inset-inline: calc(var(--spacing) * 4); }
- * /* Block axis (top + bottom) */
- * .u-inset-y-0    { inset-block: 0; }
- * .u-inset-y-auto { inset-block: auto; }
- * .u-inset-y-4    { inset-block: calc(var(--spacing) * 4); }
- * /* ── TOP / RIGHT / BOTTOM / LEFT
- */
+.u-inset-0    { inset: 0; }
+.u-inset-px   { inset: 1px; }
+.u-inset-auto { inset: auto; }
+/* Inline axis (left + right) */
+.u-inset-x-0    { inset-inline: 0; }
+.u-inset-x-auto { inset-inline: auto; }
+.u-inset-x-4    { inset-inline: calc(var(--spacing) * 4); }
+/* Block axis (top + bottom) */
+.u-inset-y-0    { inset-block: 0; }
+.u-inset-y-auto { inset-block: auto; }
+.u-inset-y-4    { inset-block: calc(var(--spacing) * 4); }
+/* ---------- 4.1.3.1. TOP / RIGHT / BOTTOM / LEFT ---------- */
 
 .u-top-0    { top: 0; }
 .u-top-px   { top: 1px; }
