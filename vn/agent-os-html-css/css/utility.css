@@ -7,12 +7,14 @@
 ------------------------------------------------------------------------------------*/
 
 /* ========== 4.1.1 UTILITIES — FLOCSS Object/Utility Layer ========== */
+
 /**
  * Prefix: u-*  |  Single-purpose helpers  |  Layer với ưu tiên cao nhất
  */
 
 
 /* ========== 4.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern ========== */
+
 /**
  * Tại sao dùng calc(var(--spacing) * N)?
  * ────────────────────────────────────────
@@ -58,6 +60,7 @@
  */
 
 /* ========== 4.1.3 PADDING ========== */
+
 /**
  * */
  * .u-p-0   { padding: 0; }
@@ -124,6 +127,7 @@
 
 
 /* ========== 4.1.4 GAP ========== */
+
 /**
  * */
  * .u-gap-0   { gap: 0; }
@@ -154,6 +158,7 @@
 
 
 /* ========== 4.1.5 WIDTH ========== */
+
 /**
  * */
  * .u-w-0    { width: 0; }
@@ -226,6 +231,7 @@
 
 
 /* ========== 4.1.7 INSET (shorthand cho top+right+bottom+left) ========== */
+
 /**
  * */
  * .u-inset-0    { inset: 0; }
@@ -594,6 +600,7 @@
 
 
 /* ========== 4.1.21 COLOR-MIX — Opacity trên CSS variable ( ========== */
+
 /**
  * Vấn đề: không thể làm được điều này vì var không hoạt động trong alpha:
  * background: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 10%);  ← LỖI
@@ -669,6 +676,7 @@
 
 
 /* .text-muted, .u-text-faint, .u-text-accent → xem  SEMANTIC TEXT COLORS cuối file */
+
 /* .font-display, .u-font-mono → đã khai báo trong section TEXT / FONT đầu file */
 
 
@@ -680,6 +688,7 @@
 
 
 /* ========== 4.1.26 WILL-CHANGE — Performance hints cho GSAP / Three.js ========== */
+
 /**
  * Dùng: thêm class trước khi animate, xóa sau khi xong
  * Cảnh báo: không apply hàng loạt — tốn GPU/RAM
@@ -694,6 +703,7 @@
 
 
 /* ========== 4.1.27 TRANSITION UTILITIES ========== */
+
 /**
  * Override per-element: style="--ui-duration: .5s; --ui-ease: var(--ease-spring)"
  * Pattern: var(--ui-duration, var(--default-transition-duration))
@@ -744,6 +754,7 @@
 
 
 /* ========== 4.1.28 OPACITY ========== */
+
 /**
  * (đầy đủ với opacity-5, opacity-10, opacity-25 ở cuối file)
  */
@@ -757,6 +768,7 @@
 
 
 /* ========== 4.1.30 ISOLATION — tạo stacking context mới, ngăn z-index leak ========== */
+
 /**
  * Dùng khi: card, modal, glass element bị ảnh hưởng bởi z-index bên ngoài
  */
@@ -766,6 +778,7 @@
 
 
 /* ========== 4.1.31 COMPOSITE SHADOW ========== */
+
 /**
  * Pattern: 5 shadow layers ghép thành 1 box-shadow
  * Mỗi class chỉ set 1 biến → không ghi đè các layer khác
@@ -826,6 +839,7 @@
 
 
 /* ========== 4.1.32 FOCUS RING ========== */
+
 /**
  * Dùng box-shadow thay outline → có border-radius, có thể composite
  */
@@ -863,6 +877,7 @@
 
 
 /* ========== 4.1.33 FILTER COMPOSITE ========== */
+
 /**
  * Mỗi class chỉ set 1 biến filter → composite ghép tất cả
  */
@@ -912,6 +927,7 @@
 
 
 /* ========== 4.1.35 SEMANTIC COLOR UTILITIES (agent-os-css native) — Dùng --ui-* tokens ========== */
+
 /**
  * border-*, bg-*, text-* theo  naming
  * Note: .bg-primary và .border-primary ở đây dùng --ui-primary
@@ -956,6 +972,7 @@
 
 
 /* ========== 4.1.39 ROUNDED ========== */
+
 /**
  * Dùng --ui-radius multiplier → đổi 1 chỗ → tất cả component đổi theo
  */
@@ -1084,6 +1101,7 @@
 
 
 /* ========== 4.1.44 TEXT SIZE — Với companion --ui-leading (giống hệt  sample) ========== */
+
 /**
  * Pattern: font-size + line-height: var(--ui-leading, var(--text-SIZE--line-height))
  */
@@ -1119,6 +1137,7 @@
 
 
 /* ========== 4.1.45 FONT WEIGHT — Với --ui-font-weight (giống hệt  sample) ========== */
+
 /**
  * Pattern: set CẢ internal var LẪN property
  * → ::before/::after có thể inherit --ui-font-weight
@@ -1172,6 +1191,7 @@
 
 
 /* ========== 4.1.47 SEMANTIC TEXT COLORS (agent-os-css native) — text-dimmed → text-highlighted ========== */
+
 /**
  * Dùng --clr-* tokens (granular, oklch)
  * Khác với  .text-foreground (dùng --foreground token) ở bên dưới
@@ -1189,6 +1209,7 @@
 
 
 /* ========== 4.1.48 SEMANTIC BG (agent-os-css native) — bg-muted, bg-elevated, bg-accented ========== */
+
 /**
  * Dùng --clr-* tokens. Khác với  .bg-primary (dùng --primary token)
  */
@@ -1303,6 +1324,7 @@
 
 
 /* ========== 4.1.55 TRACKING (Letter-spacing) — Với --ui-tracking companion var ========== */
+
 /**
  * → ::before/::after có thể dùng var(--ui-tracking) để đọc lại
  */
@@ -1317,6 +1339,7 @@
 
 
 /* ========== 4.1.56 SPACE-Y / SPACE-X — Margin-based spacing ( ========== */
+
 /**
  * Dùng khi layout KHÔNG phải flex/grid mà vẫn cần space giữa children.
  * Dùng gap-* nếu đang dùng flex/grid — hiệu suất tốt hơn.
@@ -1380,6 +1403,7 @@
 
 
 /* ========== 4.1.57 SEMANTIC COLOR UTILITIES — bg-background, text-foreground, etc. ========== */
+
 /**
  * Cho phép component dùng class names quen thuộc từ component library
  */

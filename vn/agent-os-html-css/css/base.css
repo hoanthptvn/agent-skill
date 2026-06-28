@@ -276,6 +276,7 @@
 
 @layer tokens {
   /* ========== 1.1.2 DESIGN TOKENS — FLOCSS Foundation Layer ========== */
+
   /**
    * CSS Custom Properties — mọi dự án đều cần
    */
@@ -339,6 +340,7 @@
     --clr-info: oklch(62% 0.18 230);
 
     /* ---------- 1.1.2.2b. UI SEMANTIC TOKENS — Tầng 3: trạng thái tương tác ---------- */
+
     /**
      * Dùng trong button, badge, alert: background: var(--ui-error)
      * Lợi thế: có thể remap toàn bộ màu trạng thái mà không sửa component
@@ -403,6 +405,7 @@
     --weight-black: 900;
 
     /* ---------- 1.1.2.4. SPACING — 8pt grid ---------- */
+
     /**
      * HAI CÁCH dùng spacing (đều hợp lệ):
      * CÁCH 1 — Named tokens (agent-os-css style):
@@ -478,6 +481,7 @@
     --col-gap: var(--gutter);
 
     /* ========== 1.1.3 Radius Scale ========== */
+
     /**
      * Một biến duy nhất --radius là gốc. Tất cả scale là bội số của nó.
      * User chỉ cần đổi --radius: 1rem → toàn bộ bo góc đều tăng theo tỉ lệ.
@@ -495,6 +499,7 @@
     --radius-3xl: calc(var(--radius) * 2.2); /* ~22px */
     --radius-4xl: calc(var(--radius) * 2.6); /* ~26px */
     --radius-full: 9999px; /* pill / circle */
+
     /* Backward compat alias cho code cũ dùng --ui-radius */
     --ui-radius: var(--radius);
     --ui-header-height: 4rem;
@@ -592,6 +597,7 @@
     --drop-shadow-xl: 0 9px 7px oklch(0% 0 0 / 0.1);
 
     /* ---------- 1.1.3.8. SEMANTIC TOKENS — Tầng 4: ecosystem compatibility ---------- */
+
     /**
      * TẠI SAO CẦN 2 HỆ THỐNG?
      * ─────────────────────────
@@ -600,6 +606,7 @@
      * Cho phép tích hợp component library bên ngoài mà không cần refactor.
      * Component dùng var(--background) sẽ tự adapt theo theme.
      */
+
     /* Nền & chữ chính */
     --background: var(--clr-bg);
     --foreground: var(--clr-text); /* Card / Popover — thường cùng màu background */
@@ -711,9 +718,11 @@
   }
 
   /* ========== 1.1.5 PROPERTIES — FLOCSS Foundation Layer ========== */
+
   /**
    * Safe defaults cho composite CSS variables (--ui-*)
    */
+
   /*
    Tại sao cần file này:
    CSS composite property (box-shadow, filter, transform) ghép nhiều var()
@@ -727,6 +736,7 @@
    @property      → browser hiện đại tự handle (Chrome 85+, Safari 16.4+)
    @supports      → fallback cho browser cũ
    ========================================================================== */
+
   /**
    * @supports — Tại sao dùng query này?
    * Các condition detect browser cũ:
@@ -762,6 +772,7 @@
       --ui-skew-y: initial;
 
       /* ========== 1.1.6 SHADOW COMPOSITE ========== */
+
       /**
        * Composite pattern:
        * box-shadow: var(--ui-inset-shadow),
@@ -800,6 +811,7 @@
       --ui-inset-ring-shadow: 0 0 #0000;
 
       /* ========== 1.1.7 BORDER ========== */
+
       /**
        * */
        * --ui-border-style: solid;
@@ -809,6 +821,7 @@
       --ui-outline-style: solid;
 
       /* ========== 1.1.8 FILTER COMPOSITE ========== */
+
       /**
        * Composite pattern:
        * filter: var(--ui-blur, ) var(--ui-brightness, )
@@ -838,6 +851,7 @@
       --ui-drop-shadow-size: initial;
 
       /* ========== 1.1.9 BACKDROP FILTER COMPOSITE ========== */
+
       /**
        * Tương tự filter, nhưng dùng cho backdrop-filter:
        * backdrop-filter: var(--ui-backdrop-blur, )
@@ -854,6 +868,7 @@
       --ui-backdrop-sepia: initial;
 
       /* ========== 1.1.10 TYPOGRAPHY OVERRIDE ========== */
+
       /**
        * Cho phép override per-element:
        * style="--ui-font-weight: 700"
@@ -864,6 +879,7 @@
       --ui-content: "";
 
       /* ========== 1.1.11 TRANSITION OVERRIDE ========== */
+
       /**
        * Override transition per-element:
        * <button style="--ui-duration: .3s; --ui-ease: ease-in">
@@ -875,6 +891,7 @@
       --ui-ease: initial;
 
       /* ========== 1.1.12 LAYOUT INTERNAL ========== */
+
       /**
        * Dùng cho border-spacing: var(--ui-border-spacing-x) ...
        */
@@ -930,6 +947,7 @@
    */
 
   /* ========== 1.1.14 @property DECLARATIONS — Modern browser native registration ========== */
+
   /**
    * TẠI SAO CẦN:
    * ─────────────
@@ -1330,6 +1348,7 @@
 
 @layer components {
   /* ========== 1.1.15 TYPOGRAPHY — FLOCSS Foundation Layer ========== */
+
   /**
    * Class hệ thống cho heading, body text, label (không prefix — Foundation)
    */
@@ -1407,6 +1426,7 @@
 ====================================================================================*/
 @layer layout {
   /* ========== 2.1.1 LAYOUT — FLOCSS Layout Layer ========== */
+
   /**
    * Prefix: l-*  |  BEM: l-block--modifier
    */
@@ -1514,11 +1534,13 @@
 ====================================================================================*/
 @layer components {
   /* ========== 3.1.1 COMPONENTS — FLOCSS Object/Component Layer ========== */
+
   /**
    * Prefix: c-*  |  BEM: c-block__element--modifier  |  local CSS vars per component
    */
 
   /* ========== 3.1.2 c-btn — Button ========== */
+
   /**
    * Local vars: --btn-bg  --btn-color  --btn-border  --btn-radius
    * --btn-px  --btn-py     --btn-size
@@ -1613,6 +1635,7 @@
    */
 
   /* ========== 3.1.3 c-card — Card ========== */
+
   /**
    * Local vars: --card-bg  --card-border  --card-radius
    * --card-padding  --card-shadow
@@ -1666,6 +1689,7 @@
   }
 
   /* ========== 3.1.4 c-tag — Tag / Badge ========== */
+
   /**
    * Local vars: --tag-bg  --tag-color  --tag-border  --tag-radius
    */
@@ -1712,6 +1736,7 @@
   }
 
   /* ========== 3.1.5 c-divider — Horizontal Rule ========== */
+
   /**
    * Local vars: --divider-color  --divider-gap
    */
@@ -1728,6 +1753,7 @@
 
 @layer animations {
   /* ========== 3.1.6 ANIMATIONS — FLOCSS Foundation Layer ========== */
+
   /**
    * @keyframes + data-animate scroll pattern
    */
@@ -1832,6 +1858,7 @@
   }
 
   /* ========== 3.1.8 DATA-ANIMATE PATTERN ========== */
+
   /**
    * Cách dùng trong HTML:
    * <h1 data-animate="fade-up" style="--delay: 0ms">Headline</h1>
