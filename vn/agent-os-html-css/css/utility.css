@@ -16,13 +16,15 @@
 /* ========== 4.1.2 SPACING UTILITIES — calc(var(--spacing) * N) pattern ========== */
 
 /**
- * Tại sao dùng calc(var(--spacing) * N)?
+ * TẠI SAO DÙNG calc(var(--spacing) * N)?
  * ────────────────────────────────────────
  * ✅ Nhất quán: 1 đơn vị duy nhất --spacing = .25rem (4px)
  * ✅ Linh hoạt: có thể dùng số lẻ: calc(var(--spacing) * 1.5) = 6px
  * ✅ Override: dự án đổi --spacing → tất cả spacing scale theo
  * ✅ Inline style: <div style="padding: calc(var(--spacing) * 6)">
- * Bảng quy đổi --spacing (0.25rem base):
+ * 
+ * BẢNG QUY ĐỔI --spacing (0.25rem base)
+ * ────────────────────────────────────────
  * ┌──────┬──────────────────────────┬────────┐
  * │  N   │ calc(var(--spacing) * N) │  px    │
  * ├──────┼──────────────────────────┼────────┤
@@ -52,7 +54,9 @@
  * │  80  │ 20rem                    │  320px │
  * │  96  │ 24rem                    │  384px │
  * └──────┴──────────────────────────┴────────┘
- * Tương quan với agent-os-css named tokens:
+ * 
+ * TƯƠNG QUAN VỚI AGENT-OS-CSS NAMED TOKENS
+ * ────────────────────────────────────────
  * calc(var(--spacing) * 2)  ≡ var(--space-1) = 0.5rem  [space-unit × 1]
  * calc(var(--spacing) * 4)  ≡ var(--space-2) = 1rem    [space-unit × 2]
  * calc(var(--spacing) * 8)  ≡ var(--space-4) = 2rem    [space-unit × 4]
@@ -590,11 +594,16 @@
 /* ========== 4.1.21 COLOR-MIX — Opacity trên CSS variable ( ========== */
 
 /**
- * Vấn đề: không thể làm được điều này vì var không hoạt động trong alpha:
+ * ⚠️ VẤN ĐỀ
+ * ─────────────────────────────────
+ * Không thể làm được điều này vì var không hoạt động trong alpha:
  * background: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 10%);  ← LỖI
- * Giải pháp: color-mix
+ * 
+ * 💡 GIẢI PHÁP: DÙNG COLOR-MIX
+ * ─────────────────────────────────
  * background: color-mix(in oklab, var(--clr-accent) 10%, transparent);
- * Dùng oklab thay srgb vì oklab interpolation trông tự nhiên hơn
+ * 
+ * → Dùng oklab thay srgb vì oklab interpolation trông tự nhiên hơn.
  */
 
 /* Fallback cho browser chưa support color-mix (< Chrome 111, < Safari 16.2) */
@@ -609,11 +618,14 @@
 }
 
 /**
- * Dùng inline trực tiếp trong component (không cần class):
+ * CÁCH DÙNG INLINE
+ * ─────────────────────────────────
+ * Dùng trực tiếp trong component (không cần class):
+ * 
  * .u-hero-badge {
- * background: color-mix(in oklab, var(--clr-accent) 12%, transparent);
- * border:     1px solid color-mix(in oklab, var(--clr-accent) 30%, transparent);
- * color:      var(--clr-accent);
+ *   background: color-mix(in oklab, var(--clr-accent) 12%, transparent);
+ *   border:     1px solid color-mix(in oklab, var(--clr-accent) 30%, transparent);
+ *   color:      var(--clr-accent);
  * }
  */
 
@@ -733,10 +745,11 @@
 }
 
 /**
- * Ví dụ override per-element:
+ * VÍ DỤ OVERRIDE PER-ELEMENT
+ * ─────────────────────────────────
  * <button class="btn transition-colors"
- * style="--ui-duration: .3s; --ui-ease: var(--ease-out-expo)">
- * Click me
+ *         style="--ui-duration: .3s; --ui-ease: var(--ease-out-expo)">
+ *   Click me
  * </button>
  */
 
@@ -774,12 +787,14 @@
  */
 
 /**
- * box-shadow composite formula (giống ):
- * box-shadow: var(--ui-inset-shadow),
- * var(--ui-inset-ring-shadow),
- * var(--ui-ring-offset-shadow),
- * var(--ui-ring-shadow),
- * var(--ui-shadow);
+ * BOX-SHADOW COMPOSITE FORMULA
+ * ─────────────────────────────────
+ * box-shadow: 
+ *   var(--ui-inset-shadow),
+ *   var(--ui-inset-ring-shadow),
+ *   var(--ui-ring-offset-shadow),
+ *   var(--ui-ring-shadow),
+ *   var(--ui-shadow);
  */
 
 .u-shadow-xs {
@@ -857,8 +872,10 @@
 .u-ring-inset { --ui-ring-inset: inset; }
 
 /**
- * Ví dụ dùng composite shadow + ring:
+ * VÍ DỤ COMPOSITE (SHADOW + RING)
+ * ─────────────────────────────────
  * <input class="shadow-sm ring-2 ring-primary">
+ * 
  * → box-shadow = shadow-sm (shadow layer) + ring 2px primary (ring layer)
  * → Cả 2 hiển thị đồng thời nhờ composite!
  */
@@ -1329,10 +1346,13 @@
 /* ========== 4.1.56 SPACE-Y / SPACE-X — Margin-based spacing ( ========== */
 
 /**
- * Dùng khi layout KHÔNG phải flex/grid mà vẫn cần space giữa children.
- * Dùng gap-* nếu đang dùng flex/grid — hiệu suất tốt hơn.
- * Pattern: margin-block-start/end dùng --ui-space-y-reverse để hỗ trợ
- * flex-direction: column-reverse.
+ * CÁCH SỬ DỤNG
+ * ─────────────────────────────────
+ * 1. Dùng khi layout KHÔNG phải flex/grid mà vẫn cần space giữa children.
+ * 2. Dùng `gap-*` nếu đang dùng flex/grid — hiệu suất tốt hơn.
+ * 
+ * 💡 Pattern: `margin-block-start/end` dùng `--ui-space-y-reverse` 
+ * để hỗ trợ `flex-direction: column-reverse`.
  */
 
 :where(.u-space-y-1 > :not(:last-child)) {

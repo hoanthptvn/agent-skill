@@ -774,22 +774,27 @@
       /* ========== 1.1.6 SHADOW COMPOSITE ========== */
 
       /**
-       * Composite pattern:
-       * box-shadow: var(--ui-inset-shadow),
-       * var(--ui-inset-ring-shadow),
-       * var(--ui-ring-offset-shadow),
-       * var(--ui-ring-shadow),
-       * var(--ui-shadow);
+       * COMPOSITE PATTERN
+       * ─────────────────────────────────
+       * box-shadow: 
+       *   var(--ui-inset-shadow),
+       *   var(--ui-inset-ring-shadow),
+       *   var(--ui-ring-offset-shadow),
+       *   var(--ui-ring-shadow),
+       *   var(--ui-shadow);
+       * 
        * Mỗi utility class chỉ set 1 biến:
        * .shadow-md  → --ui-shadow: 0 4px 6px...
        * .ring-2     → --ui-ring-shadow: 0 0 0 2px...
-       * Tại sao 5 layers?
+       * 
+       * TẠI SAO 5 LAYERS?
+       * ─────────────────────────────────
        * ┌────────────────────┬──────────────────────────────┐
        * │ --ui-inset-shadow  │ inset shadow (pressed state) │
-       * │ --ui-inset-ring    │ inset ring (focus-within)     │
-       * │ --ui-ring-offset   │ ring offset (ring gap)        │
-       * │ --ui-ring-shadow   │ focus ring                    │
-       * │ --ui-shadow        │ normal box-shadow             │
+       * │ --ui-inset-ring    │ inset ring (focus-within)    │
+       * │ --ui-ring-offset   │ ring offset (ring gap)       │
+       * │ --ui-ring-shadow   │ focus ring                   │
+       * │ --ui-shadow        │ normal box-shadow            │
        * └────────────────────┴──────────────────────────────┘
        */
       --ui-shadow: 0 0 #0000;
@@ -909,38 +914,39 @@
    *
    * Composite (ghép ring + shadow + inset cùng lúc):
    * .c-input {
-   * --ui-shadow: var(--shadow-sm);
-   * box-shadow: var(--ui-inset-shadow),
-   * var(--ui-ring-shadow),
-   * var(--ui-shadow);
+   *   --ui-shadow: var(--shadow-sm);
+   *   box-shadow: 
+   *     var(--ui-inset-shadow),
+   *     var(--ui-ring-shadow),
+   *     var(--ui-shadow);
    * }
    * .c-input:focus-visible {
-   * --ui-ring-shadow: 0 0 0 3px
-   * color-mix(in oklab, var(--primary) 30%, transparent);
+   *   --ui-ring-shadow: 0 0 0 3px
+   *     color-mix(in oklab, var(--primary) 30%, transparent);
    * }
    *
    * PATTERN 2: Composite Filter
    * ─────────────────────────────────
    * .u-blur-sm {
-   * --ui-blur: blur(4px);
-   * filter: var(--ui-blur, ) var(--ui-brightness, ) var(--ui-contrast, )
-   * var(--ui-grayscale, ) var(--ui-hue-rotate, ) var(--ui-drop-shadow, );
+   *   --ui-blur: blur(4px);
+   *   filter: var(--ui-blur, ) var(--ui-brightness, ) var(--ui-contrast, )
+   *     var(--ui-grayscale, ) var(--ui-hue-rotate, ) var(--ui-drop-shadow, );
    * }
    * .u-blur-sm:hover { --ui-blur: blur(0); } ← xóa blur khi hover
    *
    * PATTERN 3: Transform Composite
    * ─────────────────────────────────
    * .u-translate-x-4 {
-   * --ui-translate-x: 1rem;
-   * translate: var(--ui-translate-x) var(--ui-translate-y);
+   *   --ui-translate-x: 1rem;
+   *   translate: var(--ui-translate-x) var(--ui-translate-y);
    * }
    * ← Chỉ set 1 axis, axis kia giữ default 0
    *
    * PATTERN 4: Font Weight (per-element override)
    * ─────────────────────────────────
    * .u-font-bold {
-   * --ui-font-weight: var(--weight-bold);
-   * font-weight: var(--weight-bold);
+   *   --ui-font-weight: var(--weight-bold);
+   *   font-weight: var(--weight-bold);
    * }
    * ← Set cả internal var lẫn property để pseudo-element kế thừa
    */
@@ -948,12 +954,13 @@
   /* ========== 1.1.14 @property DECLARATIONS — Modern browser native registration ========== */
 
   /**
-   * TẠI SAO CẦN:
-   * ─────────────
+   * TẠI SAO CẦN?
+   * ─────────────────────────────────
    * @property giúp browser HIỂU type của custom property:
    * → Có thể TRANSITION/ANIMATE custom properties
    * → Có thể set INITIAL VALUE an toàn (không cần @supports fallback)
    * → Browser biết syntax → validate đúng
+   * 
    * @supports fallback ở trên: cho browser cũ (Chrome <85, Safari <16.4)
    * @property ở đây: cho browser mới — không conflict, browser tự chọn
    * Browser support: Chrome 85+, Safari 16.4+, Firefox 128+
@@ -1623,12 +1630,16 @@
   }
 
   /**
+   * CÁCH DÙNG
+   * ─────────────────────────────────
    * Override tại nơi dùng — KHÔNG sửa file này:
+   * 
    * .hero .c-btn {
-   * --btn-bg:     var(--clr-neutral-0);   ← white button on dark bg
-   * --btn-color:  var(--clr-neutral-900);
-   * --btn-radius: var(--radius-md);
+   *   --btn-bg:     var(--clr-neutral-0);   ← white button on dark bg
+   *   --btn-color:  var(--clr-neutral-900);
+   *   --btn-radius: var(--radius-md);
    * }
+   * 
    * Hoặc đổi brand action color toàn cục:
    * :root { --ui-primary: var(--clr-blue-600); }
    */
