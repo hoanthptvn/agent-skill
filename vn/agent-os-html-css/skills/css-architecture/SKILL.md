@@ -136,15 +136,19 @@ Dùng cho các thành phần con bên trong Level 1 (ví dụ `1.1. SETUP`, `3.1
 ```
 
 ### Cấp 3 (Level 3) - Khối chi tiết (Detail blocks)
-Dùng cho các nhóm nhỏ bên trong một component. Khung viền sử dụng dấu bằng `===` để tạo cảm giác đậm nét (khối cha).
+Dùng cho các nhóm nhỏ bên trong một component. Khung viền sử dụng 50 dấu bằng `=` để tạo thành một khối nổi bật nhưng gọn gàng hơn Level 1.
 ```css
-/* === 1.1.1 NAME === */
+/*==================================================
+  1.1.1 NAME
+==================================================*/
 ```
 
 ### Cấp 4 (Level 4) - Khối con siêu nhỏ (Sub-detail blocks)
-Dùng cho các phần tử con nằm sâu bên trong Level 3 (ví dụ: các trạng thái của nút, hoặc các mục nhỏ trong reset). Khung viền sử dụng dấu gạch ngang `---` để tạo cảm giác mỏng nhẹ (khối con). Tiền tố đánh số có thêm dấu chấm ở cuối (ví dụ `1.1.1.1.`).
+Dùng cho các phần tử con nằm sâu bên trong Level 3 (ví dụ: các trạng thái của nút, hoặc các mục nhỏ trong reset). Khung viền sử dụng 40 dấu gạch ngang `-` để phân tách nhẹ nhàng. Tiền tố đánh số có thêm dấu chấm ở cuối (ví dụ `1.1.1.1.`).
 ```css
-  /* --- 1.1.1.1. NAME --- */
+  /*----------------------------------------
+    1.1.1.1. NAME
+  ----------------------------------------*/
 ```
 
 ---
