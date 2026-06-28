@@ -21,22 +21,7 @@ Tuyệt đối không lạm dụng thẻ `<div>`. Sử dụng các thẻ HTML5 S
 - `<aside>`: Nội dung phụ trợ hoặc liên quan gián tiếp (sidebar, quảng cáo, danh mục lọc).
 - `<footer>`: Phần chân trang hoặc chân của một section.
 
----
 
-## 2. Giao thức Tương tác (DOM Contract)
-
-Bắt buộc tách biệt vai trò của HTML/JS và CSS để tối ưu hóa khả năng bảo trì:
-
-- **Style (CSS):** Trị nhậm bởi Class BEM (`c-btn`, `l-grid`, `u-flex`).
-- **Interaction (JS & Testing):** Trị nhậm bởi các thuộc tính `data-*`.
-  - _Quy tắc:_ JS không được ràng buộc sự kiện hoặc truy vấn DOM dựa trên các class CSS trang trí. Bắt buộc dùng `data-js-*` hoặc `data-action`.
-  - _Ví dụ:_ Dùng `data-js-toggle="modal"` thay vì `.js-modal-toggle`.
-- **UI States (Trạng thái giao diện):**
-  - Tránh dùng class như `.active`, `.open` để JS thay đổi style trực tiếp.
-  - Sử dụng thuộc tính trạng thái chuẩn `aria-*` hoặc `data-state`.
-  - _Ví dụ:_
-    - Nút Menu đang mở: `<button data-state="open" aria-expanded="true">` ✅
-    - Tránh dùng: `<button class="active">` ❌
 
 ---
 
@@ -61,6 +46,13 @@ Một website premium phải thân thiện với cả công cụ tìm kiếm và
 - **Nút không chữ (Icon Buttons):** Nút chỉ chứa icon bắt buộc phải có `aria-label` để trình đọc hiểu công dụng.
   - _Ví dụ:_ `<button aria-label="Đóng cửa sổ"><svg>...</svg></button>`
 - **Trạng thái động:** Cập nhật `aria-expanded="true/false"` cho các menu dropdown, `aria-hidden="true/false"` cho các modal ẩn/hiện.
+- **Quy tắc Vàng:** Chỉ dùng thuộc tính ARIA khi HTML gốc không đủ đáp ứng.
+
+### Tiêu chuẩn Hiển thị A11y
+
+- Độ tương phản màu ≥ 4.5:1 (đối với chữ thường), ≥ 3:1 (đối với chữ lớn).
+- Trạng thái Focus (`:focus-visible`) phải nhìn thấy rõ ràng trên mọi phần tử tương tác.
+- Không dùng màu sắc làm cách duy nhất để truyền đạt thông tin (ví dụ: lỗi thì phải có text báo lỗi hoặc icon cảnh báo, không chỉ đổi viền đỏ).
 
 ---
 
@@ -143,16 +135,7 @@ Class **chỉ dành cho CSS**. Tuyệt đối không giấu trạng thái logic 
 
 > **LƯU Ý CỰC KỲ QUAN TRỌNG:** Nếu thành phần hoàn toàn là HTML/CSS tĩnh, không có tương tác JS, GSAP hay nhu cầu quản lý State, thì **TUYỆT ĐỐI KHÔNG** thêm `data-attribute` thừa thãi vào HTML.
 
----
 
-## Khả năng truy cập (Accessibility - A11y)
-
-- Độ tương phản màu ≥ 4.5:1 (đối với chữ thường), ≥ 3:1 (đối với chữ lớn).
-- Trạng thái Focus (`:focus-visible`) phải nhìn thấy rõ ràng trên mọi phần tử tương tác.
-- Không dùng màu sắc làm cách duy nhất để truyền đạt thông tin (ví dụ: lỗi thì phải có text báo lỗi hoặc icon cảnh báo, không chỉ đổi viền đỏ).
-- Chỉ dùng thuộc tính ARIA khi HTML gốc không đủ đáp ứng.
-
----
 
 ## 🚫 Bảng Chống Ngụy Biện (Anti-rationalization Table)
 
