@@ -911,8 +911,9 @@
    * ─────────────────────────────────
    * Thông thường (chỉ 1 shadow):
    * box-shadow: var(--shadow-md);
-   *
-   * Composite (ghép ring + shadow + inset cùng lúc):
+   * 
+   * PATTERN 1: Composite (ghép ring + shadow + inset)
+   * ─────────────────────────────────
    * .c-input {
    *   --ui-shadow: var(--shadow-sm);
    *   box-shadow: 
