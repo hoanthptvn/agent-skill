@@ -213,6 +213,44 @@ Rút từ patterns thực tế của project, quy chuẩn khoảng cách giữa 
 
 ---
 
+## Phụ lục: Từ điển Token & Biến CSS (Reference Dictionary)
+
+> Bản tóm tắt dùng để tra cứu nhanh các nhóm biến CSS có trong hệ thống.
+
+```css
+DESIGN TOKENS (Tầng 1 - Public):
+  --clr-{name}-{shade}             --clr-neutral-500
+  --text-{size}                    --text-sm
+  --text-{size}--line-height       --text-sm--line-height  (dấu -- kép!)
+  --weight-{name}                  --weight-semibold
+  --shadow-{size}                  --shadow-md
+  --inset-shadow-{size}            --inset-shadow-sm
+  --drop-shadow-{size}             --drop-shadow-lg
+  --text-shadow-{size}             --text-shadow-sm
+  --blur-{size}                    --blur-md
+  --ease-{name}                    --ease-out
+  --animate-{name}                 --animate-spin
+  --space-{size}                   --space-4 (bội số 8px)
+  --breakpoint-{name}              --breakpoint-md
+  --container-{size}               --container-md
+  --radius-{size}                  --radius-md
+  --perspective-{name}             --perspective-normal
+  --default-{property}             --default-transition-duration
+
+UI SEMANTIC (Tầng 2 - Public):
+  --clr-{role}                     --clr-primary, --clr-error
+  --clr-text-{state}               --clr-text-muted, --clr-text-highlighted
+  --clr-surface-{state}            --clr-surface-elevated, --clr-bg-accented
+  --clr-border-{state}             --clr-border-muted, --clr-border-inverted
+
+INTERNAL VARS (Tầng 3 - Private - KHÔNG dùng cứng trong CSS):
+  --ui-{property}                  --ui-shadow, --ui-blur, --ui-duration
+  --ui-{property}-{modifier}       --ui-shadow-color, --ui-ring-inset
+  --_{internal}                    --_accent-l (dấu gạch dưới = private variables)
+```
+
+---
+
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
