@@ -29,7 +29,7 @@ Bạn có khả năng tự do sử dụng công cụ:
 
 ## 4. Chống Ngụy Biện & Bằng Chứng (Proof over Trust)
 
-Mọi kỹ năng trong `skills/` đều chứa các **Bảng Chống Ngụy Biện (Anti-rationalization Tables)** và **Tiêu chí Thoát (Hard Exit Criteria)**.
+Mọi kỹ năng trong `skills/` đều sở hữu các **Khối Chống Ngụy Biện Chuyên Biệt (Tailored Anti-Rationalization Blocks)** và **Tiêu chí Thoát (Hard Exit Criteria)**. Các khối lệnh này được đo ni đóng giày cho từng file để triệt tiêu ảo giác của AI (hoàn toàn không dùng văn mẫu).
 
 - Khi gặp khó khăn, bạn KHÔNG ĐƯỢC ngụy biện để dùng mã màu cứng hay `!important`.
 - Bạn phải xuất trình Log Terminal hoặc bằng chứng Visual Testing trước khi báo cáo "Đã hoàn thành".
