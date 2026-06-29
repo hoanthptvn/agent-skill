@@ -644,6 +644,6 @@ gsap.to(".dot", {
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng CSS:** Không dùng CSS Transitions (`transition: all 0.3s`) để code Animation. BẮT BUỘC dùng GSAP.
-> 2. **Vanilla JS Thuần Túy:** Hệ thống này KHÔNG dùng React/Vue. Cấm đề xuất các hook như `useGSAP()` hay `useEffect`. Phải tự quản lý bộ nhớ thủ công bằng `ScrollTrigger.kill()` và `timeline.kill()` khi hủy element hoặc chuyển trang (ví dụ Barba.js/Pjax).
-> 3. **Bảo vệ Main Thread:** Không animate `width`, `height`, `top`, `left`. BẮT BUỘC animate `x`, `y`, `scale`, `opacity`, `rotation` để kích hoạt GPU Hardware Acceleration.
+> 1. **Cấm ép Layout tính toán lại (Force Reflow):** Tuyệt đối cấm animate `width`, `height`, `top`, `left`. BẮT BUỘC animate `x`, `y`, `scale`, `opacity`, `rotation`.
+> 2. **Cấm lạm dụng GSAP To:** Cấm tạo mới tween (`gsap.to`) bên trong vòng lặp của sự kiện mousemove hoặc scroll. BẮT BUỘC dùng `gsap.quickTo()$.
+> 3. **Cấm toán tử Spread O(N):** Cấm viết hàm `Math.max(...array)` hoặc tạo cấu trúc `new Set([...arr])` bên trong vòng lặp animation. Đổi sang Iterative Loop để đạt Zero GC.

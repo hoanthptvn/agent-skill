@@ -343,6 +343,6 @@ const destroy = initAnimation();
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng `forEach`, `map`, `filter` trong hot path (Render/Animation Loop). BẮT BUỘC dùng `for (let i = 0)`.
-> 2. **Cấm biện minh:** "Viết Functional Programming cho dễ đọc" là ngụy biện. Hàm callback tạo ra Overhead function call và rác bộ nhớ (GC Thrashing).
-> 3. **Kiểm soát GC:** Tuyệt đối không tạo Closure hoặc Anonymous function bên trong vòng lặp hiệu năng cao.
+> 1. **Cấm Double GC (Chaining):** Tuyệt đối CẤM chuỗi `.filter().map()` trong môi trường 60fps. Cấm sinh mảng rác bên trong `requestAnimationFrame`. Bắt buộc dùng 1 vòng lặp phẳng duy nhất.
+> 2. **Cấm dùng for...in:** Cấm sử dụng `for...in` để duyệt mảng, vì nó cực kỳ chậm và có thể duyệt nhầm prototype. Phải dùng `for...of` hoặc `for(let i=0)`.
+> 3. **Tái sử dụng thay vì Cấp phát:** Tránh dùng `new Object()` hoặc gán `{}` trong vòng lặp Animation. Phải tạo trước Object Pool hoặc dùng Flat Arrays.

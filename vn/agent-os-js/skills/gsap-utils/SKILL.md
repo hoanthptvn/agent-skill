@@ -290,6 +290,6 @@ https://gsap.com/docs/v3/HelperFunctions
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
 >
-> 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
-> 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
-> 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.
+> 1. **Use Native GSAP Utils:** Do not manually calculate map ranges (e.g., `(val - inMin) * ...`). You MUST use `gsap.utils.mapRange()$.
+> 2. **No Array Allocation for Snapping:** Do not use `.reduce` or temporary arrays to find the closest number. You MUST use `gsap.utils.snap()$.
+> 3. **Function-form for rAF/Events:** For high-frequency callbacks (like mousemove), omit the value parameter to get a reusable function (e.g., `const clamper = gsap.utils.clamp(0, 100);`) to avoid GC pressure.

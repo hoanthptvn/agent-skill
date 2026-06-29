@@ -442,6 +442,6 @@ https://gsap.com/docs/v3/Plugins/
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
 >
-> 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
-> 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
-> 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.
+> 1. **No Paid Plugin Hallucinations:** Do not hallucinate paid GSAP plugins (like SplitText, MorphSVG, DrawSVG, ScrollSmoother) unless explicitly mentioned by the user. Assume standard free GSAP core only.
+> 2. **Validate DOM Targets:** Before passing an element to any GSAP plugin (especially Draggable or Flip), you MUST verify the DOM node exists to prevent fatal errors.
+> 3. **Plugin Registration:** Never forget to register plugins using `gsap.registerPlugin()`. Failing to do this in Vanilla JS will cause the animation to silently fail.

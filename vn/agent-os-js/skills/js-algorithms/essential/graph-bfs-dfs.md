@@ -262,6 +262,6 @@ Animation:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm DFS cho Đường ngắn nhất:** DFS đệ quy KHÔNG TÌM ĐƯỢC đường đi ngắn nhất. Nếu yêu cầu tìm đường ngắn nhất, BẮT BUỘC phải dùng BFS (Queue).
+> 2. **Cấm dùng .shift() cho Queue:** Khi triển khai BFS trên mảng rất lớn, TUYỆT ĐỐI CẤM dùng `queue.shift()` (vì nó là O(N)). Phải dùng 2 mảng in/out hoặc biến đếm Pointer Index `queue[head++]`.
+> 3. **Chống tràn Call Stack:** Không dùng DFS đệ quy cho đồ thị sâu hàng ngàn node. Phải dùng DFS Iterative (với Stack tự tạo).

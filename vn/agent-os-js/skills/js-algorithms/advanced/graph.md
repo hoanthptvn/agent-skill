@@ -544,6 +544,6 @@ Immutability với UI State:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm dùng Ma trận kề sai bối cảnh:** Cấm dùng Adjacency Matrix (O(V²)) cho đồ thị thưa thớt (Sparse Graph - như mạng lưới user). BẮT BUỘC dùng Adjacency List (Map/Object).
+> 2. **Tránh Vòng lặp Vô tận (Infinite Cycle):** Đồ thị KHÔNG giống Tree. Tuyệt đối cấm duyệt (Traverse) mà không có biến `visited` (dùng `Set`) để đánh dấu các node đã đi qua.
+> 3. **Tránh tạo rác (GC) khi duyệt:** Không cấp phát mảng Array mới (`[]`) bên trong thân hàm đệ quy duyệt Graph.

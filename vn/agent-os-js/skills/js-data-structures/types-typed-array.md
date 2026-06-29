@@ -280,6 +280,6 @@ DON'T:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
-> 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
-> 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.
+> 1. **Cấm dùng Array thường cho Dữ liệu Lớn:** Cấm lười biếng dùng mảng `[]` thông thường để xử lý Audio, Video Pixel, Tọa độ WebGL hoặc hệ thống Hạt (Particle System) > 1000 phần tử. BẮT BUỘC dùng `Float32Array` hoặc `Uint8Array`.
+> 2. **Cấm dùng Functional Methods:** Không được dùng `.map`, `.filter`, `.reduce` trên TypedArray bên trong requestAnimationFrame. Phải dùng vòng lặp `for(let i=0)`.
+> 3. **Cấm gán nhầm kiểu:** Không gán String hoặc Object vào TypedArray. Dữ liệu chỉ có thể là số thuần (Number).

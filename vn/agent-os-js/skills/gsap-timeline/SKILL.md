@@ -113,6 +113,6 @@ master.to(".c", { opacity: 0 }, "+=0.2");
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
 >
-> 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
-> 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
-> 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.
+> 1. **No Chaining with Delays:** Do not be lazy by firing multiple independent `gsap.to()` calls with calculated `delay`s. You MUST use `gsap.timeline()` for sequences.
+> 2. **Position Parameter Mastery:** Do not manually calculate start times. Use the Position Parameter (`<`, `>`, `-=0.5`) to relative-sync tweens.
+> 3. **Avoid Deep Nesting:** Do not nest 5 levels of timelines into one giant god-function. Break them into smaller functions that return timelines and add them to a master timeline.

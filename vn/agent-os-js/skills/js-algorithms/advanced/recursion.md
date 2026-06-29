@@ -528,6 +528,6 @@ function moveZeroes(arr) {
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm đệ quy vô hạn:** Cấm viết đệ quy mà không có Base Case (điều kiện dừng) rõ ràng đặt ở NGAY ĐẦU hàm.
+> 2. **Chống tràn Stack:** Không dùng Đệ quy (Recursion) để duyệt các mảng/cây quá lớn (> 10,000 depth) vì sẽ dính lỗi "Maximum call stack size exceeded". Phải đổi sang Iterative + Stack/Queue tự tạo.
+> 3. **Tối ưu Tail Call:** Với các engine hiện đại, cố gắng dùng Tail Call Optimization, nhưng tốt nhất vẫn là vòng lặp phẳng cho các logic tính toán nặng.

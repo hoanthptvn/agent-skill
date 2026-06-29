@@ -438,6 +438,6 @@ log₂(1,000,000) ≈ 20 — khắc cốt ghi tâm
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm lười biếng sort liên tục:** Khi cần lấy min/max liên tục trong một tập dữ liệu động, CẤM dùng mảng thường và `.sort()` mỗi lần thêm/xóa. BẮT BUỘC dùng PriorityQueue / Binary Heap.
+> 2. **Cẩn thận chỉ số Toán học:** Khi thao tác Heap bằng Array, tuyệt đối tuân thủ công thức: left child = `2n + 1`, right child = `2n + 2`, parent = `Math.floor((n - 1) / 2)`.
+> 3. **Cấm dùng Object/Node rời rạc:** Binary Heap BẮT BUỘC phải dùng Flat Array (Mảng 1 chiều) để mô phỏng cây nhằm tận dụng CPU Cache (Zero GC).

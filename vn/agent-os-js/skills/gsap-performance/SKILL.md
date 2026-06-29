@@ -85,6 +85,6 @@ document.querySelector("#container").addEventListener("mousemove", (e) => {
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
 >
-> 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
-> 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
-> 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.
+> 1. **No gsap.to in Hot Paths:** Absolutely DO NOT call `gsap.to()` repeatedly inside `mousemove` or `scroll` event listeners. You MUST use `gsap.quickTo()` to prevent 60fps GC thrashing.
+> 2. **Memory Leaks:** Never forget to call `.kill()` on tweens, timelines, or ScrollTriggers when elements are removed from the DOM.
+> 3. **Pre-calculate Layouts:** Do not call `getBoundingClientRect()` inside a `requestAnimationFrame` or `gsap.ticker` loop. Cache the values upfront.

@@ -310,6 +310,6 @@ https://gsap.com/docs/v3/Plugins/ScrollTrigger/
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
 >
-> 1. **No CSS Laziness:** Do not use CSS Transitions (`transition: all 0.3s`) for animations. You MUST use GSAP.
-> 2. **Pure Vanilla JS:** This system DOES NOT use React/Vue. Do not suggest hooks like `useGSAP()` or `useEffect`. You must manually manage memory by calling `ScrollTrigger.kill()` and `timeline.kill()` when destroying elements or transitioning pages (e.g., Barba.js/Pjax).
-> 3. **Protect Main Thread:** Do not animate layout properties like `width`, `height`, `top`, `left`. You MUST animate `x`, `y`, `scale`, `opacity`, `rotation` to trigger GPU Hardware Acceleration.
+> 1. **No ScrollSmoother:** DO NOT use or suggest GSAP ScrollSmoother. The mandatory smooth-scrolling library for this repository is **Lenis**.
+> 2. **Avoid Re-initialization:** Do not constantly recreate ScrollTriggers on window resize. Use `ScrollTrigger.refresh()` and function-based values instead.
+> 3. **Mobile Address Bar Fix:** You MUST use `ignoreMobileResize` to prevent jank when the iOS/Android address bar appears/disappears during scroll.

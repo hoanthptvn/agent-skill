@@ -185,6 +185,6 @@ KHÔNG làm:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
-> 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
-> 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.
+> 1. **Cấm lười biếng tra cứu O(N):** Khi cần kiểm tra sự tồn tại (contains/has) hàng nghìn lần, CẤM dùng `Array.indexOf()` hoặc `Array.includes()`. BẮT BUỘC dùng `Set.has()$.
+> 2. **Cấm dùng Object cho Dynamic Keys:** Khi Key của dictionary thay đổi liên tục, CẤM dùng `{}`. BẮT BUỘC dùng `Map` để giữ hiệu năng V8 ổn định.
+> 3. **Cấm khởi tạo rác (GC Thrashing):** Cấm viết cú pháp `new Map(arr.map(x => [k, v]))` vì nó tạo mảng mảng lồng nhau rác. Phải dùng vòng lặp `for...of` gán `Map.set()` từng phần tử.
