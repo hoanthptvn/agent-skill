@@ -8,6 +8,14 @@ workflow-reverse-interrogation
   Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách UI/UX và Design System trước khi code HTML/CSS.
   Triggers: /crey, /grillmey, interview me, phỏng vấn UI, thiết kế từ ảnh, design system.
 
+workflow-figma-to-code
+  Skill: Trích xuất Design Tokens, xây dựng HTML Skeleton và lập trình CSS Token-First từ thiết kế.
+  Triggers: figma, cắt html, code từ ảnh, trích xuất figma.
+
+workflow-visual-qa
+  Skill: Kiểm thử chất lượng giao diện (Visual QA) theo cấu trúc 6 trục, dùng cho lệnh `/test`.
+  Triggers: /test, qa, visual testing, kiểm thử giao diện.
+
 ## HTML Modules (Phase 1)
 
 html-structure
@@ -37,3 +45,7 @@ css-naming-conventions
 css-patterns
   Skill: Các mẫu CSS thực chiến (Local vars, CSS nesting, @layer, data-animate, color-mix pattern).
   Triggers: css pattern, color-mix, data-animate, css nesting, thủ thuật css.
+
+css-property-order
+  Skill: Quy chuẩn sắp xếp thuộc tính CSS theo chuẩn Concentric CSS (từ ngoài vào trong).
+  Triggers: css order, thứ tự thuộc tính css, concentric css, cách viết css.
