@@ -13,7 +13,7 @@ Bộ quy tắc tối ưu JavaScript cho frontend production. Trong kỷ nguyên 
 2. **Dispatch Table** — nhìn bài toán → map ra thuật toán đúng O(N) thay O(N²).
 3. **V8 Engine Rules** — viết code theo cách V8 JIT optimize, không de-opt.
 4. **rAF Contract** — giữ frame budget ≤ 4ms JavaScript, 0 allocation trong hot path.
-5. **Chống Ngụy Biện (Anti-rationalization)** — Mọi tác vụ phải kèm theo bằng chứng (Log/Terminal) mới được thoát.
+5. **Chống Ngụy Biện Chuyên Biệt (Tailored Anti-rationalization)** — Mỗi Kỹ năng sở hữu một lệnh cấm riêng biệt để khóa chặt các thói quen xấu của AI (không dùng văn mẫu). Mọi tác vụ phải kèm bằng chứng mới được thoát.
 
 ---
 
