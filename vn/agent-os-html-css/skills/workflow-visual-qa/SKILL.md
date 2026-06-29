@@ -127,6 +127,6 @@ So sánh có hệ thống giữa code với bản thiết kế. Không nhìn lư
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng !important để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - @layer).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (c-, l-, u-).
+> 1. **Cấm báo cáo xuề xòa:** Tuyệt đối cấm kết luận "Giao diện đã giống 100%" chỉ bằng cách nhìn lướt (Eyeballing). BẮT BUỘC thực hiện kiểm tra chéo qua 6 trục tọa độ (Typography, Spacing, Color, Layout...).
+> 2. **Cấm bỏ quên Trạng thái Động:** QA không chỉ là ảnh tĩnh. Phải kiểm tra các trạng thái `:hover`, `:focus`, `:active` và hiệu ứng Animation (Transitions).
+> 3. **Cấm bỏ qua Ranh giới (Edge Cases):** Phải chủ động kiểm tra giao diện khi Text quá dài (Overflow), khi màn hình co nhỏ (Responsive), và trên các trình duyệt/thiết bị khác nhau (nếu được yêu cầu).

@@ -272,6 +272,6 @@ INTERNAL VARS (Phụ trợ - KHÔNG dùng cứng trong CSS):
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng `!important` để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - `@layer`).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (`c-`, `l-`, `u-`).
+> 1. **Cấm Hardcode Màu Sắc tĩnh:** Tuyệt đối không dùng mã màu HEX hoặc RGB cứng. BẮT BUỘC dùng hệ màu `oklch()` cho các token nguyên thủy (Primitive Tokens) và ánh xạ qua biến Semantic (VD: `--ui-primary`).
+> 2. **Cấm dùng Đơn vị px tĩnh cho Layout:** Không set `font-size` hoặc `padding` bằng các con số px cứng. BẮT BUỘC dùng hàm `clamp()` hoặc biến `var(--space-*)` để tạo Fluid Design.
+> 3. **Cấm Magic Numbers:** Không được tự ý đẻ ra các con số CSS ma thuật (VD: `margin-top: 37px`). Phải làm tròn và bám sát vào hệ thống Spacing Base (bội số của 4px / 0.25rem).

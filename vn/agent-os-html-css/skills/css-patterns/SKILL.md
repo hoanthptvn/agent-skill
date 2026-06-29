@@ -129,6 +129,6 @@ Dùng `in oklch` hoặc `in oklab` cụ thể cho gradients. KHÔNG dùng `in sr
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng `!important` để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - `@layer`).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (`c-`, `l-`, `u-`).
+> 1. **Cấm xả rác Class Modifiers:** Khi một component có nhiều biến thể màu, CẤM tạo một đống class như `.c-btn--red`, `.c-btn--blue`. BẮT BUỘC dùng Local Variables (VD: gán `--btn-bg: var(--clr-red)` inline hoặc qua helper class).
+> 2. **Cấm Inline Styles phức tạp:** Không viết inline style trực tiếp vào HTML trừ phi đó là việc truyền tham số (CSS Custom Properties) cho JS điều khiển.
+> 3. **Tách bạch Logic Animation:** Cấm nhồi animation keyframes thẳng vào CSS class tĩnh. Bắt buộc dùng Pattern kích hoạt qua `data-animate="fade"` để JS hoặc ScrollTrigger dễ dàng điều khiển.

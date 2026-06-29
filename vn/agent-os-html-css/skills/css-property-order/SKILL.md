@@ -81,6 +81,7 @@ Bất kỳ class CSS nào cũng phải sắp xếp các thuộc tính theo đún
 
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
-> 
-> 1. **Tuyệt đối tuân thủ Order:** Khi tạo hoặc sửa bất kỳ block CSS nào, PHẢI tuân thủ 100% trật tự thuộc tính ở trên (Ví dụ: `display` phải luôn đứng trên `margin`, và `margin` phải luôn đứng trên `color`).
-> 2. **Không ngoại lệ:** Thứ tự này áp dụng cho mọi Layer (Reset, Layout, Components, Utilities). Việc viết code lộn xộn sẽ bị đánh dấu là vi phạm tiêu chuẩn của Project.
+>
+> 1. **Cấm vứt thuộc tính lộn xộn:** Tuyệt đối cấm viết CSS không theo trật tự. BẮT BUỘC xếp hạng theo Concentric CSS: Position -> Layout -> Box Model -> Typography -> Visual -> Animation.
+> 2. **Cấm viết Box Model trước Layout:** Không được viết `padding` hoặc `width` trước khi khai báo `display: flex` hoặc `position: absolute`.
+> 3. **Tư duy từ ngoài vào trong:** Luôn bắt đầu từ cách Element nằm trong không gian (Positioning), sau đó tới Layout bên trong nó, cuối cùng mới tới màu sắc/font chữ trang trí.

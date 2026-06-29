@@ -65,6 +65,6 @@ Quy trình có cấu trúc từ tài nguyên thiết kế đến HTML/CSS pixel-
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng !important để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - @layer).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (c-, l-, u-).
+> 1. **Cấm bóc lột code Figma mù quáng:** Tuyệt đối cấm copy-paste mã CSS thô từ Figma Dev Mode (vì chúng thường hardcode px và HEX). Phải ánh xạ lại vào Token System của dự án.
+> 2. **Cấm bỏ qua Đo lường:** Không xuất ảnh rồi vứt bừa vào code. Phải đo chính xác Spacing, Line Height và Typography scale trước khi triển khai.
+> 3. **Xây nhà từ móng:** Cấm viết CSS khi HTML chưa hoàn thiện. BẮT BUỘC viết bộ khung Semantic HTML tĩnh trước (Bước 2), sau đó mới phủ CSS lên trên.

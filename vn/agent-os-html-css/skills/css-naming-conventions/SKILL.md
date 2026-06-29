@@ -172,6 +172,6 @@ Thứ tự các class trên 1 thẻ HTML phải luôn theo logic từ "Bao quát
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng `!important` để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - `@layer`).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Bắt buộc tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (`c-`, `l-`, `u-`) như được hướng dẫn trong tài liệu này.
+> 1. **Cấm đặt tên Cảm tính:** Tuyệt đối cấm đặt tên class CSS theo kiểu mô tả ngoại hình (`.red-text`, `.big-box`). BẮT BUỘC tuân thủ BEM với tiền tố tiêu chuẩn (`c-`, `l-`, `u-`).
+> 2. **Phân định ranh giới Biến (CSS Variables):** Cấm nhầm lẫn giữa Biến Giao diện (`--ui-*`) và Biến Nguyên thủy (`--clr-*`). Component chỉ được phép consume (tiêu thụ) biến Semantic.
+> 3. **Bảo vệ Trạng thái JS:** Không dùng class CSS (như `.active`) để đánh dấu trạng thái logic. Phải dùng `is-active` hoặc Data Attributes (`data-state="active"`).

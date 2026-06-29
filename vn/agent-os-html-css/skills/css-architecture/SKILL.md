@@ -175,6 +175,6 @@ Tuyệt đối không dùng comment block lộn xộn. Bắt buộc dùng địn
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng `!important` để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - `@layer`).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (`c-`, `l-`, `u-`).
+> 1. **Cấm viết CSS Spaghetti:** Cấm lười biếng viết tất cả CSS vào một file khổng lồ. BẮT BUỘC phải phân rã theo cấu trúc Multi-File (Base, Layout, Component, Utility).
+> 2. **Cấm lạm dụng @import sai chỗ:** Không dùng `@import` phân tán bên trong các file CSS con. Mọi `@import` phải được quy tụ tại một tệp `main.css` duy nhất để trình duyệt có thể cache và tối ưu tải.
+> 3. **Tôn trọng Tầng Cascade:** Cấm dùng `!important` để đè style. Phải sử dụng `@layer` (VD: `@layer base, utilities;`) để giải quyết xung đột.

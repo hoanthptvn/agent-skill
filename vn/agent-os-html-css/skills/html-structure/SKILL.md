@@ -160,7 +160,9 @@ Tác vụ viết HTML chỉ được coi là hoàn thành khi:
 
 ## 🤖 Agent OS Anti-Rationalization
 
-- KHÔNG tự tiện bỏ qua các rules naming convention (BEM/Utility).
-- KHÔNG viết custom inline styles.
-- KHÔNG suy diễn tự tạo file mới nếu chưa có trong kiến trúc.
-- BẮT BUỘC tuân thủ Outside-In hierarchy khi code UI.
+> [!CAUTION]
+> **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
+> 1. **Cấm bệnh Divitis:** Tuyệt đối cấm lạm dụng thẻ `<div>` cho mọi thứ. BẮT BUỘC dùng Semantic Tags (`<article>`, `<section>`, `<nav>`, `<main>`) để tối ưu Accessibility và SEO.
+> 2. **Cấm quên Trạng thái DOM (DOM Contract):** Mọi element có tính tương tác phải có Thuộc tính Trạng thái rõ ràng (như `aria-expanded`, `data-state`). Không được phụ thuộc vào CSS Class để lưu logic.
+> 3. **Bảo vệ Cấu trúc Heading:** Không được nhảy cóc các thẻ Heading (VD: H1 rồi xuống H3). Phải tuân thủ cấu trúc phân cấp (Hierarchy) chặt chẽ.

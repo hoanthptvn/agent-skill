@@ -50,6 +50,6 @@ Tác vụ Kỹ năng này chỉ được đánh dấu là HOÀN THÀNH khi và c
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được lạm dụng `!important` để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - `@layer`).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
-> 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (`c-`, `l-`, `u-`).
+> 1. **Cấm code vội vàng:** Cấm lao vào code HTML ngay khi vừa nhận hình chụp UI. BẮT BUỘC phải đặt câu hỏi về các luồng Responsive (Mobile/Tablet) và Hover States trước.
+> 2. **Cấm tự bịa Design System (Hallucination):** Nếu ảnh UI mập mờ về màu sắc hoặc font chữ, cấm tự giả định. Phải ghi vào `03-open-flags.md` để hỏi lại Designer hoặc User.
+> 3. **Hỏi có chiến lược:** Chỉ đặt tối đa 2 câu hỏi mỗi lượt để bóc tách yêu cầu, không dồn ép người dùng bằng một danh sách 10 câu hỏi.
