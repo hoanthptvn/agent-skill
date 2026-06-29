@@ -58,15 +58,29 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
 /* Component KHÔNG cần thay đổi gì */
 ```
 
-### Tầng 3 — Internal Vars (`--ui-*`)
+### Tầng 3 — Component Tokens (Biến Component)
 
-Dành riêng cho Utility classes hoặc Component cục bộ để tạo ra các Composite Pattern phức tạp. Không dùng trực tiếp biến này để style cứng.
+Dành riêng cho một Component cụ thể. Biến tầng này tham chiếu đến biến Tầng 2 (Semantic), giúp Component hoàn toàn độc lập và dễ dàng tái sử dụng (Portable).
 
 ```css
---ui-shadow-color: initial;
---ui-duration: 0.15s;
---ui-ease: ease-out;
+.c-btn {
+  /* Khai báo Component Tokens */
+  --btn-bg: var(--clr-primary);
+  --btn-text: var(--clr-neutral-0);
+  --btn-radius: var(--radius-md);
+
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-radius: var(--btn-radius);
+}
+
+.c-btn:hover {
+  /* Chỉ cần ghi đè Component Token, không cần viết lại thuộc tính */
+  --btn-bg: var(--clr-primary-hover);
+}
 ```
+
+> **Lưu ý:** Ngoài ra còn có các biến nội bộ (Internal Vars) dùng cho tính toán hoặc Utility, thường mang tiền tố `--_` (private) hoặc `--ui-`.
 
 ---
 
@@ -243,7 +257,10 @@ UI SEMANTIC (Tầng 2 - Public):
   --clr-surface-{state}            --clr-surface-elevated, --clr-bg-accented
   --clr-border-{state}             --clr-border-muted, --clr-border-inverted
 
-INTERNAL VARS (Tầng 3 - Private - KHÔNG dùng cứng trong CSS):
+COMPONENT TOKENS (Tầng 3 - Cục bộ Component):
+  --{component}-{property}         --btn-bg, --card-shadow, --input-border
+
+INTERNAL VARS (Phụ trợ - KHÔNG dùng cứng trong CSS):
   --ui-{property}                  --ui-shadow, --ui-blur, --ui-duration
   --ui-{property}-{modifier}       --ui-shadow-color, --ui-ring-inset
   --_{internal}                    --_accent-l (dấu gạch dưới = private variables)
