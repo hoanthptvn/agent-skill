@@ -27,6 +27,11 @@ agent-os-html-css/
 └── README.md
 ```
 
+## Nguyên tắc Cốt lõi dành cho AI (Core Principles)
+
+- **Quy Trình 5 Bước Bắt Buộc**: Tác tử AI bị cấm code bừa. Phải đi qua 5 bước: Trích xuất Tokens -> Khung HTML -> Khai báo Biến -> Viết CSS -> Tự kiểm thử (Visual QA).
+- **Tailored Anti-Rationalization**: 100% các Kỹ năng đều sở hữu các điều luật cấm (Án tử) chuyên biệt để chặn đứng thói quen xấu của AI (cấm divitis, cấm lạm dụng !important, cấm hardcode px/HEX). Không sử dụng văn mẫu.
+
 ## Sử dụng
 
 ```html

@@ -7,7 +7,10 @@ description: Hệ Điều Hành Tác Nhân (Agent OS) chuyên về kiến trúc 
 
 ## Overview
 
-Bộ khung HTML & CSS nền production-ready theo kiến trúc **Multi-File CSS** & HTML Semantic:
+Bộ khung HTML & CSS nền production-ready theo kiến trúc **Multi-File CSS** & HTML Semantic. Hệ thống này bao gồm các nguyên tắc lõi dành riêng cho AI:
+
+1. **Quy Trình 5 Bước Bắt Buộc** — AI phải tuân thủ luồng suy nghĩ chặt chẽ trước khi code (Trích xuất, Cấu trúc HTML, CSS Tokens, Styling, Visual QA).
+2. **Chống Ngụy Biện Chuyên Biệt (Tailored Anti-rationalization)** — Mỗi Kỹ năng sở hữu một lệnh cấm riêng biệt để khóa chặt các thói quen xấu của AI (không dùng văn mẫu). Mọi tác vụ phải kèm bằng chứng mới được thoát.
 
 ```
 css/sanitize.css — Reset cơ bản

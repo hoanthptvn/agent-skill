@@ -2,6 +2,10 @@
 
 Use this file to discover which skill to load. Each skill lives in a directory under `skills/`.
 
+## Core Principles (AI Mandates)
+1. **Quy Trình 5 Bước Bắt Buộc**: Tác tử AI PHẢI đi qua 5 bước: Trích xuất Tokens -> Khung HTML -> Khai báo Biến -> Viết CSS -> Tự kiểm thử (Visual QA).
+2. **Tailored Anti-Rationalization**: Mỗi Kỹ năng có những luật cấm nghiêm ngặt để chặn thói quen xấu của AI (cấm divitis, cấm hardcode màu, cấm !important). Không dùng văn mẫu.
+
 ## Core Architecture & Context Skills (Phase 0)
 
 workflow-reverse-interrogation
