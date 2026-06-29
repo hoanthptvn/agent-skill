@@ -49,6 +49,6 @@ Tác vụ Kỹ năng này chỉ được đánh dấu là HOÀN THÀNH khi và c
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Vanilla JS là Tôn giáo:** Cấm ảo giác (hallucinate) ra các khái niệm của React/Vue. Mọi giải pháp kiến trúc phải dựa trên Vanilla JS nguyên bản và DOM API.
-> 2. **Chứng minh thay vì Tin tưởng:** Tránh lạm dụng thư viện bên thứ 3 quá mức. Ưu tiên giải quyết vấn đề bằng công cụ lõi hoặc các công cụ kiểm thử được hệ thống cấu hình sẵn (như Playwright).
-> 3. **Tuân thủ Cỗ Máy Trạng Thái:** Mọi PR (Pull Request) hay mã nguồn sinh ra đều phải tuân theo luồng quy trình nghiêm ngặt. Không lách luật Cỗ Máy Trạng Thái (Cay State-Machine).
+> 1. **Cấm code vội vàng:** Tuyệt đối cấm viết code ngay khi prompt ban đầu quá ngắn. BẮT BUỘC khởi tạo thư mục `brainstorm/` và bắt đầu phỏng vấn.
+> 2. **Cấm hỏi dồn dập (Max 2 câu):** Cấm biện minh "hỏi luôn 10 câu cho nhanh". Tràn ngập câu hỏi gây Cognitive Overload cho user. Chỉ được hỏi tối đa 2 câu mỗi lượt.
+> 3. **Cấm tự bịa logic (Hallucination):** Khi user không biết, cấm tự giả định quy tắc nghiệp vụ. BẮT BUỘC ghi vào `03-open-flags.md` để treo cờ chờ xử lý.

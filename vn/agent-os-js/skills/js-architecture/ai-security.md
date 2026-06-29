@@ -95,6 +95,6 @@ if (!ALLOWED_ACTIONS.includes(parsed.action)) {
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Vanilla JS là Tôn giáo:** Cấm ảo giác (hallucinate) ra các khái niệm của React/Vue. Mọi giải pháp kiến trúc phải dựa trên Vanilla JS nguyên bản và DOM API.
+> 1. **Cấm thực thi mã mù quáng (Eval):** Tuyệt đối cấm dùng `eval()` hoặc `new Function()` để chạy mảng mã nguồn sinh ra từ AI khi chưa qua cơ chế Sandbox.
 > 2. **Bảo mật Nội dung (Content Security):** TUYỆT ĐỐI không gán trực tiếp dữ liệu/output từ LLM vào `innerHTML` của DOM mà chưa đi qua bước sanitize (như `DOMPurify`) hoặc ép kiểu `textContent`.
 > 3. **Quyền Hạn Tối Thiểu (Least Privilege):** Không cấp các đặc quyền quá giới hạn cho API Calls hay Scripts phía Front-End. Không dùng Logic Prompt làm rào chắn Authorization.
