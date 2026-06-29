@@ -38,19 +38,19 @@ Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
 
 ```css
 /* ❌ Sai */
-.card {
+.c-card {
   background: var(--clr-neutral-100);
 }
 
 /* ✅ Đúng */
-.card {
+.c-card {
   background: var(--clr-surface);
 }
 ```
 
 **Dark mode chỉ đổi tầng 2:**
 ```css
-.dark {
+[data-theme="dark"] {
   --clr-bg: var(--clr-neutral-950);
   --clr-surface: var(--clr-neutral-800);
   --clr-text: var(--clr-neutral-50);
@@ -120,7 +120,7 @@ Chỉ dùng để tính toán biến khác (VD: `--clr-accent` dùng `--_accent-
 ### 2. Override Pattern (Fallback Chain)
 
 ```css
-.transition-colors {
+.u-transition-colors {
   transition-property: color, background-color, border-color;
   transition-timing-function: var(--ui-ease, ease-out);
   transition-duration: var(--ui-duration, 0.15s);
