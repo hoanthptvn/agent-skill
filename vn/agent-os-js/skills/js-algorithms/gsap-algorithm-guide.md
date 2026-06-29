@@ -245,7 +245,8 @@ function flipSort(cards, data, comparator) {
   const last = cards.map((el) => el.getBoundingClientRect());
 
   // INVERT + PLAY: GSAP animate từ vị trí cũ về mới
-  cards.forEach((el, i) => {
+  for (let i = 0; i < cards.length; i++) {
+    const el = cards[i];
     const dx = first[i].left - last[i].left;
     const dy = first[i].top - last[i].top;
     gsap.fromTo(
@@ -253,7 +254,7 @@ function flipSort(cards, data, comparator) {
       { x: dx, y: dy },
       { x: 0, y: 0, duration: 0.5, ease: "power2.out" },
     );
-  });
+  }
 }
 
 document.querySelector("#sort-price").addEventListener("click", () => {
@@ -398,11 +399,12 @@ const freq = new Map();
 for (const tag of allTags) freq.set(tag, (freq.get(tag) || 0) + 1);
 const max = Math.max(...freq.values());
 
-tagEls.forEach((el) => {
+for (let i = 0; i < tagEls.length; i++) {
+  const el = tagEls[i];
   const count = freq.get(el.dataset.tag) || 0;
   const scale = 0.8 + (count / max) * 0.8; // scale từ 0.8 đến 1.6
   gsap.to(el, { scale, duration: 0.5 });
-});
+}
 ```
 
 #### ❌ KHÔNG CẦN — Stagger tất cả không phân loại
@@ -521,9 +523,9 @@ canvas.addEventListener("mousemove", ({ offsetX, offsetY }) => {
 
 ```javascript
 // < 100 elements → hover detector đơn giản đủ rồi
-document.querySelectorAll(".dot").forEach((el) => {
+for (const el of document.querySelectorAll(".dot")) {
   el.addEventListener("mouseenter", () => gsap.to(el, { scale: 1.5 }));
-});
+}
 ```
 
 ---

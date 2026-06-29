@@ -1,4 +1,4 @@
-﻿---
+---
 name: flip-sort
 description: Kỹ năng Agent chuyên biệt về flip-sort cho hệ thống JavaScript High-Performance.
 ---
@@ -126,11 +126,12 @@ renderItems(data);
 const lastPositions = items.map((el) => el.getBoundingClientRect());
 
 // Bước 4: INVERT + PLAY — GSAP animate
-items.forEach((el, i) => {
+for (let i = 0; i < items.length; i++) {
+  const el = items[i];
   const dx = firstPositions[i].left - lastPositions[i].left;
   const dy = firstPositions[i].top - lastPositions[i].top;
   gsap.fromTo(el, { x: dx, y: dy }, { x: 0, y: 0, duration: 0.4 });
-});
+}
 // DOM Write tối thiểu, GSAP GPU transform → 60fps
 ```
 
@@ -153,31 +154,31 @@ function filterFlip(selectedCategory) {
 
   // FIRST: lưu vị trí cũ của tất cả
   const firstRects = new Map();
-  allEls.forEach((el) => firstRects.set(el, el.getBoundingClientRect()));
+  for (const el of allEls) firstRects.set(el, el.getBoundingClientRect());
 
   // Quyết định show/hide (không đụng DOM layout ngay)
   const visible = grouped.get(selectedCategory) || []; // O(1) lookup
   const visibleIds = new Set(visible.map((p) => p.id));
 
   // LAST: thay đổi visibility → DOM reflow xảy ra
-  allEls.forEach((el) => {
+  for (const el of allEls) {
     el.style.display = visibleIds.has(+el.dataset.id) ? "" : "none";
-  });
+  }
 
   // INVERT + PLAY: chỉ animate items vẫn visible
-  allEls.forEach((el) => {
-    if (el.style.display === "none") return;
+  for (const el of allEls) {
+    if (el.style.display === "none") continue;
     const first = firstRects.get(el);
     const last = el.getBoundingClientRect();
     const dx = first.left - last.left;
     const dy = first.top - last.top;
-    if (dx === 0 && dy === 0) return; // Không di chuyển → skip
+    if (dx === 0 && dy === 0) continue; // Không di chuyển → skip
     gsap.fromTo(
       el,
       { x: dx, y: dy, opacity: 0 },
       { x: 0, y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
     );
-  });
+  }
 }
 ```
 
@@ -187,7 +188,7 @@ function filterFlip(selectedCategory) {
 
 ```javascript
 // ❌ Sort DOM trực tiếp → N lần reflow
-items.forEach((item) => parent.appendChild(item));
+for (const item of items) parent.appendChild(item);
 // ✓ Sort data trong memory → render 1 lần
 const sorted = [...data].toSorted((a, b) => a.order - b.order);
 parent.innerHTML = sorted.map((d) => `<li>${d.name}</li>`).join("");

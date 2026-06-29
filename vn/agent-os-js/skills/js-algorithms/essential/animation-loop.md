@@ -1,4 +1,4 @@
-﻿---
+---
 name: animation-loop
 description: Kỹ năng Agent chuyên biệt về animation-loop cho hệ thống JavaScript High-Performance.
 ---
@@ -126,16 +126,17 @@ class VirtualScroller {
     const scrollTop = this.container.parentElement.scrollTop;
     const startIdx = Math.floor(scrollTop / this.itemHeight);
 
-    this.pool.forEach((el, poolIdx) => {
+    for (let poolIdx = 0; poolIdx < this.pool.length; poolIdx++) {
+      const el = this.pool[poolIdx];
       const dataIdx = startIdx + poolIdx;
       if (dataIdx >= this.items.length) {
         el.style.display = "none";
-        return;
+        continue;
       }
       el.style.display = "";
       el.style.transform = `translateY(${dataIdx * this.itemHeight}px)`;
       el.textContent = this.items[dataIdx]; // Render data
-    });
+    }
   }
 }
 
@@ -184,10 +185,11 @@ function tick(timestamp) {
   lastTime = timestamp;
 
   // dt = 0.016 @ 60fps, 0.033 @ 30fps — velocity nhất quán
-  particles.forEach((p) => {
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
     p.x += p.vx * dt * 60; // Normalize to 60fps
     p.y += p.vy * dt * 60;
-  });
+  }
 
   render();
   requestAnimationFrame(tick);
@@ -210,7 +212,9 @@ class AnimationSystem {
     this._active = true;
     const loop = (t) => {
       if (!this._active) return;
-      this._handlers.forEach((fn) => fn(t));
+      for (let i = 0; i < this._handlers.length; i++) {
+        this._handlers[i](t);
+      }
       this._rafId = requestAnimationFrame(loop);
     };
     this._rafId = requestAnimationFrame(loop);
