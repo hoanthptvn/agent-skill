@@ -74,56 +74,56 @@ Bộ quy tắc tối ưu JavaScript cho frontend production. Trong kỷ nguyên 
 
 | Kỹ năng                                 | Nội dung                                                                       |
 | --------------------------------------- | ------------------------------------------------------------------------------ |
-| `skills/reverse-interrogation/SKILL.md` | Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách ngữ cảnh.     |
-| `skills/architecture/SKILL.md`          | Master Index dẫn đến các chuẩn Code Style và AI Security (Chống XSS, Sandbox). |
-| `skills/dom-testing/SKILL.md`           | Hợp đồng DOM với `data-*`, Self-healing qua Playwright, Chống ngụy biện Test.  |
+| `skills/workflow-reverse-interrogation/SKILL.md` | Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách ngữ cảnh.     |
+| `skills/js-architecture/SKILL.md`          | Master Index dẫn đến các chuẩn Code Style và AI Security (Chống XSS, Sandbox). |
+| `skills/workflow-dom-testing/SKILL.md`           | Hợp đồng DOM với `data-*`, Self-healing qua Playwright, Chống ngụy biện Test.  |
 
-### Phase 1 — Cấu trúc dữ liệu Vanilla JS (`skills/data-structures/`)
+### Phase 1 — Cấu trúc dữ liệu Vanilla JS (`skills/js-data-structures/`)
 
-> ⭐ **Bắt buộc đọc**: `skills/data-structures/SKILL.md` — Router điều hướng chọn đúng kiểu dữ liệu.
+> ⭐ **Bắt buộc đọc**: `skills/js-data-structures/SKILL.md` — Router điều hướng chọn đúng kiểu dữ liệu.
 
 | File                                          | Nội dung                                                                        |
 | --------------------------------------------- | ------------------------------------------------------------------------------- |
-| `skills/data-structures/types-string.md`      | charCodeAt vs Regex, for...of Unicode, concat trap O(N²), Naive String Search   |
-| `skills/data-structures/types-number.md`      | BigInt, Infinity, bitwise >>1 <<1, floating point, Math.*, LERP/clamp           |
-| `skills/data-structures/types-array.md`       | Big O Đầu/Đuôi, Swap-and-Pop, Holey Array, TypedArray, ES2023 toSorted()        |
-| `skills/data-structures/types-object.md`      | V8 Hidden Classes, delete pitfall, Dispatch Table, Normalization, isEmpty O(1)  |
-| `skills/data-structures/types-map-set.md`     | Map vs Set vs WeakMap, O(1) CRUD, DOM association, decision table               |
-| `skills/data-structures/types-typed-array.md` | Float32Array/Uint32Array, STRIDE pattern, WebGL buffer, Audio API, Transferable |
+| `skills/js-data-structures/types-string.md`      | charCodeAt vs Regex, for...of Unicode, concat trap O(N²), Naive String Search   |
+| `skills/js-data-structures/types-number.md`      | BigInt, Infinity, bitwise >>1 <<1, floating point, Math.*, LERP/clamp           |
+| `skills/js-data-structures/types-array.md`       | Big O Đầu/Đuôi, Swap-and-Pop, Holey Array, TypedArray, ES2023 toSorted()        |
+| `skills/js-data-structures/types-object.md`      | V8 Hidden Classes, delete pitfall, Dispatch Table, Normalization, isEmpty O(1)  |
+| `skills/js-data-structures/types-map-set.md`     | Map vs Set vs WeakMap, O(1) CRUD, DOM association, decision table               |
+| `skills/js-data-structures/types-typed-array.md` | Float32Array/Uint32Array, STRIDE pattern, WebGL buffer, Audio API, Transferable |
 
-### Phase 2 — Vòng lặp Hiệu năng (`skills/performance-loops/`)
+### Phase 2 — Vòng lặp Hiệu năng (`skills/js-performance-loops/`)
 
 | File                                | Nội dung                                                                                               |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `skills/performance-loops/SKILL.md` | for/for...of/while/forEach/.map chain, rAF Frame Budget ≤ 4ms, DO NOT list, Batch DOM, Cleanup/Destroy |
+| `skills/js-performance-loops/SKILL.md` | for/for...of/while/forEach/.map chain, rAF Frame Budget ≤ 4ms, DO NOT list, Batch DOM, Cleanup/Destroy |
 
-### Phase 3 — Thuật toán (`skills/algorithms/`)
+### Phase 3 — Thuật toán (`skills/js-algorithms/`)
 
-> ⭐ **Bắt buộc đọc**: `skills/algorithms/SKILL.md` — Master Router phân luồng thuật toán.
-> 💡 _Mẹo: `skills/algorithms/gsap-algorithm-guide.md` hướng dẫn khi nào kết hợp thuật toán với GSAP._
+> ⭐ **Bắt buộc đọc**: `skills/js-algorithms/SKILL.md` — Master Router phân luồng thuật toán.
+> 💡 _Mẹo: `skills/js-algorithms/gsap-algorithm-guide.md` hướng dẫn khi nào kết hợp thuật toán với GSAP._
 
-#### Essential (`skills/algorithms/essential/`)
+#### Essential (`skills/js-algorithms/essential/`)
 
 | File                                               | Nội dung                           | Hiệu ứng thực chiến                  |
 | -------------------------------------------------- | ---------------------------------- | ------------------------------------ |
-| `skills/algorithms/essential/animation-loop.md`    | rAF, LERP, Object Pool, TypedArray | Particle system, smooth loop         |
-| `skills/algorithms/essential/binary-search.md`     | Binary Search O(log N)             | Virtual Scroll, GSAP timeline scrub  |
-| `skills/algorithms/essential/sliding-window.md`    | Sliding Window                     | Scroll skew/tilt, FPS monitor        |
-| `skills/algorithms/essential/flip-sort.md`         | .sort() + FLIP Animation           | Card sort, Live feed sort            |
-| `skills/algorithms/essential/frequency-counter.md` | Frequency Counter + Map            | Filter UI, Tag cloud, Faceted search |
-| `skills/algorithms/essential/graph-bfs-dfs.md`     | Graph BFS/DFS                      | Ripple wave, Scene traverse, Stagger |
-| `skills/algorithms/essential/spatial-hash.md`      | Hash Table + Spatial Hash          | Hover detect 10K+, DOM rect cache    |
-| `skills/algorithms/essential/two-pointers.md`      | Multiple Pointers                  | Pinch-to-zoom, Particle compact      |
-| `skills/algorithms/essential/pathfinding.md`       | Dijkstra + DP                      | Pathfinding animation, Maze          |
+| `skills/js-algorithms/essential/animation-loop.md`    | rAF, LERP, Object Pool, TypedArray | Particle system, smooth loop         |
+| `skills/js-algorithms/essential/binary-search.md`     | Binary Search O(log N)             | Virtual Scroll, GSAP timeline scrub  |
+| `skills/js-algorithms/essential/sliding-window.md`    | Sliding Window                     | Scroll skew/tilt, FPS monitor        |
+| `skills/js-algorithms/essential/flip-sort.md`         | .sort() + FLIP Animation           | Card sort, Live feed sort            |
+| `skills/js-algorithms/essential/frequency-counter.md` | Frequency Counter + Map            | Filter UI, Tag cloud, Faceted search |
+| `skills/js-algorithms/essential/graph-bfs-dfs.md`     | Graph BFS/DFS                      | Ripple wave, Scene traverse, Stagger |
+| `skills/js-algorithms/essential/spatial-hash.md`      | Hash Table + Spatial Hash          | Hover detect 10K+, DOM rect cache    |
+| `skills/js-algorithms/essential/two-pointers.md`      | Multiple Pointers                  | Pinch-to-zoom, Particle compact      |
+| `skills/js-algorithms/essential/pathfinding.md`       | Dijkstra + DP                      | Pathfinding animation, Maze          |
 
-#### Advanced (`skills/algorithms/advanced/`)
+#### Advanced (`skills/js-algorithms/advanced/`)
 
 | File                                        | Nội dung                | Hiệu ứng thực chiến            |
 | ------------------------------------------- | ----------------------- | ------------------------------ |
-| `skills/algorithms/advanced/radix-sort.md`  | Merge/Quick/Radix Sort  | Z-depth 100K WebGL particles   |
-| `skills/algorithms/advanced/binary-heap.md` | Binary Heap, Min PQ     | Task scheduler, Priority queue |
-| `skills/algorithms/advanced/graph.md`       | Adjacency List, Map+Set | State Machine, Complex scene   |
-| `skills/algorithms/advanced/recursion.md`   | Recursion + WeakMap     | Deep clone, Memoized animation |
+| `skills/js-algorithms/advanced/radix-sort.md`  | Merge/Quick/Radix Sort  | Z-depth 100K WebGL particles   |
+| `skills/js-algorithms/advanced/binary-heap.md` | Binary Heap, Min PQ     | Task scheduler, Priority queue |
+| `skills/js-algorithms/advanced/graph.md`       | Adjacency List, Map+Set | State Machine, Complex scene   |
+| `skills/js-algorithms/advanced/recursion.md`   | Recursion + WeakMap     | Deep clone, Memoized animation |
 
 ### Phase 4 — Thư viện GSAP Chính Chủ (LAZY LOAD)
 

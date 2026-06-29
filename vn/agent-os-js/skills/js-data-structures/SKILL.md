@@ -1,5 +1,5 @@
 ---
-name: data-structures
+name: js-data-structures
 description: Cẩm nang tối ưu hóa cấu trúc dữ liệu JS (O(1), O(log N)). Kỹ năng điều hướng (Router Skill).
 ---
 
@@ -11,12 +11,12 @@ description: Cẩm nang tối ưu hóa cấu trúc dữ liệu JS (O(1), O(log N
 
 | Vấn đề cần giải quyết                              | Tệp cần đọc (Nằm trong cùng thư mục này)      |
 | -------------------------------------------------- | --------------------------------------------- |
-| Xử lý danh sách, vòng lặp mảng, tối ưu bộ nhớ mảng | `skills/data-structures/types-array.md`       |
-| Bảng băm (Hash Table), bộ nhớ đệm, tìm kiếm O(1)   | `skills/data-structures/types-map-set.md`     |
-| Tính toán toán học, làm tròn, WebGL Math           | `skills/data-structures/types-number.md`      |
-| Xử lý chuỗi, Regex, định dạng văn bản              | `skills/data-structures/types-string.md`      |
-| Quản lý thuộc tính động, Object Pool, Reference    | `skills/data-structures/types-object.md`      |
-| Xử lý Audio, WebGL Buffer, dữ liệu nhị phân        | `skills/data-structures/types-typed-array.md` |
+| Xử lý danh sách, vòng lặp mảng, tối ưu bộ nhớ mảng | `skills/js-data-structures/types-array.md`       |
+| Bảng băm (Hash Table), bộ nhớ đệm, tìm kiếm O(1)   | `skills/js-data-structures/types-map-set.md`     |
+| Tính toán toán học, làm tròn, WebGL Math           | `skills/js-data-structures/types-number.md`      |
+| Xử lý chuỗi, Regex, định dạng văn bản              | `skills/js-data-structures/types-string.md`      |
+| Quản lý thuộc tính động, Object Pool, Reference    | `skills/js-data-structures/types-object.md`      |
+| Xử lý Audio, WebGL Buffer, dữ liệu nhị phân        | `skills/js-data-structures/types-typed-array.md` |
 
 ## 🚫 Tiêu chí Thoát (Hard Exit)
 

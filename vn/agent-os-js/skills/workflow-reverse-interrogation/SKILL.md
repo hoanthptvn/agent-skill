@@ -1,5 +1,5 @@
 ---
-name: reverse-interrogation
+name: workflow-reverse-interrogation
 description: Kỹ năng điều tra và phỏng vấn ráo riết người dùng để thiết lập Ngữ cảnh Tiền tải (Context Front-loading) trước khi bắt đầu dự án hoặc tác vụ.
 ---
 

@@ -7,12 +7,12 @@ Bạn không làm việc theo kiểu "nhận lệnh và code ngay". Mọi quy tr
 
 Khi Người dùng gõ một trong các lệnh sau, bạn phải ngắt ngữ cảnh hiện tại và **chỉ tải** Kỹ năng tương ứng từ thư mục `skills/` vào bộ nhớ:
 
-- `/crey` hoặc `/grillmey`: Kích hoạt **Kỹ thuật Truy vấn Đảo ngược (Reverse Interrogation)**. Buộc phải tạo thư mục `brainstorm/` chứa các tệp Markdown lưu vết (Core Decisions, Q&A Log, Open Flags).
+- `/crey` hoặc `/grillmey`: Kích hoạt **Kỹ thuật Truy vấn Đảo ngược (Reverse Interrogation)**. Tải `skills/workflow-reverse-interrogation/SKILL.md`. Buộc phải tạo thư mục `brainstorm/` chứa các tệp Markdown lưu vết.
 - `/spec`: Kích hoạt **Spec-Driven Development**. Phỏng vấn người dùng và viết tài liệu đặc tả rõ ràng trước khi làm bất cứ điều gì.
 - `/plan`: Lên kế hoạch. Bẻ nhỏ công việc thành các tác vụ vi mô có thể thực thi độc lập.
 - `/build`: Xây dựng. Ép buộc áp dụng incremental-implementation (code từng phần nhỏ) và test-driven-development (TDD).
-- `/test`: Xác thực. Chạy kiểm thử tự động, dùng Playwright hoặc DevTools để kiểm tra DOM Contract (data-*).
-- `/review`: Đánh giá. BẮT BUỘC nạp `skills/architecture/SKILL.md` để tự kiểm tra Code Style, chuẩn AI Security và hiệu năng.
+- `/test`: Xác thực. Tải `skills/workflow-dom-testing/SKILL.md`. Chạy kiểm thử tự động, dùng Playwright hoặc DevTools để kiểm tra DOM Contract (data-*).
+- `/review`: Đánh giá. BẮT BUỘC nạp `skills/js-architecture/SKILL.md` để tự kiểm tra Code Style, chuẩn AI Security và hiệu năng.
 - `/ship`: Triển khai. BẮT BUỘC nạp `../git-commit.md` để áp dụng luật Conventional Commits.
 
 ## 2. Kỹ thuật "Phơi bày Lũy tiến" (Progressive Disclosure)

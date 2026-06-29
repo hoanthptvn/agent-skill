@@ -6,31 +6,31 @@ Use this file to discover which skill to load. Each skill lives in a directory o
 
 ## Core Architecture & Context Skills (Phase 0)
 
-reverse-interrogation
+workflow-reverse-interrogation
   Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách ngữ cảnh trước khi code.
   Triggers: /crey, /grillmey, interview me, phỏng vấn, hỏi tôi, bắt đầu dự án mới.
 
-ai-security
+js-architecture
   Skill: Bảo vệ ứng dụng Front-End khỏi Prompt Injection và DOM XSS. Kỹ thuật Sandbox.
   Triggers: security, bảo mật, prompt injection, xss, đánh cắp token, iframe sandbox.
 
 ## Vanilla JS Skills (Phase 1)
 
-dom-testing
+workflow-dom-testing
   Skill: Hợp đồng DOM với `data-*` attributes, tự động hóa bằng Playwright, chống ngụy biện kiểm thử.
   Triggers: /test, dom contract, playwright, end-to-end test, data-cy, kiểm thử.
 
-performance-loops
+js-performance-loops
   Skill: Tối ưu hóa vòng lặp (60fps), `requestAnimationFrame`, Zero-allocation, Garbage Collection.
   Triggers: loop, vòng lặp, forEach, map, filter, rAF, 60fps, performance loop, memory leak.
 
-data-structures
+js-data-structures
   Skill: Xử lý dữ liệu (String, Array, Object) đúng chuẩn O(1) hoặc O(log N).
   Triggers: string manipulation, regex, array performance, object reference, kiểu dữ liệu.
 
 ## Algorithms (Phase 2)
 
-algorithms
+js-algorithms
   Skill: Kho thuật toán Front-End (Binary Search, BFS/DFS, FLIP, Sliding Window) và cẩm nang ánh xạ GSAP.
   Triggers: thuật toán, algorithm, binary search, bfs, dfs, flip animation, gsap algorithms, tối ưu hiệu năng.
 

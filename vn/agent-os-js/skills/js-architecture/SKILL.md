@@ -1,5 +1,5 @@
 ---
-name: architecture
+name: js-architecture
 description: Kỹ năng điều hướng các tiêu chuẩn kiến trúc cốt lõi, bảo mật và phong cách code của dự án.
 ---
 
@@ -11,8 +11,8 @@ description: Kỹ năng điều hướng các tiêu chuẩn kiến trúc cốt l
 
 | Vấn đề cần giải quyết                                                | Tệp cần đọc (Nằm trong cùng thư mục này) |
 | -------------------------------------------------------------------- | ---------------------------------------- |
-| Quy tắc đặt tên biến, kiến trúc CSS/JS, Code Style                   | `skills/architecture/code-style.md`      |
-| Chống Prompt Injection, chống DOM XSS, khử khuẩn dữ liệu (DOMPurify) | `skills/architecture/ai-security.md`     |
+| Quy tắc đặt tên biến, kiến trúc CSS/JS, Code Style                   | `skills/js-architecture/code-style.md`      |
+| Chống Prompt Injection, chống DOM XSS, khử khuẩn dữ liệu (DOMPurify) | `skills/js-architecture/ai-security.md`     |
 
 ## 🚫 Tiêu chí Thoát (Hard Exit)
 

@@ -1,5 +1,5 @@
 ---
-name: agent-native-verification
+name: workflow-dom-testing
 description: Sử dụng khi cần viết hoặc sửa mã JavaScript tương tác với DOM (Vanilla JS). Kỹ năng này buộc hệ thống phải tuân thủ "DOM Contract" để máy tự động có thể đọc được trạng thái.
 ---
 

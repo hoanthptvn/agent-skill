@@ -1,5 +1,5 @@
 ---
-name: performance-loops
+name: js-performance-loops
 description: Kỹ năng Agent chuyên biệt về tối ưu vòng lặp (Performance Loops) cho hệ thống JavaScript High-Performance.
 ---
 
