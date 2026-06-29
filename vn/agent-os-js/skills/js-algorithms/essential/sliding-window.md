@@ -196,6 +196,6 @@ Off-by-one:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm tính lại từ đầu:** Cấm biện minh "mảng ngắn tính lại cũng được". Trong Sliding Window, BẮT BUỘC chỉ tính diff: `windowSum -= old; windowSum += new;`.
+> 2. **Kiểm soát Off-by-one:** Cảnh báo nghiêm trọng trong Dynamic Window: Độ dài cửa sổ PHẢI LÀ `end - start + 1`. Không được phép thiếu `+ 1`.
+> 3. **Tránh GC trong Scroll:** Khi tính toán vận tốc cuộn (scroll velocity), phải tái sử dụng Circular Buffer (bằng Float32Array). Cấm tạo mảng mới hoặc shift/push mảng liên tục mỗi frame.

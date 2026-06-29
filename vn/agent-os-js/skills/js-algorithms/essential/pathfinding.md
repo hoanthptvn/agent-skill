@@ -445,6 +445,6 @@ Fibonacci comparison:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm đệ quy DFS không giới hạn:** Cấm dùng DFS đệ quy (Recursion) cho bài toán tìm đường vì chắc chắn sẽ tràn Stack (Maximum call stack size exceeded).
+> 2. **Bắt buộc BFS / A*:** Tìm đường đi NGẮN NHẤT phải dùng BFS. Nếu bản đồ có trọng số (địa hình khó), phải kết hợp Heuristic để thành thuật toán A*.
+> 3. **Tối ưu Grid lớn:** Nếu bản đồ > 1000x1000, cấm dùng Array của Array mảng 2D. BẮT BUỘC dùng mảng phẳng 1 chiều (Flat Array) hoặc `Float32Array/Uint8Array`.

@@ -200,6 +200,6 @@ Animation:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
-> 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
-> 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.
+> 1. **Cấm ép kiểu tốn kém:** Cấm dùng `Number()`, `parseInt()` hoặc `Math.floor()` trong vòng lặp 60fps. BẮT BUỘC dùng Bitwise (`| 0` hoặc `>> 0`) để ép kiểu số nguyên nhanh nhất.
+> 2. **Sức mạnh Float32Array:** Đối với các bài toán WebGL, Canvas, Particle System, cấm dùng Array thường. BẮT BUỘC dùng `Float32Array` để lưu tọa độ x,y,z nhằm đạt tốc độ Zero GC.
+> 3. **Cấm thao tác số trên String:** Cấm lưu số dưới dạng String (ví dụ `"100px"`) rồi tính toán. Phải tách biệt: tính toán số thực, chỉ thêm `"px"` ở bước render cuối cùng.

@@ -1,4 +1,4 @@
-﻿---
+---
 name: binary-search
 description: Kỹ năng Agent chuyên biệt về binary-search cho hệ thống JavaScript High-Performance.
 ---
@@ -219,6 +219,6 @@ Frontend:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm quét mảng tuyến tính (O(N)):** Tuyệt đối cấm dùng `Array.prototype.find()` hoặc `.indexOf()` trên một mảng ĐÃ ĐƯỢC SORTED. Bắt buộc dùng Binary Search.
+> 2. **Chống tràn bộ nhớ (Integer Overflow):** Khi tính điểm giữa `mid`, cấm viết `(left + right) / 2`. BẮT BUỘC dùng công thức an toàn `left + Math.floor((right - left) / 2)` hoặc Bitwise `>> 1`.
+> 3. **Bẫy vô hạn (Infinite Loop):** Cảnh báo lỗi chí mạng: luôn cập nhật `left = mid + 1` và `right = mid - 1`. Cấm gán `left = mid` sẽ gây đứng trình duyệt (Tab Crash).

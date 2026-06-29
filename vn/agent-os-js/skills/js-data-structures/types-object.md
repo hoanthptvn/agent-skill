@@ -187,6 +187,6 @@ Không dùng Object khi:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
-> 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
-> 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.
+> 1. **Cấm dùng Object thay Map:** Tuyệt đối cấm dùng Object `{}` để làm từ điển (dictionary) tra cứu khi Key là dữ liệu động (dynamic) hoặc cần CRUD liên tục. BẮT BUỘC dùng `Map`.
+> 2. **Bảo vệ Hidden Classes:** Cấm dùng toán tử `delete obj[key]`. Nếu cần xóa thuộc tính, phải gán `obj[key] = null` hoặc `undefined` để V8 không bị de-optimized.
+> 3. **Cấm vòng lặp Object chậm:** Trong hot-path, cấm dùng `Object.keys()` hoặc `Object.values()` (chúng tạo ra mảng mới gây rác GC). Phải dùng cấu trúc dữ liệu khác thay thế.

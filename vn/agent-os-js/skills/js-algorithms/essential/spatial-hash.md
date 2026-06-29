@@ -246,6 +246,6 @@ WebGL:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm O(N²) collision:** Cấm tuyệt đối vòng lặp lồng nhau duyệt mọi hạt với mọi hạt để tìm va chạm. BẮT BUỘC dùng Spatial Hash (ô lưới) để đạt O(1) Tra cứu.
+> 2. **Cấm tái tạo Grid mới:** Trong mỗi frame, cấm khởi tạo `new Map()` hoặc `new Object()`. Phải dùng `grid.clear()` và tái sử dụng Grid cũ.
+> 3. **Keys là String:** Đảm bảo key của Grid luôn là String dạng `"x,y"` để tránh lỗi tham chiếu khi tra cứu.

@@ -357,6 +357,6 @@ function spawnParticle(x, y) {
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm rác trong vòng lặp:** Cấm tuyệt đối việc định nghĩa Array `[]` hoặc Object `{}` bên trong thân hàm `requestAnimationFrame`. Mọi biến phải được khai báo trước bên ngoài.
+> 2. **Cấm Force Reflow:** Không gọi `getBoundingClientRect()` hoặc các hàm đọc DOM (layout thrashing) bên trong rAF loop. Phải cache từ trước.
+> 3. **Tự dọn dẹp (Cleanup):** Luôn phải lưu `_rafId = requestAnimationFrame(loop)` và `cancelAnimationFrame(_rafId)` khi component bị hủy, nếu không sẽ rò rỉ bộ nhớ (Memory Leak) vĩnh viễn.

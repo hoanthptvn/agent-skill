@@ -235,6 +235,6 @@ Bẫy:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm CSS Transition:** Cấm lười biếng dùng `transition: all` để sắp xếp UI. BẮT BUỘC dùng cơ chế FLIP kết hợp GSAP để đảm bảo 60fps.
+> 2. **Cấm Main Thread Animation:** Không được phép animate các thuộc tính layout như `width`, `height`, `top`, `left`. FLIP chỉ được dùng `transform: translate(x, y)`.
+> 3. **Cấm `.map()` lưu tọa độ:** Tuyệt đối cấm dùng `.map()` để lưu `firstRects` và `lastRects` (gây rác GC và sai reference). BẮT BUỘC dùng `Map` và vòng lặp `for` như đã hướng dẫn.

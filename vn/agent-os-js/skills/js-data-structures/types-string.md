@@ -197,6 +197,6 @@ rAF hot path:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
-> 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
-> 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.
+> 1. **Cấm cộng chuỗi liên tục:** Cấm dùng toán tử `+=` trong vòng lặp lớn (hàng ngàn lần) vì nó cấp phát lại chuỗi liên tục. Phải dùng `Array.push()` rồi `.join("")`.
+> 2. **Cấm Regex trong Hot-path:** Không được dùng Regex phức tạp bên trong hàm `requestAnimationFrame`. Regex cực kỳ chậm và tốn CPU.
+> 3. **Cấm chia chuỗi thành mảng:** Cấm dùng `str.split("")` chỉ để lặp qua từng ký tự. Phải duyệt trực tiếp bằng `for (let i = 0)` hoặc `for...of` để tránh tạo rác GC.

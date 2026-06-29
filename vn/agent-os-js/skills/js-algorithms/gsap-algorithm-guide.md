@@ -454,6 +454,7 @@ gsap.to(".tag", { opacity: 1, stagger: 0.05 }); // GSAP đủ
 ```javascript
 // touches[0] và touches[1] = 2 pointers, tính khoảng cách
 let prevDistance = 0;
+const scaleTo = gsap.quickTo(target, "scale", { duration: 0.1 });
 
 canvas.addEventListener("touchmove", (e) => {
   if (e.touches.length < 2) return;
@@ -464,7 +465,7 @@ canvas.addEventListener("touchmove", (e) => {
   const distance = Math.sqrt(dx * dx + dy * dy);
 
   const scale = distance / prevDistance;
-  gsap.to(target, { scale: currentScale * scale, duration: 0.1 });
+  scaleTo(currentScale * scale); // Zero GC, tối ưu 60fps
   prevDistance = distance;
 });
 ```
@@ -540,11 +541,14 @@ function buildSpatialHash(particles) {
   }
 }
 
+// ⚠️ LƯU Ý: Khởi tạo gsap.quickTo() cho từng particle TỪ TRƯỚC (lúc init)
+// p.scaleTo = gsap.quickTo(p.el, "scale", { duration: 0.2 });
+
 canvas.addEventListener("mousemove", ({ offsetX, offsetY }) => {
   const nearby = grid.get(getKey(offsetX, offsetY)) || [];
   for (const p of nearby) {
-    // GSAP animate particles gần chuột
-    gsap.to(p.el, { scale: 1.5, duration: 0.2 });
+    // Zero GC: Gọi hàm đã compile sẵn thay vì tạo tween mới
+    p.scaleTo(1.5);
   }
 });
 ```

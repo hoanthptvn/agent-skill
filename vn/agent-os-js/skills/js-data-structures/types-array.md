@@ -187,6 +187,6 @@ TUYỆT ĐỐI TRÁNH:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không dùng Object `{}` để tra cứu (lookup) liên tục. BẮT BUỘC dùng `Map` hoặc `Set` để đạt `O(1)`.
-> 2. **Cấm ngụy biện:** "Dùng Array.indexOf cho nhanh" là sai lầm khi mảng lớn. Phải đổi sang `Set.has()` nếu cần tìm kiếm nhiều lần.
-> 3. **Tối đa hóa Typed Arrays:** Xử lý tọa độ (x, y, z) 3D hoặc WebGL bắt buộc dùng `Float32Array`. Cấm dùng Array thường để lưu số thực cường độ cao.
+> 1. **Cấm mảng rác đôi (Double GC):** Tuyệt đối cấm viết chuỗi `.filter().map()` hoặc `.map().reduce()`. BẮT BUỘC gộp thành một vòng lặp `for...of` duy nhất.
+> 2. **Cấm Dịch chuyển mảng (O(N) Shift):** Cấm dùng `Array.prototype.unshift()` hoặc `.splice()` ở đầu mảng. Nếu cần thêm/xóa ở 2 đầu liên tục, phải dùng Pointer hoặc Circular Buffer.
+> 3. **Xóa phần tử ở giữa:** Cấm dùng `.filter()` để xóa 1 phần tử (sẽ tạo mảng rác). Phải dùng `splice` hoặc đổi chỗ với phần tử cuối rồi `pop()` nếu mảng lớn và không cần giữ thứ tự.

@@ -249,6 +249,6 @@ Bẫy:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Cấm lười biếng:** Không được dùng các hàm native `O(N)` (như `find`, `indexOf`, `filter`) khi dữ liệu có thể áp dụng thuật toán `O(log N)` hoặc `O(1)`.
-> 2. **Cấm biện minh:** "Dữ liệu nhỏ nên dùng Array.sort() cho nhanh" là ngụy biện. Trong môi trường 60fps, vi phạm độ phức tạp thời gian sẽ dẫn đến Frame Drop.
-> 3. **Không tạo rác (Zero GC):** Cấm khởi tạo Object/Array mới (`new Object`, `map`, `filter`) bên trong vòng lặp Render/Animation. Trọng tâm là tái sử dụng mảng phẳng (Parallel Arrays).
+> 1. **Cấm dùng Set để đếm:** Không dùng `new Set(arr).size` chỉ để đếm phần tử unique (tốn O(N) Space). Phải dùng thuật toán Fast/Slow Pointer để đếm In-place.
+> 2. **Cấm Nested Loop (O(N²)):** Không dùng 2 vòng lặp lồng nhau để tìm cặp số (sumZero, averagePair). BẮT BUỘC dùng Pointer kẹp 2 đầu (Opposite Ends).
+> 3. **Pointer trong Touch Event:** Xử lý Pinch-to-Zoom hoặc Multi-touch phải gắn `gsap.quickTo` ra ngoài event. Tuyệt đối cấm tạo mới `gsap.to` hoặc `Array` mỗi khi touchmove trigger.
