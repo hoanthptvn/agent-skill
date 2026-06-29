@@ -40,10 +40,24 @@ Sử dụng cấu trúc: `<emoji> <type>[(optional scope)]: <Subject>`
 Dòng này tự động ngắt xuống dòng nếu vượt quá 72 ký tự.>
 ```
 
-## 5. Trình bày Kết quả & Hard Exit:
-- Tóm tắt phân tích bằng gạch đầu dòng (Bullets).
-- Cung cấp đề xuất commit message trong một khối mã (code block).
-- Cung cấp lệnh git copy nhanh: `git commit -m "..." -m "..."`
+## 🤖 Quy Trình Bắt Buộc Dành Cho AI (5 Bước)
+
+> [!IMPORTANT]
+> Tác tử AI BẮT BUỘC tuân thủ 5 bước này khi được yêu cầu tạo Commit. Phải trình bày luồng suy nghĩ (Thought) ra Markdown.
+
+1. **Bước 1 (Thu thập):** Chạy lệnh `git status` và `git diff --staged` để xem chính xác những gì sắp được commit.
+2. **Bước 2 (Phân tích):** Rút trích TẠI SAO (Why) và CÁI GÌ (What) thay vì LÀM THẾ NÀO (How).
+3. **Bước 3 (Định dạng Tiêu đề):** Chọn đúng Tiền tố (Prefix), viết Tiêu đề dạng Mệnh lệnh, ngắn gọn dưới 50 ký tự, không dấu chấm cuối câu.
+4. **Bước 4 (Viết Thân bài):** Diễn giải lý do (Business/Architecture logic) và tự động ngắt dòng ở cột 72.
+5. **Bước 5 (Trình bày):** Cung cấp đề xuất trong code block và KHÔNG chạy lệnh commit nếu chưa có lệnh `ok` từ User.
+
+---
+
+## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
-> **TIÊU CHÍ THOÁT:** Không tự động chạy lệnh commit khi chưa có sự đồng ý rõ ràng. Chỉ chạy `git commit` khi người dùng nói "ok" hoặc "commit đi".
+> **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
+> 1. **Cấm Ảo Giác (Hallucination):** Tuyệt đối cấm tạo commit message mô tả cho những thay đổi không hề có trong `git diff --staged`. Nếu danh sách staged rỗng, phải yêu cầu User chạy `git add` trước!
+> 2. **Cấm Lười Biếng (Vô nghĩa):** Cấm viết những tiêu đề chung chung như `Update files`, `Fix bug`, hay `WIP`. Tiêu đề phải nêu đích danh vấn đề (VD: `fix: chặn lỗi tràn bộ nhớ khi load ảnh`).
+> 3. **Cấm Báo Cáo Code (No "How"):** Cấm liệt kê chi tiết từng dòng code trong Thân bài (như "Đổi biến A thành B"). Bắt buộc phải giải thích lý do Kiến trúc đằng sau sự thay đổi đó.
