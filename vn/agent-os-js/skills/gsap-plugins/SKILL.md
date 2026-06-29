@@ -39,7 +39,9 @@ gsap.registerPlugin(ScrollToPlugin, Flip, Draggable);
 
 ### ScrollToPlugin
 
-Animates scroll position (window or a scrollable element). Use for “scroll to element” or “scroll to position” without ScrollTrigger.
+Animates scroll position (window or a scrollable element). 
+> [!WARNING]
+> **IF USING LENIS (Our Standard):** Do NOT use `ScrollToPlugin` to animate window scroll! Lenis manages the scroll position and will conflict with GSAP's scroll tween. Use `lenis.scrollTo(target)` instead. Only use `ScrollToPlugin` for internal overflow containers that Lenis doesn't manage.
 
 ```javascript
 gsap.registerPlugin(ScrollToPlugin);
@@ -57,20 +59,12 @@ gsap.to(scrollContainer, { duration: 1, scrollTo: { x: "max" } });
 | `element`            | Selector or element to scroll to (for scroll-into-view) |
 | `offsetX`, `offsetY` | Offset in pixels from the target position               |
 
-### ScrollSmoother
+### ScrollSmoother (❌ BANNED IN THIS PROJECT)
 
-Smooth scroll wrapper (smooths native scroll). Requires ScrollTrigger and a specific DOM structure (content wrapper + smooth wrapper). Use when smooth, momentum-style scroll is needed. See GSAP docs for setup; register after ScrollTrigger. DOM structure would look like:
-
-```html
-<body>
-  <div id="smooth-wrapper">
-    <div id="smooth-content">
-      <!--- ALL YOUR CONTENT HERE --->
-    </div>
-  </div>
-  <!-- position: fixed elements can go outside --->
-</body>
-```
+> [!WARNING]
+> **DO NOT USE ScrollSmoother.** This system strictly uses **Lenis** for smooth scrolling to achieve Awwwards-level performance without forcing DOM wrappers.
+> Do not generate `<div id="smooth-wrapper">` or register `ScrollSmoother`.
+> See `js-performance-loops/SKILL.md` for the standard Lenis setup.
 
 ## DOM / UI
 
