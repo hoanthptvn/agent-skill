@@ -174,10 +174,10 @@ agent-os-html-css/
     ├── workflow-figma-to-code/         ← Kỹ năng chuyển đổi thiết kế sang code
     ├── workflow-visual-qa/             ← Kỹ năng soát lỗi QA giao diện
     ├── html-structure/                 ← Chuẩn Semantic, Accessibility, SEO, HTML Rules
-    ├── css-architecture/               ← Kiến trúc Multi-File, Breakpoints, Logical Properties
-    ├── css-layout/                     ← Nguyên lý Layout (Flex/Grid), Container linh hoạt
+    ├── css-architecture/               ← Kiến trúc Multi-File, Phân loại CSS, Comment Hierarchy
+    ├── css-layout/                     ← Layout (Flex/Grid), Breakpoints, Logical Properties
     ├── css-design-tokens/              ← Hệ thống token (oklch, clamp)
     ├── css-naming-conventions/         ← Cú pháp BEM 3 tầng, Hậu tố Semantic, Dictionary
-    ├── css-patterns/                   ← Patterns chất lượng cao (Outside-In, color-mix, :has)
-    └── css-property-order/             ← Quy chuẩn sắp xếp thuộc tính CSS
+    ├── css-patterns/                   ← Patterns chất lượng cao (Component vars, data-animate, color-mix)
+    └── css-property-order/             ← Quy chuẩn sắp xếp thuộc tính CSS (Outside-In)
 ```
