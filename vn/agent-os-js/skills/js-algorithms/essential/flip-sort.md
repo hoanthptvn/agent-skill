@@ -116,20 +116,28 @@ const insertionSort = (arr, comparator = (a, b) => a - b) => {
 
 ```javascript
 // Bước 1: FIRST — lưu vị trí cũ
-const firstPositions = items.map((el) => el.getBoundingClientRect());
+const firstRects = new Map();
+for (let i = 0; i < items.length; i++) {
+  firstRects.set(items[i], items[i].getBoundingClientRect());
+}
 
 // Bước 2: Sort data (không đụng DOM)
 data.sort((a, b) => a.price - b.price);
 
 // Bước 3: LAST — render + lưu vị trí mới
 renderItems(data);
-const lastPositions = items.map((el) => el.getBoundingClientRect());
+const lastRects = new Map();
+for (let i = 0; i < items.length; i++) {
+  lastRects.set(items[i], items[i].getBoundingClientRect());
+}
 
 // Bước 4: INVERT + PLAY — GSAP animate
 for (let i = 0; i < items.length; i++) {
   const el = items[i];
-  const dx = firstPositions[i].left - lastPositions[i].left;
-  const dy = firstPositions[i].top - lastPositions[i].top;
+  const first = firstRects.get(el);
+  const last = lastRects.get(el);
+  const dx = first.left - last.left;
+  const dy = first.top - last.top;
   gsap.fromTo(el, { x: dx, y: dy }, { x: 0, y: 0, duration: 0.4 });
 }
 // DOM Write tối thiểu, GSAP GPU transform → 60fps

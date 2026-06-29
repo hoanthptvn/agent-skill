@@ -239,20 +239,28 @@ gsap.to(".card", { opacity: 1, stagger: 0.1 }); // GSAP tự xử lý
 
 function flipSort(cards, data, comparator) {
   // FIRST: Lưu vị trí cũ trước khi sort
-  const first = cards.map((el) => el.getBoundingClientRect());
+  const firstRects = new Map();
+  for (let i = 0; i < cards.length; i++) {
+    firstRects.set(cards[i], cards[i].getBoundingClientRect());
+  }
 
   // Sort DATA (không đụng DOM)
   data.sort(comparator); // ← .sort() cần comparator!
 
   // LAST: Re-render DOM theo thứ tự mới
   renderCards(data);
-  const last = cards.map((el) => el.getBoundingClientRect());
+  const lastRects = new Map();
+  for (let i = 0; i < cards.length; i++) {
+    lastRects.set(cards[i], cards[i].getBoundingClientRect());
+  }
 
-  // INVERT + PLAY: GSAP animate từ vị trí cũ về mới
+  // INVERT + PLAY: Animate từ cũ → mới
   for (let i = 0; i < cards.length; i++) {
     const el = cards[i];
-    const dx = first[i].left - last[i].left;
-    const dy = first[i].top - last[i].top;
+    const first = firstRects.get(el);
+    const last = lastRects.get(el);
+    const dx = first.left - last.left;
+    const dy = first.top - last.top;
     gsap.fromTo(
       el,
       { x: dx, y: dy },

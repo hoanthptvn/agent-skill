@@ -25,12 +25,12 @@ cache.size; // O(1) ← Object phải Object.keys().length O(N)
 for (const [key, value] of cache) {
   /* ... */
 }
-cache.forEach((value, key) => {
-  /* ... */
-});
 
-// Khởi tạo từ array of pairs
-const userMap = new Map(users.map((u) => [u.id, u])); // O(N)
+// Khởi tạo (Zero GC)
+const userMap = new Map();
+for (let i = 0; i < users.length; i++) {
+  userMap.set(users[i].id, users[i]); // O(1)
+}
 userMap.get(targetId); // O(1) lookup mãi mãi
 ```
 
@@ -122,11 +122,18 @@ WeakMap:
 
 ```javascript
 // Frequency Counter — O(N²) → O(N)
-// ✗ .includes() là vòng lặp ẩn trong .filter() → O(N²)
-const valid = users.filter((u) => !bannedIDs.includes(u.id));
+// ✗ .includes() là vòng lặp ẩn trong .filter() (hoặc for loop) → O(N²)
+const validBad = [];
+for (const u of users) {
+  if (!bannedIDs.includes(u.id)) validBad.push(u);
+}
+
 // ✓ Set.has() O(1) → tổng O(N)
 const bannedSet = new Set(bannedIDs);
-const valid = users.filter((u) => !bannedSet.has(u.id));
+const valid = [];
+for (const u of users) {
+  if (!bannedSet.has(u.id)) valid.push(u);
+}
 
 // Cache DOM measurements
 const rectCache = new WeakMap();

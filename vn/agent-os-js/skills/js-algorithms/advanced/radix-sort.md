@@ -1,4 +1,4 @@
-﻿---
+---
 name: radix-sort
 description: Kỹ năng Agent chuyên biệt về radix-sort cho hệ thống JavaScript High-Performance.
 ---
@@ -153,14 +153,26 @@ const radixSortCore = (nums) => {
   return nums;
 };
 
-// Production — handles negatives
+// Production — handles negatives (Zero GC Allocation Style)
 const radixSort = (nums) => {
-  const negatives = nums.filter((n) => n < 0);
-  const positives = nums.filter((n) => n >= 0);
-  const sortedNeg = radixSortCore(negatives.map(Math.abs))
-    .reverse()
-    .map((n) => -n);
-  return [...sortedNeg, ...radixSortCore(positives)];
+  const negatives = [];
+  const positives = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) negatives.push(Math.abs(nums[i]));
+    else positives.push(nums[i]);
+  }
+
+  const sortedNeg = radixSortCore(negatives);
+  const sortedPos = radixSortCore(positives);
+
+  const result = [];
+  for (let i = sortedNeg.length - 1; i >= 0; i--) {
+    result.push(-sortedNeg[i]);
+  }
+  for (let i = 0; i < sortedPos.length; i++) {
+    result.push(sortedPos[i]);
+  }
+  return result;
 };
 ```
 

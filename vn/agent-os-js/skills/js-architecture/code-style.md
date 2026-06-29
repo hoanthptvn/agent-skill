@@ -26,18 +26,13 @@ Quy tắc bắt buộc khi AI viết code từ bộ agent-os-js này. Mục tiê
 ### 1. Nhồi nhiều logic vào 1 dòng
 
 ```javascript
-// ❌ AI hay viết: "ngắn gọn" nhưng khó đọc
+// ❌ AI hay viết: chain dài sinh ra mảng rác (Garbage Collection)
 const result = arr
   .filter((x) => x > 0)
   .map((x) => x * 2)
   .reduce((a, b) => a + b, 0);
 
-// ✅ Con người đọc được: tách bước, đặt tên rõ ý đồ
-const positiveItems = arr.filter((item) => item > 0);
-const doubled = positiveItems.map((item) => item * 2);
-const totalValue = doubled.reduce((sum, value) => sum + value, 0);
-
-// ✅ Hoặc tốt hơn — single loop (nếu trong hot path):
+// ✅ Chuẩn Awwwards: Vòng lặp For phẳng (Zero GC Allocation)
 let totalValue = 0;
 for (const item of arr) {
   if (item > 0) {
@@ -134,12 +129,12 @@ const orderTotal = calculateTotal();
 for (let i = 0; i < particles.length; i++) { ... }
 
 // ✅ Arrow function parameter khi context rõ ràng
-products.filter(product => product.active);  // ← "product" rõ hơn "p" hoặc "x"
-names.map(name => name.toUpperCase());       // ← "name" rõ hơn "n"
+products.find(product => product.id === targetId);  // ← "product" rõ hơn "p" hoặc "x"
+users.some(user => user.isAdmin);                   // ← "user" rõ hơn "u"
 
 // ❌ KHÔNG chấp nhận
-products.filter(x => x.active);  // "x" là gì?
-names.map(n => n.toUpperCase()); // "n" là gì?
+products.find(x => x.id === targetId);  // "x" là gì?
+users.some(u => u.isAdmin);             // "u" là gì?
 ```
 
 ### 5. Comment vô nghĩa (giải thích cái gì)
