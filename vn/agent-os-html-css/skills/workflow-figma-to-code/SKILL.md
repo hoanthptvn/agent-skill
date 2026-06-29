@@ -66,5 +66,5 @@ Quy trình có cấu trúc từ tài nguyên thiết kế đến HTML/CSS pixel-
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
 > 1. **Cấm lười biếng:** Không được lạm dụng !important để chữa cháy giao diện. BẮT BUỘC phải tuân thủ tầng Cascade (Cascade Layers - @layer).
-> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như ar(--clr-bg), ar(--space-2).
+> 2. **Cấm ngụy biện:** "Hardcode mã màu cho nhanh" là sai lầm chết người. Mọi màu sắc, khoảng cách (spacing), font-size đều PHẢI sử dụng CSS Variables (Design Tokens) như `var(--clr-bg)`, `var(--space-2)`.
 > 3. **Bảo vệ Hệ thống:** Cấm nhồi nhét style trực tiếp vào thẻ HTML (Inline styles). Mọi tên class phải tuân thủ nguyên tắc BEM với tiền tố tiêu chuẩn (c-, l-, u-).
