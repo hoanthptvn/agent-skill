@@ -320,6 +320,32 @@ while (searchStart <= searchEnd) {
 
 ---
 
+## Quy trình AI viết code (Step-by-Step Workflow)
+
+Để tránh tình trạng "nhảy cóc" (viết code vội vàng rồi phải sửa lại do vi phạm GC hoặc Style), Tác tử AI **BẮT BUỘC** tuân thủ quy trình 5 bước sau khi generate code:
+
+**Bước 1: Xác định Thuật toán (Planning)**
+- Không gõ code ngay. Hãy tự hỏi: "Dữ liệu có lớn không? Cần dùng thuật toán nào trong `js-algorithms`?" (VD: Cần tìm kiếm -> Binary Search; Cần update DOM liên tục -> GSAP quickTo).
+
+**Bước 2: Xây dựng Bộ khung Phẳng (Flat Structure)**
+- Viết logic lõi bằng vòng lặp `for...of` hoặc `for(let i)`.
+- Áp dụng Early Return để san phẳng các khối `if/else` lồng nhau.
+- *Tuyệt đối không dùng `.map().filter()` để nháp.*
+
+**Bước 3: Đặt tên cho Con người (Humanizing)**
+- Thay thế toàn bộ các biến viết tắt (như `p`, `idx`, `arr`, `rect`) thành tên ngữ nghĩa (như `particle`, `currentIndex`, `productData`, `boundingCoordinates`).
+- Kiểm tra lại: Đọc đoạn code lên thành tiếng có thành một câu tiếng Anh có nghĩa không?
+
+**Bước 4: Loại bỏ "Phép thuật" (De-clevering)**
+- Chuyển đổi các đoạn bitwise `>> 1` (nếu không ở trong rAF) về `Math.floor`.
+- Xóa các toán tử Ternary lồng nhau và thay bằng `if/else` hoặc Function.
+
+**Bước 5: Chú thích (Why-Commenting)**
+- Xóa bỏ mọi comment mô tả hàm đang làm gì.
+- Thêm comment giải thích: Tại sao lại chọn cách tiếp cận này? (VD: `// Tránh tạo mảng rác để giữ 60fps`).
+
+---
+
 ## Quick Reference
 
 ```
@@ -347,6 +373,6 @@ Ngoại lệ trong tài liệu agent-os-js:
 > [!CAUTION]
 > **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
 >
-> 1. **Vanilla JS là Tôn giáo:** Cấm ảo giác (hallucinate) ra các khái niệm của React/Vue. Mọi giải pháp kiến trúc phải dựa trên Vanilla JS nguyên bản và DOM API.
-> 2. **Chứng minh thay vì Tin tưởng:** Tránh lạm dụng thư viện bên thứ 3 quá mức. Ưu tiên giải quyết vấn đề bằng công cụ lõi hoặc các công cụ kiểm thử được hệ thống cấu hình sẵn (như Playwright).
-> 3. **Tuân thủ Cỗ Máy Trạng Thái:** Mọi PR (Pull Request) hay mã nguồn sinh ra đều phải tuân theo luồng quy trình nghiêm ngặt. Không lách luật Cỗ Máy Trạng Thái (Cay State-Machine).
+> 1. **Cấm lười biếng viết chuỗi (Chaining):** Cấm biện minh "Dùng .map().filter() code ngắn hơn và đẹp hơn". Đẹp với máy nhưng giết chết bộ nhớ (GC). BẮT BUỘC dùng vòng lặp phẳng.
+> 2. **Cấm viết tắt để tiết kiệm Token:** Cấm biện minh "Tên biến ngắn gọn (như `e`, `v`, `d`) để code bớt dài". Tên biến PHẢI tự giải thích (self-documenting).
+> 3. **Cấm comment rác:** Cấm bình luận kiểu `// Duyệt qua mảng và nhân đôi` hoặc `// Render giao diện`. Chỉ được giải thích quyết định kỹ thuật: TẠI SAO làm vậy (VD: `// Zero GC: Dùng Map thay vì Object để tránh cấp phát`).
