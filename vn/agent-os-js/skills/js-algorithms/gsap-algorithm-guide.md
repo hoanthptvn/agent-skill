@@ -399,9 +399,14 @@ for (const p of products) {
 btn.addEventListener("click", () => {
   const visible = grouped.get(selected) || []; // O(1)
   const visibleSet = new Set(visible);
-  const hidden = [];
+  
+  const hiddenEls = [];
+  const visibleEls = [];
+  
   for (let i = 0; i < products.length; i++) {
-    if (!visibleSet.has(products[i])) hidden.push(products[i]);
+    const p = products[i];
+    if (!visibleSet.has(p)) hiddenEls.push(p.el); // Giả sử p.el lưu DOM node
+    else visibleEls.push(p.el);
   }
 
   gsap.to(hiddenEls, { opacity: 0, scale: 0.8, duration: 0.3 });
@@ -414,13 +419,20 @@ btn.addEventListener("click", () => {
 ```javascript
 // Animate tags/keywords: tag nào xuất hiện nhiều nhất → scale lớn hơn
 const freq = new Map();
-for (const tag of allTags) freq.set(tag, (freq.get(tag) || 0) + 1);
-const max = Math.max(...freq.values());
+for (let i = 0; i < allTags.length; i++) {
+  const tag = allTags[i];
+  freq.set(tag, (freq.get(tag) || 0) + 1);
+}
+
+let maxCount = 0;
+for (const count of freq.values()) {
+  if (count > maxCount) maxCount = count; // Tối ưu: Zero GC, thay vì Math.max(...freq.values())
+}
 
 for (let i = 0; i < tagEls.length; i++) {
   const el = tagEls[i];
   const count = freq.get(el.dataset.tag) || 0;
-  const scale = 0.8 + (count / max) * 0.8; // scale từ 0.8 đến 1.6
+  const scale = 0.8 + (count / maxCount) * 0.8; // scale từ 0.8 đến 1.6
   gsap.to(el, { scale, duration: 0.5 });
 }
 ```
