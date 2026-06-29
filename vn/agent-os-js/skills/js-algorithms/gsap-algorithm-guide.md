@@ -112,11 +112,15 @@ function findFirstVisible(heights, scrollTop) {
   return Math.max(0, lo - 1);
 }
 
+let prevStartIdx = -1;
 lenis.on('scroll', ({ scroll }) => {
   const startIdx = findFirstVisible(cumulativeHeights, scroll);
-  renderVisibleItems(startIdx, startIdx + 20);
-  // Sau đó GSAP animate các items mới xuất hiện:
-  gsap.from(newItems, { opacity: 0, y: 20, stagger: 0.05 });
+  if (startIdx !== prevStartIdx) {
+    const newItems = renderVisibleItems(startIdx, startIdx + 20);
+    // Chỉ animate khi index thay đổi (tránh gọi GSAP 60 lần/giây)
+    gsap.from(newItems, { opacity: 0, y: 20, stagger: 0.05 });
+    prevStartIdx = startIdx;
+  }
 });
 ```
 
@@ -311,6 +315,8 @@ const scrollHistory = new Array(WINDOW).fill(0); // Circular buffer
 let windowSum = 0;
 let historyIdx = 0;
 
+const skewTo = gsap.quickTo(".content", "skewY", { duration: 0.1 });
+
 lenis.on("scroll", ({ velocity }) => {
   // Sliding Window: trừ giá trị cũ, cộng giá trị mới
   windowSum -= scrollHistory[historyIdx];
@@ -320,8 +326,8 @@ lenis.on("scroll", ({ velocity }) => {
 
   const avgVelocity = windowSum / WINDOW; // Không tính lại từ đầu
 
-  // GSAP apply skew dựa trên velocity trung bình
-  gsap.to(".content", { skewY: avgVelocity * 0.02, duration: 0.1 });
+  // GSAP apply skew bằng quickTo (Zero GC - không tạo tween mới)
+  skewTo(avgVelocity * 0.02);
 });
 ```
 

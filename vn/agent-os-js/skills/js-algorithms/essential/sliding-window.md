@@ -1,4 +1,4 @@
-﻿---
+---
 name: sliding-window
 description: Kỹ năng Agent chuyên biệt về sliding-window cho hệ thống JavaScript High-Performance.
 ---
@@ -124,6 +124,7 @@ const WINDOW = 5;
 const velocityBuf = new Float32Array(WINDOW); // TypedArray: zero GC
 let bufIdx = 0,
   windowSum = 0;
+const skewTo = gsap.quickTo(".content", "skewY", { duration: 0.1 });
 
 lenis.on("scroll", ({ velocity }) => {
   // Sliding Window: trừ cũ, cộng mới → O(1) thay O(N)
@@ -133,11 +134,7 @@ lenis.on("scroll", ({ velocity }) => {
   bufIdx = (bufIdx + 1) % WINDOW;
 
   const avgVelocity = windowSum / WINDOW; // Trung bình mượt, không giật
-  gsap.to(".content", {
-    skewY: avgVelocity * 0.02,
-    duration: 0.1,
-    overwrite: true,
-  });
+  skewTo(avgVelocity * 0.02); // Zero GC, tối ưu hơn tạo tween mới
 });
 ```
 

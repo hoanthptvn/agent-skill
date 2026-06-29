@@ -1,4 +1,4 @@
-﻿---
+---
 name: two-pointers
 description: Kỹ năng Agent chuyên biệt về two-pointers cho hệ thống JavaScript High-Performance.
 ---
@@ -172,6 +172,7 @@ function removeDuplicates(arr) {
 // touches[0] và touches[1] = 2 pointers → tính khoảng cách → scale
 let prevDist = 0,
   currentScale = 1;
+const scaleTo = gsap.quickTo(target, "scale", { duration: 0.1 });
 
 canvas.addEventListener("touchstart", (e) => {
   if (e.touches.length === 2) {
@@ -188,7 +189,7 @@ canvas.addEventListener("touchmove", (e) => {
   const dist = Math.sqrt(dx * dx + dy * dy);
 
   currentScale *= dist / prevDist; // Multiple Pointers: ratio 2 điểm
-  gsap.to(target, { scale: currentScale, duration: 0.1, overwrite: true });
+  scaleTo(currentScale); // Zero GC thay vì gsap.to() liên tục
   prevDist = dist;
 });
 ```
