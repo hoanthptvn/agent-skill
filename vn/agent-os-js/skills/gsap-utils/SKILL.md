@@ -215,7 +215,7 @@ gsap.utils.splitColor("#6fb936", true); // [94, 55, 47] (HSL: hue, saturation, l
 
 ### selector(scope)
 
-Returns a scoped selector function that finds elements only within the given element (or ref). Use in components so selectors like `".box"` match only descendants of that component, not the whole document. Accepts a DOM element or a ref (e.g. React ref; handles `.current`).
+Returns a scoped selector function that finds elements only within the given element. Use in Vanilla JS components so selectors like `".box"` match only descendants of that component, not the whole document. Accepts a DOM element.
 
 ```javascript
 const q = gsap.utils.selector(containerRef);

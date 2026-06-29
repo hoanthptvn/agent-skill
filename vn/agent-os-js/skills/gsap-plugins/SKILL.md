@@ -10,7 +10,7 @@ license: MIT
 
 Apply when using or reviewing code that uses GSAP plugins: registering plugins, scroll-to, flip/FLIP animations, draggable elements, SVG (DrawSVG, MorphSVG, MotionPath), text (SplitText, ScrambleText), physics, easing plugins (CustomEase, EasePack, CustomWiggle, CustomBounce), or GSDevTools. ScrollTrigger has its own skill (gsap-scrolltrigger).
 
-**Related skills:** For core tweens use **gsap-core**; for ScrollTrigger use **gsap-scrolltrigger**; for React use **gsap-react**.
+**Related skills:** For core tweens use **gsap-core**; for ScrollTrigger use **gsap-scrolltrigger**.
 
 ## Licensing & Install (important)
 
@@ -33,7 +33,7 @@ gsap.registerPlugin(ScrollToPlugin, Flip, Draggable);
 ```
 
 - ✅ Register before using the plugin in any tween or API call.
-- ✅ In React, register at top level or once in the app (e.g. before first useGSAP); do not register inside a component that re-renders. useGSAP is a plugin that needs to be registered before use.
+- ✅ Ensure plugins are registered at the top level or once in the app before using them.
 
 ## Scroll
 
