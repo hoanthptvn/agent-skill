@@ -384,7 +384,11 @@ for (const p of products) {
 
 btn.addEventListener("click", () => {
   const visible = grouped.get(selected) || []; // O(1)
-  const hidden = products.filter((p) => !visible.includes(p)); // dùng Set để O(N)
+  const visibleSet = new Set(visible);
+  const hidden = [];
+  for (let i = 0; i < products.length; i++) {
+    if (!visibleSet.has(products[i])) hidden.push(products[i]);
+  }
 
   gsap.to(hiddenEls, { opacity: 0, scale: 0.8, duration: 0.3 });
   gsap.to(visibleEls, { opacity: 1, scale: 1, duration: 0.3 });

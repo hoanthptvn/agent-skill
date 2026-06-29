@@ -158,7 +158,10 @@ function filterFlip(selectedCategory) {
 
   // Quyết định show/hide (không đụng DOM layout ngay)
   const visible = grouped.get(selectedCategory) || []; // O(1) lookup
-  const visibleIds = new Set(visible.map((p) => p.id));
+  const visibleIds = new Set();
+  for (let i = 0; i < visible.length; i++) {
+    visibleIds.add(visible[i].id);
+  }
 
   // LAST: thay đổi visibility → DOM reflow xảy ra
   for (const el of allEls) {
