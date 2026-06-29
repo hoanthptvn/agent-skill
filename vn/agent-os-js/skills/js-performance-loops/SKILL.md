@@ -292,12 +292,12 @@ function initAnimation() {
 
   tl.to(".hero", { opacity: 0, y: -100 });
 
-  // Lenis rAF loop
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
+  // ✅ Awwwards Standard: Sync Lenis with GSAP Ticker để chống Jitter
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  // Tắt lag smoothing của GSAP để không xung đột với Lenis
+  gsap.ticker.lagSmoothing(0);
 
   // ✅ Return destroy function — gọi khi unmount
   return function destroy() {
@@ -308,7 +308,8 @@ function initAnimation() {
     // 2. Kill toàn bộ ScrollTrigger liên quan
     ScrollTrigger.getAll().forEach((st) => st.kill());
 
-    // 3. Destroy Lenis (dừng rAF loop + remove listeners)
+    // 3. Destroy Lenis (remove ticker + destroy)
+    gsap.ticker.remove(lenis.raf);
     lenis.destroy();
 
     // 4. Clear inline styles GSAP để lại
@@ -326,9 +327,10 @@ const destroy = initAnimation();
 ```
 1. ScrollTrigger.kill()   ← dừng theo dõi scroll trước
 2. timeline.kill()        ← dừng animation
-3. lenis.destroy()        ← dừng smooth scroll + rAF
-4. gsap.set(clearProps)   ← xóa inline styles
-5. removeEventListener()  ← dọn event thủ công (nếu có)
+3. gsap.ticker.remove()   ← tháo Lenis khỏi GSAP ticker
+4. lenis.destroy()        ← dừng smooth scroll
+5. gsap.set(clearProps)   ← xóa inline styles
+6. removeEventListener()  ← dọn event thủ công (nếu có)
 
 ⚠️ Đảo thứ tự → race condition:
    kill Lenis trước ScrollTrigger → ScrollTrigger cố đọc scroll position đã chết → lỗi
