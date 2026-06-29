@@ -170,6 +170,19 @@ Tuyệt đối không dùng comment block lộn xộn. Bắt buộc dùng địn
 
 
 
+## 🤖 Quy Trình Bắt Buộc Dành Cho AI (5 Bước)
+
+> [!IMPORTANT]
+> Tác tử AI PHẢI tuân thủ 5 bước này khi nhận yêu cầu code giao diện. Bắt buộc suy nghĩ (Thought) ra Markdown trước khi viết dòng code đầu tiên.
+
+1. **Bước 1: Phân tích & Trích xuất (Analyze & Extract):** Không code ngay. Đọc bản thiết kế (Figma/Image) và lập danh sách các Design Tokens (Colors, Typography, Spacing).
+2. **Bước 2: Xây móng HTML (Semantic Skeleton):** Viết bộ khung HTML tĩnh trước. Sử dụng thẻ Semantic (`<article>`, `<section>`, v.v.) và đặt tên class chuẩn BEM.
+3. **Bước 3: Đổ nền CSS (Tokens & Base):** Chèn các biến CSS (`--clr-*`, `--space-*`) vào file `base.css`. Tuyệt đối không hardcode mã màu.
+4. **Bước 4: Tạo hình Component (Styling):** Viết CSS cho các Component hoặc Page (trong `top.css` hoặc `content.css`). Tuân thủ thứ tự Concentric CSS.
+5. **Bước 5: Kiểm thử chéo (Visual QA):** Tự đối chiếu code với thiết kế ban đầu qua 6 trục (Màu, Khoảng cách, Font, Layout, Hover/Focus, Responsive). Nếu sai lệch, quay lại Bước 4.
+
+---
+
 ## 🤖 Agent OS Anti-Rationalization
 
 > [!CAUTION]
