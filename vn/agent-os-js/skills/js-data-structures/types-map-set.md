@@ -74,14 +74,14 @@ const visited = new Set([startNode]); // Đánh dấu start NGAY
 
 const metadata = new WeakMap();
 
-// GSAP Timeline association — tự cleanup khi DOM unmount
+// GSAP Timeline association — tự dọn dẹp khi DOM bị xóa
 function initAnimation(element) {
   const tl = gsap.timeline({ paused: true });
   tl.to(element, { opacity: 1, y: 0 });
   metadata.set(element, { tl, observer: null }); // Gắn timeline vào DOM node
 }
 
-// Khi Component bị unmount khỏi DOM → element bị GC
+// Khi Element bị xóa khỏi DOM → element bị GC
 // → WeakMap entry TỰ ĐỘNG biến mất → không cần cleanup thủ công
 
 // ⚠️ WeakMap KHÔNG có:

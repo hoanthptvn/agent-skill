@@ -177,7 +177,7 @@ Không dùng Object khi:
   Key là DOM node / Function → dùng Map
   CRUD liên tục → dùng Map
   Cần .size → dùng Map (O(1) thay Object.keys().length O(N))
-  Cần tự động GC khi DOM unmount → dùng WeakMap
+  Cần tự động GC khi DOM bị xóa (destroyed) → dùng WeakMap
 ```
 
 ---

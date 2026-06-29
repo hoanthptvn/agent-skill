@@ -276,7 +276,7 @@ ScrollTrigger.getAll().forEach((t) => t.kill());
 ScrollTrigger.getById("my-id")?.kill();
 ```
 
-In Vanilla JS, ensure you properly cleanup automatically, or manually kill in a cleanup when the DOM element is destroyed.
+In Vanilla JS, ensure you manually kill instances when the DOM element is destroyed (e.g., page transitions).
 
 ## Official GSAP best practices
 
