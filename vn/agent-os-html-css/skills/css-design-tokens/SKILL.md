@@ -1,5 +1,5 @@
 ---
-name: design-tokens
+name: css-design-tokens
 description: Kỹ năng Agent chuyên biệt về hệ thống biến CSS (CSS Variables), Design Tokens và Fluid Typography.
 ---
 

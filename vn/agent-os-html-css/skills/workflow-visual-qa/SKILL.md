@@ -1,5 +1,5 @@
 ---
-name: visual-qa-testing
+name: workflow-visual-qa
 description: Kiểm tra chất lượng giao diện — so sánh code với thiết kế, kiểm tra độ chính xác theo từng breakpoint và trạng thái tương tác. Dùng khi component hoặc trang đã hoàn chỉnh và cần duyệt trước khi merge.
 ---
 

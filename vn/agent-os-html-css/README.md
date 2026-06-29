@@ -12,12 +12,16 @@ agent-os-html-css/
 ├── main.css                      ← File demo (import 2 file trên)
 │
 ├── skills/                       ← 📚 [MỚI] Giàn giáo Kỹ năng (Agent Modular Skills)
-│   ├── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
-│   ├── html-structure/           ← Kỹ năng viết HTML chuẩn Semantic, Accessibility, SEO
-│   ├── css-architecture/         ← Cấu trúc & phân loại chi tiết (Multi-File CSS)
-│   ├── design-tokens/            ← Hệ thống token (oklch, clamp)
-│   ├── naming-conventions/       ← Cách đặt tên, 3 tầng biến, pattern
-│   └── pattern-guide/            ← CSS patterns hay (Component vars, data-animate)
+│   ├── workflow-reverse-interrogation/ ← Kỹ năng Crey (UI/UX Brainstorming)
+│   ├── workflow-figma-to-code/         ← Kỹ năng chuyển đổi thiết kế sang code
+│   ├── workflow-visual-qa/             ← Kỹ năng soát lỗi QA giao diện
+│   ├── html-structure/                 ← Kỹ năng viết HTML chuẩn Semantic, Accessibility, SEO
+│   ├── css-architecture/               ← Cấu trúc & phân loại chi tiết (Multi-File CSS)
+│   ├── css-layout/                     ← Kỹ thuật dàn trang (Flex/Grid) & Breakpoint
+│   ├── css-design-tokens/              ← Hệ thống token (oklch, clamp)
+│   ├── css-naming-conventions/         ← Cách đặt tên BEM, 3 tầng biến
+│   ├── css-patterns/                   ← CSS patterns hay (Component vars, color-mix)
+│   └── css-property-order/             ← Thứ tự sắp xếp thuộc tính CSS chuẩn mực
 ├── CLAUDE.md                     ← Meta-Skill Router (Orchestrator, Slash Commands)
 ├── SKILL.md                      ← Entry point: Bảng tra cứu Index
 └── README.md
@@ -62,7 +66,12 @@ Hệ thống sử dụng các Lệnh vĩ mô để tải động Kỹ năng CSS 
 ## Tài liệu (Kỹ năng Agent)
 
 - [HTML Structure](skills/html-structure/SKILL.md) — Chuẩn HTML Semantic, Accessibility/ARIA và SEO tối ưu
-- [Naming Conventions](skills/naming-conventions/SKILL.md) — 3 tầng biến, quy tắc đặt tên, composite pattern
-- [Pattern Guide](skills/pattern-guide/SKILL.md) — Component vars, data-animate, @layer, color-mix
+- [Naming Conventions](skills/css-naming-conventions/SKILL.md) — 3 tầng biến, quy tắc đặt tên BEM
+- [Pattern Guide](skills/css-patterns/SKILL.md) — Component vars, data-animate, @layer, color-mix
 - [Architecture](skills/css-architecture/SKILL.md) — FLOCSS layers, chuẩn quốc tế vs phong cách riêng
-- [Token Guide](skills/design-tokens/SKILL.md) — Token system, oklch, clamp()
+- [Layout](skills/css-layout/SKILL.md) — Nguyên lý dàn trang Flex/Grid & Breakpoints
+- [Token Guide](skills/css-design-tokens/SKILL.md) — Token system, oklch, clamp()
+- [Property Order](skills/css-property-order/SKILL.md) — Thứ tự thuộc tính chuẩn Concentric CSS
+- [Reverse Interrogation](skills/workflow-reverse-interrogation/SKILL.md) — Truy vấn UI/UX
+- [Figma to Code](skills/workflow-figma-to-code/SKILL.md) — Chuyển thiết kế sang Code
+- [Visual QA](skills/workflow-visual-qa/SKILL.md) — Kiểm thử giao diện 6 trục

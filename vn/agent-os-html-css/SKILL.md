@@ -28,18 +28,19 @@ Chi tiết tham chiếu → `skills/`
 "Cần cấu trúc HTML chuẩn Semantic"      → skills/html-structure/SKILL.md
 "Cần tối ưu SEO, Accessibility, LCP"    → skills/html-structure/SKILL.md
 "Bắt đầu project mới / Setup CSS"       → css/base.css
-"Cần design token system (oklch)"       → css/base.css → skills/design-tokens/SKILL.md
+"Cần design token system (oklch)"       → css/base.css → skills/css-design-tokens/SKILL.md
 "Cần CSS reset / typography"            → css/base.css
 "Cần heading/text classes"              → css/base.css
-"Cần container/grid/layout"             → css/base.css
+"Cần container/grid/layout"             → css/base.css → skills/css-layout/SKILL.md
 "Cần button/card components"            → css/base.css
 "Cần scroll animation"                  → css/base.css
 "Cần helper utilities"                  → css/utility.css
 "Cần dark mode"                         → css/base.css (section DARK MODE)
-"Cần color-mix(), :has(), Focus"        → skills/pattern-guide/SKILL.md
-"Hiểu BEM, Naming 3 tầng, Namespace"    → skills/naming-conventions/SKILL.md
-"Hiểu CSS pattern hay & Performance"    → skills/pattern-guide/SKILL.md
-"Hiểu cấu trúc file CSS, Flex/Grid"     → skills/css-architecture/SKILL.md
+"Cần color-mix(), :has(), Focus"        → skills/css-patterns/SKILL.md
+"Hiểu BEM, Naming 3 tầng, Namespace"    → skills/css-naming-conventions/SKILL.md
+"Hiểu CSS pattern hay & Performance"    → skills/css-patterns/SKILL.md
+"Hiểu cấu trúc file CSS"                → skills/css-architecture/SKILL.md
+"Thứ tự thuộc tính CSS"                 → skills/css-property-order/SKILL.md
 ```
 
 ---
@@ -50,8 +51,8 @@ Chi tiết tham chiếu → `skills/`
 
 | Kỹ năng                                 | Nội dung                                                                   |
 | --------------------------------------- | -------------------------------------------------------------------------- |
-| `skills/reverse-interrogation/SKILL.md` | Lệnh `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn UI/UX và Design System. |
-| `skills/figma-to-code/SKILL.md`         | Trích xuất tokens, xây dựng cấu trúc Semantic, tích hợp Figma MCP.         |
+| `skills/workflow-reverse-interrogation/SKILL.md` | Lệnh `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn UI/UX và Design System. |
+| `skills/workflow-figma-to-code/SKILL.md`         | Trích xuất tokens, xây dựng cấu trúc Semantic, tích hợp Figma MCP.         |
 
 ### Phase 1 — Kỹ năng HTML (Markup Modules)
 
@@ -63,16 +64,18 @@ Chi tiết tham chiếu → `skills/`
 
 | Kỹ năng                              | Nội dung                                                                                              |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `skills/css-architecture/SKILL.md`   | Hiểu kiến trúc Multi-File CSS, Breakpoints, Logical Properties, Nguyên lý Flex/Grid.                  |
-| `skills/design-tokens/SKILL.md`      | Hệ thống Token 3 tầng, hàm `oklch`, typography scale, fluid clamps, Spacing System.                   |
-| `skills/naming-conventions/SKILL.md` | Tiền tố (`c-`, `l-`, `u-`), biến `--ui-*`, `--_*`. Quy tắc 3 tầng Naming (Modifier & Semantic Block). |
-| `skills/pattern-guide/SKILL.md`      | CSS patterns hay (Local vars, color-mix, data-animate, selectors, focus management).                  |
+| `skills/css-architecture/SKILL.md`   | Hiểu kiến trúc Multi-File CSS, Breakpoints, Logical Properties.                       |
+| `skills/css-layout/SKILL.md`         | Kỹ thuật dàn trang cốt lõi, layout (Flexbox, Grid), Container linh hoạt.              |
+| `skills/css-design-tokens/SKILL.md`  | Hệ thống Token 3 tầng, hàm `oklch`, typography scale, fluid clamps, Spacing System.   |
+| `skills/css-naming-conventions/SKILL.md` | Tiền tố (`c-`, `l-`, `u-`), biến `--ui-*`, `--_*`. Quy tắc 3 tầng Naming (BEM).   |
+| `skills/css-patterns/SKILL.md`       | CSS patterns hay (Local vars, color-mix, data-animate, selectors).                    |
+| `skills/css-property-order/SKILL.md` | Thứ tự sắp xếp thuộc tính CSS chuẩn Concentric CSS.                                   |
 
 ### Phase 3 — Chất lượng & Kiểm thử (QA & Testing)
 
 | Kỹ năng                             | Nội dung                                                                                                      |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `skills/visual-qa-testing/SKILL.md` | So sánh mã code với thiết kế theo cấu trúc 6 trục (Màu, Typography, Spacing, Layout, Responsive, Trạng thái). |
+| `skills/workflow-visual-qa/SKILL.md` | So sánh mã code với thiết kế theo cấu trúc 6 trục (Màu, Typography, Spacing, Layout, Responsive, Trạng thái). |
 
 ---
 
@@ -166,10 +169,14 @@ agent-os-html-css/
 │   ├── content.css               ← 🔵 CSS dùng chung cho các trang con
 │   └── form.css                  ← 🟡 CSS riêng cho các trang có form
 └── skills/                       ← 📚 Giàn giáo Kỹ năng (Agent Modular Skills)
-    ├── reverse-interrogation/    ← Kỹ năng Crey (UI/UX Brainstorming)
-    ├── html-structure/           ← Chuẩn Semantic, Accessibility, SEO, HTML Rules
-    ├── css-architecture/         ← Kiến trúc Multi-File, Responsive, Layout (Flex/Grid)
-    ├── design-tokens/            ← Hệ thống token (oklch, clamp)
-    ├── naming-conventions/       ← Cú pháp BEM 3 tầng, Hậu tố Semantic, Dictionary
-    └── pattern-guide/            ← Patterns chất lượng cao (Outside-In, color-mix, :has)
+    ├── workflow-reverse-interrogation/ ← Kỹ năng Crey (UI/UX Brainstorming)
+    ├── workflow-figma-to-code/         ← Kỹ năng chuyển đổi thiết kế sang code
+    ├── workflow-visual-qa/             ← Kỹ năng soát lỗi QA giao diện
+    ├── html-structure/                 ← Chuẩn Semantic, Accessibility, SEO, HTML Rules
+    ├── css-architecture/               ← Kiến trúc Multi-File, Breakpoints, Logical Properties
+    ├── css-layout/                     ← Nguyên lý Layout (Flex/Grid), Container linh hoạt
+    ├── css-design-tokens/              ← Hệ thống token (oklch, clamp)
+    ├── css-naming-conventions/         ← Cú pháp BEM 3 tầng, Hậu tố Semantic, Dictionary
+    ├── css-patterns/                   ← Patterns chất lượng cao (Outside-In, color-mix, :has)
+    └── css-property-order/             ← Quy chuẩn sắp xếp thuộc tính CSS
 ```

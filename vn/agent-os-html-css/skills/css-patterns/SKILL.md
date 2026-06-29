@@ -1,5 +1,5 @@
 ---
-name: pattern-guide
+name: css-patterns
 description: Kỹ năng Agent chuyên biệt hướng dẫn các Design Pattern hiện đại cho HTML/CSS (Component-scoped vars, data-animate, container min...).
 ---
 

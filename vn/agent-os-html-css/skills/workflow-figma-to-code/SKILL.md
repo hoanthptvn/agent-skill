@@ -1,5 +1,5 @@
 ---
-name: figma-to-code
+name: workflow-figma-to-code
 description: Chuyển đổi thiết kế Figma thành HTML/CSS chuẩn production với spacing, tokens và responsive chính xác. Dùng khi được cấp link Figma, ảnh chụp màn hình hoặc file thiết kế để lập trình.
 ---
 

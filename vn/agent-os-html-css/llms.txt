@@ -4,7 +4,7 @@ Use this file to discover which skill to load. Each skill lives in a directory u
 
 ## Core Architecture & Context Skills (Phase 0)
 
-reverse-interrogation
+workflow-reverse-interrogation
   Skill: Kích hoạt `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn bóc tách UI/UX và Design System trước khi code HTML/CSS.
   Triggers: /crey, /grillmey, interview me, phỏng vấn UI, thiết kế từ ảnh, design system.
 
@@ -22,14 +22,18 @@ css-architecture
   Skill: Cấu trúc Dự án Đa file (Multi-File CSS). Định nghĩa vai trò của từng file (base, utility, top, content).
   Triggers: kiến trúc css, đa file, chia file css, tổ chức css.
 
-design-tokens
+css-layout
+  Skill: Hướng dẫn kỹ thuật dàn trang cốt lõi, layout (Flexbox, Grid), Container linh hoạt và hệ thống Breakpoint / Responsive.
+  Triggers: dàn trang, layout, flexbox, grid, responsive, breakpoint.
+
+css-design-tokens
   Skill: Hệ thống Token 3 tầng (Global, Semantic, Component). Hàm màu `oklch`, typography scale clamp().
   Triggers: design token, oklch, css variables, `--ui-*`, color system, typography scale, dark mode.
 
-naming-conventions
+css-naming-conventions
   Skill: Quy tắc đặt tên CSS (BEM). Tiền tố bắt buộc: `c-` (Component), `l-` (Layout), `u-` (Utility).
   Triggers: bem, css naming, cách đặt tên class, class css.
 
-pattern-guide
+css-patterns
   Skill: Các mẫu CSS thực chiến (Local vars, CSS nesting, @layer, data-animate, color-mix pattern).
   Triggers: css pattern, color-mix, data-animate, css nesting, thủ thuật css.

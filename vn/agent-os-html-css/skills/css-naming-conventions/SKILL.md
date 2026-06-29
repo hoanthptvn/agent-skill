@@ -1,11 +1,11 @@
 ---
-name: naming-conventions
+name: css-naming-conventions
 description: Kỹ năng Agent chuyên biệt quy định Tiêu chuẩn đặt tên Class CSS theo chuẩn BEM và Namespacing cho hệ thống.
 ---
 
 # BEM Naming Conventions & Namespacing
 
-> Tài liệu phân tích cách đặt tên Class CSS trong production-grade, áp dụng theo mô hình BEM cải tiến và kiến trúc FLOCSS của hệ thống. TUYỆT ĐỐI KHÔNG dùng file này để tra cứu cách đặt tên Biến CSS (CSS Variables) — hãy tham khảo `design-tokens`.
+> Tài liệu phân tích cách đặt tên Class CSS trong production-grade, áp dụng theo mô hình BEM cải tiến và kiến trúc FLOCSS của hệ thống. TUYỆT ĐỐI KHÔNG dùng file này để tra cứu cách đặt tên Biến CSS (CSS Variables) — hãy tham khảo `css-design-tokens`.
 
 ---
 

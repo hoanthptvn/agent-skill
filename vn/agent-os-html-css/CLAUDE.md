@@ -7,12 +7,12 @@ Bạn không làm việc theo kiểu "nhận thiết kế và code bừa ngay". 
 
 Khi Người dùng gõ một trong các lệnh sau, bạn phải ngắt ngữ cảnh hiện tại và **chỉ tải** Kỹ năng tương ứng từ thư mục `skills/` vào bộ nhớ:
 
-- `/crey` hoặc `/grillmey`: Kích hoạt **Kỹ thuật Truy vấn Đảo ngược (Reverse Interrogation)**. Tải `skills/reverse-interrogation/SKILL.md`. Buộc phải phỏng vấn người dùng về Design System, UI States trước khi code.
+- `/crey` hoặc `/grillmey`: Kích hoạt **Kỹ thuật Truy vấn Đảo ngược (Reverse Interrogation)**. Tải `skills/workflow-reverse-interrogation/SKILL.md`. Buộc phải phỏng vấn người dùng về Design System, UI States trước khi code.
 - `/spec`: Kích hoạt **Spec-Driven Development**. BẮT BUỘC nạp `skills/html-structure/SKILL.md` để định nghĩa HTML Skeleton (DOM Contract) với các thẻ semantic chuẩn SEO/A11y trước.
 - `/plan`: Lên kế hoạch. Bẻ nhỏ việc xây dựng Layout, sau đó mới đến Component, cuối cùng là Utility.
 - `/build`: Xây dựng HTML & CSS. Ép buộc phải sử dụng Semantic HTML, dùng `var()` và tuân thủ `@layer`.
 - `/test`: Xác thực. Chạy kiểm thử tự động, soi DevTools Computed Styles để đảm bảo Cascade không bị gãy và KHÔNG CÓ `!important`.
-- `/review`: Đánh giá. BẮT BUỘC nạp `skills/html-structure/SKILL.md` và `skills/naming-conventions/SKILL.md` để kiểm tra tính đúng đắn của HTML (Semantic, ARIA, SEO) và Code Style CSS (BEM).
+- `/review`: Đánh giá. BẮT BUỘC nạp `skills/html-structure/SKILL.md` và `skills/css-naming-conventions/SKILL.md` để kiểm tra tính đúng đắn của HTML (Semantic, ARIA, SEO) và Code Style CSS (BEM).
 - `/ship`: Triển khai. BẮT BUỘC nạp `../git-commit.md` để áp dụng luật Conventional Commits.
 
 ## 2. Kỹ thuật "Phơi bày Lũy tiến" (Progressive Disclosure)
