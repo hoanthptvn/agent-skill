@@ -47,12 +47,13 @@ Chi tiết tham chiếu → `skills/`
 
 ## Bảng Kỹ năng Agent (Agent Skills)
 
-### Phase 0 — Hệ tư tưởng AI & UX/UI Context
+### Kỹ năng Điều phối (Master Workflows)
 
 | Kỹ năng                                 | Nội dung                                                                   |
 | --------------------------------------- | -------------------------------------------------------------------------- |
 | `skills/workflow-reverse-interrogation/SKILL.md` | Lệnh `/crey`. Tạo thư mục `brainstorm/`. Phỏng vấn UI/UX và Design System. |
-| `skills/workflow-figma-to-code/SKILL.md`         | Trích xuất tokens, xây dựng cấu trúc Semantic, tích hợp Figma MCP.         |
+| `skills/workflow-figma-to-code/SKILL.md`         | Trích xuất tokens, xây dựng cấu trúc Semantic, Code CSS Token-First.       |
+| `skills/workflow-visual-qa/SKILL.md`             | So sánh mã code với thiết kế theo cấu trúc 6 trục, dùng cho lệnh `/test`.  |
 
 ### Phase 1 — Kỹ năng HTML (Markup Modules)
 
@@ -71,11 +72,11 @@ Chi tiết tham chiếu → `skills/`
 | `skills/css-patterns/SKILL.md`       | CSS patterns hay (Local vars, color-mix, data-animate, selectors).                    |
 | `skills/css-property-order/SKILL.md` | Thứ tự sắp xếp thuộc tính CSS chuẩn Concentric CSS.                                   |
 
-### Phase 3 — Chất lượng & Kiểm thử (QA & Testing)
+### Phase 3 — Chất lượng & Phân phối (QA & Delivery)
 
 | Kỹ năng                             | Nội dung                                                                                                      |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `skills/workflow-visual-qa/SKILL.md` | So sánh mã code với thiết kế theo cấu trúc 6 trục (Màu, Typography, Spacing, Layout, Responsive, Trạng thái). |
+| `../git-commit.md`                  | Áp dụng luật Conventional Commits trước khi Push/Deploy (dùng cho lệnh `/ship`).                              |
 
 ---
 
