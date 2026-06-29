@@ -24,15 +24,14 @@ Quy trình có cấu trúc từ tài nguyên thiết kế đến HTML/CSS pixel-
 
 ### Bước 1: TRÍCH XUẤT — Design Tokens từ Figma
 
-```
-Mở panel Figma Inspect (sidebar bên phải) cho mỗi phần tử.
+> [!TIP]
+> Mở panel Figma Inspect (sidebar bên phải) cho mỗi phần tử để trích xuất.
 
-COLORS (Màu sắc): Chọn phần tử → Inspect → Fill/Stroke → copy mã hex chính xác
-FONTS (Phông chữ): Chọn văn bản → Inspect → font-family, size, weight, line-height, letter-spacing
-SPACING (Khoảng cách): Chọn container → Inspect → các giá trị padding, gap
-RADIUS (Bo góc): Chọn card/button → Inspect → corner radius
-SHADOWS (Đổ bóng): Chọn phần tử → Inspect → Effect → copy các giá trị chính xác
-```
+- **COLORS (Màu sắc):** Chọn phần tử → Inspect → Fill/Stroke → copy mã hex chính xác
+- **FONTS (Phông chữ):** Chọn văn bản → Inspect → font-family, size, weight, line-height, letter-spacing
+- **SPACING (Khoảng cách):** Chọn container → Inspect → các giá trị padding, gap
+- **RADIUS (Bo góc):** Chọn card/button → Inspect → corner radius
+- **SHADOWS (Đổ bóng):** Chọn phần tử → Inspect → Effect → copy các giá trị chính xác
 
 **Token Map — viết trước khi code bất cứ thứ gì:**
 
@@ -44,24 +43,20 @@ SHADOWS (Đổ bóng): Chọn phần tử → Inspect → Effect → copy các g
 
 ### Bước 5: KIỂM TRA
 
-```
-□ Mở ở 375px — bố cục mobile chính xác
-□ Mở ở 1280px — bố cục desktop chính xác
-□ Màu sắc khớp với Figma (dùng công cụ color picker trong DevTools)
-□ Typography khớp (tab Computed so với Figma Inspect)
-□ Khoảng cách khớp (Box Model overlay)
-□ Các trạng thái hover đã được triển khai
-□ Không có lỗi console
-```
+- [ ] Mở ở 375px — bố cục mobile chính xác
+- [ ] Mở ở 1280px — bố cục desktop chính xác
+- [ ] Màu sắc khớp với Figma (dùng công cụ color picker trong DevTools)
+- [ ] Typography khớp (tab Computed so với Figma Inspect)
+- [ ] Khoảng cách khớp (Box Model overlay)
+- [ ] Các trạng thái hover đã được triển khai
+- [ ] Không có lỗi console
 
 ## Tích hợp Figma MCP
 
-```
-1. get_figma_data(fileKey)        → toàn bộ dữ liệu thiết kế
-2. download_figma_images(nodes)   → xuất hình ảnh/icon
-3. Trích xuất tokens từ dữ liệu   → viết các biến :root
-4. Triển khai HTML/CSS            → pixel-perfect
-```
+1. `get_figma_data(fileKey)` → toàn bộ dữ liệu thiết kế
+2. `download_figma_images(nodes)` → xuất hình ảnh/icon
+3. Trích xuất tokens từ dữ liệu → viết các biến `:root`
+4. Triển khai HTML/CSS → pixel-perfect
 
 ---
 

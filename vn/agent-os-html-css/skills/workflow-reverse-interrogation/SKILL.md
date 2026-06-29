@@ -18,7 +18,8 @@ description: Kỹ năng điều tra và phỏng vấn ráo riết người dùng
 2. **Truy vấn ráo riết (UI/UX Focus):**
    - Đặt câu hỏi về: Bảng màu (Color palette), Font chữ (Typography), Trạng thái tương tác (Hover, Focus, Active, Disabled).
    - Truy vấn về Responsive: Mobile-first hay Desktop-first? Điểm ngắt (Breakpoints) ở đâu?
-   - CHỈ ĐƯỢC HỎI TỐI ĐA 2 CÂU MỖI LẦN.
+   > [!IMPORTANT]
+   > CHỈ ĐƯỢC HỎI TỐI ĐA 2 CÂU MỖI LẦN để tránh làm quá tải người dùng.
 3. **Cập nhật File Checkpoint liên tục:**
    - Cập nhật quyết định về Breakpoints và Tokens vào `01-core-decisions.md`.
 4. **Xử lý Điểm mù bằng Open Flags:**

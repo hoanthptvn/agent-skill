@@ -25,76 +25,62 @@ So sánh có hệ thống giữa code với bản thiết kế. Không nhìn lư
 
 ### Bước 1: Chuẩn bị
 
-```
-Mở Figma đặt cạnh trình duyệt
-Trình duyệt: đúng chiều rộng theo spec thiết kế (thường 1440px desktop, 375px mobile)
-Zoom cả hai cùng tỉ lệ
-```
+- [ ] Mở Figma đặt cạnh trình duyệt
+- [ ] Trình duyệt: đúng chiều rộng theo spec thiết kế (thường 1440px desktop, 375px mobile)
+- [ ] Zoom cả hai cùng tỉ lệ
 
 ### Bước 2: Kiểm tra 6 trục
 
 **Trục 1 — Màu sắc**
 
-```
-□ Màu nền chính xác (dùng DevTools color picker so với Figma)
-□ Màu chữ chính xác
-□ Màu viền chính xác
-□ Màu trạng thái hover
-□ Kiểm tra: có khác biệt opacity không?
-```
+- [ ] Màu nền chính xác (dùng DevTools color picker so với Figma)
+- [ ] Màu chữ chính xác
+- [ ] Màu viền chính xác
+- [ ] Màu trạng thái hover
+- [ ] Kiểm tra: có khác biệt opacity không?
 
 **Trục 2 — Typography**
 
-```
-□ font-family đã load (tab Network → Fonts)
-□ font-size khớp (Figma Inspect → browser Computed)
-□ font-weight (400/500/600/700 — không xấp xỉ)
-□ line-height (giá trị không đơn vị, ví dụ 1.5 không phải 24px)
-□ letter-spacing (giá trị em)
-□ text-transform (none/uppercase/capitalize)
-```
+- [ ] `font-family` đã load (tab Network → Fonts)
+- [ ] `font-size` khớp (Figma Inspect → browser Computed)
+- [ ] `font-weight` (400/500/600/700 — không xấp xỉ)
+- [ ] `line-height` (giá trị không đơn vị, ví dụ 1.5 không phải 24px)
+- [ ] `letter-spacing` (giá trị em)
+- [ ] `text-transform` (none/uppercase/capitalize)
 
 **Trục 3 — Spacing**
 
-```
-□ Margin/padding đúng (±2px sai số cho phép)
-□ Gap trong flex/grid đúng
-□ Padding section (trên/dưới)
-□ Spacing bên trong component
-Dùng: DevTools Box Model overlay
-```
+- [ ] Margin/padding đúng (±2px sai số cho phép)
+- [ ] Gap trong flex/grid đúng
+- [ ] Padding section (trên/dưới)
+- [ ] Spacing bên trong component
+> **Công cụ:** Dùng DevTools Box Model overlay
 
 **Trục 4 — Cấu trúc bố cục**
 
-```
-□ Số cột / cấu trúc grid đúng
-□ Thứ tự phần tử đúng
-□ Căn chỉnh (trái/giữa/phải) đúng
-□ Container max-width đúng
-□ Tỷ lệ khung hình ảnh giữ nguyên
-```
+- [ ] Số cột / cấu trúc grid đúng
+- [ ] Thứ tự phần tử đúng
+- [ ] Căn chỉnh (trái/giữa/phải) đúng
+- [ ] Container max-width đúng
+- [ ] Tỷ lệ khung hình ảnh giữ nguyên
 
 **Trục 5 — Responsive (kiểm tra từng mức)**
 
-```
-□ 375px  — mobile
-□ 768px  — tablet
-□ 1024px — desktop nhỏ
-□ 1280px — desktop
-□ 1440px — rộng
+- [ ] **375px**  — mobile
+- [ ] **768px**  — tablet
+- [ ] **1024px** — desktop nhỏ
+- [ ] **1280px** — desktop
+- [ ] **1440px** — rộng
 
-Mỗi mức: kiểm tra cột thu gọn, thay đổi cỡ chữ, điều chỉnh spacing
-```
+> **Quy tắc mỗi mức:** kiểm tra cột thu gọn, thay đổi cỡ chữ, điều chỉnh spacing
 
 **Trục 6 — Trạng thái tương tác**
 
-```
-□ Hover: màu/gạch chân/scale đúng
-□ Focus: viền rõ ràng (không bị xóa)
-□ Active: có phản hồi
-□ Disabled: opacity/cursor đúng
-□ Loading: skeleton/spinner có mặt
-```
+- [ ] **Hover:** màu/gạch chân/scale đúng
+- [ ] **Focus:** viền rõ ràng (không bị xóa)
+- [ ] **Active:** có phản hồi
+- [ ] **Disabled:** opacity/cursor đúng
+- [ ] **Loading:** skeleton/spinner có mặt
 
 ### Bước 3: So sánh ảnh chụp
 
@@ -108,10 +94,9 @@ Mỗi mức: kiểm tra cột thu gọn, thay đổi cỡ chữ, điều chỉnh
 
 ### Bước 4: Kết luận
 
-```
-DUYỆT — tất cả 6 trục qua, không có vấn đề chặn
-CẦN SỬA — 1+ vấn đề chặn, liệt kê cụ thể cần sửa
-```
+> [!IMPORTANT]
+> **DUYỆT** — tất cả 6 trục qua, không có vấn đề chặn
+> **CẦN SỬA** — 1+ vấn đề chặn, liệt kê cụ thể cần sửa
 
 ---
 
