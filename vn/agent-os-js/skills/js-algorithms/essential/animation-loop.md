@@ -27,6 +27,7 @@ let mouseX = 0,
 let currentX = 0,
   currentY = 0;
 
+const cursor = document.querySelector(".cursor");
 document.addEventListener("mousemove", (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;

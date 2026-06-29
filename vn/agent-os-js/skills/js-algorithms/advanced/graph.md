@@ -94,9 +94,9 @@ class Graph {
       if (!vertex) return;
       visited.add(vertex);
       result.push(vertex);
-      this.adjacencyList[vertex].forEach((neighbor) => {
+      for (const neighbor of this.adjacencyList[vertex]) {
         if (!visited.has(neighbor)) dfs(neighbor);
-      });
+      }
     };
 
     dfs(start);
@@ -115,12 +115,12 @@ class Graph {
     while (stack.length > 0) {
       const curr = stack.pop(); // LIFO
       result.push(curr);
-      this.adjacencyList[curr].forEach((neighbor) => {
+      for (const neighbor of this.adjacencyList[curr]) {
         if (!visited.has(neighbor)) {
           visited.add(neighbor);
           stack.push(neighbor);
         }
-      });
+      }
     }
     return result;
   }
@@ -137,12 +137,12 @@ class Graph {
     while (head < queue.length) {
       const curr = queue[head++]; // O(1) — không dịch chuyển mảng
       result.push(curr);
-      this.adjacencyList[curr].forEach((neighbor) => {
+      for (const neighbor of this.adjacencyList[curr]) {
         if (!visited.has(neighbor)) {
           visited.add(neighbor);
           queue.push(neighbor);
         }
-      });
+      }
     }
     return result;
   }
@@ -196,9 +196,9 @@ dfsIterativeFake(start) {
   while (stack.length) {
     const curr = stack.pop();
     // nếu curr bị đánh dấu từ nhiều hướng → chỉ 1 hướng thắng, hướng còn lại bị bỏ
-    this.adjacencyList[curr].forEach(n => {
+    for (const n of this.adjacencyList[curr]) {
       if (!visited.has(n)) { visited.add(n); stack.push(n); }
-    });
+    }
   }
 }
 
@@ -215,8 +215,8 @@ dfsIterative(start) {
     result.push(curr);
 
     // Push theo thứ tự thường → pop() ra ngược → nếu muốn giống Recursive: reverse trước
-    // [...this.adjacencyList[curr]].reverse().forEach(n => { if(!visited.has(n)) stack.push(n); });
-    this.adjacencyList[curr].forEach(n => { if (!visited.has(n)) stack.push(n); });
+    // for (const n of [...this.adjacencyList[curr]].reverse()) { if(!visited.has(n)) stack.push(n); }
+    for (const n of this.adjacencyList[curr]) { if (!visited.has(n)) stack.push(n); }
   }
   return result;
 }
@@ -271,7 +271,7 @@ class ChunkedTraverser {
 
       this.#processNode(node); // update material, calculate matrix, v.v.
 
-      node.children?.forEach((c) => this.#stack.push(c));
+      if (node.children) for (const c of node.children) this.#stack.push(c);
       processed++;
 
       // Time budget: nhường browser nếu đã dùng quá 14ms
@@ -306,12 +306,12 @@ bfs(start) {
     const curr = queue[head++];
     result.push(curr);
 
-    this.adjacencyList[curr].forEach(neighbor => {
+    for (const neighbor of this.adjacencyList[curr]) {
       if (!visited.has(neighbor)) {
         visited.add(neighbor); // ✓ Đánh dấu TRƯỚC KHI push
         queue.push(neighbor);
       }
-    });
+    }
   }
   return result;
 }
@@ -358,12 +358,12 @@ function rippleFromClick(clickedCell, grid, gsap) {
       duration: 0.3,
     });
 
-    getNeighbors(cell, grid).forEach((neighbor) => {
+    for (const neighbor of getNeighbors(cell, grid)) {
       if (!visited.has(neighbor)) {
         visited.add(neighbor);
         queue.push({ cell: neighbor, dist: dist + 1 });
       }
-    });
+    }
   }
 }
 // BFS đảm bảo dist chính xác → animation loang đều như sóng nước thực sự
@@ -474,11 +474,11 @@ delete obj.key → phá vỡ Hidden Class
 ### while + pop() vs for...of — Mutation Bug
 
 ```javascript
-// ❌ Bug khi vừa lặp vừa xóa phần tử của cùng mảng:
-this.adjacencyList[v].forEach((neighbor) => {
-  this.removeEdge(v, neighbor); // removeEdge chứa filter() → thu ngắn mảng
-  // forEach tiếp tục với index cũ → "nhảy cóc" bỏ sót phần tử!
-});
+// ❌ Bug khi vừa lặp vừa xóa phần tử của cùng mảng (nếu dùng forEach):
+// for (const neighbor of this.adjacencyList[v]) {
+//   this.removeEdge(v, neighbor); // removeEdge chứa filter() → thu ngắn mảng
+//   // Vòng lặp tiếp tục với index cũ → "nhảy cóc" bỏ sót phần tử!
+// }
 
 // ✓ while + pop() (cách học thuật an toàn):
 while (this.adjacencyList[v].length) {
