@@ -442,6 +442,6 @@ https://gsap.com/docs/v3/Plugins/
 > [!CAUTION]
 > **AI AGENT READ CAREFULLY BEFORE CODING:**
 >
-> 1. **No Paid Plugin Hallucinations:** Do not hallucinate paid GSAP plugins (like SplitText, MorphSVG, DrawSVG, ScrollSmoother) unless explicitly mentioned by the user. Assume standard free GSAP core only.
+> 1. **All Plugins Are Free:** All GSAP plugins (SplitText, MorphSVG, DrawSVG, etc.) are now 100% FREE and included in the standard `gsap` npm package. You MAY use them freely to achieve advanced effects, but DO NOT over-engineer simple animations that can be done with core GSAP just because plugins are available.
 > 2. **Validate DOM Targets:** Before passing an element to any GSAP plugin (especially Draggable or Flip), you MUST verify the DOM node exists to prevent fatal errors.
 > 3. **Plugin Registration:** Never forget to register plugins using `gsap.registerPlugin()`. Failing to do this in Vanilla JS will cause the animation to silently fail.
