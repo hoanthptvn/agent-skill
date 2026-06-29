@@ -57,11 +57,11 @@ Hệ thống sử dụng các Lệnh vĩ mô để tải động Kỹ năng CSS 
 
 | Lệnh     | Kích hoạt Kỹ năng                                                             |
 | -------- | ----------------------------------------------------------------------------- |
-| `/crey`  | Truy vấn Đảo ngược (Tạo thư mục `brainstorm/` và phỏng vấn ráo riết về UI/UX) |
-| `/spec`  | Spec-driven development (Bắt buộc viết HTML Skeleton trước khi code CSS)      |
-| `/plan`  | Bẻ nhỏ Layout -> Component -> Utility                                         |
-| `/build` | Viết code CSS (Tuân thủ `var()` và `@layer`)                                  |
-| `/test`  | Xác thực Cascade và Visual Drift                                              |
+| `/crey`  | Truy vấn Đảo ngược (Tải `workflow-reverse-interrogation/SKILL.md`)            |
+| `/spec`  | Bắt buộc viết HTML Skeleton trước (Tải `html-structure/SKILL.md`)             |
+| `/plan`  | Lên kế hoạch (Tải `css-architecture/SKILL.md` để bẻ nhỏ Layer)                |
+| `/build` | Viết code CSS (Tải `workflow-figma-to-code/SKILL.md` để trích xuất Design)    |
+| `/test`  | Kiểm thử 6 trục (Tải `workflow-visual-qa/SKILL.md` để test Visual QA)         |
 
 ## Tài liệu (Kỹ năng Agent)
 

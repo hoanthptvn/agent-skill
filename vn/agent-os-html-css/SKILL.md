@@ -65,8 +65,8 @@ Chi tiết tham chiếu → `skills/`
 
 | Kỹ năng                              | Nội dung                                                                                              |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `skills/css-architecture/SKILL.md`   | Hiểu kiến trúc Multi-File CSS, Breakpoints, Logical Properties.                       |
-| `skills/css-layout/SKILL.md`         | Kỹ thuật dàn trang cốt lõi, layout (Flexbox, Grid), Container linh hoạt.              |
+| `skills/css-architecture/SKILL.md`   | Cấu trúc dự án, Multi-File CSS (Base, Utility, Top, Content), CSS Comment Hierarchy.  |
+| `skills/css-layout/SKILL.md`         | Kỹ thuật Layout (Flexbox, Grid), Container, Breakpoints, Logical Properties.          |
 | `skills/css-design-tokens/SKILL.md`  | Hệ thống Token 3 tầng, hàm `oklch`, typography scale, fluid clamps, Spacing System.   |
 | `skills/css-naming-conventions/SKILL.md` | Tiền tố (`c-`, `l-`, `u-`), biến `--ui-*`, `--_*`. Quy tắc 3 tầng Naming (BEM).   |
 | `skills/css-patterns/SKILL.md`       | CSS patterns hay (Local vars, color-mix, data-animate, selectors).                    |
