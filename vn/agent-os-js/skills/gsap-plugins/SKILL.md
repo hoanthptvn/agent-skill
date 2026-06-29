@@ -174,14 +174,14 @@ Observer.create({
 
 ### SplitText
 
-Splits an element’s text into characters, words, and/or lines (each in its own element) for staggered or per-unit animation. Use when animating text character-by-character, word-by-word, or line-by-line. Returns an instance with **chars**, **words**, **lines** (and **masks** when `mask` is set). Restore original markup with **revert()** or let **gsap.context()** revert. Integrates with **gsap.context()**, **matchMedia()**, and **useGSAP()**. API: **SplitText.create(target, vars)** (target = selector, element, or array).
+Splits an element’s text into characters, words, and/or lines (each in its own element) for staggered or per-unit animation. Use when animating text character-by-character, word-by-word, or line-by-line. Returns an instance with **chars**, **words**, **lines** (and **masks** when `mask` is set). Restore original markup with **revert()**. Integrates natively with Vanilla JS logic and **gsap.matchMedia()** for responsive layouts. API: **SplitText.create(target, vars)** (target = selector, element, or array).
 
 ```javascript
 gsap.registerPlugin(SplitText);
 
 const split = SplitText.create(".heading", { type: "words, chars" });
 gsap.from(split.chars, { opacity: 0, y: 20, stagger: 0.03, duration: 0.4 });
-// later: split.revert() or let gsap.context() cleanup revert
+// later: split.revert() when destroying element to avoid memory leaks
 ```
 
 With **onSplit()** (v3.13.0+), animations run on each split and on re-split when **autoSplit** is used; returning a tween/timeline from **onSplit()** lets SplitText clean up and sync progress on re-split:
