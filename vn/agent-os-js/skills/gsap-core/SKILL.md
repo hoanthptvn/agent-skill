@@ -215,7 +215,7 @@ gsap.defaults({ duration: 0.6, ease: "power2.out" });
 
 - **Create:** `let mm = gsap.matchMedia();`
 - **Add a query:** `mm.add("(min-width: 800px)", () => { gsap.to(...); return () => { /* optional custom cleanup */ }; });`
-- **Revert all:** `mm.revert();` (e.g. on component unmount).
+- **Revert all:** `mm.revert();` (e.g. on page transition or DOM removal).
 - **Scope (optional):** Pass a third argument (element) so selector text inside the handler is scoped to that root: `mm.add("(min-width: 800px)", () => { ... }, containerEl);`
 
 **Conditions syntax** — Use an object to pass multiple named queries and avoid duplicate code; the handler receives a context with `context.conditions` (booleans per condition):
