@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Resource Context"
+  short_description: "Turn working frontend code into Osmo-style context"
+  default_prompt: "Use $generate-context-note to turn my complete HTML, CSS, and JavaScript resource into an Osmo-style Resource Context file."
