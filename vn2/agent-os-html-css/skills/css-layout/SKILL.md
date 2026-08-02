@@ -11,7 +11,7 @@ description: Hướng dẫn kỹ thuật dàn trang cốt lõi, layout (Flexbox,
 
 - Thiết kế cho màn hình Mobile trước, sau đó mở rộng lên màn hình lớn bằng `min-width`.
 - Khi cần viết ngoại lệ cho Mobile, dùng `max-width: 767.98px` (bắt buộc dùng `.98px` để tránh kẹt breakpoint ở đúng 768px).
-- CSS thuộc Media nào thì viết đúng trong Media đó. CSS nào dùng chung mới viết ở media chung. TUYỆT ĐỐI KHÔNG ghi đè CSS lung tung ở các media khác nhau.
+- CSS thuộc Media nào thì viết đúng trong Media đó. CSS nào dùng chung mới viết ở root. TUYỆT ĐỐI KHÔNG ghi đè CSS lung tung ở các media khác nhau.
 
 ### Hệ thống Breakpoints Tiêu chuẩn
 

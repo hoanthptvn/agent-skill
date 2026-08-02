@@ -1,0 +1,115 @@
+---
+name: workflow-figma-to-code
+description: Chuyển đổi thiết kế Figma thành HTML/CSS chuẩn production với spacing, tokens và responsive chính xác. Dùng khi được cấp link Figma, ảnh chụp màn hình hoặc file thiết kế để lập trình.
+---
+
+# Figma to Code
+
+## Tổng quan
+
+Quy trình có cấu trúc từ tài nguyên thiết kế đến HTML/CSS pixel-perfect. Không bao giờ bắt đầu code trước khi trích xuất toàn bộ design tokens. Không bao giờ ước lượng giá trị — hãy đo đạc từ Figma Inspect.
+
+## Khi nào dùng
+
+- Được cung cấp một URL / link Figma để triển khai
+- Được cung cấp ảnh chụp màn hình / thiết kế đã xuất để code
+- Bắt đầu một trang hoặc một section mới hoàn toàn
+
+## Khi nào KHÔNG dùng
+
+- Sửa đổi code hiện có mà không có bản thiết kế đối chiếu
+- Debug CSS hiện có
+
+## Quy trình
+
+### Bước 1: TRÍCH XUẤT — Design Tokens từ Figma
+
+> [!TIP]
+> Mở panel Figma Inspect (sidebar bên phải) cho mỗi phần tử để trích xuất.
+
+- **COLORS (Màu sắc):** Chọn phần tử → Inspect → Fill/Stroke → copy mã hex chính xác
+- **FONTS (Phông chữ):** Chọn văn bản → Inspect → font-family, size, weight, line-height, letter-spacing
+- **SPACING (Khoảng cách):** Chọn container → Inspect → các giá trị padding, gap
+- **RADIUS (Bo góc):** Chọn card/button → Inspect → corner radius
+- **SHADOWS (Đổ bóng):** Chọn phần tử → Inspect → Effect → copy các giá trị chính xác
+
+**Token Map — viết trước khi code bất cứ thứ gì:**
+
+### Bước 2: CẤU TRÚC — HTML Semantic Skeleton
+
+Viết bộ khung HTML **tĩnh** trước khi mở file CSS:
+
+- Dùng thẻ Semantic (`<header>`, `<main>`, `<section>`, `<article>`, `<footer>`) — cấm divitis.
+- Mỗi `<section>` bắt đầu bằng heading (`<h2>`–`<h6>`), tuân thủ hierarchy.
+- Đặt tên class chuẩn BEM: `c-card__title`, `l-grid--2col`, `p-top--hero`.
+- Gắn `data-animate="fade-up"` cho các element cần animation (nếu có).
+- Khai báo `width`/`height` trên mọi `<img>`, `alt` bắt buộc.
+
+```html
+<!-- Ví dụ skeleton output -->
+<section class="p-top--hero">
+  <div class="l-container">
+    <h1 class="c-hero__title">...</h1>
+    <p class="c-hero__subtitle">...</p>
+    <a href="#" class="c-btn c-btn--primary">...</a>
+  </div>
+</section>
+```
+
+### Bước 3: CSS — Token-First
+
+Ánh xạ Design Tokens từ Bước 1 vào biến CSS — **cấm hardcode HEX/px**:
+
+```css
+/* 1. Primitive tokens (từ Figma) */
+--clr-brand-500: oklch(65% 0.25 260);
+--clr-neutral-900: oklch(10% 0.005 280);
+
+/* 2. Semantic tokens (ánh xạ ý nghĩa) */
+--clr-bg: var(--clr-neutral-0);
+--clr-text: var(--clr-neutral-900);
+--clr-accent: var(--clr-brand-500);
+
+/* 3. Component tokens */
+.c-hero { --hero-bg: var(--clr-accent); }
+```
+
+- Typography: dùng `clamp()` cho fluid sizing, không `@media` lặp.
+- Spacing: bám sát hệ 4px/8px (`--space-*`), cấm magic numbers.
+- Tuân thủ thứ tự Concentric CSS khi viết properties.
+
+### Bước 4: RESPONSIVE
+
+- **Mobile-first:** Viết CSS gốc cho mobile, mở rộng bằng `min-width`.
+- Kiểm tra 3 breakpoint bắt buộc: `375px` → `768px` → `1280px`.
+- Ưu tiên Intrinsic Design (`flex-wrap`, `repeat(auto-fit, minmax(...))`) hơn `@media` thủ công.
+- So sánh spacing PC vs SP theo bảng trong `css-design-tokens/SKILL.md`.
+
+
+### Bước 5: KIỂM TRA
+
+- [ ] Mở ở 375px — bố cục mobile chính xác
+- [ ] Mở ở 1280px — bố cục desktop chính xác
+- [ ] Màu sắc khớp với Figma (dùng công cụ color picker trong DevTools)
+- [ ] Typography khớp (tab Computed so với Figma Inspect)
+- [ ] Khoảng cách khớp (Box Model overlay)
+- [ ] Các trạng thái hover đã được triển khai
+- [ ] Không có lỗi console
+
+## Tích hợp Figma MCP
+
+1. `get_figma_data(fileKey)` → toàn bộ dữ liệu thiết kế
+2. `download_figma_images(nodes)` → xuất hình ảnh/icon
+3. Trích xuất tokens từ dữ liệu → viết các biến `:root`
+4. Triển khai HTML/CSS → pixel-perfect
+
+---
+
+## 🤖 Agent OS Anti-Rationalization
+
+> [!CAUTION]
+> **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
+> 1. **Cấm bóc lột code Figma mù quáng:** Tuyệt đối cấm copy-paste mã CSS thô từ Figma Dev Mode (vì chúng thường hardcode px và HEX). Phải ánh xạ lại vào Token System của dự án.
+> 2. **Cấm bỏ qua Đo lường:** Không xuất ảnh rồi vứt bừa vào code. Phải đo chính xác Spacing, Line Height và Typography scale trước khi triển khai.
+> 3. **Xây nhà từ móng:** Cấm viết CSS khi HTML chưa hoàn thiện. BẮT BUỘC viết bộ khung Semantic HTML tĩnh trước (Bước 2), sau đó mới phủ CSS lên trên.

@@ -1,0 +1,160 @@
+# Agent OS: JS Creative & Performance — Mục lục Tổng (Master Index)
+
+> **CHỈ THỊ CỐT LÕI CHO AI AGENTS (TỐI ƯU HÓA TOKEN):**
+> TUYỆT ĐỐI KHÔNG đọc toàn bộ các file trong thư mục `skills/`. Việc này sẽ làm cạn kiệt cửa sổ ngữ cảnh (context window) và lãng phí tokens.
+> 1. **BẮT BUỘC (MANDATORY):** Đọc 3 file trong phần "CỐT LÕI BẮT BUỘC" cho mọi dự án mới.
+> 2. **TẢI LƯỜI BIẾNG (LAZY LOAD - KHI CẦN):** Quét phần "KỸ NĂNG THEO YÊU CẦU" bên dưới. CHỈ SỬ DỤNG công cụ đọc file để đọc một `Path` cụ thể NẾU yêu cầu của người dùng khớp với các từ khóa `Triggers`. 
+
+---
+
+## 🔴 1. CỐT LÕI BẮT BUỘC (Đọc cho MỌI dự án mới)
+
+Bạn BẮT BUỘC phải đọc các file này để hiểu về quy trình làm việc (workflow) trước khi viết code:
+1. **Lập kế hoạch Task:** `skills/workflow-plan/SKILL.md`
+2. **Quy tắc Thực thi:** `skills/workflow-build/SKILL.md`
+
+---
+
+## 🟡 2. KỸ NĂNG THEO YÊU CẦU (Tải lười biếng dựa theo Từ khóa)
+
+### 2.1 Quy trình & Kiến trúc Code
+
+workflow-reverse-interrogation
+  Path: skills/workflow-reverse-interrogation/SKILL.md
+  Triggers: /map, @map, /crey, @crey, phỏng vấn.
+
+workflow-spec
+  Path: skills/workflow-spec/SKILL.md
+  Triggers: /plan, @plan, /spec, tài liệu đặc tả, input output contract.
+
+workflow-evals
+  Path: skills/workflow-evals/SKILL.md
+  Triggers: /review, @review, /evals, đánh giá, production ready, awwwards score.
+
+workflow-retrospective
+  Path: skills/workflow-retrospective/SKILL.md
+  Triggers: /retro, @retro, retrospective, học từ lỗi, memory file.
+
+workflow-context-map
+  Path: skills/workflow-context-map/SKILL.md
+  Triggers: /map, @map, codemap, bản đồ codebase, context map.
+
+workflow-dom-testing
+  Path: skills/workflow-dom-testing/SKILL.md
+  Triggers: /test, @test, dom contract, playwright, end-to-end test.
+
+workflow-doubt
+  Path: skills/workflow-doubt/SKILL.md
+  Triggers: doubt, @doubt, phản biện, tự kiểm tra, quyết định kiến trúc.
+
+workflow-simplify
+  Path: skills/workflow-simplify/SKILL.md
+  Triggers: /simplify, đơn giản hóa code, refactor for clarity.
+
+workflow-video
+  Path: skills/workflow-video/SKILL.md
+  Triggers: video performance, autoplay video, html5 video, video gallery.
+
+workflow-seo
+  Path: skills/workflow-seo/SKILL.md
+  Triggers: seo, json-ld, schema.org, rich results.
+
+workflow-performance
+  Path: skills/workflow-performance/SKILL.md
+  Triggers: performance, pagespeed insights, lighthouse score, core web vitals, lcp, cls.
+
+workflow-assets
+  Path: skills/workflow-assets/SKILL.md
+  Triggers: nén video, draco, ffmpeg, compress video, meshopt, ktx2, webp.
+
+js-architecture
+  Path: skills/js-architecture/SKILL.md
+  Triggers: security, bảo mật, prompt injection, xss, naming.
+
+js-state-orchestration
+  Path: skills/js-state-orchestration/SKILL.md
+  Triggers: global state, zustand, event bus, pubsub, react three fiber state.
+
+js-gsap-performance-loops
+  Path: skills/js-gsap-performance-loops/SKILL.md
+  Triggers: loop, rAF, 60fps, performance loop, memory leak, gsap performance.
+
+js-data-structures
+  Path: skills/js-data-structures/SKILL.md
+  Triggers: string manipulation, regex, array performance, object reference.
+
+js-algorithms
+  Path: skills/js-algorithms/SKILL.md
+  Triggers: thuật toán, algorithm, binary search, bfs, dfs.
+
+### 2.2 Frameworks (Next.js & Vanilla JS)
+
+nextjs-app-router
+  Path: skills/nextjs-app-router/SKILL.md
+  Triggers: next.js, app router, fetch caching, revalidate.
+
+nextjs-fsd
+  Path: skills/nextjs-fsd/SKILL.md
+  Triggers: fsd, feature sliced design, project structure next.js.
+
+nextjs-caching
+  Path: skills/nextjs-caching/SKILL.md
+  Triggers: next.js caching, isr, revalidate.
+
+nextjs-static-dynamic
+  Path: skills/nextjs-static-dynamic/SKILL.md
+  Triggers: static vs dynamic, force-dynamic, partial prerendering.
+
+vanilla-module-pattern
+  Path: skills/vanilla-module-pattern/SKILL.md
+  Triggers: html thuần, vanilla js, không react, importmap.
+
+### 2.3 UI & Animation (GSAP, Premium UI)
+
+gsap-core
+  Path: skills/gsap-core/SKILL.md
+  Triggers: gsap.to, gsap.from, easing, gsap core, animation basic.
+
+gsap-timeline
+  Path: skills/gsap-timeline/SKILL.md
+  Triggers: gsap.timeline, timeline, sequence, animation order.
+
+gsap-scrolltrigger
+  Path: skills/gsap-scrolltrigger/SKILL.md
+  Triggers: scrolltrigger, scroll animation, scroll scrub, pin, sticky scroll.
+
+gsap-plugins
+  Path: skills/gsap-plugins/SKILL.md
+  Triggers: splittext, draggable, flip, motionpath, morphsvg, drawsvg.
+
+gsap-utils
+  Path: skills/gsap-utils/SKILL.md
+  Triggers: gsap.utils, mapRange, clamp, normalize, snap, toArray.
+
+premium-ui-mindset
+  Path: skills/premium-ui-mindset/SKILL.md
+  Triggers: /ui, component, slider, hover, awwwards css, responsive spacing.
+
+scroll-video-scrub
+  Path: skills/scroll-video-scrub/SKILL.md
+  Triggers: scroll video stutter, video currentTime scrubbing, scroll driven video.
+
+### 2.4 WebGL & Three.js
+
+webgl-master
+  Path: skills/webgl-master/SKILL.md
+  Triggers: webgl, threejs, three.js, shader, glsl, vertex, fragment, 3d, halftone, draco, ktx2, r3f, canvas.
+
+### 2.5 CMS & Backend
+
+nextjs-headless-cms
+  Path: skills/nextjs-headless-cms/SKILL.md
+  Triggers: headless cms, strapi, contentful, data fetching, webhook.
+
+wordpress-headless
+  Path: skills/wordpress-headless/SKILL.md
+  Triggers: headless wordpress, wp rest api, wp-json, headless wp.
+
+nextjs-sanity
+  Path: skills/nextjs-sanity/SKILL.md
+  Triggers: sanity cms, groq, portable text, sanity schema.

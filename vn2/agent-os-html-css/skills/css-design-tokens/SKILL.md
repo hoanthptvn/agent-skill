@@ -1,0 +1,277 @@
+---
+name: css-design-tokens
+description: Kỹ năng Agent chuyên biệt về hệ thống biến CSS (CSS Variables), Design Tokens và Fluid Typography.
+---
+
+# Token Guide — Hệ thống biến CSS & Spacing
+
+## Tại sao dùng CSS Custom Properties (tokens)?
+
+Thay vì hardcode `#3b82f6` khắp nơi, đặt tên có ý nghĩa:
+
+- Dễ thay đổi toàn project bằng 1 dòng
+- Dark mode chỉ cần đổi 10 dòng semantic
+- AI agent đọc hiểu ý nghĩa, không phải đoán hex code
+
+---
+
+## 3 Tầng Biến CSS (The 3-Layer System)
+
+### Tầng 1 — Primitive (Design Tokens)
+
+```css
+--clr-neutral-100: oklch(95% 0 0);
+--clr-neutral-900: oklch(10% 0 0);
+```
+
+Đây là **palette gốc** — không bao giờ thay đổi giữa light/dark mode.
+
+### Tầng 2 — Semantic (Ý nghĩa UI)
+
+```css
+--clr-bg: var(--clr-neutral-0); /* Light mode: trắng */
+--clr-surface: var(--clr-neutral-100); /* Card, panel */
+--clr-text: var(--clr-neutral-900); /* Body text */
+```
+
+**Rule bắt buộc**: Component chỉ dùng semantic, không bao giờ dùng primitive trực tiếp.
+
+```css
+/* ❌ Sai */
+.c-card {
+  background: var(--clr-neutral-100);
+}
+
+/* ✅ Đúng */
+.c-card {
+  background: var(--clr-surface);
+}
+```
+
+**Dark mode chỉ đổi tầng 2:**
+```css
+[data-theme="dark"] {
+  --clr-bg: var(--clr-neutral-950);
+  --clr-surface: var(--clr-neutral-800);
+  --clr-text: var(--clr-neutral-50);
+}
+/* Component KHÔNG cần thay đổi gì */
+```
+
+### Tầng 3 — Component Tokens (Biến Component)
+
+Dành riêng cho một Component cụ thể. Biến tầng này tham chiếu đến biến Tầng 2 (Semantic), giúp Component hoàn toàn độc lập và dễ dàng tái sử dụng (Portable).
+
+```css
+.c-btn {
+  /* Khai báo Component Tokens */
+  --btn-bg: var(--clr-primary);
+  --btn-text: var(--clr-neutral-0);
+  --btn-radius: var(--radius-md);
+
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-radius: var(--btn-radius);
+}
+
+.c-btn:hover {
+  /* Chỉ cần ghi đè Component Token, không cần viết lại thuộc tính */
+  --btn-bg: var(--clr-primary-hover);
+}
+```
+
+> **Lưu ý:** Ngoài ra còn có các biến nội bộ (Internal Vars) dùng cho tính toán hoặc Utility, thường mang tiền tố `--_` (private) hoặc `--ui-`.
+
+---
+
+## Prefix naming — chuẩn quốc tế
+
+| Prefix           | Dùng cho           | Ví dụ                                    |
+| ---------------- | ------------------ | ---------------------------------------- |
+| `--clr-`         | Color              | `--clr-bg`, `--clr-text`, `--clr-accent` |
+| `--text-`        | Font size          | `--text-sm`, `--text-hero`               |
+| `--leading-`     | Line height        | `--leading-tight`, `--leading-normal`    |
+| `--tracking-`    | Letter spacing     | `--tracking-tight`, `--tracking-caps`    |
+| `--weight-`      | Font weight        | `--weight-bold`, `--weight-medium`       |
+| `--space-`       | Spacing            | `--space-1`, `--space-section`           |
+| `--radius-`      | Border radius      | `--radius-md`, `--radius-full`           |
+| `--z-`           | Z-index            | `--z-modal`, `--z-overlay`               |
+| `--dur-`         | Duration           | `--dur-fast`, `--dur-slow`               |
+| `--ease-`        | Easing             | `--ease-out-expo`, `--ease-spring`       |
+| `--shadow-`      | Box shadow         | `--shadow-md`, `--shadow-glow`           |
+| `--blur-`        | Blur               | `--blur-glass`                           |
+| `--glass-`       | Glassmorphism      | `--glass-bg`, `--glass-blur`             |
+| `--perspective-` | 3D                 | `--perspective-sm`                       |
+| `--_`            | Private (internal) | `--_accent-l`, `--_accent-h`             |
+| `--ui-`          | UI Semantic/State  | `--ui-primary`, `--ui-error`, `--ui-shadow` |
+
+**`--_` prefix**: biến nội bộ, tuyệt đối không dùng trực tiếp để style cứng trong component.
+Chỉ dùng để tính toán biến khác (VD: `--clr-accent` dùng `--_accent-l`).
+
+---
+
+## Patterns nâng cao với Tokens
+
+### 1. Composite Pattern (Gắn kết nhiều biến)
+
+```css
+/* Bước 1: Khai báo safe defaults (trong @layer properties) */
+* {
+  --ui-ring-shadow: 0 0 #0000; /* transparent, invisible nhưng hợp lệ */
+  --ui-shadow: 0 0 #0000;
+}
+
+/* Bước 2: Utility class hoặc Component sử dụng tổ hợp */
+.c-card {
+  --ui-shadow: 0 4px 6px -1px var(--clr-shadow, #0000001a);
+  
+  box-shadow:
+    var(--ui-ring-shadow),
+    var(--ui-shadow); /* Kết hợp cả ring và shadow */
+}
+```
+
+### 2. Override Pattern (Fallback Chain)
+
+```css
+.u-transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: var(--ui-ease, ease-out);
+  transition-duration: var(--ui-duration, 0.15s);
+  /*                   ↑ Override per-element       ↑ Default */
+}
+```
+
+---
+
+## oklch — Tại sao không dùng hex / hsl?
+
+```
+oklch(Lightness%  Chroma  Hue)
+      ↑            ↑       ↑
+      Độ sáng     Độ bão  Hue (0-360)
+      0-100%      hòa
+```
+
+**Lợi thế:**
+- **Perceptually uniform**: `50%` lightness TRÔNG giống 50% sáng thật (hsl thì không)
+- **Interpolation đẹp**: gradient oklch không bị "muddy" ở giữa
+- **Công cụ pick**: https://oklch.com
+
+---
+
+## color-mix() — Xử lý Opacity cho Variable
+
+Khi cần opacity trên CSS variable:
+
+```css
+/* ❌ Không hoạt động — var() không dùng được trong alpha channel */
+background: oklch(var(--_accent-l) var(--_accent-c) var(--_accent-h) / 10%);
+
+/* ✅ color-mix giải quyết */
+background: color-mix(in oklab, var(--clr-accent) 10%, transparent);
+```
+
+**Tại sao oklab thay vì srgb?**
+- oklab interpolation trông tự nhiên hơn
+- Tránh hiện tượng màu bị xám ở giữa khi mix
+
+---
+
+## Fluid typography — clamp()
+
+```css
+--text-hero: clamp(5rem, 11vw, 10rem);
+/*                 ↑      ↑      ↑
+               Mobile   Scale   Desktop max
+               min      theo viewport */
+```
+
+**Lợi thế**: 1 dòng thay cho 3-4 media queries. Không cần `@media` breakpoint cho font size nữa.
+
+---
+
+## 8pt grid & Spacing System (PC → SP)
+
+Mọi spacing = bội số 8px (`0.5rem`):
+
+```
+--space-1:  8px
+--space-2:  16px
+--space-3:  24px
+--space-4:  32px
+```
+
+Rút từ patterns thực tế của project, quy chuẩn khoảng cách giữa PC và Mobile:
+
+### Section Spacing
+
+| Phần                     | Desktop (PC) | Mobile (SP) | CSS                                   |
+| ------------------------ | ------------ | ----------- | ------------------------------------- |
+| Section padding-block    | `80–120px`   | `48–64px`   | `var(--space-96)` → `var(--space-64)` |
+| Section title → nội dung | `40–60px`    | `24–32px`   | `margin-block-end: var(--space-48)`   |
+| Card gap trong grid      | `24–30px`    | `16–20px`   | `gap: var(--space-24)`                |
+| Header padding-block     | `12–20px`    | `12–16px`   | `var(--space-16)`                     |
+| Footer padding           | `40–80px`    | `24–40px`   | `padding: var(--space-40)`            |
+| Container padding-inline | `40–64px`    | `16–24px`   | Đã có trong `.l-container-*`          |
+
+### Component Spacing
+
+| Phần                          | Giá trị                                   |
+| ----------------------------- | ----------------------------------------- |
+| Button padding                | `padding: 12px 24px` → mobile `10px 20px` |
+| Form field gap (label→input)  | `4–8px`                                   |
+| List item vertical gap        | `8–16px`                                  |
+| Inline icon gap (icon + text) | `8px`                                     |
+| **Spacing bội 4px**           | 4, 8, 12, 16, 24, 32, 48...               |
+
+---
+
+## Phụ lục: Từ điển Token & Biến CSS (Reference Dictionary)
+
+> Bản tóm tắt dùng để tra cứu nhanh các nhóm biến CSS có trong hệ thống.
+
+```css
+DESIGN TOKENS (Tầng 1 - Public):
+  --clr-{name}-{shade}             --clr-neutral-500
+  --text-{size}                    --text-sm
+  --text-{size}--line-height       --text-sm--line-height  (dấu -- kép!)
+  --weight-{name}                  --weight-semibold
+  --shadow-{size}                  --shadow-md
+  --inset-shadow-{size}            --inset-shadow-sm
+  --drop-shadow-{size}             --drop-shadow-lg
+  --text-shadow-{size}             --text-shadow-sm
+  --blur-{size}                    --blur-md
+  --ease-{name}                    --ease-out
+  --animate-{name}                 --animate-spin
+  --space-{size}                   --space-4 (bội số 8px)
+  --breakpoint-{name}              --breakpoint-md
+  --container-{size}               --container-md
+  --radius-{size}                  --radius-md
+  --perspective-{name}             --perspective-normal
+  --default-{property}             --default-transition-duration
+
+UI SEMANTIC (Tầng 2 - Public):
+  --clr-{role}                     --clr-primary, --clr-error
+  --clr-text-{state}               --clr-text-muted, --clr-text-highlighted
+  --clr-surface-{state}            --clr-surface-elevated, --clr-bg-accented
+  --clr-border-{state}             --clr-border-muted, --clr-border-inverted
+  --ui-{state/property}            --ui-primary, --ui-error, --ui-shadow, --ui-duration
+
+COMPONENT TOKENS (Tầng 3 - Cục bộ Component):
+  --{component}-{property}         --btn-bg, --card-shadow, --input-border
+
+INTERNAL VARS (Phụ trợ - KHÔNG dùng cứng trong CSS):
+  --_{internal}                    --_accent-l (dấu gạch dưới = private variables)
+```
+
+---
+
+## 🤖 Agent OS Anti-Rationalization
+
+> [!CAUTION]
+> **Tác tử AI ĐỌC KỸ TRƯỚC KHI CODE:**
+>
+> 1. **Cấm Hardcode Màu Sắc tĩnh:** Tuyệt đối không dùng mã màu HEX hoặc RGB cứng. BẮT BUỘC dùng hệ màu `oklch()` cho các token nguyên thủy (Primitive Tokens) và ánh xạ qua biến Semantic (VD: `--ui-primary`).
+> 2. **Cấm dùng Đơn vị px tĩnh cho Layout:** Không set `font-size` hoặc `padding` bằng các con số px cứng. BẮT BUỘC dùng hàm `clamp()` hoặc biến `var(--space-*)` để tạo Fluid Design.
+> 3. **Cấm Magic Numbers:** Không được tự ý đẻ ra các con số CSS ma thuật (VD: `margin-top: 37px`). Phải làm tròn và bám sát vào hệ thống Spacing Base (bội số của 4px / 0.25rem).
